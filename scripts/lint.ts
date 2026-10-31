@@ -9,6 +9,9 @@ import { stickman } from '../assets/characters/stickman/character';
 import { PROPS } from '../assets/props/index';
 import { MEMES } from '../assets/memes/index';
 import { spokenScript, type BeatSheet } from './beatsheet';
+import { loadVoice, roboticHits } from './voice';
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
 export type Level = 'error' | 'warn';
 export type ScriptIssue = { level: Level; rule: string; message: string; beat?: string };
@@ -106,6 +109,14 @@ export function lintScript(b: BeatSheet, ch: ChannelConfig, opts: LintOptions = 
       if (!ok) err('voting-info', 'voting procedure info must cite vote.gov or an official .gov election source', x.id);
     }
     if (/\b(i|we) (made|earned|was there|were there|personally saw|met him|met her)\b/i.test(x.line)) warn('first-person', 'the stickman makes no real personal claims (§2.8.2)', x.id);
+  }
+  // Voice: robotic / newsreader phrasing (channels/<id>/voice.yaml).
+  if (existsSync(fileURLToPath(new URL(`../channels/${b.channel}/voice.yaml`, import.meta.url)))) {
+    const voice = loadVoice(b.channel);
+    spokenScript(b).forEach((line, i) => {
+      const hits = roboticHits(line, voice);
+      if (hits.length) warn('robotic', `sounds robotic (${hits.join(', ')}): rewrite like a person talking`, i === 0 ? 'hook' : b.beats[i - 1]!.id);
+    });
   }
   for (const p of ch.banned_phrases) {
     for (const [i, line] of spokenScript(b).entries()) if (lc(line).includes(lc(p))) err('banned-phrase', `"${p}"`, i === 0 ? 'hook' : b.beats[i - 1]!.id);

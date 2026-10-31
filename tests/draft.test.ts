@@ -4,43 +4,25 @@ import type Anthropic from '@anthropic-ai/sdk';
 import { loadChannel } from '../render/channel';
 import { draftSchema, draftScript, systemPrompt, toBeatSheet, userPrompt, type Draft, type DraftInput } from '../scripts/draft';
 import { loadHookPatterns, scoreHook } from '../scripts/hooks';
+import { loadVoice } from '../scripts/voice';
 import { htmlToText } from '../scripts/article';
 import { parseBeatSheet, type BeatSheet } from '../scripts/beatsheet';
 import { POSE_NAMES } from '../assets/characters/stickman/character';
+import { sampleAsDraft } from './draft.test.helpers';
 
 const ch = loadChannel('politics');
 const patterns = loadHookPatterns('politics');
+const voice = loadVoice('politics');
 const sample = parseBeatSheet(readFileSync(new URL('../scripts/videos/2026-11-01-filibuster.yaml', import.meta.url), 'utf8'));
 const input: DraftInput = {
   headline: 'Senate filibuster fight', date: '2026-11-01', firstSeen: new Date().toISOString(),
   sources: [{ url: 'https://www.senate.gov/x', outlet: 'U.S. Senate', lean: 'primary', title: 'Filibuster' }],
 };
 
-/** The hand-written sample, expressed as Claude's structured output. */
-function sampleAsDraft(b: BeatSheet): Draft {
-  return {
-    format: b.format, topic_title: 'The filibuster', topic_type: 'policy_fight',
-    hooks: Array.from({ length: 10 }, (_, i) => ({ spoken: i === 0 ? b.hook.spoken : `Hook number ${i} about the Senate rule today`, on_screen: b.hook.on_screen, pattern: 'question_blame', why: 'x' })),
-    chosen_hook: 0,
-    claim: { speaker: '', quote: '', said_at: '', source_url: '', source_type: '' },
-    research: b.research,
-    beats: b.beats.map((x) => ({
-      id: x.id, line: x.line, tags: x.tags, pose: x.pose as never, expression: x.expression ?? '', prop: x.prop ?? '',
-      panel_kind: x.panel ? ('stock' in x.panel ? 'stock' : 'meme') : 'none',
-      stock_query: x.panel && 'stock' in x.panel ? x.panel.stock : '',
-      meme: x.panel && 'meme' in x.panel ? x.panel.meme : '',
-      meme_text: x.panel && 'meme' in x.panel ? Object.entries(x.panel.text ?? {}).map(([slot, text]) => ({ slot, text })) : [],
-      camera: x.camera ?? '', claims: (x.claims ?? []).map((c) => ({ text: c.text, sources: c.sources.map((s) => ({ url: s.url, type: s.type })) })),
-      verdict_label: 'NONE', verdict_sources: [], opens: x.opens ?? '', closes: x.closes ?? '',
-    })),
-    caption: 'c', hashtags: ['#filibuster'], editor_notes: ['NEEDS SOURCE: 2013 date'],
-  };
-}
-
 describe('prompt + schema', () => {
   it('system prompt is deterministic (cacheable) and lists the visual vocabulary', () => {
-    const a = systemPrompt(ch, patterns);
-    expect(a).toBe(systemPrompt(ch, patterns));
+    const a = systemPrompt(ch, patterns, voice);
+    expect(a).toBe(systemPrompt(ch, patterns, voice));
     expect(a).not.toMatch(/20\d\d-\d\d-\d\d/);
     for (const p of POSE_NAMES) expect(a).toContain(p);
     expect(a).toContain('NEEDS SOURCE');
@@ -84,7 +66,7 @@ describe('draft loop with a stubbed client', () => {
         return { stop_reason: 'end_turn', parsed_output: out, content: [{ type: 'text', text: JSON.stringify(out) }], usage: { input_tokens: 100, output_tokens: 50, cache_read_input_tokens: 10 } };
       } } },
     } as unknown as Anthropic;
-    const r = await draftScript(input, ch, patterns, { client });
+    const r = await draftScript(input, ch, patterns, voice, { client });
     expect(r.rounds).toBe(2);
     expect(calls[1]!.length).toBe(3); // user, assistant (unchanged), user lint report
     expect(String(calls[1]![2]!.content)).toMatch(/\[rehook\]/);
@@ -92,7 +74,7 @@ describe('draft loop with a stubbed client', () => {
   });
   it('surfaces refusals instead of writing a script', async () => {
     const client = { beta: { messages: { parse: async () => ({ stop_reason: 'refusal', stop_details: { category: null, explanation: 'no' }, content: [], usage: { input_tokens: 1, output_tokens: 1 } }) } } } as unknown as Anthropic;
-    await expect(draftScript(input, ch, patterns, { client })).rejects.toThrow(/declined/);
+    await expect(draftScript(input, ch, patterns, voice, { client })).rejects.toThrow(/declined/);
   });
 });
 

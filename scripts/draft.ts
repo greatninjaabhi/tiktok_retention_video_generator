@@ -14,6 +14,7 @@ import { MEMES } from '../assets/memes/index';
 import { BEAT_TAGS, LEANS, VERDICTS, parseBeatSheet, type BeatSheet } from './beatsheet';
 import { lintScript, type ScriptIssue } from './lint';
 import { scoreHook, type HookPattern } from './hooks';
+import { roboticHits, type VoiceConfig } from './voice';
 
 export const DRAFT_MODEL = 'claude-opus-5-5';
 
@@ -66,8 +67,17 @@ export type Draft = z.infer<ReturnType<typeof draftSchema>>;
 
 // ---------------------------------------------------------------- prompt
 
+function voiceSection(v: VoiceConfig): string {
+  return `# Voice: sound like a person, not a newsreader
+${v.persona.trim()}
+${v.rules.map((r) => `- ${r}`).join('\n')}
+Never use these robotic/newsreader phrases: ${v.robotic_patterns.map((p) => `"${p}"`).join(', ')}. Never open a line with a dateline ("Friday in Florida, …").
+Before → after:
+${v.examples.map((e) => `- "${e.before}" → "${e.after}"`).join('\n')}`;
+}
+
 /** Deterministic (no dates, stable ordering) so it can be prompt-cached across drafts. */
-export function systemPrompt(ch: ChannelConfig, patterns: HookPattern[]): string {
+export function systemPrompt(ch: ChannelConfig, patterns: HookPattern[], voice: VoiceConfig): string {
   const props = Object.values(PROPS).map((p) => `${p.name} (${p.heightHU} HU)`).join(', ');
   return `You write scripts for a faceless TikTok channel: 61–75 second political explainers narrated by an original doodle stickman with a blue tie. Audience: US Gen Z. Lens: ${ch.lens}.
 
@@ -84,17 +94,7 @@ A beat sheet (structured output) for one video plus exactly 10 hook candidates. 
 7. Sensational packaging, accurate content: hooks must be true. Never use: ${[...ch.banned_hook_patterns, ...ch.banned_phrases].map((p) => `"${p}"`).join(', ')}.
 8. No fake first-person claims by the stickman ("I was there", "I met him").
 
-# Voice: sound like a person, not a newsreader (owner feedback)
-Write how a sharp 22-year-old actually talks to a friend about the news: contractions, short punchy lines, quick reactions ("Okay.", "Wait.", "Yep."), rhetorical questions, one real joke. Casual slang is fine in small doses; never cringe or forced. Read every line out loud in your head.
-- Don't announce structure ("Let's check it", "Here's the part that should worry everyone", "To be fair"). Just say the thing.
-- Don't open beats with datelines ("Friday in Florida, about…"). Put the person first ("This guy is…").
-- Let the reveal breathe: setup question, then a short punch ("Okay. So where'd he come from?" → "Michigan. Like… he was born in Michigan.").
-- Opinions sound like opinions from a real person ("My take? That line isn't an argument. It's an old insult.").
-Before → after:
-- "Friday in Florida, about Michigan's Democratic Senate nominee:" → "This guy is Abdul El-Sayed, Michigan's Democratic Senate candidate."
-- "But here's the part that should worry everyone." → "But that's not even the wildest thing he's said about him."
-- "Is his own party split over him? Honestly, yes." → "Is his own party fighting over him, though? Yep."
-- "Send him back? He's already home." → "Send him back? Bro's already home."
+${voiceSection(voice)}
 
 # Formats
 - explainer: hook → what happened (facts) → why people are mad (both sides, one line each) → re-hook at 25–30 s → our take (opinion) → what it means for you → callback to the hook or a soft CTA.
@@ -132,6 +132,8 @@ export type DraftInput = {
   sources: { url: string; outlet: string; lean: string; title: string; text?: string }[];
   formatHint?: 'explainer' | 'fact_check';
   notes?: string; // anything the human already knows / wants
+  /** This video's writer brief (markdown from step 1, possibly edited by the owner). */
+  brief?: string;
 };
 
 export function userPrompt(input: DraftInput): string {
@@ -142,6 +144,7 @@ export function userPrompt(input: DraftInput): string {
 <story>${input.headline}</story>
 ${input.formatHint ? `<suggested_format>${input.formatHint}</suggested_format>` : ''}
 ${input.notes ? `<editor_notes>${input.notes}</editor_notes>` : ''}
+${input.brief ? `<writer_brief>\n${input.brief}\n</writer_brief>\nWrite from this brief: its angle, voice notes, outline and punchline options. It was made for this exact video.` : ''}
 
 <sources>
 ${src}
@@ -195,10 +198,10 @@ export function toBeatSheet(d: Draft, input: DraftInput, ch: ChannelConfig): Bea
 
 export type DraftResult = { draft: Draft; sheet: BeatSheet; issues: ScriptIssue[]; rounds: number; usage: { input: number; cachedRead: number; output: number } };
 
-export async function draftScript(input: DraftInput, ch: ChannelConfig, patterns: HookPattern[], opts: { maxRepairs?: number; client?: Anthropic } = {}): Promise<DraftResult> {
+export async function draftScript(input: DraftInput, ch: ChannelConfig, patterns: HookPattern[], voice: VoiceConfig, opts: { maxRepairs?: number; client?: Anthropic } = {}): Promise<DraftResult> {
   const client = opts.client ?? new Anthropic();
   const schema = draftSchema(ch, patterns);
-  const system = systemPrompt(ch, patterns);
+  const system = systemPrompt(ch, patterns, voice);
   const messages: Anthropic.Beta.BetaMessageParam[] = [{ role: 'user', content: userPrompt(input) }];
   const usage = { input: 0, cachedRead: 0, output: 0 };
 
@@ -224,13 +227,15 @@ export async function draftScript(input: DraftInput, ch: ChannelConfig, patterns
     const issues = lintScript(sheet, ch, { draft: true }).issues;
     const errors = issues.filter((i) => i.level === 'error');
     const badHooks = draft.hooks.map((h, i) => [i, scoreHook(h, ch)] as const).filter(([, s]) => !s.ok);
-    if ((!errors.length && badHooks.length < 4) || round >= (opts.maxRepairs ?? 2)) return { draft, sheet, issues, rounds: round + 1, usage };
+    const robotic = [['hook', sheet.hook.spoken] as const, ...sheet.beats.map((b) => [b.id, b.line] as const)]
+      .map(([id, line]) => [id, line, roboticHits(line, voice)] as const).filter(([, , h]) => h.length);
+    if ((!errors.length && badHooks.length < 4 && !robotic.length) || round >= (opts.maxRepairs ?? 2)) return { draft, sheet, issues, rounds: round + 1, usage };
 
     // Append-only repair turn: keep Claude's full response (incl. thinking blocks) and add the lint report.
     messages.push({ role: 'assistant', content: res.content });
     messages.push({
       role: 'user',
-      content: `Our linter found problems. Return the complete corrected output (all fields), fixing every item:\n${errors.map((e) => `- [${e.rule}]${e.beat ? ` ${e.beat}:` : ''} ${e.message}`).join('\n')}${badHooks.length ? `\nHooks that break the rules: ${badHooks.map(([i, s]) => `#${i} (${s.reasons.join('; ')})`).join(', ')}` : ''}`,
+      content: `Our linter found problems. Return the complete corrected output (all fields), fixing every item:\n${errors.map((e) => `- [${e.rule}]${e.beat ? ` ${e.beat}:` : ''} ${e.message}`).join('\n')}${badHooks.length ? `\nHooks that break the rules: ${badHooks.map(([i, s]) => `#${i} (${s.reasons.join('; ')})`).join(', ')}` : ''}${robotic.length ? `\nThese lines sound robotic; rewrite them the way a person would say them: ${robotic.map(([id, line, h]) => `${id} "${line}" (${h.join(', ')})`).join('; ')}` : ''}`,
     });
   }
 }

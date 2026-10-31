@@ -20,7 +20,7 @@ npm run plan -- out/radar/<date>.json                    # 2. what to make (pick
 ```
 
 ```bash
-npm run draft -- --radar out/radar/<date>.json --story 3 # 3. Claude drafts beat sheet + 10 hooks
+npm run draft -- --radar out/radar/<date>.json --story 3 # 3. Claude writes this video's brief, then the script + 10 hooks
 ```
 
 4. **Edit** `scripts/videos/<id>.yaml`: pick the hook, verify every source, rewrite the angle, one example and the punchline, then set `human_edited: true`.
@@ -60,7 +60,7 @@ npm run analytics -- import                              # 12. weekly: TikTok St
 | Stage | Where | Notes |
 |---|---|---|
 | Topic radar | `research/radar/` | Left, center and right outlets, fact-checkers, primary sources, Google Trends. Clusters headlines into stories; scores recency, coverage, **both-sides coverage**, conflict, checkable claims and search trends; suggests explainer vs fact-check. |
-| Drafting | `scripts/draft.ts` | `claude-opus-5-5` structured output: beat sheet + 10 hooks, using only the sources given; unsourced facts become "NEEDS SOURCE" editor notes; lint errors go back for repair. |
+| Drafting | `scripts/brief.ts`, `scripts/draft.ts`, `channels/politics/voice.yaml` | Two steps with `claude-opus-5-5`. **1. Writer brief, made for each video** (`scripts/prompts/<date>-<slug>.md`, editable): angle, who's watching, feeling, funniest true detail, hook and punchline ideas, outline, voice notes, what to avoid. **2. Script** + 10 hooks written from that brief, the channel voice and your approved scripts. Unsourced facts become "NEEDS SOURCE" notes; lint errors and robotic-sounding lines go back for a rewrite. `--brief-only` / `--brief <file>` let you edit the brief first. |
 | Beat sheet + linter | `scripts/` | Explainer and fact-check formats. Enforces hook length, 61–75 s, ≤ 4 s per beat, re-hook at 25–30 s, closed open loops, sources on facts and verdicts, opinion markers, verbatim quotes, official voting info, no paid political sponsors, left+right research, human-edit gate. |
 | Voice | `voice/` | Kokoro-82M (free, local, Apache 2.0), voiced beat by beat and cached; if the model can't load, estimated timings and no narration (clearly marked). |
 | Render | `render/` | Big moving stickman, phrase captions, stock panel with one house treatment and transitions, drawn memes, verdict stamps, synthesized SFX, hook on frame 0, cover, post text. |
