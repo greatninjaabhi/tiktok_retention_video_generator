@@ -652,6 +652,8 @@ All paths are relative to **this repo's root** (whatever the repo is named). Eve
 
 ## 10. Build order (MVP → v1)
 
+> **Status (2026-10-31):** every stage below has a first version in the repo (see README "What each stage does"), except the editor UI (step 6) and the outlier tracker (step 8). Live runs still need API keys and network access (README "Setup").
+
 **Milestone 1: one finished TikTok video end-to-end (first priority)**
 1. `style.tokens.json` + drawing primitives + stickman rig (~8 poses, mouth shapes, line boil) + 5–10 starter props (§1.2, §1.3).
 2. Beat-sheet format + retention linter (§7).

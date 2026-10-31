@@ -16,6 +16,9 @@
     "lint:script": "tsx scripts/lint-cli.ts",
     "radar": "tsx research/radar/cli.ts",
     "draft": "tsx scripts/draft-cli.ts",
+    "analytics": "tsx analytics/cli.ts",
+    "plan": "tsx picker/cli.ts",
+    "preflight": "tsx publish/cli.ts",
     "check": "npm run typecheck && npm run lint:style && npm test"
   },
   "devDependencies": {

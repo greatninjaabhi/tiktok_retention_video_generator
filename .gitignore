@@ -4,3 +4,4 @@ out/
 .DS_Store
 assets/stock/cache/
 voice/cache/
+analytics/data/

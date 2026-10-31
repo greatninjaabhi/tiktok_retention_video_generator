@@ -1,47 +1,91 @@
 # TikTok Retention Video Generator
 
-A semi-automated pipeline for 61–75 s character-narrated **political explainer** reels on TikTok (v1 niche, left-leaning, very current controversies; see brief §0.5). An original, code-drawn color doodle stickman narrates; the system handles voiceover, phrase captions, stock photos, memes, editing and rendering, then learns from each video's retention data what to make next.
+A semi-automated pipeline for 61–75 s **political explainer and fact-check** reels on TikTok (v1 niche: left-leaning, very current controversies; see brief §0.5). An original, code-drawn doodle stickman narrates. The system finds stories, drafts scripts, enforces retention and honesty rules, voices, renders with captions, stock photos, memes and SFX, and learns from each video's numbers what to make next. **A human picks the story and edits every script before anything is posted.**
 
-- [`RESEARCH_BRIEF.md`](RESEARCH_BRIEF.md): locked decisions, niche rules (§0.5), format, retention rules, platform pitfalls, tech stack, build order. Start with "Decisions locked by owner".
-- [`COMPETITOR_ANALYSIS.md`](COMPETITOR_ANALYSIS.md): teardown of same-format (finance) accounts; political-explainer teardown still to do.
-- [`docs/STYLE_GUIDE.md`](docs/STYLE_GUIDE.md): the approved look, layout, and how to add art without breaking it.
-- [`channels/politics/channel.yaml`](channels/politics/channel.yaml): niche rules as config (caption word colors, topic types, banned hooks, sourcing).
-
-## Status: Milestone 1 in progress
+- [`RESEARCH_BRIEF.md`](RESEARCH_BRIEF.md): decisions, niche rules (§0.5), formats, retention rules, platform rules, build order.
+- [`COMPETITOR_ANALYSIS.md`](COMPETITOR_ANALYSIS.md): format lessons (finance-era accounts; political teardown still to do).
+- [`docs/STYLE_GUIDE.md`](docs/STYLE_GUIDE.md): the approved look.
+- [`channels/politics/`](channels/politics/): niche rules as config: `channel.yaml` (caption colors, required tags, banned phrases, sourcing), `sources.yaml` (left / center / right outlets, fact-checkers), `hooks.yaml` (hook patterns).
 
 ![contact sheet](docs/gallery/contact-sheet.png)
 
-| Done | Where |
-|---|---|
-| `style.tokens.json`: one source of truth for colors, strokes, wobble, boil, fonts, motion, layout, stage, captions, stock treatment, lint limits | `style.tokens.json` |
-| Shared drawing engine (seeded, deterministic) | `render/draw/` |
-| Big procedural stickman (~650 px): 8 poses, 7 expressions, talking mouth, blink, breathing, tie flap, line boil | `render/character/`, `assets/characters/stickman/` |
-| Stage movement: walk / slide / hop between marks, tilts, rare spin; seeded auto-director | `render/character/blocking.ts`, `director.ts` |
-| Phrase-group captions (3–7 words, ≤ 2 balanced lines, active word highlighted, good/bad word colors from channel config) | `render/captions/` |
-| Stock pipeline: Pexels / Pixabay / Openverse (CC0, PD) / local drop folder, AI-tag screening, license manifest, panel treatment + transitions | `render/stock/` |
-| Drawn meme formats: expectation vs reality, nobody / X, zoom stare | `assets/memes/` |
-| 13 props (4 political, 9 finance) on the head-unit grid | `assets/props/` |
-| Style lint + 96 tests incl. visual snapshots of every pose, prop and meme | `render/lint/`, `tests/` |
+## Daily workflow
 
-Next (brief §10): beat-sheet format + retention/honesty linter → ElevenLabs voice with real word timings → renderer v0 (SFX, cover) → editor v0 → topic radar.
+```bash
+npm run radar                                            # 1. today's stories → out/radar/<date>.md
+```
 
-## Commands
+```bash
+npm run plan -- out/radar/<date>.json                    # 2. what to make (picker) → out/plan/<date>.md
+```
+
+```bash
+npm run draft -- --radar out/radar/<date>.json --story 3 # 3. Claude drafts beat sheet + 10 hooks
+```
+
+4. **Edit** `scripts/videos/<id>.yaml`: pick the hook, verify every source, rewrite the angle, one example and the punchline, then set `human_edited: true`.
+
+```bash
+npm run stock -- "us capitol building"                   # 5. licensed photos for each stock query
+```
+
+```bash
+npm run lint:script -- scripts/videos/<id>.yaml          # 6. retention + honesty rules
+```
+
+```bash
+npm run render -- scripts/videos/<id>.yaml               # 7. out/<id>/video.mp4, cover.png, post.txt
+```
+
+```bash
+npm run preflight -- scripts/videos/<id>.yaml            # 8. blocks anything not safe to post
+```
+
+9. Post manually with the AI-content label on; pin the sources comment.
+
+```bash
+npm run analytics -- register scripts/videos/<id>.yaml --tiktok-id <number from the URL>   # 10. track it
+```
+
+```bash
+npm run analytics -- pull                                # 11. Display API snapshot (run a few times a day)
+```
+
+```bash
+npm run analytics -- import                              # 12. weekly: TikTok Studio CSV from inbox/tiktok_exports/
+```
+
+## What each stage does
+
+| Stage | Where | Notes |
+|---|---|---|
+| Topic radar | `research/radar/` | Left, center and right outlets, fact-checkers, primary sources, Google Trends. Clusters headlines into stories; scores recency, coverage, **both-sides coverage**, conflict, checkable claims and search trends; suggests explainer vs fact-check. |
+| Drafting | `scripts/draft.ts` | `claude-opus-5-5` structured output: beat sheet + 10 hooks, using only the sources given; unsourced facts become "NEEDS SOURCE" editor notes; lint errors go back for repair. |
+| Beat sheet + linter | `scripts/` | Explainer and fact-check formats. Enforces hook length, 61–75 s, ≤ 4 s per beat, re-hook at 25–30 s, closed open loops, sources on facts and verdicts, opinion markers, verbatim quotes, official voting info, no paid political sponsors, left+right research, human-edit gate. |
+| Voice | `voice/` | ElevenLabs with timestamps (cached); without a key, estimated timings and no narration (clearly marked). |
+| Render | `render/` | Big moving stickman, phrase captions, stock panel with one house treatment and transitions, drawn memes, verdict stamps, synthesized SFX, hook on frame 0, cover, post text. |
+| Pre-post check | `publish/` | Lint clean, human-edited, real voice, 61–75 s, licensed images for every photo slot, cover, post text; then a manual checklist. |
+| Analytics + picker | `analytics/`, `picker/` | Display API + Studio CSV; reward = z-scores vs your last 20 videos; Thompson sampling with discounting over format × topic type × hook pattern. |
+
+## Setup
 
 ```bash
 npm install
-npm run check                    # typecheck + style lint + tests + visual snapshots (what CI runs)
-npm run preview                  # out/preview.mp4: ~20 s format test (needs ffmpeg)
-npm run stock -- "us capitol"    # search + download licensed stock photos into the cache/manifest
-npm run contact-sheet            # regenerate docs/gallery/contact-sheet.png and prop thumbnails
-npm run test:update              # approve intentional visual changes (review the contact sheet first)
 ```
-
-### Stock photo setup
-Set free API keys for the best sources (otherwise only Openverse and the local folder are used):
 
 ```bash
-export PEXELS_API_KEY=...    # https://www.pexels.com/api/
-export PIXABAY_API_KEY=...   # https://pixabay.com/api/docs/
+npm run check    # typecheck + style lint + all tests (what CI runs)
 ```
 
-Or drop images you've licensed into `inbox/stock/` with a sidecar `<name>.json` (`pageUrl`, `license`, `licenseUrl`, `creator`, `tags`). Images without a sidecar are ignored.
+Credentials (all optional; each stage falls back or tells you what's missing):
+
+| Variable | For | Get it |
+|---|---|---|
+| `ANTHROPIC_API_KEY` | `npm run draft` | console.anthropic.com (or `ant auth login`) |
+| `ELEVENLABS_API_KEY` + `voice_id` in `channels/politics/channel.yaml` (or `ELEVENLABS_VOICE_ID`) | real narration | elevenlabs.io |
+| `PEXELS_API_KEY`, `PIXABAY_API_KEY` | stock photos | pexels.com/api, pixabay.com/api/docs |
+| `TIKTOK_ACCESS_TOKEN` | `analytics pull` (Display API, `video.list` scope) | developers.tiktok.com (Login Kit) |
+
+**Running in a Claude Code cloud environment:** its network policy must allow these hosts (environment settings → Network access): `api.elevenlabs.io`, `api.pexels.com`, `images.pexels.com`, `pixabay.com`, `cdn.pixabay.com`, `api.openverse.org`, `open.tiktokapis.com`, `trends.google.com`, and the feed hosts in `channels/politics/sources.yaml`. Or run the pipeline on your own machine.
+
+Other commands: `npm run contact-sheet` (gallery), `npm run preview` (renders the sample draft), `npm run test:update` (approve intentional visual changes).
