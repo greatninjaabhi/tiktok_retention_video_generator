@@ -1,0 +1,23 @@
+{
+  "name": "tiktok-retention-video-generator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Code-drawn doodle stickman finance reels for TikTok",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:update": "vitest run -u",
+    "lint:style": "tsx render/tools/style-lint.ts",
+    "contact-sheet": "tsx render/tools/contact-sheet.ts",
+    "preview": "tsx render/tools/preview.ts",
+    "check": "npm run typecheck && npm run lint:style && npm test"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.5"
+  }
+}

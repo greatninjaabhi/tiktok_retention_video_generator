@@ -1,0 +1,89 @@
+{
+  "_comment": "Single source of truth for the look (RESEARCH_BRIEF.md §1.2–1.3). Nothing is styled per video. Change a value here, re-run `npm run check` and `npm run contact-sheet`, and approve the new snapshots on purpose.",
+  "version": 1,
+
+  "canvas": { "width": 1080, "height": 1920, "fps": 30 },
+
+  "colors": {
+    "_comment": "Neutrals: ink, paper, white. Accents: signature (the stickman's tie ONLY), money, loss, highlight. Never add a color without updating docs/STYLE_GUIDE.md.",
+    "ink": "#1F1B16",
+    "paper": "#FBF1DD",
+    "white": "#FFFFFF",
+    "signature": "#2F6FEB",
+    "money": "#1E9E57",
+    "loss": "#F04B4B",
+    "highlight": "#FFC21A"
+  },
+
+  "stroke": {
+    "widths": { "fine": 4, "main": 8, "bold": 11 },
+    "cap": "round",
+    "join": "round"
+  },
+
+  "scale": {
+    "_comment": "1 head unit (HU) = the stickman's head height. All characters and props are sized in HU and drawn at this one scale.",
+    "headUnitPx": 80
+  },
+
+  "wobble": {
+    "_comment": "Hand-drawn line character. segmentPx = resample spacing, wavelengthPx = distance between noise peaks, overshootPx = max extension of straight line ends.",
+    "amplitudePx": 3,
+    "wavelengthPx": 60,
+    "segmentPx": 14,
+    "overshootPx": 4,
+    "circleOverlapRad": 0.18,
+    "fillOffsetPx": 3
+  },
+
+  "boil": {
+    "_comment": "Line boil: wobble is re-seeded `fps` times per second (animating on twos at 30 fps would be 15; we use 10 = on threes).",
+    "fps": 10
+  },
+
+  "texture": {
+    "scribbleSpacingPx": 13,
+    "scribbleAngleDeg": -35,
+    "hatchSpacingPx": 12,
+    "hatchAngleDeg": 45
+  },
+
+  "fonts": {
+    "_comment": "All SIL Open Font License. Files live in assets/fonts/ (caption font is added with the renderer).",
+    "title": { "family": "Anton", "file": "Anton-Regular.ttf" },
+    "keyword": { "family": "Anton", "file": "Anton-Regular.ttf" },
+    "caption": { "family": "Montserrat", "weight": 800, "file": null }
+  },
+
+  "text": {
+    "sizesPx": { "small": 28, "medium": 44, "large": 72 },
+    "maxRotateDeg": 4
+  },
+
+  "motion": {
+    "pose": { "durationFrames": 9, "overshoot": 1.6 },
+    "pop": { "durationFrames": 8, "overshoot": 2.2 },
+    "breathe": { "periodSec": 3.4, "amplitudeHU": 0.035 },
+    "blink": { "minGapSec": 2.0, "maxGapSec": 5.0, "durationFrames": 4 },
+    "tieFlap": { "gain": 2.2, "maxDeg": 28, "idleSwayDeg": 3 }
+  },
+
+  "layout": {
+    "_comment": "Content-led stacked split (brief §1.6). Safe-zone values are common creator guidance, NOT verified against the current TikTok UI (brief TODO).",
+    "topPanelPx": 1248,
+    "bottomPanelPx": 672,
+    "panelPaddingPx": 48,
+    "cornerRadiusPx": 0,
+    "shadow": "none",
+    "safeZonePx": { "top": 150, "right": 140, "bottom": 420, "left": 60 }
+  },
+
+  "lint": {
+    "propSizeTolerance": 0.15,
+    "maxPropWidthHU": 3.5,
+    "maxItemsPerProp": 40,
+    "maxAccentColorsPerProp": 2,
+    "propForbiddenColors": ["signature"],
+    "minContrast": { "inkOnPaper": 7, "captionFillOnOutline": 4.5 }
+  }
+}
