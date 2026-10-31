@@ -1,6 +1,6 @@
 # Finance Shorts Engine — Research & Build Brief (v0.1)
 
-> **Purpose:** Starting point for Claude Code. This file collects the market research, retention research, pitfalls, and a proposed build plan for a semi-automated pipeline that makes split-screen, character-narrated personal-finance explainer videos (61–75 s) for TikTok, YouTube Shorts and Instagram Reels.
+> **Purpose:** Starting point for Claude Code. This file collects the market research, retention research, pitfalls, and a proposed build plan for a semi-automated pipeline that makes split-screen, character-narrated personal-finance explainer videos (61–75 s). **v1 targets TikTok only**; YouTube Shorts and Instagram Reels come later.
 >
 > **Status:** Research only. No code yet. The video format is still being finalized by the owner (see §12 Open questions).
 >
@@ -71,7 +71,7 @@ Owner shared a profile grid from an account doing short illustrated finance reel
 
 **Implications for the build**
 - Character asset system = **character × pose × prop** library. Each beat picks a pose and a prop scene. Scenes are reusable and recombinable, which helps variety (§5.1).
-- If scenes are AI-illustrated, use a fixed character reference sheet and style guide, and check every frame for character drift.
+- Scenes are drawn by our own code from the shared prop library (§1.3, §1.4). **No AI illustration.** Consistency comes from the style tokens and visual regression tests, not from reference sheets.
 - Keyword-caption mode: one emphasized word on screen per beat, with optional full word-by-word captions. Make it an A/B arm in the picker.
 - Thumbnail/cover generator: title text in the house style, auto-made from the hook.
 
@@ -82,7 +82,7 @@ The narrator is an **original talking doodle stickman** that should feel **anima
 **Identity (make it ownable, since plain stick figures are generic and other channels use them)**
 - One signature trait that shows even at thumbnail size (e.g. a tie or suit outline that fits the "rich vs poor" angle, a hat, or a color accent). Pick one and never change it.
 - A few fixed expressions: smug, shocked, sad, thinking, excited, side-eye.
-- Must not resemble any existing stick-figure character from games or shows. Keep a dated design file as proof of origin in `/assets/characters/`.
+- Must not resemble any existing stick-figure character from games or shows. Keep a dated design file as proof of origin in `assets/characters/`.
 
 **Color direction (owner decision: more color)**
 - Keep the hand-drawn doodle line, but add **flat color fills**: a signature colored outfit/accessory on the stickman (one bold color, always the same), colored props, colored skin/face tone optional.
@@ -103,8 +103,10 @@ The narrator is an **original talking doodle stickman** that should feel **anima
 
 **Build options**
 1. **Procedural vector rig** (joints → lines in SVG/Canvas inside Remotion): poses as joint-angle sets, interpolated, with line boil via noise. Cheapest, infinitely reusable, fully code-controlled. *Recommended for MVP.*
-2. **Rigged 2D tool** (Rive, Spine, or After Effects + Duik), exported and driven by timings. More polish, more manual setup.
-3. **Hand-drawn frame library** per pose (artist-made). Best look, slowest to expand.
+2. *(Not v1)* **Rigged 2D tool** (Rive, Spine, or After Effects + Duik), exported and driven by timings. More polish, more manual setup.
+3. *(Not v1)* **Hand-drawn frame library** per pose (artist-made). Best look, slowest to expand.
+
+**Decision: v1 uses option 1 only.** Options 2–3 are possible later upgrades and are not part of the v1 build (§6, §9).
 
 ### 1.3 Visual consistency system (owner requirement: no ugly differences between videos)
 
@@ -114,7 +116,7 @@ Everything on screen (stickman, props, panels, text) is drawn by **one shared dr
 - **Primitive-only drawing:** props are built only from shared primitives (`wobblyLine`, `wobblyRect`, `wobblyCircle`, `scribbleFill`, `hatch`, `label`), so a house, a washer and a bag automatically share the same hand.
 - **Fixed scale grid:** props declare their size relative to the stickman's head unit, so a "house" never appears 3× too big in one video and tiny in another.
 - **Deterministic randomness:** line boil and jitter use a **seeded RNG** (seed = video id + element id). Re-renders are identical and wobble stays within the token range.
-- **Prop library with versioning:** `/assets/props/<name>.ts` + a thumbnail. New props go through a **"style lint"** (stroke widths, colors, line count, size within the token limits).
+- **Prop library with versioning:** `assets/props/<name>.ts` + a thumbnail. New props go through a **"style lint"** (stroke widths, colors, line count, size within the token limits).
 - **Visual regression tests:** render a contact sheet of every pose and prop on each change and diff it against approved snapshots. Fail CI on unexpected changes.
 - **Approved-look gallery:** `docs/STYLE_GUIDE.md` shows do/don't examples. Claude Code must check new art against it.
 - **Variety without inconsistency:** vary *which* props, poses, camera moves and layouts are used, never the drawing style itself.
@@ -153,7 +155,7 @@ Rules: one camera move every ~3–7 s keeps it dynamic without distracting, with
 **Sound design (SFX)**
 - Map SFX to actions: **whoosh** on zooms/wipes, **pop/click** on text and prop pop-ins, **riser** before a reveal, **ding/cash register** on money numbers, **boing** for comedic beats ([Jupitrr breakdown](https://jupitrr.com/video-formats/vault/53iymufzosqe), [Fish Audio](https://fish.audio/blog/using-sound-effects-for-short-form-content)).
 - Match whoosh length to the move ([Morphic](https://morphic.com/kr/resources/sounds/whoosh-sound-effect)). **Don't put a sound on every cut**: the same swoosh everywhere stops meaning anything and fatigues viewers ([Sonilo](https://sonilo.com/blog/guides/transition-effect-sound-video-edits)). Rule: SFX only on marked emphasis beats; vary samples from a small pool; ducked under the voice.
-- Only royalty-free SFX with commercial licenses; keep license files in `/assets/sfx/LICENSES.md`. Optional low-volume original background music (no trending copyrighted tracks, §5.3).
+- Only royalty-free SFX with commercial licenses; keep license files in `assets/sfx/LICENSES.md`. Optional low-volume original background music (no trending copyrighted tracks, §5.3).
 
 ### 1.6 The editor (review & tweak tool)
 
@@ -162,7 +164,7 @@ The pipeline needs a lightweight **editor** so the owner can fix things in minut
 - **Live preview** (Remotion Studio–style player) at 9:16 with safe-zone overlay.
 - **Click-to-edit:** change a line (re-voices only that beat), swap pose/prop, change transition preset, nudge timing, change caption preset, mute an SFX.
 - **Lint panel:** shows retention-linter results (§7) and style-lint results (§1.3) live.
-- **Approve → render → export** to `/out/<video_id>.mp4` plus the cover image and caption/hashtag text file.
+- **Approve → render → export** to `out/<video_id>.mp4` plus the cover image and caption/hashtag text file.
 - Everything the editor changes is written back to the beat-sheet YAML, so edits stay versioned in git.
 
 **Layout spec (starting values)**
@@ -279,7 +281,7 @@ Create `docs/CHARACTER_BIBLE.md` before the first video:
 - **Privacy:** no content is based on the owner's personal life, and no personal details (name, school, location, family) appear in videos, captions or metadata.
 
 ### 2.8.6b Niche-agnostic by design
-- Finance is v1 because it's the highest-paying niche we found (§3.1, §13). But the human layer, character bible format, linter and picker must work for **any niche**: topic lists, scenario bank, banned-phrase rules and caveat rules live in `channels/<niche>.yaml`, not in code.
+- Finance is v1 because it's the highest-paying niche we found (§3.1, §13). But the human layer, character bible format, linter and picker must work for **any niche**: topic lists, scenario bank, banned-phrase rules and caveat rules live in `channels/<niche>/channel.yaml`, not in code.
 - The **scenario bank** (`channels/<niche>/scenarios.yaml`) is built from audience research per niche and tagged by topic, so scripts can pull relatable situations without inventing personal stories.
 - Switching or adding a niche = new channel config + new character variant + new scenario bank; no code changes. Re-check that niche's platform rules (e.g. health/medical content has its own restrictions) before launch.
 
@@ -357,7 +359,7 @@ Fail render if missing: relatable scenario tag, POV line, source for every stat,
 - TikTok's guidelines prohibit reposting copyrighted or trademarked work without permission ([Lilach Bullock summary](https://www.lilachbullock.com/tiktok-community-guidelines/)).
 - **Never** use famous cartoon/TV/movie characters, clips or screenshots (like the reference example's top panel). Draw our own visual metaphors instead.
 - Gameplay: someone else's recording can trigger strikes; licensed stock loops are clean; trending music can trigger Content ID revenue claims ([Kineo](https://www.usekineo.com/brainrot-video-generator)).
-- Character assets: commission or create originals; keep the source files and license terms in the repo (`/assets/LICENSES.md`).
+- Character assets: commission or create originals; keep the source files and license terms in the repo (`assets/LICENSES.md`).
 
 ### 5.4 Finance content rules
 - TikTok bans promoting financial scams, including fake investment offers and **"get-rich-quick" schemes** ([TikTok: Regulated Goods & Commercial Activities](https://www.tiktok.com/community-guidelines/en/regulated-commercial-activities)), and harmful misinformation ([TikTok Community Guidelines](https://www.tiktok.com/community-guidelines)).
@@ -377,15 +379,15 @@ Fail render if missing: relatable scenario tag, POV line, source for every stat,
 ### 5.7 API limits (these shape the architecture)
 - **TikTok posting:** unaudited Content Posting API clients can only post **private** videos; lifting this requires a Terms-of-Service audit ([TikTok for Developers](https://developers.tiktok.com/doc/content-posting-api-reference-direct-post)). The audit can take weeks, and posts made before it stay private ([bundle.social](https://bundle.social/blog/tiktok-api-approval)). Already-audited schedulers (e.g., Blotato) exist ([Blotato](https://www.blotato.com/api/tiktok)).
 - **TikTok analytics:** the Display API covers your own profile and public video list; richer per-day analytics sit in Business/Research APIs ([Knowi docs](https://docs.knowi.com/hc/en-us/articles/52573229203347-TikTok)). Business-API fields like average time watched and full-video-watched rate exist ([Adverity](https://docs.adverity.com/reference/connectors/connector-tiktok-business.html)), **but Business accounts can't join Creator Rewards**. ⚠️ **Conflict:** for a personal TikTok account, expect to enter retention numbers manually from TikTok Studio (or via a third-party tool) at first.
-- **YouTube analytics:** the YouTube Analytics API returns a per-video retention curve (`elapsedVideoTimeRatio` × `audienceWatchRatio`, up to 100 points; the ratio can exceed 1 on Shorts because of loops) plus `relativeRetentionPerformance` ([Zernio docs](https://docs.zernio.com/analytics/get-youtube-video-retention)). **Use YouTube as the automated retention signal; TikTok as manual/semi-manual.**
+- **YouTube analytics:** the YouTube Analytics API returns a per-video retention curve (`elapsedVideoTimeRatio` × `audienceWatchRatio`, up to 100 points; the ratio can exceed 1 on Shorts because of loops) plus `relativeRetentionPerformance` ([Zernio docs](https://docs.zernio.com/analytics/get-youtube-video-retention)). **v1 is TikTok-only, so v1 does not use YouTube analytics.** The TikTok retention plan is §5.7.1. The YouTube Analytics API is noted here for later, when Shorts is added as a second platform.
 
 ### 5.7.1 TikTok numbers plan (owner: "find a way to do TikTok numbers too")
 
 Layered, all inside TikTok's rules (no bots logging into TikTok Studio, no scraping):
 
 1. **Automatic, official: Display API** (Login Kit + `video.list` scope on our own account). Pull every few hours: views, likes, comments, shares per video. Gives the **early velocity curve** (views at 1 h / 6 h / 24 h / 48 h), a strong early signal for the picker. Display API covers your own profile and public videos ([Knowi docs](https://docs.knowi.com/hc/en-us/articles/52573229203347-TikTok)).
-2. **Retention metrics: TikTok Studio CSV export (weekly, ~1 minute of human time).** On desktop, TikTok Studio → Analytics → Export Data downloads a CSV (60-day window; desktop only) ([Sozee](https://www.sozee.ai/resources/?p=44803)). Guides list per-video average watch time and % who watched the full video among the exported fields ([Graphed](https://www.graphed.com/blog/how-to-export-tiktok-analytics)). The pipeline **watches an `/inbox/tiktok_exports/` folder**, auto-imports the CSV, matches rows to our video ids, and updates the picker. ⚠️ Verify the exact columns on the first real export and adapt the importer.
-3. **Per-second retention curve (optional): screenshot import.** For key videos, the owner screenshots the retention graph in TikTok Studio and drops it in `/inbox/tiktok_screens/`. A vision model extracts the curve and drop-off points (hook drop at 0–3 s, mid-video dips) into the DB. Every extraction is flagged for human confirmation.
+2. **Retention metrics: TikTok Studio CSV export (weekly, ~1 minute of human time).** On desktop, TikTok Studio → Analytics → Export Data downloads a CSV (60-day window; desktop only) ([Sozee](https://www.sozee.ai/resources/?p=44803)). Guides list per-video average watch time and % who watched the full video among the exported fields ([Graphed](https://www.graphed.com/blog/how-to-export-tiktok-analytics)). The pipeline **watches an `inbox/tiktok_exports/` folder**, auto-imports the CSV, matches rows to our video ids, and updates the picker. ⚠️ Verify the exact columns on the first real export and adapt the importer.
+3. **Per-second retention curve (optional): screenshot import.** For key videos, the owner screenshots the retention graph in TikTok Studio and drops it in `inbox/tiktok_screens/`. A vision model extracts the curve and drop-off points (hook drop at 0–3 s, mid-video dips) into the DB. Every extraction is flagged for human confirmation.
 4. **Derived metrics** (computed, no extra data needed): avg watch time ÷ video length = average % viewed; full-watch rate; velocity; engagement per 1K views; follows per 1K views.
 5. ⚠️ Account type: some guides say TikTok Studio analytics require a Creator/Business account, others say personal accounts have them ([Lilach Bullock](https://www.lilachbullock.com/?p=134270), [Post Bridge](https://www.post-bridge.com/blog/tiktok-analytics)). Since Business accounts can't join Creator Rewards (§5.6), **stay on a personal/creator account** and confirm analytics are visible before launch.
 
@@ -402,9 +404,9 @@ Layered, all inside TikTok's rules (no bots logging into TikTok Studio, no scrap
 | Voice | ElevenLabs `POST /v1/text-to-speech/{voice_id}/with-timestamps` | Returns audio plus **character-level timestamps in one call** ([ElevenLabs docs](https://elevenlabs.io/docs/api-reference/text-to-speech/convert-with-timestamps)); no Whisper drift |
 | Alignment for human voice (optional) | ElevenLabs forced alignment (audio + transcript → word timings) ([SDK docs](https://tessl.io/registry/tessl/npm-elevenlabs--elevenlabs-js/files/docs/content/forced-alignment.md)) | If we switch to a human VO later |
 | Rendering | **Remotion** (React → MP4 via FFmpeg) | Good fit for template-driven, data-driven video; has caption guidance ([Remotion best-practices skill](https://agentskillsfinder.com/skills/remotion)). Check its license terms for our use. Alternative: Python + FFmpeg |
-| Character system | Layered SVG/PNG pose library per character (idle, point, shocked, thinking, holding-money, celebrate…) + mouth shapes; optional Rive/Lottie | Consistent identity; fast; no drift |
+| Character system | **Procedural vector rig in code** (§1.2 option 1): joints → wobbly lines via shared primitives; poses (idle, point, shocked, thinking, holding-money, celebrate…) stored as joint-angle sets; mouth shapes as small drawn variants; color fills from `style.tokens.json`. No exported PNG/SVG pose files, no Rive/Lottie in v1 | Consistent identity; unlimited poses; no drift; fully code-controlled |
 | Data | SQLite (single file) | Tracker, results, bandit state |
-| Analytics in | YouTube Analytics API (auto); TikTok Studio numbers (manual entry form/CSV at first) | See §5.7 |
+| Analytics in | TikTok Display API (automatic: views, likes, comments, shares, velocity) + TikTok Studio CSV export importer (weekly: watch time, full-watch rate) + optional retention-graph screenshot import | See §5.7.1. YouTube Analytics API only when Shorts is added later |
 | Posting | Manual upload at first → later an audited scheduler or our own audited app | See §5.7 |
 
 **Caption pitfalls to handle**
@@ -419,7 +421,7 @@ Layered, all inside TikTok's rules (no bots logging into TikTok Studio, no scrap
 ### 7.1 Beat sheet (proposal)
 ```yaml
 id: 2026-11-03-hysa-01
-channel: finance-main
+channel: finance
 character: mascot_v1
 target_seconds: 66
 hook:
@@ -472,7 +474,7 @@ tags: {topic: savings, hook_type: shocking_number, length_bucket: "60-70"}
 - **Reward (per video, after ~48 h):** weighted score, normalized against the channel's **own rolling baseline of the last 20 videos**:
   - 3-second hold / "viewed vs swiped" (hook)
   - average % viewed (body)
-  - rewatch signal (audienceWatchRatio > 1 at the start, or loop proxy)
+  - rewatch proxy (TikTok CSV average watch time close to or above the video length)
   - shares + **follows per 1K views** + profile visits per 1K views (secondary but important: followers gate monetization, §12.5)
 - **Method:** Thompson sampling with **discounting** (recent results weigh more) so it adapts to trend shifts. Start ~70–80% exploit / 20–30% explore and let the sampler shift naturally.
 - **Inputs from research:** weekly logged outliers from other channels (views ÷ followers, views ÷ account median) feed **new candidate arms**: hook patterns and topics, never copied scripts.
@@ -482,24 +484,43 @@ tags: {topic: savings, hook_type: shocking_number, length_bucket: "60-70"}
 
 ## 9. Proposed repo layout
 
+All paths are relative to **this repo's root** (whatever the repo is named). Every path mentioned elsewhere in this brief should exist here.
+
 ```
-finance-shorts/
-├── RESEARCH_BRIEF.md          # this file
+./                                   # repo root
+├── RESEARCH_BRIEF.md                # this file
+├── COMPETITOR_ANALYSIS.md
+├── style.tokens.json                # single source of truth for the look (§1.3)
+├── corrections.md                   # public corrections log (§2.8.2)
 ├── docs/
-│   ├── STYLE_GUIDE.md         # character, colors, fonts, caption style, safe zones
-│   └── POLICY_CHECKLIST.md    # §5 condensed into a pre-post checklist
+│   ├── STYLE_GUIDE.md               # approved-look gallery, do/don't, safe zones (§1.3)
+│   ├── CHARACTER_BIBLE.md           # personality, values, voice, cast (§2.8.3)
+│   └── POLICY_CHECKLIST.md          # §5 condensed into a pre-post checklist
 ├── channels/
-│   └── finance-main.yaml      # character, voice id, palette, topics, hook library
+│   └── finance/                     # one folder per niche (§2.8.6b)
+│       ├── channel.yaml             # character variant, voice id, palette overrides, topics,
+│       │                            #   hook library, banned phrases, caveat rules
+│       └── scenarios.yaml           # relatable-scenario bank from audience research
 ├── assets/
-│   ├── characters/<name>/     # pose layers, mouth shapes
+│   ├── characters/<name>/           # rig definition: joints, pose angle sets, mouth shapes (code/data, not images)
+│   ├── props/                       # code-drawn props: <name>.ts + thumbnail (§1.3)
+│   ├── fonts/                       # OFL fonts only + their licenses
+│   ├── sfx/                         # royalty-free SFX + sfx/LICENSES.md (§1.5)
 │   └── LICENSES.md
-├── research/                  # outlier tracker (SQLite + import CSV), hook leaderboard
-├── scripts/                   # beat sheets (YAML), linter
-├── voice/                     # TTS + alignment → word timings JSON
-├── render/                    # Remotion project (or Python/FFmpeg)
-├── analytics/                 # YouTube API pull, TikTok manual-entry importer
-├── picker/                    # bandit + daily plan
-└── publish/                   # export presets, captions/descriptions, disclosure checks
+├── inbox/                           # owner drop folders, auto-imported
+│   ├── tiktok_exports/              # TikTok Studio CSV exports (§5.7.1)
+│   ├── tiktok_screens/              # optional retention-graph screenshots (§5.7.1)
+│   └── competitors/                 # competitor grid screenshots (COMPETITOR_ANALYSIS §6)
+├── research/                        # outlier tracker (SQLite + importers), hook leaderboard
+├── scripts/                         # beat sheets (YAML), retention + human-layer linter (§7, §2.8.7)
+├── voice/                           # VoiceProvider interface, ElevenLabs impl → word timings JSON
+├── render/                          # Remotion project: drawing engine, rig, transitions, captions
+├── editor/                          # review & tweak tool (§1.6)
+├── analytics/                       # TikTok Display API pull + CSV/screenshot importers
+├── picker/                          # bandit + daily plan (§8)
+├── publish/                         # export presets, cover, caption/hashtags, disclosure checks
+├── tests/visual/                    # contact-sheet snapshots for visual regression (§1.3)
+└── out/                             # rendered MP4s, covers, caption text (git-ignored)
 ```
 
 ## 10. Build order (MVP → v1)
@@ -513,9 +534,9 @@ finance-shorts/
 6. Editor v0 (§1.6): preview + swap pose/prop/transition + re-voice one beat + approve/export.
 
 **Milestone 2: learning loop (TikTok)**
-6. Display API pull (velocity) + TikTok Studio CSV importer (+ optional screenshot import) (§5.7.1).
-7. Outlier tracker + hook leaderboard (manual logging of other accounts' videos).
-8. Picker once ~20–30 videos are posted.
+7. Display API pull (velocity) + TikTok Studio CSV importer (+ optional screenshot import) (§5.7.1).
+8. Outlier tracker + hook leaderboard (manual logging of other accounts' videos).
+9. Picker once ~20–30 videos are posted.
 
 **Later:** audited posting, more props/templates, YouTube Shorts/Reels, second channel.
 
@@ -584,9 +605,9 @@ Views don't automatically become followers (see Dirty Dollars: 557K followers bu
 | Rendering (Remotion) | $0 | $0 | Free for individuals and companies of up to 3 people, commercial use included ([Remotion LICENSE](https://cdn.jsdelivr.net/npm/remotion@4.0.529/LICENSE.md)). Render locally |
 | Script drafting LLM | ~$0–20 | ~$10–30 | Estimate; $0 if drafting in an existing Claude plan |
 | Scheduler / posting | $0 (manual upload) | ~$29 (e.g. Blotato Starter) | Already-audited TikTok posting ([That Marketing Buddy](https://thatmarketingbuddy.com/pricing/blotato)) |
-| Props/scene art | $0 (draw a reusable prop library once) | ~$10–30 | Estimate, if using an image model for new props |
+| Props/scene art | $0 | $0 | All props drawn by our own code (§1.4). No image model |
 | Character design | $0 DIY | one-time ~$50–300 | Estimate, if commissioning an artist |
-| **Total** | **~$25–45/mo** | **~$80–180/mo** | Plus your time: ~20–30 min/video ≈ 10–15 h/month at 1/day |
+| **Total** | **~$25–45/mo** | **~$50–160/mo** | Plus your time: ~20–30 min/video ≈ 10–15 h/month at 1/day |
 
 ### 13.2 Revenue per platform (direct payouts only)
 
@@ -597,7 +618,7 @@ Views don't automatically become followers (see Dirty Dollars: 557K followers bu
 | Instagram Reels | — | No standard pay-per-view; bonuses are invite-only ([Gerald](https://joingerald.com/learn/work--income/instagram-reels-income)) | ~$0 (use for audience + affiliates) |
 | Affiliates / sponsors | Once there's an audience | Brand deals often quoted CPM-style, far above platform payouts ([Unilink](https://app.unilink.us/blog/how-much-does-youtube-pay-per-1000-views)) | Biggest upside long-term |
 
-### 13.3 Scenarios (TikTok + YouTube, after both are monetized)
+### 13.3 Scenarios (v1 = TikTok only; YouTube figures apply once Shorts is added later)
 
 | Scenario | Monthly views (per platform) | Est. revenue | vs. lean cost (~$40) |
 |---|---|---|---|
@@ -608,7 +629,7 @@ Views don't automatically become followers (see Dirty Dollars: 557K followers bu
 
 **Takeaways**
 - **Money cost is low.** The real costs are time and the follower/view thresholds before any payout.
-- **TikTok pays far more per view than Shorts** for 61 s+ videos, so TikTok leads monetization. YouTube leads automated analytics (§5.7). Instagram is for audience and affiliates.
+- **TikTok pays far more per view than Shorts** for 61 s+ videos, so TikTok is the v1 platform. When Shorts is added later, YouTube's analytics API becomes a second, fully automated retention source (§5.7). Instagram is for audience and affiliates.
 - **Break-even is tiny** (~100K qualified TikTok views/month covers lean costs). The hard part is getting to 10K followers.
 - Payout rates are self-reported by creators and tool vendors, so they vary widely. Re-check after the first paid month.
 

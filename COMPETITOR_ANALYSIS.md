@@ -115,7 +115,7 @@
 
 ## 6. Ongoing competitor tracking (feeds the picker)
 
-- **Weekly:** screenshot each tracked account's grid with the **"Popular" tab** selected (shows all-time top hits) and the **"Latest" tab** (shows current baseline). Drop the images in `/inbox/competitors/`; the tracker extracts title, keyword and view counts (vision model + human check).
+- **Weekly:** screenshot each tracked account's grid with the **"Popular" tab** selected (shows all-time top hits) and the **"Latest" tab** (shows current baseline). Drop the images in `inbox/competitors/`; the tracker extracts title, keyword and view counts (vision model + human check).
 - **Per video logged:** account, followers at capture, views, title/hook, topic tag, hook type, character/style, date. Compute an **outlier score = views ÷ that account's median recent views**.
 - **Weekly report:** top 10 outliers across accounts, recurring winning topics/hooks, new entrants.
 - Watchlist to start: A, B, C, D, E, plus any new account found via `#finance #animation` tags.
