@@ -3,6 +3,8 @@ id: politics
 character: mascot_v1
 lens: left-leaning, Gen Z voice; explain, don't sneer; facts and opinions always separated
 voice_id: null            # pick from 3–5 ElevenLabs test renders (brief §12)
+wpm: 170                  # target narration pace (brief R9: 155–180)
+handle: "@yourhandle"     # for the "no branding in the first 3 s" check (brief R3)
 
 # Caption word colors (brief §1.5). "good" = green, "bad" = red. Keep these about outcomes,
 # not parties: never color a party or politician's name red/blue (brief §0.5 palette note).
@@ -35,3 +37,27 @@ forbidden_sponsor_types: [campaign, party, pac, super_pac, political_advocacy_gr
 caveat_rules:
   - "Mark opinions as opinions (\"Honestly? I think…\")."
   - "One line steelmanning the other side."
+
+# Tags every script of a format must contain (brief §0.5).
+required_tags:
+  explainer: [rehook, steelman, opinion, what_it_means]
+  fact_check: [claim, verdict, rehook, opinion]
+
+# Opinions must read as opinions (brief §0.5 rule 1).
+opinion_markers: ["i think", "honestly", "in my opinion", "imo", "i'd argue", "my take", "personally"]
+
+# Never in a script: AI clichés (brief §2.8.5) and hype that misleads (§0.5 rule 8).
+banned_phrases:
+  - delve
+  - "in today's fast-paced world"
+  - unlock
+  - game-changer
+  - "it's important to note"
+  - "navigate the landscape"
+  - "let's dive in"
+  - "in conclusion"
+  - elevate
+  - embark
+  - "they don't want you to know"
+  - "100% proof"
+  - "wake up people"

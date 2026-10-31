@@ -1,0 +1,140 @@
+# SAMPLE explainer. A human must verify every source and edit the angle, an example and
+# the punchline before setting human_edited: true (brief §2.8.5). Until then it renders as DRAFT.
+id: 2026-11-01-filibuster
+channel: politics
+format: explainer
+character: mascot_v1
+topic:
+  title: "Why Congress can't pass anything: the filibuster"
+  type: policy_fight
+  first_seen: "2026-10-31T12:00:00Z"
+hook:
+  spoken: "Why can't Congress pass anything? Blame one Senate rule."
+  on_screen: "WHY CONGRESS CAN'T PASS ANYTHING"
+  pattern: question_blame
+research:
+  - { url: "https://www.npr.org/sections/politics/", outlet: NPR, lean: lean_left }
+  - { url: "https://www.nationalreview.com/", outlet: National Review, lean: right }
+  - { url: "https://www.senate.gov/about/powers-procedures/filibusters-cloture.htm", outlet: U.S. Senate, lean: primary }
+beats:
+  - id: b01
+    line: "It's called the filibuster."
+    tags: [fact]
+    pose: present
+    prop: capitol
+    panel: { stock: "us capitol building" }
+    claims:
+      - text: "The filibuster is a Senate practice of extended debate that blocks a vote."
+        sources: [{ url: "https://www.senate.gov/about/powers-procedures/filibusters-cloture.htm", type: official_data }]
+  - id: b02
+    line: "Most bills need sixty votes just to end debate."
+    tags: [fact]
+    pose: point_up
+    panel: { stock: "senate chamber" }
+    claims:
+      - text: "Cloture on most measures requires three-fifths of senators duly chosen and sworn (60)."
+        sources: [{ url: "https://www.rules.senate.gov/rules-of-the-senate", type: official_data, note: "Rule XXII" }]
+  - id: b03
+    line: "Not fifty-one. Sixty. Out of one hundred senators."
+    tags: [fact, emotion]
+    pose: shocked
+    prop: ballot_box
+    claims:
+      - text: "60 of 100 senators."
+        sources: [{ url: "https://www.rules.senate.gov/rules-of-the-senate", type: official_data, note: "Rule XXII" }]
+  - id: b04
+    line: "So forty-one senators can stall almost anything. And it gets weirder."
+    tags: [fact]
+    pose: shrug
+    opens: L0
+    claims:
+      - text: "If 60 are needed for cloture, 41 can deny it."
+        sources: [{ url: "https://www.rules.senate.gov/rules-of-the-senate", type: official_data, note: "follows from Rule XXII" }]
+  - id: b05
+    line: "And here's the twist: it's not in the Constitution."
+    tags: [fact]
+    pose: shocked
+    closes: L0
+    panel: { meme: expectation_reality, text: { left: "CONSTITUTION", right: "SENATE RULE" } }
+    claims:
+      - text: "The filibuster comes from Senate rules and practice, not the Constitution."
+        sources: [{ url: "https://www.senate.gov/about/powers-procedures/filibusters-cloture.htm", type: official_data }]
+  - id: b06
+    line: "It's a Senate rule. And rules can be changed."
+    tags: [fact]
+    pose: present
+    prop: gavel
+    panel: { stock: "gavel law" }
+    claims:
+      - text: "The Senate can change its rules and precedents."
+        sources: [{ url: "https://www.senate.gov/about/powers-procedures/filibusters-cloture.htm", type: official_data }]
+  - id: b07
+    line: "Defenders say it forces compromise. Critics call it gridlock."
+    tags: [steelman]
+    pose: thinking
+  - id: b08
+    line: "But here's what nobody mentions: they already broke it. Twice."
+    tags: [rehook]
+    pose: shocked
+    opens: L1
+    panel: { stock: "senate floor debate" }
+  - id: b09
+    line: "In 2013, the Senate dropped sixty votes for most nominations."
+    tags: [fact]
+    pose: present
+    panel: { meme: nobody_me, text: { who: "THE SENATE IN 2013" } }
+    claims:
+      - text: "In Nov 2013 the Senate set a majority threshold for cloture on most nominations."
+        sources: [{ url: "https://www.senate.gov/about/powers-procedures/filibusters-cloture.htm", type: official_data, note: "verify page covers 2013" }]
+  - id: b10
+    line: "In 2017, it did the same for the Supreme Court."
+    tags: [fact]
+    pose: point_up
+    prop: gavel
+    closes: L1
+    claims:
+      - text: "In Apr 2017 the Senate extended the majority threshold to Supreme Court nominations."
+        sources: [{ url: "https://www.senate.gov/about/powers-procedures/filibusters-cloture.htm", type: official_data, note: "verify page covers 2017" }]
+  - id: b11
+    line: "So if it can change for judges, why not for laws?"
+    tags: []
+    pose: thinking
+    opens: L2
+  - id: b12
+    line: "Honestly? I think keeping it is a choice."
+    tags: [opinion]
+    pose: present
+    expression: smug
+  - id: b13
+    line: "My take: every senator who protects it is picking gridlock."
+    tags: [opinion]
+    pose: shrug
+    panel: { stock: "capitol dome night" }
+  - id: b14
+    line: "That's how bills with majority support still die."
+    tags: [fact, what_it_means]
+    pose: shocked
+    prop: arrow_down
+    claims:
+      - text: "Cloture votes can fail despite a majority voting yes."
+        sources: [{ url: "https://www.senate.gov/legislative/cloture/clotureCounts.htm", type: official_data }]
+  - id: b14b
+    line: "So even if your side wins, sixty can still be the wall."
+    tags: [what_it_means]
+    pose: thinking
+    prop: capitol
+  - id: b15
+    line: "So when Congress says it can't act, ask: can't, or won't?"
+    tags: [callback]
+    pose: present
+    closes: L2
+    camera: zoom_stare
+  - id: b16
+    line: "Follow for the next rule nobody explains."
+    tags: [cta]
+    pose: celebrate
+human_edited: false
+ai_voice_label: true
+disclosures: []
+caption: "The filibuster, explained in 60 seconds. Sources in comments."
+hashtags: [filibuster, congress, senate, politics, explained]

@@ -12,6 +12,7 @@
     "contact-sheet": "tsx render/tools/contact-sheet.ts",
     "preview": "tsx render/tools/preview.ts",
     "stock": "tsx render/tools/stock.ts",
+    "lint:script": "tsx scripts/lint-cli.ts",
     "check": "npm run typecheck && npm run lint:style && npm test"
   },
   "devDependencies": {

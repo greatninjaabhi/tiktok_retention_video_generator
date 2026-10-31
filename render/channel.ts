@@ -16,6 +16,11 @@ export type ChannelConfig = {
   voting_info_sources: string[];
   forbidden_sponsor_types: string[];
   caveat_rules: string[];
+  wpm: number;
+  handle: string;
+  required_tags: Record<string, string[]>;
+  opinion_markers: string[];
+  banned_phrases: string[];
 };
 
 export function loadChannel(id: string): ChannelConfig {

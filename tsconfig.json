@@ -13,5 +13,5 @@
     "skipLibCheck": true,
     "noEmit": true
   },
-  "include": ["render", "assets", "tests"]
+  "include": ["render", "assets", "tests", "scripts", "research", "voice", "publish", "analytics", "picker"]
 }

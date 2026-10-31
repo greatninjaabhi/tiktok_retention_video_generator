@@ -52,6 +52,21 @@ The engine is niche-agnostic (§2.8.6b). **v1 switches from personal finance to 
 - The human still picks the topic and angle. The picker (§8) learns which **topic types** win (scandal, policy fight, court case, culture-war flashpoint, election mechanics, money in politics). It optimizes for retention, not for a side.
 - **Handle with extra care:** voting procedures (§5.4b), violent or breaking events (no graphic imagery, no naming unconfirmed suspects), health claims, anything involving minors.
 
+### Sources from across the spectrum (owner, 2026-10-31)
+- The radar pulls **left, center and right outlets plus fact-checkers** (list and approximate lean labels in `channels/politics/sources.yaml`; labels follow AllSides/Ad Fontes-style ratings, owner to review).
+- Each topic shows its coverage by lean (L / C / R). A story covered heavily on both sides is a strong **controversy** signal and scores higher.
+- Every script lists its research reading in the beat sheet (`research:`), with **at least one left and one right source**. The linter warns otherwise. Facts still come from primary sources; outlets are how we find the story and both sides' framing.
+
+### Format 2: fact-check ("he said X, here's the check") (owner, 2026-10-31)
+High-retention right now: the claim is the hook, every check is an open loop ("true or false?") with its own payoff.
+1. **Hook:** who said what, in one line ("The president just said ___. Let's check it.").
+2. **The claim:** verbatim quote with a link to the full video or transcript. The on-screen quote must match the source exactly.
+3. **2–4 checks:** each a short beat ending in a **verdict stamp**: TRUE / FALSE / MISLEADING / NEEDS CONTEXT / UNPROVEN, each backed by a primary source (official data, bill text, court filing, full video), plus established fact-checkers (PolitiFact, FactCheck.org, AP Fact Check) where available.
+4. **Re-hook by 25–30 s:** usually the most surprising check.
+5. **The take** (marked as opinion) and **what it means for you**.
+- **Fairness = credibility:** if a claim is true, say so. Check the claim as said, not a weaker version (no strawmen). Check claims from anyone in power, not only one side, so the format stays trusted.
+- The linter enforces: verbatim quote + source link, a verdict label from the fixed set on every check, and at least one primary source per verdict.
+
 ### Explainer structure (61–75 s; implements §2.5)
 1. **0–3 s hook:** the controversy in one line, true and specific ("Congress just voted to ___ and people are furious").
 2. **What happened:** facts, sourced.
