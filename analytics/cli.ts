@@ -10,8 +10,8 @@ import { readStore, writeStore } from './store';
 import { fetchAllVideos, importStudioCsv, recordSnapshots } from './tiktok';
 import { derive, reward } from './metrics';
 import { loadBeatSheet } from '../scripts/beatsheet';
-import { lintScript } from '../scripts/lint';
-import { loadChannel } from '../render/channel';
+import { registerVideo } from './register';
+import { accessToken } from '../publish/tiktok-auth';
 
 const [cmd, ...rest] = process.argv.slice(2);
 const get = (k: string) => { const i = rest.indexOf(k); return i >= 0 ? rest[i + 1] : undefined; };
@@ -21,16 +21,11 @@ if (cmd === 'register') {
   const sheet = loadBeatSheet(rest[0]!);
   const tiktokId = get('--tiktok-id');
   if (!tiktokId) throw new Error('--tiktok-id required (the number in the video URL)');
-  const dur = lintScript(sheet, loadChannel(sheet.channel), { draft: true }).durationSec;
-  store.videos[sheet.id] = {
-    id: sheet.id, tiktokId, postedAt: get('--posted-at') ?? new Date().toISOString(), durationSec: Math.round(dur * 10) / 10,
-    arm: { format: sheet.format, topic_type: sheet.topic.type, hook_pattern: sheet.hook.pattern },
-    snapshots: store.videos[sheet.id]?.snapshots ?? [],
-  };
+  registerVideo(store, sheet, tiktokId, get('--posted-at'));
   writeStore(store);
   console.log(`✓ registered ${sheet.id} ↔ TikTok ${tiktokId}`);
 } else if (cmd === 'pull') {
-  const n = recordSnapshots(store, await fetchAllVideos());
+  const n = recordSnapshots(store, await fetchAllVideos(await accessToken(fetch)));
   writeStore(store);
   console.log(`✓ ${n} snapshot(s) recorded`);
 } else if (cmd === 'import') {

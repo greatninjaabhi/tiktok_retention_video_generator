@@ -20,6 +20,7 @@
     "analytics": "tsx analytics/cli.ts",
     "plan": "tsx picker/cli.ts",
     "preflight": "tsx publish/cli.ts",
+    "tiktok": "tsx publish/tiktok-cli.ts",
     "check": "npm run typecheck && npm run lint:style && npm test"
   },
   "devDependencies": {

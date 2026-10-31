@@ -21,6 +21,7 @@
 | Captions | **Phrase groups** (3–7 words, up to 2 lines), active word highlighted. Single words were too slow at 180 WPM (owner) (§1.5) |
 | Top-panel visuals | **Licensed stock photos** with transitions in the top panel (owner moved this into Milestone 1, §1.7). Code-drawn doodle props live on the character's stage. Everything drawn stays in one consistent style: no "ugly differences" (§1.3) |
 | Voice | **Kokoro-82M** (owner, 2026-10-31): free, local, Apache 2.0, behind the swappable `VoiceProvider` interface. Voice picked by ear with `npm run voices`. (ElevenLabs/OpenAI TTS were considered; human VO possible later) |
+| Posting | **Automated via TikTok's official Content Posting API** (owner, 2026-10-31): caption + hashtags from the beat sheet, explicit confirmation per post, auto-registered for analytics. Unaudited apps can only post privately: request TikTok's audit, and use inbox/draft upload meanwhile (§5.7) |
 | AI label | **Not part of the pipeline for now** (owner, 2026-10-31). Revisit on request; risk noted in §5.2 |
 | First milestone | No preference → default **one finished video end-to-end** (script → voice → render → MP4), then tracker → picker |
 | Length | 61–75 s (TikTok Creator Rewards needs > 1 min) |
