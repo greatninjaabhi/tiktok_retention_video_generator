@@ -1,0 +1,173 @@
+# Fact-check, written together with the owner on 2026-10-31.
+# BEFORE setting human_edited: true, the editor must:
+#  1. Watch the full Daytona Beach rally video (Oct 30) and confirm the exact words of the quote.
+#     Outlets agree on "send him back to where he came from"; the lead-in differs ("going to"/"gonna").
+#     Replace claim.source with the full-video link (type: full_video).
+#  2. Confirm El-Sayed's birthplace/parents on his official campaign bio (one outlet says Rochester Hills).
+#  3. Rewrite the angle, one example and the punchline in your own words (brief §2.8.5).
+id: 2026-10-31-trump-el-sayed-send-him-back
+channel: politics
+format: fact_check
+character: mascot_v1
+topic:
+  title: "Trump: send El-Sayed 'back to where he came from' (he's from Michigan)"
+  type: election_mechanics
+  first_seen: "2026-10-31T02:00:00Z"
+hook:
+  spoken: "Trump told voters to send El-Sayed back where he came from."
+  on_screen: "SEND HIM BACK… TO MICHIGAN?"
+  pattern: said_check
+claim:
+  speaker: "President Donald Trump"
+  quote: "send him back to where he came from"
+  said_at: "2026-10-30"
+  source:
+    url: "https://www.mediaite.com/media/tv/trump-demands-el-sayed-be-sent-back-to-the-united-states-send-him-back-to-where-he-came-from/"
+    type: on_record_quote
+    note: "replace with the full rally video before posting"
+research:
+  - { url: "https://www.huffpost.com/entry/trump-el-sayed-send-him-back-to-where-he-came-from_n_6ae55788e4b0b1f508d4cd32", outlet: HuffPost, lean: left }
+  - { url: "https://www.mediaite.com/media/tv/trump-demands-el-sayed-be-sent-back-to-the-united-states-send-him-back-to-where-he-came-from/", outlet: Mediaite, lean: lean_left }
+  - { url: "https://www.cnn.com/2026/10/31/politics/live-news/midterm-election-congress", outlet: CNN, lean: lean_left }
+  - { url: "https://www.cbsnews.com/news/abdul-el-sayed-haley-stevens-feud-michigan-senate/", outlet: CBS News, lean: lean_left }
+  - { url: "https://www.foxcarolina.com/2026/10/25/trump-escalates-rhetoric-against-el-sayed-he-tries-undermine-democrat-michigan-senate-race/", outlet: AP (via Fox Carolina), lean: center }
+  - { url: "https://www.foxnews.com/media/michigan-democrat-defends-appearing-hasan-piker-distances-podcasters-controversial-remarks", outlet: Fox News, lean: right }
+  - { url: "https://www.washingtonexaminer.com/?p=4674386", outlet: Washington Examiner, lean: lean_right }
+beats:
+  - id: b01
+    line: "Friday in Florida, about Michigan's Democratic Senate nominee:"
+    tags: [claim]
+    pose: present
+    panel: { stock: "political rally crowd night" }
+    claims:
+      - text: "Trump spoke at a rally in Daytona Beach, Florida, on Friday Oct 30 about Abdul El-Sayed, the Democratic Senate nominee in Michigan."
+        sources: [{ url: "https://www.mediaite.com/media/tv/trump-demands-el-sayed-be-sent-back-to-the-united-states-send-him-back-to-where-he-came-from/", type: on_record_quote }]
+  - id: b02
+    line: "\"Send him back to where he came from.\""
+    tags: [claim]
+    pose: shocked
+    prop: megaphone
+    claims:
+      - text: "Verbatim quote."
+        sources: [{ url: "https://www.mediaite.com/media/tv/trump-demands-el-sayed-be-sent-back-to-the-united-states-send-him-back-to-where-he-came-from/", type: on_record_quote }]
+  - id: b03
+    line: "So let's check it. Where did Abdul El-Sayed come from?"
+    tags: []
+    pose: thinking
+    opens: L0
+    panel: { stock: "michigan state capitol lansing" }
+  - id: b04
+    line: "Michigan. He was born there, to Egyptian immigrant parents."
+    tags: [fact, verdict]
+    pose: point_up
+    closes: L0
+    claims:
+      - text: "El-Sayed was born in Michigan (1984) to Egyptian immigrant parents."
+        sources:
+          - { url: "https://www.huffpost.com/entry/trump-el-sayed-send-him-back-to-where-he-came-from_n_6ae55788e4b0b1f508d4cd32", type: major_outlet }
+          - { url: "https://news.meaww.com/trump-urges-voters-to-send-abdul-el-sayed-back-to-where-he-came-from", type: major_outlet, note: "verify on his official bio" }
+    verdict:
+      label: "FALSE"
+      sources:
+        - { url: "https://www.huffpost.com/entry/trump-el-sayed-send-him-back-to-where-he-came-from_n_6ae55788e4b0b1f508d4cd32", type: major_outlet }
+  - id: b05
+    line: "So sending him back means… Michigan. Mission accomplished?"
+    tags: [joke]
+    pose: shrug
+    panel: { meme: expectation_reality, text: { left: "SEND HIM BACK", right: "HE'S FROM MICHIGAN" } }
+  - id: b06
+    line: "To be fair, critics slam his Israel stance, even some Democrats."
+    tags: [steelman]
+    pose: thinking
+    claims:
+      - text: "El-Sayed's Israel/Gaza rhetoric is criticized, including by Democrats; his campaign asked Rep. Haley Stevens to skip his final events after a public feud."
+        sources: [{ url: "https://www.cbsnews.com/news/abdul-el-sayed-haley-stevens-feud-michigan-senate/", type: major_outlet }]
+  - id: b07
+    line: "But here's the part that should worry everyone."
+    tags: [rehook]
+    pose: shocked
+    opens: L1
+    panel: { stock: "us capitol building" }
+  - id: b08
+    line: "Last week in Port Huron, Trump called him a jihadist"
+    tags: [fact]
+    pose: present
+    claims:
+      - text: "At an Oct 25 rally in Port Huron, Trump called El-Sayed a jihadist."
+        sources: [{ url: "https://www.foxcarolina.com/2026/10/25/trump-escalates-rhetoric-against-el-sayed-he-tries-undermine-democrat-michigan-senate-race/", type: wire_report }]
+  - id: b09
+    line: "and tied him to the Muslim Brotherhood."
+    tags: [fact]
+    pose: shocked
+    claims:
+      - text: "Trump tied El-Sayed to the Muslim Brotherhood."
+        sources: [{ url: "https://www.foxcarolina.com/2026/10/25/trump-escalates-rhetoric-against-el-sayed-he-tries-undermine-democrat-michigan-senate-race/", type: wire_report }]
+  - id: b10
+    line: "Evidence presented? None. He denies it."
+    tags: [verdict]
+    pose: shrug
+    closes: L1
+    verdict:
+      label: UNPROVEN
+      sources:
+        - { url: "https://www.foxcarolina.com/2026/10/25/trump-escalates-rhetoric-against-el-sayed-he-tries-undermine-democrat-michigan-senate-race/", type: wire_report, note: "AP: no evidence has been presented; El-Sayed denies the claims" }
+  - id: b11
+    line: "Is his own party split over him? Honestly, yes."
+    tags: [verdict]
+    pose: thinking
+    opens: L2
+    verdict:
+      label: "TRUE"
+      sources:
+        - { url: "https://www.cbsnews.com/news/abdul-el-sayed-haley-stevens-feud-michigan-senate/", type: major_outlet }
+  - id: b12
+    line: "His campaign asked Haley Stevens to skip his final events."
+    tags: [fact]
+    pose: present
+    closes: L2
+    panel: { stock: "campaign rally stage" }
+    claims:
+      - text: "El-Sayed's campaign asked Rep. Haley Stevens not to attend his final campaign events."
+        sources: [{ url: "https://www.cbsnews.com/news/abdul-el-sayed-haley-stevens-feud-michigan-senate/", type: major_outlet }]
+  - id: b13
+    line: "Honestly? I think you can disagree with him on Israel."
+    tags: [opinion]
+    pose: thinking
+  - id: b14
+    line: "My take: telling a Michigan guy to go back isn't an argument."
+    tags: [opinion]
+    pose: present
+    expression: smug
+  - id: b15
+    line: "Michigan picks between El-Sayed and Mike Rogers on Tuesday."
+    tags: [fact, what_it_means]
+    pose: point_up
+    prop: ballot_box
+    panel: { stock: "voting booth" }
+    claims:
+      - text: "Michigan's Senate race, El-Sayed (D) vs Mike Rogers (R), is decided Tuesday Nov 3."
+        sources: [{ url: "https://www.cbsnews.com/news/abdul-el-sayed-haley-stevens-feud-michigan-senate/", type: major_outlet }]
+  - id: b16
+    line: "Cook rates it a toss-up, so this one's close."
+    tags: [fact]
+    pose: shrug
+    claims:
+      - text: "The Cook Political Report rates the race a toss-up."
+        sources: [{ url: "https://www.nbcnews.com/politics/2026-election/haley-stevens-abdul-el-sayed-clash-israel-ad-ahead-sunday-rally-rcna606657", type: major_outlet }]
+  - id: b17
+    line: "Michigan voters: find your polling place at vote.gov."
+    tags: [what_it_means]
+    pose: point_up
+    panel: { stock: "i voted stickers" }
+    claims:
+      - text: "Official polling place lookup."
+        sources: [{ url: "https://vote.gov/", type: official_data }]
+  - id: b18
+    line: "Send him back? He's already home. Follow for the next check."
+    tags: [callback, cta]
+    pose: celebrate
+    camera: zoom_stare
+human_edited: false
+disclosures: []
+caption: "Trump said to send Abdul El-Sayed \"back to where he came from.\" He's from Michigan. Full fact-check + sources in comments."
+hashtags: [factcheck, politics, elsayed, michigan, midterms, trump]
