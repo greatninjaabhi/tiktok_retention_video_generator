@@ -5,6 +5,8 @@
 > Data: profile-grid screenshots shared by the owner (2026-10-31), plus search-indexed TikTok pages. View counts are as shown on the grids at capture time. Retention data is **not** visible for competitors; only views, likes and followers.
 >
 > Last updated: 2026-10-31
+>
+> ⚠️ **Niche change (owner, 2026-10-31):** v1 is now **political explainers** (brief §0.5). The accounts below are finance-format competitors. Their format, packaging and retention lessons (one character + one prop per beat, outlined covers, outlier-driven growth, IP risk of copyrighted characters, series fatigue) still apply. A political-explainer competitor teardown is still to do, from owner screenshots (brief §12).
 
 ---
 

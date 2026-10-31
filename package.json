@@ -11,13 +11,18 @@
     "lint:style": "tsx render/tools/style-lint.ts",
     "contact-sheet": "tsx render/tools/contact-sheet.ts",
     "preview": "tsx render/tools/preview.ts",
+    "stock": "tsx render/tools/stock.ts",
     "check": "npm run typecheck && npm run lint:style && npm test"
   },
   "devDependencies": {
     "@resvg/resvg-js": "^2.6.2",
     "@types/node": "^26.6.6",
+    "@types/opentype.js": "^1.3.10",
     "tsx": "^4.23.15",
     "typescript": "^5.9.3",
     "vitest": "^5.0.5"
+  },
+  "dependencies": {
+    "opentype.js": "^1.3.4"
   }
 }

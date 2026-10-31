@@ -1,6 +1,6 @@
 /** Draws a rigged character with the shared pen. Pure function of (character, state, placement). */
 import { Pen } from '../draw/pen';
-import { type Pt, deg, pt } from '../draw/geometry';
+import { type Pt, type Transform, IDENTITY, applyTransform, compose, deg, pt } from '../draw/geometry';
 import { HU } from '../tokens';
 import { solve, type Joints } from './rig';
 import type { CharacterDef, ExpressionName, MouthShape, MouthStyle, Pose } from './types';
@@ -18,7 +18,8 @@ export type CharacterState = {
   tieFlapDeg: number;
 };
 
-export type Placement = { x: number; y: number; flipX?: boolean };
+/** Where the character stands (ground point, px). `rotDeg` spins/tilts the whole body around the hips. */
+export type Placement = { x: number; y: number; flipX?: boolean; rotDeg?: number };
 
 export type Anchors = { handL: Pt; handR: Pt; hold: Pt; headTop: Pt; joints: Joints };
 
@@ -27,7 +28,14 @@ export function drawCharacter(pen: Pen, def: CharacterDef, s: CharacterState, pl
   const j = solve(s.pose, P, s.breathe, s.breatheHU);
   const px = (p: Pt): Pt => pt(p.x * HU, p.y * HU);
 
-  pen.at({ x: place.x, y: place.y, flipX: place.flipX ?? false }, () =>
+  // ground point → hips (pivot) → rotate → back down: the body turns around its hips, not its feet.
+  const pivotY = j.hip.y * HU;
+  const t: Transform = compose(
+    compose({ ...IDENTITY, x: place.x, y: place.y + pivotY, rot: deg(place.rotDeg ?? 0) }, { ...IDENTITY, y: -pivotY }),
+    { ...IDENTITY, flipX: place.flipX ?? false },
+  );
+
+  pen.at(t, () =>
     pen.element(def.id, () => {
       const footTip = (foot: Pt, side: -1 | 1): Pt => pt(foot.x + side * P.foot, foot.y);
       pen.element('legL', () => pen.line([j.hip, j.kneeL, j.footL, footTip(j.footL, -1)].map(px)));
@@ -46,7 +54,7 @@ export function drawCharacter(pen: Pen, def: CharacterDef, s: CharacterState, pl
     }),
   );
 
-  const world = (p: Pt): Pt => pt(place.x + (place.flipX ? -1 : 1) * p.x * HU, place.y + p.y * HU);
+  const world = (p: Pt): Pt => applyTransform(t, pt(p.x * HU, p.y * HU));
   const hold = pt((j.handL.x + j.handR.x) / 2, Math.max(j.handL.y, j.handR.y) + 0.05);
   return {
     handL: world(j.handL), handR: world(j.handR), hold: world(hold),

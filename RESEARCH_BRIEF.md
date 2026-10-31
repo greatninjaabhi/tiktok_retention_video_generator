@@ -1,8 +1,8 @@
-# Finance Shorts Engine — Research & Build Brief (v0.1)
+# Shorts Engine — Research & Build Brief (v0.2)
 
-> **Purpose:** Starting point for Claude Code. This file collects the market research, retention research, pitfalls, and a proposed build plan for a semi-automated pipeline that makes split-screen, character-narrated personal-finance explainer videos (61–75 s). **v1 targets TikTok only**; YouTube Shorts and Instagram Reels come later.
+> **Purpose:** Starting point for Claude Code. This file collects the market research, retention research, pitfalls, and a proposed build plan for a semi-automated pipeline that makes split-screen, character-narrated explainer videos (61–75 s). **v1 niche: political explainers** (left-leaning, controversial, very current; §0.5). The original niche was personal finance; that research is kept for format/retention lessons and a possible later channel. **v1 targets TikTok only**; YouTube Shorts and Instagram Reels come later.
 >
-> **Status:** Research only. No code yet. The video format is still being finalized by the owner (see §12 Open questions).
+> **Status:** Milestone 1 in progress (style system, character, props, captions, stock pipeline; see README). The format is still being finalized by the owner (§12).
 >
 > **Last updated:** 2026-10-31
 
@@ -12,10 +12,14 @@
 
 | Decision | Choice |
 |---|---|
+| Niche | **Political explainers** (owner, 2026-10-31): controversial, very current topics explained in a really engaging way; **left-leaning** lens to speak to Gen Z; sensational *packaging*, accurate *content*. Rules in **§0.5** |
+| Memes | Meme beats for retention and authenticity, drawn by us or properly licensed (**§1.8**) |
 | Platform | **TikTok only** for v1. Build analytics so TikTok numbers feed the learning loop (see §5.7 "TikTok numbers plan"). YouTube/Reels later. |
 | Character | Original **animated doodle stickman** (§1.2), **in color**, not black-and-white (owner: B&W seems to retain worse; winning competitors are all full-color — see `COMPETITOR_ANALYSIS.md` §3) |
-| Competitors | See **`COMPETITOR_ANALYSIS.md`** (closest matches: Null Monolith, the squid-character account, Dirty Dollars) |
-| Top-panel visuals | **Code-drawn doodle props** in the same wobbly hand-drawn style as the stickman. **Must look consistent across every video**: no style drift, no "ugly differences" (§1.3). **Later:** licensed stock photos, switched with transitions, also appear in the top panel (§1.7) |
+| Competitors | `COMPETITOR_ANALYSIS.md` covers the finance-format accounts (still valid for format/packaging lessons). A political-explainer competitor teardown is still needed (§12) |
+| Character size & movement | Owner: **bigger** (≈650 px tall) and he **moves around the stage and sometimes rotates**: walks, slides, hops between marks, tilts, rare spin (§1.2) |
+| Captions | **Phrase groups** (3–7 words, up to 2 lines), active word highlighted. Single words were too slow at 180 WPM (owner) (§1.5) |
+| Top-panel visuals | **Licensed stock photos** with transitions in the top panel (owner moved this into Milestone 1, §1.7). Code-drawn doodle props live on the character's stage. Everything drawn stays in one consistent style: no "ugly differences" (§1.3) |
 | Voice | No preference → default **ElevenLabs AI voice** with timestamps, behind a swappable `VoiceProvider` interface (human VO later) |
 | First milestone | No preference → default **one finished video end-to-end** (script → voice → render → MP4), then tracker → picker |
 | Length | 61–75 s (TikTok Creator Rewards needs > 1 min) |
@@ -27,7 +31,56 @@
 - **What we're building:** a pipeline where a human picks the idea and edits the script; the system handles AI voiceover, word-perfect captions, editing and rendering with **pre-built original characters**, then learns from each video's retention data what to make next.
 - **Goal metric:** retention, specifically 3-second hold, average % viewed, and rewatches, on videos **longer than 60 s** (required for TikTok Creator Rewards payouts).
 - **Our edge vs existing tools:** existing faceless generators are template-driven, look the same, and are tuned for sub-60 s clips with no feedback loop. We build for the hard part (holding attention through 60+ s), use original characters (originality score), and adapt per channel from our own data.
-- **Biggest risks:** originality/"inauthentic content" flags, IP (copyrighted characters or footage), finance misinformation and get-rich-quick rules, AI-label requirements, and the TikTok API limits on posting and analytics.
+- **Biggest risks:** political misinformation / election-integrity rules and manipulated media of real people (§5.4b), originality/"inauthentic content" flags, IP (copyrighted characters, footage, **memes**), AI-label requirements, weaker sponsor appetite for political content, and the TikTok API limits on posting and analytics.
+
+---
+
+## 0.5 v1 niche: political explainers (owner decision 2026-10-31)
+
+The engine is niche-agnostic (§2.8.6b). **v1 switches from personal finance to political explainers.** The finance sections below still apply as format and retention research, and finance can come back as a second channel (`channels/finance/`).
+
+### Positioning
+- **What:** take the controversy everyone is arguing about *this week* and explain it so a 19-year-old actually gets it in 61–75 s: what happened, why people are mad, what's actually true, what it means for you.
+- **Lens:** **left-leaning**, Gen Z voice. The stickman has opinions (§2.8.4 "point of view") and doesn't fake neutrality, but **facts and opinions are always separated**.
+- **Sensational packaging, accurate content.** Hooks, covers, pacing and memes are the retention engine. The claims are true and sourced. That's also what survives: TikTok removes misleading civic and election content and keeps unverified election claims out of the For You feed ([TikTok election integrity](https://www.tiktok.com/safety/election-integrity/?lang=en)), and being caught out later costs trust (§2.8.1).
+- **Why this audience:** about 2 in 5 US adults under 30 regularly get news on TikTok (Pew: 43% in 2025, 39% in 2026, up from 9% in 2020) ([Pew 2025](https://www.pewresearch.org/short-reads/2025/09/25/1-in-5-americans-now-regularly-get-news-on-tiktok-up-sharply-from-2020/), [Pew 2026](https://www.pewresearch.org/short-reads/2026/10/19/1-in-5-americans-regularly-get-news-on-tiktok/)). Gen Z is sharply split by gender. In NBC's 2025 poll, 52% of Gen Z women called themselves Democrats while 38% of Gen Z men called themselves Republicans, and young men ranked the economy as their top issue ([NBC News](https://www.nbcnews.com/politics/elections/young-men-women-are-taking-poll-gender-gap-staggering-new-levels-rcna202672); 2026 follow-up coverage: [19th/YouGov via States Newsroom](https://floridaphoenix.com/2026/10/02/repub/heres-whats-driving-the-gen-z-gender-gap/)).
+- **Implication for tone:** the left lens lands with much of the audience. To also reach persuadable young men instead of repelling them: **explain, don't sneer.** Punch at power, never at viewers, and take economic anxiety seriously.
+
+### Topic selection: controversial *and* very current
+- **Freshness:** a topic should be in the news or trending within the last ~72 h. Evergreen "how X works" explainers only when tied to a live fight (e.g. "the filibuster, explained, because of this week's vote").
+- **Topic radar** (new module, `research/radar/`): a daily shortlist from ToS-friendly public sources: Google Trends daily searches, TikTok Creative Center trending hashtags (manual if there's no allowed API), news RSS feeds from major outlets and wires, Congress.gov bill actions, the Supreme Court docket, and questions from our own comment sections. Score = recency × search/hashtag velocity × controversy (how split the discourse is) × explainability (can it be done in 60 s from primary sources?) × lens fit.
+- The human still picks the topic and angle. The picker (§8) learns which **topic types** win (scandal, policy fight, court case, culture-war flashpoint, election mechanics, money in politics). It optimizes for retention, not for a side.
+- **Handle with extra care:** voting procedures (§5.4b), violent or breaking events (no graphic imagery, no naming unconfirmed suspects), health claims, anything involving minors.
+
+### Explainer structure (61–75 s; implements §2.5)
+1. **0–3 s hook:** the controversy in one line, true and specific ("Congress just voted to ___ and people are furious").
+2. **What happened:** facts, sourced.
+3. **Why people are mad:** each side in one line. Steelmanning the other side in a single line is a credibility signal and makes the take harder to dismiss.
+4. **25–30 s re-hook:** "but here's the part nobody's talking about", often on a meme beat (§1.8).
+5. **Our take:** clearly marked as opinion ("Honestly? I think…").
+6. **What it means for you / what to watch next**, with a callback to the hook.
+
+### Honesty & safety rules for political content (non-negotiable; extends §2.8.2)
+1. **Fact vs opinion:** facts carry a `source` in the beat sheet (the linter enforces it), and opinions are phrased as opinions.
+2. **Primary sources first:** bill text, court filings, official data, or the full video of what was said. Quotes are verbatim and linked. Never put a paraphrase in quote marks, and never trim a quote so it means something different.
+3. **No manipulated media of real people:** no doctored photos, and no AI voices or likenesses of real people. TikTok bans synthetic media of public figures used for political endorsements ([TikTok AIGC rules via Hypebeast](https://hypebeast.com/2023/3/tiktok-new-content-community-guidelines-policies-ban-ai-deepfakes-must-clearly-disclose)). Real photos are used as-is (crop and grade only) with a license (§1.7). The stickman never plays a real politician; generic doodle stand-ins labeled by role ("a senator") are fine.
+4. **Election mechanics are never wrong:** anything about how, when or where to vote points to official sources (vote.gov, state election offices). No speculation about fraud or results.
+5. **No dehumanizing language** about any group. Attack ideas, records and power, not identities.
+6. **Breaking news:** wait for two independent credible confirmations, label it "developing", and correct fast and in public (`corrections.md`).
+7. **No paid political content:** never take money or perks from campaigns, parties, PACs or advocacy groups to post. TikTok bans paid political content, including creators paid to make it ([Lindsey Gamble](https://www.lindseygamble.com/blog/tiktok-reinforces-ban-on-political-paid-advertising-including-sponsored-content-from-creators), [WA PDC filing, 2025](https://www.pdc.wa.gov/media/4855/download)).
+8. **Sensational ≠ misleading:** banned hook patterns include unsourceable claims, "they don't want you to know…" (unless sourced and true), and fake urgency about voting.
+
+### Monetization reality check
+- **Creator Rewards:** accounts belonging to governments, politicians and political parties can't monetize on TikTok ([TikTok newsroom, 2022](https://newsroom.tiktok.com/updating-our-policies-for-political-accounts-ca?lang=en-CA); [2026 guide](https://www.shortsync.app/resources/tiktok-creator-rewards-program-2026)). A commentary/explainer creator isn't one of those, but **confirm in the in-app eligibility screen** before relying on it.
+- **Sponsors:** controversial political content is harder for brands (brand safety), so expect fewer and cheaper deals than finance. Lean on Creator Rewards, a YouTube long-form funnel, a newsletter or membership, and stickman merch (§12.5).
+- **AI voice:** label it per §5.2 and never make it sound like a real person.
+- **Platform-lean risk (reach, not payout eligibility):** TikTok US moved to a majority-American joint venture in Jan 2026. Users and Gov. Newsom alleged suppression of anti-Trump/anti-ICE content; TikTok blamed a data-center outage, and CNBC couldn't verify broader censorship ([CNBC](https://www.cnbc.com/2026/02/16/tiktok-us-joint-venture-user-data-no-mass-exodus-oracle-mgx-silver-lake-larry-ellison-trump.html), [Malay Mail](https://malaymail.com/news/world/2026/01/27/californias-newsom-accuses-tiktok-of-suppressing-trump-criticism/206985)). No rule demonetizes a lean. Hedge by measuring reach per topic tag against the channel baseline (flag topics that consistently underperform), staying explainer-first, and adding YouTube Shorts plus an email list earlier than planned.
+
+### What changes in the build
+- **Props:** political props (capitol dome, gavel, ballot box, megaphone, podium, bill/document, protest sign, TV news screen, phone notification). Keep them generic: no real party logos or candidate likenesses.
+- **Palette:** in US politics red and blue are partisan colors. Our tie is blue, which fits the lens. `loss` red is our "bad/warning" color, but viewers may read red as "Republican", so don't color a party's name to editorialize by accident. Owner to confirm (§12).
+- **Stock photos matter more** (real places and events, §1.7). For politicians and government buildings, the cleanest licensed source is **public-domain US federal government photos**: works of federal employees are public domain ([17 U.S.C. §105](https://www.copyright.gov/title17/92chap1.html#105)), and many official portraits are on Wikimedia Commons. Check each image's actual license, because state and foreign government photos differ.
+- **Word coloring** in captions: "good" green / "bad" red, from `channels/politics/channel.yaml`, not hard-coded finance words.
 
 ---
 
@@ -92,6 +145,10 @@ The narrator is an **original talking doodle stickman** that should feel **anima
 - Contrast check: captions and keyword text must pass a readability contrast check on phone screens.
 - Treat "color beats B&W" as a hypothesis. Optionally A/B a palette variant through the picker once there are ~20 videos.
 
+**Size & movement (owner, 2026-10-31)**
+- He's **big**: about 650 px tall (1 head unit = 128 px), and props scale with him on the same grid.
+- He **moves around the stage**: walks, slides (leaning into the motion) and hops between three stage marks, settles into small tilts, and does a rare full spin (at most once per video, on a celebration beat). An auto-director picks the blocking per beat from the video's seed when the beat sheet doesn't say. Every beat changes something (R7) without being frantic.
+
 **What makes a doodle feel animated (cheap tricks, high payoff)**
 - **Line boil:** redraw the outline with slight jitter every 2–3 frames ("animating on twos", ~8–12 fps for the lines). Instantly reads as hand-drawn and alive.
 - **Idle motion:** gentle breathing bob, occasional blink, small weight shifts. Never fully frozen.
@@ -146,10 +203,11 @@ Goal: the finished video should *feel* like a polished CapCut edit, but every ef
 Rules: one camera move every ~3–7 s keeps it dynamic without distracting, with subtler moves for educational content ([Pippit](https://www.pippit.ai/blog/capcut-alternative/capcut-zoom-effect)). Never stack two transitions on the same beat. The picker can A/B "move intensity" (subtle vs punchy).
 
 **Captions (CapCut-style presets)**
-- Default: **word-by-word karaoke highlight**, the style one 2026 roundup ranks highest for watch time ([BlitzCut ranking](https://blitzcutai.com/blog/video-caption-styles-ranked)): bold white text, dark outline, active word in **yellow** (money words green, loss words red).
+- Default: **word-by-word karaoke highlight**, the style one 2026 roundup ranks highest for watch time ([BlitzCut ranking](https://blitzcutai.com/blog/video-caption-styles-ranked)): bold white text, dark outline, active word in **yellow** ("good" words green, "bad" words red; word lists per channel).
 - Alt presets for A/B: `single_word_pop` (one big word center screen, pops in), `keyword_only` (like the competitor format, one keyword per beat), `color_pop` (key words in a different color) ([FluxNote](https://fluxnote.io/best/best-ai-caption-tools-short-form-video)).
 - Fonts (all free for commercial use under the SIL Open Font License): **Montserrat Black/ExtraBold** (most common caption font), **Anton** for single big keywords/covers, **TikTok Sans** (open-sourced by TikTok under OFL) ([BlitzCut](https://blitzcutai.com/blog/best-caption-fonts-tiktok), [BlitzCut on TikTok Sans](https://blitzcutai.com/blog/what-font-does-tiktok-use), [Made Good Designs](https://madegooddesigns.com/?p=7189)). Avoid "free for personal use" fonts.
-- Layout: ALL CAPS, 1–3 words per chunk, centered in the caption band, never over the panel seam, outside platform UI safe zones.
+- Layout: ALL CAPS, **phrase groups of 3–7 words on up to 2 balanced lines** (owner, 2026-10-31: at 180 WPM, 1–3-word chunks flash by too fast). Break at sentence ends and commas, top up short leftovers from the same sentence, center in the caption band, never over the panel seam, stay outside platform UI safe zones.
+- Font: **Anton** for captions, keywords and covers for now (owner likes it).
 - Note: one 2026 trend piece says the heavy "Hormozi" style is getting saturated ([BlitzCut trends](https://blitzcutai.com/blog/tiktok-caption-trends-2026)), another reason to make the caption preset a picker arm.
 
 **Sound design (SFX)**
@@ -169,13 +227,14 @@ The pipeline needs a lightweight **editor** so the owner can fix things in minut
 
 **Layout spec (starting values)**
 - Frame: 1080×1920 (9:16). One guide lists YouTube's Shorts upload maximum as 1080p.
-- Split options described by a split-screen tool vendor ([Kineo](https://www.usekineo.com/brainrot-video-generator)): even split 960/960 px; "content-led" 1248 px top / 672 px bottom when the top half carries real information. **Start with content-led**, since our top panel carries the explanation.
+- Split options described by a split-screen tool vendor ([Kineo](https://www.usekineo.com/brainrot-video-generator)): even split 960/960 px; "content-led" 1248 px top / 672 px bottom when the top half carries real information.
+- **Current layout (owner, 2026-10-31):** stock-photo panel on top (0–760 px); below it the character's stage, with the caption band at its top (centered ≈905 px) and the ~650 px stickman moving between three marks with props on the open side. Values live in `style.tokens.json` (`layout`, `stage`, `captions`).
 - Keep captions inside **one band**. Text crossing the seam between panels reads as an error (same source).
 - TODO (verify): exact TikTok/Shorts/Reels UI safe zones (right-side buttons, bottom caption/username area). Keep hook text and captions out of those.
 
-### 1.7 Stock images in the top panel (later; owner decision 2026-10-31)
+### 1.7 Stock images in the top panel (owner decision 2026-10-31; in Milestone 1)
 
-The top panel will also show **licensed stock photos**, switched with transitions (§1.5) and chosen to hold attention. The stickman, props and captions stay code-drawn. **Not part of Milestone 1**: the v1 top panel uses code-drawn props. Add this after the first video works end to end.
+The top panel will also show **licensed stock photos**, switched with transitions (§1.5) and chosen to hold attention. The stickman, props and captions stay code-drawn. **Moved into Milestone 1** (owner, 2026-10-31). The pipeline is in `render/stock/`: `npm run stock -- "query"` searches Pexels and Pixabay (free API keys `PEXELS_API_KEY`, `PIXABAY_API_KEY`), then Openverse (no key, limited to CC0 and public domain), plus a local drop folder `inbox/stock/` where every image needs a license sidecar JSON. For political topics, public-domain US-government photos are the main source of real people and places (§0.5).
 
 **What makes a "retention image" (selection rules; the picker scores them later)**
 - One clear subject that matches the line being spoken *at that moment* (a stack of cash on "$10,000", a mansion on "property"). Literal beats abstract.
@@ -196,6 +255,17 @@ The top panel will also show **licensed stock photos**, switched with transition
 - Downloads are cached in `assets/stock/cache/` (git-ignored). The manifest is committed.
 
 **Build:** a `StockProvider` interface searches by the beat's keywords and returns candidates. The human picks one in the editor (§1.6); auto-pick comes later from picker data. Beat sheets get `top_panel: {type: stock, query: "...", pick: <image id>}`.
+
+### 1.8 Memes (owner, 2026-10-31): retention + authenticity
+
+- **Why:** meme beats are pattern interrupts and re-hooks (R7, R11, R12), and they make the channel feel like it comes from the internet, not a newsroom.
+- **Cadence:** about one meme beat every 15–20 s, max 3–4 per video. Never in the first 2 s (the hook comes first), and never on top of a fact people need to read.
+- **IP reality:** most popular memes are copyrighted images or clips. Fair use is a legal defense, not a guarantee, and monetized use raises the risk ([SCL](https://bytes.scl.org/copyright-memes-and-tiktok-what-students-need-to-know/)). TikTok's automated matching is reported not to consider fair use ([ScreenApp guide](https://embed.screenapp.io/blog/how-to-check-copyright-video-before-uploading-on-tiktok)). So:
+  - **Default: our own drawn memes.** We redraw meme *formats* (structures), not specific copyrighted images: "expectation vs reality" two-panel, "nobody: / me:", slow zoom + stare + hit, escalating "brain levels", the line chart falling off a cliff, a calm stickman in a chaotic room. They're drawn with the shared pen and pass the same style lint.
+  - **Stickman reaction library:** deadpan stare, slow push-in with a bass hit, eyes-wide, facepalm, side-eye to camera. These are reusable, and they *are* the brand.
+  - **Never:** celebrity or politician faces as meme images, movie/TV stills, copyrighted songs or sound clips. Meme-style SFX (the bass "boom", record scratch, etc.) only from royalty-free commercial packs logged in `assets/sfx/LICENSES.md`.
+  - Third-party meme assets only with a license that allows commercial use, logged like stock photos.
+- **Build:** `assets/memes/<name>.ts` (drawn formats), beat-sheet slot `meme: {format, text}`, and the picker A/B tests meme frequency (none / 1 per 20 s / 1 per 15 s).
 
 ---
 
@@ -272,6 +342,7 @@ The top panel will also show **licensed stock photos**, switched with transition
 4. **One honest caveat per video** where it matters ("this works if you have no high-interest debt", "this is legal but not for everyone"). Nuance is a credibility signal, not a retention killer, if it's one line.
 5. **Corrections in public.** If a video gets something wrong: pin a comment with the correction and/or post a follow-up. Track in `corrections.md`.
 6. **Dark-curiosity topics end on the legal/protective side** (how people get caught, how to protect yourself), never as a how-to.
+7. **Political content also follows §0.5** (fact vs opinion, primary sources, no manipulated media of real people, election mechanics always correct).
 
 ### 2.8.3 Character bible (gives the stickman a soul)
 Create `docs/CHARACTER_BIBLE.md` before the first video:
@@ -305,7 +376,7 @@ Create `docs/CHARACTER_BIBLE.md` before the first video:
 - **Privacy:** no content is based on the owner's personal life, and no personal details (name, school, location, family) appear in videos, captions or metadata.
 
 ### 2.8.6b Niche-agnostic by design
-- Finance is v1 because it's the highest-paying niche we found (§3.1, §13). But the human layer, character bible format, linter and picker must work for **any niche**: topic lists, scenario bank, banned-phrase rules and caveat rules live in `channels/<niche>/channel.yaml`, not in code.
+- **v1 niche is political explainers (§0.5, owner 2026-10-31).** Finance was the original v1 because it's the highest-paying niche we found (§3.1, §13) and can return as a second channel. The human layer, character bible format, linter and picker must work for **any niche**: topic lists, scenario bank, banned-phrase rules and caveat rules live in `channels/<niche>/channel.yaml`, not in code.
 - The **scenario bank** (`channels/<niche>/scenarios.yaml`) is built from audience research per niche and tagged by topic, so scripts can pull relatable situations without inventing personal stories.
 - Switching or adding a niche = new channel config + new character variant + new scenario bank; no code changes. Re-check that niche's platform rules (e.g. health/medical content has its own restrictions) before launch.
 
@@ -315,6 +386,8 @@ Fail render if missing: relatable scenario tag, POV line, source for every stat,
 ---
 
 ## 3. Market & competitors
+
+> §3 is the original **finance** market research. The political-explainer market and audience are covered in §0.5.
 
 ### 3.1 Faceless finance works
 - Finance is described as a strong faceless niche because viewers care about the explanation more than the presenter. One example given: **Casual Finance**, a **stick-figure explainer** channel that reportedly passed 300K subscribers in about a year ([vidIQ](https://vidiq.com/blog/post/youtube-channel-ideas-without-showing-your-face/)). That's close to our format; study it.
@@ -384,9 +457,17 @@ Fail render if missing: relatable scenario tag, POV line, source for every stat,
 - **Never** use famous cartoon/TV/movie characters, clips or screenshots (like the reference example's top panel). Draw our own visual metaphors instead.
 - Gameplay: someone else's recording can trigger strikes; licensed stock loops are clean; trending music can trigger Content ID revenue claims ([Kineo](https://www.usekineo.com/brainrot-video-generator)).
 - Character assets: commission or create originals; keep the source files and license terms in the repo (`assets/LICENSES.md`).
-- Stock photos (later, §1.7): commercial-use licensed sources only, every image logged in `assets/stock/manifest.json`. No AI-generated stock, logos, celebrities or unreleased identifiable people.
+- Stock photos (§1.7): commercial-use licensed sources only, every image logged in `assets/stock/manifest.json`. No AI-generated stock, logos, or unreleased identifiable private people. Real politicians only from properly licensed (e.g. public-domain government) photos, used unaltered.
+- Memes (§1.8): drawn by us or licensed for commercial use. No copyrighted meme images, stills, songs or sound clips.
 
-### 5.4 Finance content rules
+### 5.4b Political content rules (v1 niche)
+- **Civic & election integrity:** TikTok removes content that misleads people about voting or elections, and restricts unverified election claims from the For You feed ([TikTok election integrity](https://www.tiktok.com/safety/election-integrity/?lang=en)). ⚠️ TikTok restructured its Community Guidelines in 2026, so re-read the current Civic and Election Integrity, Misinformation and For You Feed eligibility pages before launch.
+- **Paid political content is banned**, including creators paid to make it ([Lindsey Gamble](https://www.lindseygamble.com/blog/tiktok-reinforces-ban-on-political-paid-advertising-including-sponsored-content-from-creators), [WA PDC](https://www.pdc.wa.gov/media/4855/download)).
+- **Political accounts** (governments, politicians, parties) can't monetize ([TikTok newsroom](https://newsroom.tiktok.com/updating-our-policies-for-political-accounts-ca?lang=en-CA)). We're a commentary creator, so confirm eligibility in-app.
+- **Synthetic media of public figures** for political endorsement is not allowed, and realistic AI content must be labeled ([Hypebeast summary](https://hypebeast.com/2023/3/tiktok-new-content-community-guidelines-policies-ban-ai-deepfakes-must-clearly-disclose)). We use no AI likenesses of real people at all.
+- **Script rules:** every factual claim sourced (primary first), opinions marked as opinions, verbatim and linked quotes, voting info only from official sources, no dehumanizing language, two-source rule for breaking news. A fact-check step is mandatory before render (same as finance).
+
+### 5.4 Finance content rules (finance channel, later)
 - TikTok bans promoting financial scams, including fake investment offers and **"get-rich-quick" schemes** ([TikTok: Regulated Goods & Commercial Activities](https://www.tiktok.com/community-guidelines/en/regulated-commercial-activities)), and harmful misinformation ([TikTok Community Guidelines](https://www.tiktok.com/community-guidelines)).
 - EU: the European Parliament backed minimum standards for finfluencers, and ESMA warned that investment-recommendation rules can apply to social posts ([Euronews](https://www.euronews.com/my-europe/2026/08/13/tiktoks-finfluencers-how-reliable-is-the-financial-advice-reaching-young-investors)).
 - **Rules for scripts:** educational framing ("how X works"), no individualized advice, no guaranteed returns, no "get rich fast". Cite sources for every stat in the script file. A fact-check step is mandatory before render. Add a "not financial advice / for education" line in the caption/description.
@@ -395,6 +476,7 @@ Fail render if missing: relatable scenario tag, POV line, source for every stat,
 - TikTok requires its content disclosure setting when promoting a product, brand or business ([TikTok Community Guidelines](https://www.tiktok.com/community-guidelines)).
 - FTC treats affiliate commissions as material connections needing clear disclosure (e.g., #ad / "affiliate link") ([Everything PR](https://everything-pr.com/ftc-influencer-disclosure-rules-2026-complete-guide)).
 - Store a per-video `disclosures` field; the publisher refuses to post affiliate content without it.
+- **Political:** no paid political content at all (§5.4b). The publisher refuses any video whose `disclosures` lists a campaign, party, PAC or political advocacy group as a sponsor.
 
 ### 5.6 Account setup
 - TikTok Creator Rewards: 18+, 10K followers, 100K views in 30 days, personal account (Business accounts aren't eligible), eligible country, videos > 1 min ([ShortsFast](https://shortsfast.com/blog/tiktok-creator-rewards-2026-requirements/), [Faceless.my](https://faceless.my/tiktok/monetize-faceless-tiktok/)).
@@ -523,22 +605,25 @@ All paths are relative to **this repo's root** (whatever the repo is named). Eve
 │   ├── CHARACTER_BIBLE.md           # personality, values, voice, cast (§2.8.3)
 │   └── POLICY_CHECKLIST.md          # §5 condensed into a pre-post checklist
 ├── channels/
-│   └── finance/                     # one folder per niche (§2.8.6b)
-│       ├── channel.yaml             # character variant, voice id, palette overrides, topics,
-│       │                            #   hook library, banned phrases, caveat rules
-│       └── scenarios.yaml           # relatable-scenario bank from audience research
+│   ├── politics/                    # v1 niche (§0.5); one folder per niche (§2.8.6b)
+│   │   ├── channel.yaml             # character variant, voice id, palette overrides, topic types,
+│   │   │                            #   hook library, banned phrases, good/bad caption words, sourcing rules
+│   │   └── scenarios.yaml           # relatable-scenario bank from audience research
+│   └── finance/                     # original niche, later channel
 ├── assets/
 │   ├── characters/<name>/           # rig definition: joints, pose angle sets, mouth shapes (code/data, not images)
 │   ├── props/                       # code-drawn props: <name>.ts + thumbnail (§1.3)
 │   ├── fonts/                       # OFL fonts only + their licenses
 │   ├── sfx/                         # royalty-free SFX + sfx/LICENSES.md (§1.5)
-│   ├── stock/                       # manifest.json of licensed stock photos; cache/ git-ignored (later, §1.7)
+│   ├── stock/                       # manifest.json of licensed stock photos; cache/ git-ignored (§1.7)
+│   ├── memes/                       # drawn meme formats + reaction bits (§1.8)
 │   └── LICENSES.md
 ├── inbox/                           # owner drop folders, auto-imported
 │   ├── tiktok_exports/              # TikTok Studio CSV exports (§5.7.1)
 │   ├── tiktok_screens/              # optional retention-graph screenshots (§5.7.1)
 │   └── competitors/                 # competitor grid screenshots (COMPETITOR_ANALYSIS §6)
-├── research/                        # outlier tracker (SQLite + importers), hook leaderboard
+├── research/                        # outlier tracker (SQLite + importers), hook leaderboard,
+│                                    #   radar/ = daily topic radar (§0.5)
 ├── scripts/                         # beat sheets (YAML), retention + human-layer linter (§7, §2.8.7)
 ├── voice/                           # VoiceProvider interface, ElevenLabs impl → word timings JSON
 ├── render/                          # Remotion project: drawing engine, rig, transitions, captions
@@ -556,7 +641,9 @@ All paths are relative to **this repo's root** (whatever the repo is named). Eve
 1. `style.tokens.json` + drawing primitives + stickman rig (~8 poses, mouth shapes, line boil) + 5–10 starter props (§1.2, §1.3).
 2. Beat-sheet format + retention linter (§7).
 3. Voice provider (ElevenLabs with timestamps) → word timings JSON with number normalization.
-4. Renderer v0: layout, frame-0 hook, captions (karaoke-highlight default + keyword mode), pose switching, prop scenes, transition presets (§1.5), SFX track → 1080×1920 MP4, 61–75 s.
+4. Renderer v0: layout, frame-0 hook, captions (phrase groups + active word), pose switching, stage blocking, prop scenes, **stock-photo top panel with house treatment and transitions (§1.7)**, transition presets (§1.5), SFX track → 1080×1920 MP4, 61–75 s.
+4b. Meme library v0: 4–6 drawn meme formats + stickman reaction bits (§1.8).
+4c. Topic radar v0: daily shortlist of current controversies with scores (§0.5).
 5. Visual regression contact sheet (poses + props) to lock the look.
 6. Editor v0 (§1.6): preview + swap pose/prop/transition + re-voice one beat + approve/export.
 
@@ -565,7 +652,7 @@ All paths are relative to **this repo's root** (whatever the repo is named). Eve
 8. Outlier tracker + hook leaderboard (manual logging of other accounts' videos).
 9. Picker once ~20–30 videos are posted.
 
-**Later:** licensed stock images in the top panel (§1.7), audited posting, more props/templates, YouTube Shorts/Reels, second channel.
+**Later:** audited posting, more props/templates, YouTube Shorts/Reels, second channel.
 
 ## 11. Success metrics (first 60 days)
 - Production: one video in ≤30 min of human time; 1–2 posts/day.
@@ -578,7 +665,11 @@ All paths are relative to **this repo's root** (whatever the repo is named). Eve
 - ~~Top-panel visuals~~ → code-drawn doodle props, consistent style; licensed stock photos with transitions added later (§1.7).
 - ~~Voice~~ → ElevenLabs default, swappable.
 - Final layout: stacked split (§1) vs full-frame illustrated scenes like the second reference (§1.1)? Make both a config option; owner picks after seeing Milestone 1.
-- Stickman signature trait and name.
+- Stickman signature trait and name (placeholder: `mascot_v1`, blue tie).
+- Keep the red/blue color meanings given the partisan reading (§0.5)?
+- How hard the left lens leans: commentary with clear opinions vs explainer-first with a short take at the end?
+- Political-explainer competitors to track: owner to send profile screenshots (Popular + Latest tabs) of 4–6 accounts in this format.
+- Stock API keys: `PEXELS_API_KEY` / `PIXABAY_API_KEY` (free), and allow those hosts in the cloud environment's network settings.
 - Which specific ElevenLabs voice (pick from 3–5 test renders).
 - Budget ceiling for APIs per month.
 - Posting cadence target (1/day vs 2/day).
@@ -607,6 +698,7 @@ Views don't automatically become followers (see Dirty Dollars: 557K followers bu
 - Owner action: confirm the account holder is 18+ and the account is a personal (not Business) account before posting.
 
 ### Link 5: audience → sponsorships & affiliates (where most money is)
+- **Politics (v1):** sponsor appetite is lower for controversial political content, and paid political content is banned outright (§5.4b). Weight the plan toward Creator Rewards, a YouTube long-form funnel, a newsletter or membership, and merch. The finance notes below apply to the finance channel.
 - One 2026 estimate puts a typical TikTok creator's income mix at roughly half brand deals and only about a fifth Creator Rewards ([Virlo](https://virlo.ai/blog/what-content-makes-the-most-money-on-tiktok)). Finance is often quoted at a rate premium vs other niches ([TT Calculator](https://ttcalculator.net/calculators/brand-deal-rate/)).
 - Brands weigh **engagement rate and niche fit over follower count**; small creators with strong engagement can land deals ([TT Calculator media kit guide](https://ttcalculator.net/learn/tiktok-media-kit/)).
 - **Prepare early (~5K followers):** auto-generated **media kit** from our analytics DB (niche, audience geo/age, engagement rate, avg % viewed, best videos, rate card); TikTok Creator Marketplace profile; list of finance apps/fintechs already sponsoring creators.

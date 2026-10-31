@@ -16,7 +16,7 @@ export type Sheet = { items: Item[]; width: number; height: number };
 /** Every pose, expression, talking mouth shape and prop on one page. */
 export function contactSheet(def: CharacterDef, poseNames: readonly string[], props: PropDef[], seed = 'contact-sheet'): Sheet {
   const pen = new Pen({ seed });
-  const col = 200;
+  const col = Math.round(2.5 * HU);
   const perRow = Math.max(poseNames.length, props.length, 8);
   const width = col * perRow;
   let y = 70;

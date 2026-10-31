@@ -16,24 +16,24 @@
   },
 
   "stroke": {
-    "widths": { "fine": 4, "main": 8, "bold": 11 },
+    "widths": { "fine": 6, "main": 12, "bold": 17 },
     "cap": "round",
     "join": "round"
   },
 
   "scale": {
-    "_comment": "1 head unit (HU) = the stickman's head height. All characters and props are sized in HU and drawn at this one scale.",
-    "headUnitPx": 80
+    "_comment": "1 head unit (HU) = the stickman's head height. All characters and props are sized in HU and drawn at this one scale. 128 px → the stickman is ~650 px tall (owner: bigger).",
+    "headUnitPx": 128
   },
 
   "wobble": {
     "_comment": "Hand-drawn line character. segmentPx = resample spacing, wavelengthPx = distance between noise peaks, overshootPx = max extension of straight line ends.",
-    "amplitudePx": 3,
-    "wavelengthPx": 60,
-    "segmentPx": 14,
-    "overshootPx": 4,
+    "amplitudePx": 4.5,
+    "wavelengthPx": 90,
+    "segmentPx": 18,
+    "overshootPx": 6,
     "circleOverlapRad": 0.18,
-    "fillOffsetPx": 3
+    "fillOffsetPx": 4
   },
 
   "boil": {
@@ -42,21 +42,21 @@
   },
 
   "texture": {
-    "scribbleSpacingPx": 13,
+    "scribbleSpacingPx": 20,
     "scribbleAngleDeg": -35,
-    "hatchSpacingPx": 12,
+    "hatchSpacingPx": 18,
     "hatchAngleDeg": 45
   },
 
   "fonts": {
-    "_comment": "All SIL Open Font License. Files live in assets/fonts/ (caption font is added with the renderer).",
+    "_comment": "All SIL Open Font License. Files live in assets/fonts/. Owner likes Anton everywhere for now.",
     "title": { "family": "Anton", "file": "Anton-Regular.ttf" },
     "keyword": { "family": "Anton", "file": "Anton-Regular.ttf" },
-    "caption": { "family": "Montserrat", "weight": 800, "file": null }
+    "caption": { "family": "Anton", "file": "Anton-Regular.ttf" }
   },
 
   "text": {
-    "sizesPx": { "small": 28, "medium": 44, "large": 72 },
+    "sizesPx": { "small": 40, "medium": 64, "large": 104 },
     "maxRotateDeg": 4
   },
 
@@ -69,13 +69,58 @@
   },
 
   "layout": {
-    "_comment": "Content-led stacked split (brief §1.6). Safe-zone values are common creator guidance, NOT verified against the current TikTok UI (brief TODO).",
-    "topPanelPx": 1248,
-    "bottomPanelPx": 672,
-    "panelPaddingPx": 48,
+    "_comment": "Owner 2026-10-31: stock photo panel on top, big character stage below with the caption band at its top. Safe-zone values are common creator guidance, NOT verified against the current TikTok UI (brief TODO).",
+    "topPanelPx": 760,
+    "panelPaddingPx": 36,
+    "groundY": 1840,
+    "stageMarksX": { "left": 250, "center": 470, "right": 700 },
     "cornerRadiusPx": 0,
     "shadow": "none",
     "safeZonePx": { "top": 150, "right": 140, "bottom": 420, "left": 60 }
+  },
+
+  "stage": {
+    "_comment": "Character blocking: moving between marks, hops, tilts and the rare spin (owner: he should move locations and sometimes rotate).",
+    "walkSpeedPxPerSec": 950,
+    "minMoveFrames": 8,
+    "stepsPerSec": 6,
+    "walkLegSwingDeg": 26,
+    "hopHeightHU": 0.7,
+    "tiltChoicesDeg": [-9, -5, 0, 0, 5, 9],
+    "spinFrames": 14,
+    "moveProbability": 0.65,
+    "moveWeights": { "walk": 0.5, "slide": 0.3, "hop": 0.2 }
+  },
+
+  "captions": {
+    "_comment": "Phrase groups, not single words (owner: 180 WPM is too fast for one word at a time). Active word highlighted.",
+    "font": "caption",
+    "sizePx": 82,
+    "lineHeight": 1.08,
+    "uppercase": true,
+    "maxWordsPerChunk": 7,
+    "minWordsPerChunk": 3,
+    "maxLines": 2,
+    "maxLineWidthPx": 820,
+    "centerX": 500,
+    "bandCenterY": 905,
+    "outlinePx": 16,
+    "activeScale": 1.1,
+    "popFrames": 6,
+    "color": "white",
+    "activeColor": "highlight",
+    "moneyColor": "money",
+    "lossColor": "loss"
+  },
+
+  "stock": {
+    "_comment": "Licensed stock photos in the top panel (brief §1.7). One house treatment for every photo.",
+    "pushScaleEnd": 1.08,
+    "warmth": 0.08,
+    "saturation": 0.92,
+    "transitionFrames": 8,
+    "transitions": ["whip", "punch", "flash"],
+    "minWidthPx": 1080
   },
 
   "lint": {
