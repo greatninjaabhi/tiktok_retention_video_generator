@@ -15,7 +15,7 @@
 | Platform | **TikTok only** for v1. Build analytics so TikTok numbers feed the learning loop (see §5.7 "TikTok numbers plan"). YouTube/Reels later. |
 | Character | Original **animated doodle stickman** (§1.2), **in color**, not black-and-white (owner: B&W seems to retain worse; winning competitors are all full-color — see `COMPETITOR_ANALYSIS.md` §3) |
 | Competitors | See **`COMPETITOR_ANALYSIS.md`** (closest matches: Null Monolith, the squid-character account, Dirty Dollars) |
-| Top-panel visuals | **Code-drawn doodle props** in the same wobbly hand-drawn style as the stickman. **Must look consistent across every video**: no style drift, no "ugly differences" (§1.3) |
+| Top-panel visuals | **Code-drawn doodle props** in the same wobbly hand-drawn style as the stickman. **Must look consistent across every video**: no style drift, no "ugly differences" (§1.3). **Later:** licensed stock photos, switched with transitions, also appear in the top panel (§1.7) |
 | Voice | No preference → default **ElevenLabs AI voice** with timestamps, behind a swappable `VoiceProvider` interface (human VO later) |
 | First milestone | No preference → default **one finished video end-to-end** (script → voice → render → MP4), then tracker → picker |
 | Length | 61–75 s (TikTok Creator Rewards needs > 1 min) |
@@ -123,7 +123,7 @@ Everything on screen (stickman, props, panels, text) is drawn by **one shared dr
 
 ### 1.4 "Genuinely drawn" rule (no AI imagery in the pipeline)
 
-- Every visual (stickman, props, backgrounds, covers) is **drawn by our own code** from primitives (§1.3). There are **no AI-generated images**, so there's nothing to "flag" and nothing to hide. That's the point: the character *is* hand-drawn-by-code, not a disguised AI image.
+- Every visual (stickman, props, backgrounds, covers) is **drawn by our own code** from primitives (§1.3). The one later exception: licensed **real** stock photos in the top panel (§1.7). Those are photos, not AI images, and AI-generated stock is excluded. There are **no AI-generated images**, so there's nothing to "flag" and nothing to hide. That's the point: the character *is* hand-drawn-by-code, not a disguised AI image.
 - **Do not** add an image-generation step, and **do not** strip provenance metadata (C2PA/Content Credentials) from any file. TikTok treats undisclosed realistic AI content and evasion as integrity violations (§5.2).
 - The AI **voice** remains the one AI element. Decide on labeling per §5.2 (default: toggle TikTok's AI-generated label; TikTok says honest labeling doesn't reduce distribution).
 
@@ -172,6 +172,30 @@ The pipeline needs a lightweight **editor** so the owner can fix things in minut
 - Split options described by a split-screen tool vendor ([Kineo](https://www.usekineo.com/brainrot-video-generator)): even split 960/960 px; "content-led" 1248 px top / 672 px bottom when the top half carries real information. **Start with content-led**, since our top panel carries the explanation.
 - Keep captions inside **one band**. Text crossing the seam between panels reads as an error (same source).
 - TODO (verify): exact TikTok/Shorts/Reels UI safe zones (right-side buttons, bottom caption/username area). Keep hook text and captions out of those.
+
+### 1.7 Stock images in the top panel (later; owner decision 2026-10-31)
+
+The top panel will also show **licensed stock photos**, switched with transitions (§1.5) and chosen to hold attention. The stickman, props and captions stay code-drawn. **Not part of Milestone 1**: the v1 top panel uses code-drawn props. Add this after the first video works end to end.
+
+**What makes a "retention image" (selection rules; the picker scores them later)**
+- One clear subject that matches the line being spoken *at that moment* (a stack of cash on "$10,000", a mansion on "property"). Literal beats abstract.
+- Readable on a phone in under a second: high contrast, uncluttered background, subject fills the frame.
+- Emotion or tension when the line has it: a shocked face, a shredded bill, an empty wallet. Photos of people need model releases (see licensing below).
+- A new image on every beat or keyword. No image stays up longer than the R7 cadence (≤3–4 s).
+- No text-heavy images, logos/brands/trademarks, celebrities, recognizable private people, or screenshots of real accounts.
+
+**Keeping it consistent** (COMPETITOR_ANALYSIS §2D: "how really?" mixed doodles and stock photos, and every video looked like a different channel)
+- Every photo gets the **same house treatment**, defined in `style.tokens.json`: a fixed crop for the top panel, a wobbly doodle frame drawn by the shared pen, one fixed color grade (e.g. a warm tint toward `paper`), and optional doodle annotations on top (arrows, circles, numbers) drawn with the same primitives.
+- Transitions between images come only from the §1.5 preset library (`whip_wipe`, `punch_in`, `zoom_blur`, `flash`, `pop_in`), timed to word timings. A held image gets a slow push (`slow_push`) so it never sits static.
+- Once there are ~20 videos, the picker A/B tests the top-panel mode (`props` vs `stock` vs `mixed`), so data decides the default.
+
+**Sourcing & licensing** (§5.3)
+- Use only sources whose license allows commercial use in videos, e.g. the Pexels, Unsplash and Pixabay APIs (free). ⚠️ Re-read each license before launch. They restrict selling unaltered copies, implying endorsement, and using identifiable people or trademarks.
+- **No AI-generated stock** (§1.4): skip images the source tags as AI-generated, and never strip C2PA metadata.
+- Log every image used in `assets/stock/manifest.json` (source, URL, photographer, license, download date, video ids). The publisher refuses to export a video that contains an unlogged image.
+- Downloads are cached in `assets/stock/cache/` (git-ignored). The manifest is committed.
+
+**Build:** a `StockProvider` interface searches by the beat's keywords and returns candidates. The human picks one in the editor (§1.6); auto-pick comes later from picker data. Beat sheets get `top_panel: {type: stock, query: "...", pick: <image id>}`.
 
 ---
 
@@ -360,6 +384,7 @@ Fail render if missing: relatable scenario tag, POV line, source for every stat,
 - **Never** use famous cartoon/TV/movie characters, clips or screenshots (like the reference example's top panel). Draw our own visual metaphors instead.
 - Gameplay: someone else's recording can trigger strikes; licensed stock loops are clean; trending music can trigger Content ID revenue claims ([Kineo](https://www.usekineo.com/brainrot-video-generator)).
 - Character assets: commission or create originals; keep the source files and license terms in the repo (`assets/LICENSES.md`).
+- Stock photos (later, §1.7): commercial-use licensed sources only, every image logged in `assets/stock/manifest.json`. No AI-generated stock, logos, celebrities or unreleased identifiable people.
 
 ### 5.4 Finance content rules
 - TikTok bans promoting financial scams, including fake investment offers and **"get-rich-quick" schemes** ([TikTok: Regulated Goods & Commercial Activities](https://www.tiktok.com/community-guidelines/en/regulated-commercial-activities)), and harmful misinformation ([TikTok Community Guidelines](https://www.tiktok.com/community-guidelines)).
@@ -405,6 +430,7 @@ Layered, all inside TikTok's rules (no bots logging into TikTok Studio, no scrap
 | Alignment for human voice (optional) | ElevenLabs forced alignment (audio + transcript → word timings) ([SDK docs](https://tessl.io/registry/tessl/npm-elevenlabs--elevenlabs-js/files/docs/content/forced-alignment.md)) | If we switch to a human VO later |
 | Rendering | **Remotion** (React → MP4 via FFmpeg) | Good fit for template-driven, data-driven video; has caption guidance ([Remotion best-practices skill](https://agentskillsfinder.com/skills/remotion)). Check its license terms for our use. Alternative: Python + FFmpeg |
 | Character system | **Procedural vector rig in code** (§1.2 option 1): joints → wobbly lines via shared primitives; poses (idle, point, shocked, thinking, holding-money, celebrate…) stored as joint-angle sets; mouth shapes as small drawn variants; color fills from `style.tokens.json`. No exported PNG/SVG pose files, no Rive/Lottie in v1 | Consistent identity; unlimited poses; no drift; fully code-controlled |
+| Stock images (later) | Pexels / Unsplash / Pixabay APIs behind a `StockProvider` interface; house treatment + transitions in the renderer | Free commercial-use licenses; consistent look via one treatment (§1.7) |
 | Data | SQLite (single file) | Tracker, results, bandit state |
 | Analytics in | TikTok Display API (automatic: views, likes, comments, shares, velocity) + TikTok Studio CSV export importer (weekly: watch time, full-watch rate) + optional retention-graph screenshot import | See §5.7.1. YouTube Analytics API only when Shorts is added later |
 | Posting | Manual upload at first → later an audited scheduler or our own audited app | See §5.7 |
@@ -506,6 +532,7 @@ All paths are relative to **this repo's root** (whatever the repo is named). Eve
 │   ├── props/                       # code-drawn props: <name>.ts + thumbnail (§1.3)
 │   ├── fonts/                       # OFL fonts only + their licenses
 │   ├── sfx/                         # royalty-free SFX + sfx/LICENSES.md (§1.5)
+│   ├── stock/                       # manifest.json of licensed stock photos; cache/ git-ignored (later, §1.7)
 │   └── LICENSES.md
 ├── inbox/                           # owner drop folders, auto-imported
 │   ├── tiktok_exports/              # TikTok Studio CSV exports (§5.7.1)
@@ -538,7 +565,7 @@ All paths are relative to **this repo's root** (whatever the repo is named). Eve
 8. Outlier tracker + hook leaderboard (manual logging of other accounts' videos).
 9. Picker once ~20–30 videos are posted.
 
-**Later:** audited posting, more props/templates, YouTube Shorts/Reels, second channel.
+**Later:** licensed stock images in the top panel (§1.7), audited posting, more props/templates, YouTube Shorts/Reels, second channel.
 
 ## 11. Success metrics (first 60 days)
 - Production: one video in ≤30 min of human time; 1–2 posts/day.
@@ -548,7 +575,7 @@ All paths are relative to **this repo's root** (whatever the repo is named). Eve
 
 ## 12. Open questions (owner)
 - ~~Which platform leads~~ → TikTok only for v1.
-- ~~Top-panel visuals~~ → code-drawn doodle props, consistent style.
+- ~~Top-panel visuals~~ → code-drawn doodle props, consistent style; licensed stock photos with transitions added later (§1.7).
 - ~~Voice~~ → ElevenLabs default, swappable.
 - Final layout: stacked split (§1) vs full-frame illustrated scenes like the second reference (§1.1)? Make both a config option; owner picks after seeing Milestone 1.
 - Stickman signature trait and name.
@@ -606,6 +633,7 @@ Views don't automatically become followers (see Dirty Dollars: 557K followers bu
 | Script drafting LLM | ~$0–20 | ~$10–30 | Estimate; $0 if drafting in an existing Claude plan |
 | Scheduler / posting | $0 (manual upload) | ~$29 (e.g. Blotato Starter) | Already-audited TikTok posting ([That Marketing Buddy](https://thatmarketingbuddy.com/pricing/blotato)) |
 | Props/scene art | $0 | $0 | All props drawn by our own code (§1.4). No image model |
+| Stock images (later) | $0 | $0 | Free commercial-use APIs (§1.7) |
 | Character design | $0 DIY | one-time ~$50–300 | Estimate, if commissioning an artist |
 | **Total** | **~$25–45/mo** | **~$50–160/mo** | Plus your time: ~20–30 min/video ≈ 10–15 h/month at 1/day |
 

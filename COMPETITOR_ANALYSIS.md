@@ -108,7 +108,7 @@
 - Any existing cartoon/TV character or celebrity likeness.
 - "Unethical ways to get rich" and how-to-commit-fraud framing.
 - Identical covers across hundreds of parts.
-- Mixed visual styles.
+- Mixed visual styles. (Stock photos come later, but only with one fixed house treatment; see brief §1.7.)
 - Dense diagrams that need pausing to read.
 
 ---
