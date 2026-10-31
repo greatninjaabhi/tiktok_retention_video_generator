@@ -1,0 +1,33 @@
+# Hook library (brief §2.1 + §0.5). Patterns, not scripts. The outlier tracker adds to this,
+# and the picker learns which patterns hold viewers on this channel.
+patterns:
+  - id: just_happened
+    template: "<who> just <did what>, and <why it matters to you>."
+    use_when: breaking or very fresh story
+  - id: said_check
+    template: "<who> just said <claim>. Let's check it."
+    use_when: fact-check format; claim is checkable and verbatim
+  - id: number_shock
+    template: "<specific number> <people/dollars/votes> just <happened>."
+    use_when: a striking, sourced number exists
+  - id: question_blame
+    template: "Why can't <institution> <do obvious thing>? Blame <specific thing>."
+    use_when: explaining a structural cause
+  - id: nobody_explains
+    template: "Everyone's yelling about <topic>. Nobody's explaining <the actual part>."
+    use_when: high-volume controversy with a confusing core
+  - id: both_sides_mad
+    template: "<Topic> has the left AND the right furious. Here's why."
+    use_when: covered on both sides (radar both-sides signal)
+  - id: what_it_means_for_you
+    template: "<Decision> just changed <thing you use/pay/do>. Here's what that means for you."
+    use_when: a direct effect on young viewers
+  - id: hidden_detail
+    template: "There's one line in <bill/ruling/order> nobody's talking about."
+    use_when: a primary document has a buried, sourced detail
+  - id: before_after
+    template: "<Last week/year>: <X>. Today: <Y>. What happened?"
+    use_when: a reversal or flip-flop with sources for both
+  - id: direct_challenge
+    template: "If you think <common belief>, this <video/number> is for you."
+    use_when: a common misconception that sources clearly correct
