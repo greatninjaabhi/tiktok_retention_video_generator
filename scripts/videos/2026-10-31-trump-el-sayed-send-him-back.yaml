@@ -88,7 +88,7 @@ beats:
     opens: L1
     panel: { stock: "us capitol building" }
   - id: b08
-    line: "Last week in Michigan, Trump called him a jihadist."
+    line: "He also called him a jihadist, at a rally in Michigan."
     tags: [fact]
     pose: present
     claims:
