@@ -1,0 +1,48 @@
+# Topic radar sources (brief §0.5). Lean labels are APPROXIMATE, following AllSides / Ad Fontes
+# style ratings; the owner should review them. Facts in scripts come from primary sources;
+# outlets are how we find stories and see how each side frames them.
+# `verify: true` = feed URL not yet confirmed working; the radar reports failing feeds.
+feeds:
+  # left
+  - { outlet: Vox, lean: left, kind: news, url: "https://www.vox.com/rss/index.xml" }
+  - { outlet: HuffPost, lean: left, kind: news, url: "https://www.huffpost.com/section/politics/feed", verify: true }
+  - { outlet: Mother Jones, lean: left, kind: news, url: "https://www.motherjones.com/politics/feed/", verify: true }
+  # lean left
+  - { outlet: NPR, lean: lean_left, kind: news, url: "https://feeds.npr.org/1014/rss.xml" }
+  - { outlet: The Guardian US, lean: lean_left, kind: news, url: "https://www.theguardian.com/us-news/us-politics/rss" }
+  - { outlet: Politico, lean: lean_left, kind: news, url: "https://rss.politico.com/politics-news.xml" }
+  - { outlet: New York Times, lean: lean_left, kind: news, url: "https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml" }
+  # center
+  - { outlet: The Hill, lean: center, kind: news, url: "https://thehill.com/homenews/feed/", verify: true }
+  - { outlet: BBC US & Canada, lean: center, kind: news, url: "https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml" }
+  # lean right
+  - { outlet: New York Post, lean: lean_right, kind: news, url: "https://nypost.com/politics/feed/", verify: true }
+  - { outlet: Washington Examiner, lean: lean_right, kind: news, url: "https://www.washingtonexaminer.com/feed/", verify: true }
+  # right
+  - { outlet: Fox News, lean: right, kind: news, url: "https://moxie.foxnews.com/google-publisher/politics.xml" }
+  - { outlet: National Review, lean: right, kind: news, url: "https://www.nationalreview.com/feed/", verify: true }
+  - { outlet: The Federalist, lean: right, kind: news, url: "https://thefederalist.com/feed/", verify: true }
+  # fact-checkers (fact-check format candidates)
+  - { outlet: PolitiFact, lean: fact_checker, kind: fact_checker, url: "https://www.politifact.com/rss/all/" }
+  - { outlet: FactCheck.org, lean: fact_checker, kind: fact_checker, url: "https://www.factcheck.org/feed/" }
+  # primary sources
+  - { outlet: White House, lean: primary, kind: primary, url: "https://www.whitehouse.gov/news/feed/", verify: true }
+  # search trends (what people are actually looking up)
+  - { outlet: Google Trends US, lean: trends, kind: trends, url: "https://trends.google.com/trending/rss?geo=US" }
+
+# Words that signal a fight (controversy score).
+conflict_words: [slams, blasts, backlash, outrage, furious, lawsuit, sues, sued, ban, bans, banned, protest, protests, veto, vetoes, indict, indicted, impeach, fired, firing, shutdown, tariff, tariffs, deport, deportation, ruling, overturn, subpoena, investigation, scandal, clash, feud, defy, defies, threatens, accuses, denies]
+
+# Words that signal a checkable claim (fact-check format).
+claim_words: [claims, claimed, says, said, falsely, "false", misleading, fact, "fact-check", touts, boasts, insists]
+
+# Topic type guesses for the picker (channel.yaml topic_types).
+topic_type_words:
+  court_case: [court, judge, ruling, justices, lawsuit, sues, appeal, supreme]
+  election_mechanics: [ballot, ballots, voting, voters, polls, election, midterm, midterms, primary, turnout, recount]
+  money_in_politics: [donor, donors, pac, super, fundraising, billionaire, lobbying, campaign]
+  scandal: [scandal, investigation, indicted, subpoena, ethics, leaked, resigns]
+  policy_fight: [bill, senate, house, congress, vote, budget, tariff, tariffs, shutdown, law, executive, order]
+  protest: [protest, protests, protesters, march, rally, strike]
+  culture_war: [trans, abortion, dei, woke, book, books, flag, religion, guns]
+  foreign_policy: [ukraine, russia, china, israel, gaza, iran, nato, tariffs, war, ceasefire]
