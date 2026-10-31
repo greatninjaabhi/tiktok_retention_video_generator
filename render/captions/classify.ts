@@ -1,17 +1,15 @@
 /**
- * Which words get money-green or loss-red (brief §1.5). Number patterns are generic;
- * the word lists are finance defaults and move to channels/finance/channel.yaml with the beat-sheet step.
+ * Which caption words get the "good" (green) or "bad" (red) color (brief §1.5).
+ * Number patterns are generic; the word lists come from channels/<id>/channel.yaml.
  */
-export type WordClass = 'money' | 'loss' | null;
+export type WordClass = 'good' | 'bad' | null;
+export type WordLists = { good: string[]; bad: string[] };
 
-const MONEY = new Set(['rich', 'richer', 'wealth', 'wealthy', 'profit', 'profits', 'earn', 'earns', 'interest', 'save', 'saved', 'savings', 'free', 'gains']);
-const LOSS = new Set(['debt', 'fee', 'fees', 'lose', 'lost', 'losing', 'broke', 'nothing', 'scam', 'scams', 'poorer', 'penalty']);
-
-export function classifyWord(text: string): WordClass {
+export function classifyWord(text: string, lists: WordLists): WordClass {
   const t = text.toLowerCase().replace(/^["'(]+|["'),.!?;:]+$/g, '');
-  if (/^[-−]\$?\d/.test(t)) return 'loss';
-  if (/^\+?\$\d/.test(t) || /^\+?\d[\d,.]*%$/.test(t) || /^\+\d/.test(t)) return 'money';
-  if (LOSS.has(t)) return 'loss';
-  if (MONEY.has(t)) return 'money';
+  if (/^[-−]\$?\d/.test(t)) return 'bad';
+  if (/^\+\$?\d/.test(t)) return 'good';
+  if (lists.bad.includes(t)) return 'bad';
+  if (lists.good.includes(t)) return 'good';
   return null;
 }

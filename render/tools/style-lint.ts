@@ -1,12 +1,12 @@
 /** `npm run lint:style`: lints tokens, every prop, prop sources, and every pose × expression. Exit 1 on any issue. */
 import { Pen } from '../draw/pen';
 import { drawCharacter } from '../character/draw';
-import { lintItems, lintProp, lintPropSources, lintTokens, type Issue } from '../lint/style-lint';
+import { lintItems, lintMemeSources, lintProp, lintPropSources, lintTokens, type Issue } from '../lint/style-lint';
 import { PROPS } from '../../assets/props/index';
 import { stickman, POSE_NAMES } from '../../assets/characters/stickman/character';
 import type { ExpressionName } from '../character/types';
 
-const issues: Issue[] = [...lintTokens(), ...lintPropSources()];
+const issues: Issue[] = [...lintTokens(), ...lintPropSources(), ...lintMemeSources()];
 for (const def of Object.values(PROPS)) issues.push(...lintProp(def));
 for (const pose of POSE_NAMES) {
   for (const expression of Object.keys(stickman.expressions) as ExpressionName[]) {

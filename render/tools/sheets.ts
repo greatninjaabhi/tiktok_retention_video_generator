@@ -17,7 +17,7 @@ export type Sheet = { items: Item[]; width: number; height: number };
 export function contactSheet(def: CharacterDef, poseNames: readonly string[], props: PropDef[], seed = 'contact-sheet'): Sheet {
   const pen = new Pen({ seed });
   const col = Math.round(2.5 * HU);
-  const perRow = Math.max(poseNames.length, props.length, 8);
+  const perRow = Math.max(poseNames.length, 8);
   const width = col * perRow;
   let y = 70;
   const title = (t: string) => { y += 40; pen.label(t, width / 2, y, { size: 'medium' }); y += 60; };

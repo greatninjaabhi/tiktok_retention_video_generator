@@ -3,7 +3,7 @@ import { colorHex, tokens, type ColorName } from '../tokens';
 import { backOut } from '../character/animate';
 import { measureText } from './measure';
 import { displayText } from './chunk';
-import { classifyWord } from './classify';
+import { classifyWord, type WordLists } from './classify';
 import type { CaptionChunk } from './types';
 
 const C = tokens.captions;
@@ -13,11 +13,11 @@ export function activeChunk(chunks: CaptionChunk[], t: number): CaptionChunk | n
   return chunks.find((c) => t >= c.start && t < c.end) ?? null;
 }
 
-export function captionSvg(chunks: CaptionChunk[], t: number, fps: number): string {
+export function captionSvg(chunks: CaptionChunk[], t: number, fps: number, words: WordLists): string {
   const chunk = activeChunk(chunks, t);
   if (!chunk) return '';
   const size = C.sizePx;
-  const space = measureText(' ', size);
+  const space = C.wordGapPx;
   const lh = size * C.lineHeight;
   const family = tokens.fonts[C.font as 'caption'].family;
   const pop = 0.7 + 0.3 * backOut((t - chunk.start) * fps / C.popFrames, tokens.motion.pop.overshoot);
@@ -33,8 +33,8 @@ export function captionSvg(chunks: CaptionChunk[], t: number, fps: number): stri
     const baseline = C.bandCenterY + (li - (chunk.lines.length - 1) / 2) * lh + size * 0.36;
     line.forEach((w, wi) => {
       const isActive = w === activeWord;
-      const cls = classifyWord(w.text);
-      const color: ColorName = cls === 'money' ? (C.moneyColor as ColorName) : cls === 'loss' ? (C.lossColor as ColorName) : isActive ? (C.activeColor as ColorName) : (C.color as ColorName);
+      const cls = classifyWord(w.text, words);
+      const color: ColorName = cls === 'good' ? (C.goodColor as ColorName) : cls === 'bad' ? (C.badColor as ColorName) : isActive ? (C.activeColor as ColorName) : (C.color as ColorName);
       const cx = x + widths[wi]! / 2;
       const s = isActive ? C.activeScale : 1;
       out += `<text x="${(x).toFixed(1)}" y="${baseline.toFixed(1)}" font-family="${family}" font-size="${size}" fill="${colorHex(color)}" stroke="${colorHex('ink')}" stroke-width="${C.outlinePx}" stroke-linejoin="round" paint-order="stroke"${s !== 1 ? ` transform="translate(${cx.toFixed(1)} ${(baseline - size * 0.36).toFixed(1)}) scale(${s}) translate(${(-cx).toFixed(1)} ${(-(baseline - size * 0.36)).toFixed(1)})"` : ''}>${esc(texts[wi]!)}</text>`;

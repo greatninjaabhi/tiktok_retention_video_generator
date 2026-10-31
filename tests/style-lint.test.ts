@@ -1,11 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { lintProp, lintPropSources, lintTokens } from '../render/lint/style-lint';
+import { lintMemeSources, lintProp, lintPropSources, lintTokens } from '../render/lint/style-lint';
 import { defineProp, px } from '../render/props/api';
 import { PROPS } from '../assets/props/index';
 
 describe('style lint', () => {
   it('tokens pass (contrast, fonts)', () => expect(lintTokens()).toEqual([]));
   it('prop sources only use the prop API', () => expect(lintPropSources()).toEqual([]));
+  it('meme sources only use the meme API', () => expect(lintMemeSources()).toEqual([]));
   it.each(Object.keys(PROPS))('%s passes', (name) => expect(lintProp(PROPS[name]!)).toEqual([]));
 
   it('catches a prop drawn off the size grid', () => {

@@ -8,11 +8,11 @@
 
 | Part | Spec |
 |---|---|
-| Head | Circle, 1 HU across (defines the head unit, 80 px), white fill, ink outline |
+| Head | Circle, 1 HU across (defines the head unit, 128 px since 2026-10-31; was 80 px), white fill, ink outline |
 | Body | Single-line torso, arms and legs; small outward foot ticks |
 | **Signature trait** | **Bold blue necktie** (`signature` color, used by nothing else), with a knot under the neck. It swings as secondary motion |
 | Face | Dot eyes, optional brows, one-line or filled mouth |
-| Height | ≈ 5 HU standing |
+| Height | ≈ 5 HU standing (≈ 650 px) |
 
 The tie was chosen because the channel's angle is "how the rich play the game, explained for normal people" (brief §1.1–1.2): it suggests "suit" at thumbnail size with one shape and one color.
 
@@ -26,4 +26,4 @@ The tie was chosen because the channel's angle is "how the rich play the game, e
 Stick figures in general are generic. What makes this one ours is the combination of the blue tie, the white filled head and our wobble/boil style. Before launch, the owner should do a quick visual search to confirm it doesn't look like an existing stick-figure character from a game, comic or show (brief §1.2).
 
 ## Changelog
-- v1 (2026-10-31): first version.
+- v1 (2026-10-31): first version. Same day: scaled up to 128 px/HU (owner: bigger); stage movement and rotation added.

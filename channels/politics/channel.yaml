@@ -1,0 +1,37 @@
+# v1 channel: political explainers (RESEARCH_BRIEF.md §0.5). Content rules live here, not in code.
+id: politics
+character: mascot_v1
+lens: left-leaning, Gen Z voice; explain, don't sneer; facts and opinions always separated
+voice_id: null            # pick from 3–5 ElevenLabs test renders (brief §12)
+
+# Caption word colors (brief §1.5). "good" = green, "bad" = red. Keep these about outcomes,
+# not parties: never color a party or politician's name red/blue (brief §0.5 palette note).
+caption_words:
+  good: [win, wins, won, passed, protected, protects, rights, free, raise, relief, saved, legal, approved, cheaper]
+  bad: [banned, ban, cut, cuts, lost, lose, debt, cost, costs, illegal, scandal, lied, lie, fired, blocked, denied, crisis, nothing, fraud, worse]
+
+# What the picker learns over (brief §8): topic TYPES, not sides.
+topic_types: [scandal, policy_fight, court_case, culture_war, election_mechanics, money_in_politics, protest, foreign_policy]
+
+# Freshness rule: topic must be in the news / trending within this many hours (brief §0.5).
+max_topic_age_hours: 72
+
+# Hook patterns the linter rejects (brief §0.5 rule 8).
+banned_hook_patterns:
+  - "they don't want you to know"
+  - "the media won't tell you"
+  - "100% proof"
+  - "last chance to vote"
+
+# Every factual beat needs one of these source types (primary first).
+source_types: [bill_text, court_filing, official_data, full_video, on_record_quote, wire_report, major_outlet]
+
+# Official voting info only (brief §0.5 rule 4).
+voting_info_sources: ["https://vote.gov"]
+
+# Never accept sponsorship from these (TikTok bans paid political content, brief §5.4b).
+forbidden_sponsor_types: [campaign, party, pac, super_pac, political_advocacy_group]
+
+caveat_rules:
+  - "Mark opinions as opinions (\"Honestly? I think…\")."
+  - "One line steelmanning the other side."

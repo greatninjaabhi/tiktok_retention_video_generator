@@ -4,7 +4,7 @@
  * maxLineWidthPx, and tops up short chunks (< minWordsPerChunk) by borrowing from the previous phrase of the same sentence.
  */
 import { tokens } from '../tokens';
-import { measureText } from './measure';
+import { lineWidth } from './measure';
 import type { CaptionChunk, Word } from './types';
 
 const C = tokens.captions;
@@ -12,12 +12,13 @@ const display = (w: Word) => (C.uppercase ? w.text.toUpperCase() : w.text);
 const sentenceEnd = (w: Word) => /[.!?]["')]?$/.test(w.text);
 const clauseEnd = (w: Word) => /[,;:—]$/.test(w.text);
 
-export type Measure = (text: string) => number;
-const defaultMeasure: Measure = (t) => measureText(t, C.sizePx);
+/** Width in px of one line made of these display texts. */
+export type Measure = (texts: string[]) => number;
+const defaultMeasure: Measure = (texts) => lineWidth(texts, C.sizePx, C.wordGapPx);
 
 /** Split words into ≤ maxLines lines; two lines are balanced so neither is much longer. */
 export function layoutLines(words: Word[], measure: Measure = defaultMeasure): Word[][] | null {
-  const width = (ws: Word[]) => measure(ws.map(display).join(' '));
+  const width = (ws: Word[]) => measure(ws.map(display));
   const one = width(words);
   if (one <= C.maxLineWidthPx && (words.length <= 3 || one <= C.maxLineWidthPx * 0.72)) return [words];
   if (C.maxLines < 2 || words.length < 2) return one <= C.maxLineWidthPx ? [words] : null;

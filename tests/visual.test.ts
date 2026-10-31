@@ -28,3 +28,15 @@ describe('visual snapshots', () => {
     await expect(toSvg(itemsToSvg(pen.items), { width: 4 * HU, height: 4 * HU })).toMatchFileSnapshot(`./visual/prop-${name}.svg`);
   });
 });
+
+describe('meme snapshots', () => {
+  it.each(['expectation_reality', 'nobody_me'])('meme %s', async (name) => {
+    const { MEMES } = await import('../assets/memes/index');
+    const { PANEL } = await import('../render/stock/panel');
+    const m = MEMES[name]!;
+    if (m.kind !== 'panel') throw new Error('panel meme expected');
+    const pen = new Pen({ seed: 'snapshot' });
+    m.draw(pen, { box: PANEL, progress: 1, text: {} });
+    await expect(toSvg(itemsToSvg(pen.items), { width: 1080, height: 760 })).toMatchFileSnapshot(`./visual/meme-${name}.svg`);
+  });
+});

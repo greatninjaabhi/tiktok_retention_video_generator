@@ -105,12 +105,13 @@
     "centerX": 500,
     "bandCenterY": 905,
     "outlinePx": 16,
+    "wordGapPx": 30,
     "activeScale": 1.1,
     "popFrames": 6,
     "color": "white",
     "activeColor": "highlight",
-    "moneyColor": "money",
-    "lossColor": "loss"
+    "goodColor": "money",
+    "badColor": "loss"
   },
 
   "stock": {

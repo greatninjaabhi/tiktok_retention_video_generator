@@ -63,20 +63,23 @@ export function lintProp(def: PropDef): Issue[] {
   return issues;
 }
 
-/** Props may only import the prop API, and may not smuggle in raw SVG or hex colors. */
-export function lintPropSources(dir = join(ROOT, 'assets/props')): Issue[] {
+/** Props and memes may only import their API module, and may not smuggle in raw SVG or hex colors. */
+export function lintPropSources(dir = join(ROOT, 'assets/props'), api = '../../render/props/api'): Issue[] {
   const issues: Issue[] = [];
+  const rel = dir.slice(dir.indexOf('assets/'));
   for (const f of readdirSync(dir).filter((n) => n.endsWith('.ts') && n !== 'index.ts')) {
     const src = readFileSync(join(dir, f), 'utf8');
-    const add = (rule: string, message: string) => issues.push({ target: `assets/props/${f}`, rule, message });
+    const add = (rule: string, message: string) => issues.push({ target: `${rel}/${f}`, rule, message });
     for (const m of src.matchAll(/from\s+['"]([^'"]+)['"]/g)) {
-      if (m[1] !== '../../render/props/api') add('primitives-only', `imports "${m[1]}" (only ../../render/props/api is allowed)`);
+      if (m[1] !== api) add('primitives-only', `imports "${m[1]}" (only ${api} is allowed)`);
     }
     if (/#[0-9a-fA-F]{3,8}\b/.test(src)) add('palette', 'hard-coded hex color (use token names)');
     if (/<(path|svg|g|rect|circle)\b|\bd\s*[:=]\s*['"`]M/.test(src)) add('primitives-only', 'raw SVG markup or path data');
   }
   return issues;
 }
+
+export const lintMemeSources = () => lintPropSources(join(ROOT, 'assets/memes'), '../../render/memes/api');
 
 export function lintTokens(): Issue[] {
   const issues: Issue[] = [];
