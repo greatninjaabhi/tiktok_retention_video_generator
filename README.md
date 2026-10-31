@@ -62,7 +62,7 @@ npm run analytics -- import                              # 12. weekly: TikTok St
 | Topic radar | `research/radar/` | Left, center and right outlets, fact-checkers, primary sources, Google Trends. Clusters headlines into stories; scores recency, coverage, **both-sides coverage**, conflict, checkable claims and search trends; suggests explainer vs fact-check. |
 | Drafting | `scripts/draft.ts` | `claude-opus-5-5` structured output: beat sheet + 10 hooks, using only the sources given; unsourced facts become "NEEDS SOURCE" editor notes; lint errors go back for repair. |
 | Beat sheet + linter | `scripts/` | Explainer and fact-check formats. Enforces hook length, 61–75 s, ≤ 4 s per beat, re-hook at 25–30 s, closed open loops, sources on facts and verdicts, opinion markers, verbatim quotes, official voting info, no paid political sponsors, left+right research, human-edit gate. |
-| Voice | `voice/` | ElevenLabs with timestamps (cached); without a key, estimated timings and no narration (clearly marked). |
+| Voice | `voice/` | Kokoro-82M (free, local, Apache 2.0), voiced beat by beat and cached; if the model can't load, estimated timings and no narration (clearly marked). |
 | Render | `render/` | Big moving stickman, phrase captions, stock panel with one house treatment and transitions, drawn memes, verdict stamps, synthesized SFX, hook on frame 0, cover, post text. |
 | Pre-post check | `publish/` | Lint clean, human-edited, real voice, 61–75 s, licensed images for every photo slot, cover, post text; then a manual checklist. |
 | Analytics + picker | `analytics/`, `picker/` | Display API + Studio CSV; reward = z-scores vs your last 20 videos; Thompson sampling with discounting over format × topic type × hook pattern. |
@@ -82,10 +82,9 @@ Credentials (all optional; each stage falls back or tells you what's missing):
 | Variable | For | Get it |
 |---|---|---|
 | `ANTHROPIC_API_KEY` | `npm run draft` | console.anthropic.com (or `ant auth login`) |
-| `ELEVENLABS_API_KEY` + `voice_id` in `channels/politics/channel.yaml` (or `ELEVENLABS_VOICE_ID`) | real narration | elevenlabs.io |
 | `PEXELS_API_KEY`, `PIXABAY_API_KEY` | stock photos | pexels.com/api, pixabay.com/api/docs |
 | `TIKTOK_ACCESS_TOKEN` | `analytics pull` (Display API, `video.list` scope) | developers.tiktok.com (Login Kit) |
 
-**Running in a Claude Code cloud environment:** its network policy must allow these hosts (environment settings → Network access): `api.elevenlabs.io`, `api.pexels.com`, `images.pexels.com`, `pixabay.com`, `cdn.pixabay.com`, `api.openverse.org`, `open.tiktokapis.com`, `trends.google.com`, and the feed hosts in `channels/politics/sources.yaml`. Or run the pipeline on your own machine.
+**Running in a Claude Code cloud environment:** its network policy must allow these hosts (environment settings → Network access): `huggingface.co` (first Kokoro model download), `api.pexels.com`, `images.pexels.com`, `pixabay.com`, `cdn.pixabay.com`, `api.openverse.org`, `open.tiktokapis.com`, `trends.google.com`, and the feed hosts in `channels/politics/sources.yaml`. Or run the pipeline on your own machine.
 
 Other commands: `npm run contact-sheet` (gallery), `npm run preview` (renders the sample draft), `npm run test:update` (approve intentional visual changes).

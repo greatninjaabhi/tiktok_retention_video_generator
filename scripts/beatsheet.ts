@@ -41,7 +41,6 @@ export type BeatSheet = {
   research: { url: string; outlet: string; lean: (typeof LEANS)[number] }[];
   beats: Beat[];
   human_edited: boolean;
-  ai_voice_label: boolean;
   disclosures: { sponsor: string; type: string }[];
   caption?: string;
   hashtags?: string[];
@@ -65,7 +64,6 @@ export function parseBeatSheet(yamlText: string): BeatSheet {
   b.research ??= [];
   b.disclosures ??= [];
   b.human_edited ??= false;
-  b.ai_voice_label ??= true;
   const ids = new Set<string>();
   for (const [i, beat] of b.beats.entries()) {
     req(beat.id && !ids.has(beat.id), `beat ${i}: missing or duplicate id`);

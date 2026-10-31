@@ -171,7 +171,6 @@ export function toBeatSheet(d: Draft, input: DraftInput, ch: ChannelConfig): Bea
       ...(b.closes ? { closes: b.closes } : {}),
     })) as BeatSheet['beats'],
     human_edited: false,
-    ai_voice_label: true,
     disclosures: [],
     caption: d.caption,
     hashtags: d.hashtags.map((h) => h.replace(/^#/, '')),

@@ -7,7 +7,7 @@ export type ChannelConfig = {
   id: string;
   character: string;
   lens: string;
-  voice_id: string | null;
+  voice: { provider: 'kokoro'; voice: string; speed: number };
   caption_words: { good: string[]; bad: string[] };
   topic_types: string[];
   max_topic_age_hours: number;

@@ -20,7 +20,8 @@
 | Character size & movement | Owner: **bigger** (≈650 px tall) and he **moves around the stage and sometimes rotates**: walks, slides, hops between marks, tilts, rare spin (§1.2) |
 | Captions | **Phrase groups** (3–7 words, up to 2 lines), active word highlighted. Single words were too slow at 180 WPM (owner) (§1.5) |
 | Top-panel visuals | **Licensed stock photos** with transitions in the top panel (owner moved this into Milestone 1, §1.7). Code-drawn doodle props live on the character's stage. Everything drawn stays in one consistent style: no "ugly differences" (§1.3) |
-| Voice | No preference → default **ElevenLabs AI voice** with timestamps, behind a swappable `VoiceProvider` interface (human VO later) |
+| Voice | **Kokoro-82M** (owner, 2026-10-31): free, local, Apache 2.0, behind the swappable `VoiceProvider` interface. Voice picked by ear with `npm run voices`. (ElevenLabs/OpenAI TTS were considered; human VO possible later) |
+| AI label | **Not part of the pipeline for now** (owner, 2026-10-31). Revisit on request; risk noted in §5.2 |
 | First milestone | No preference → default **one finished video end-to-end** (script → voice → render → MP4), then tracker → picker |
 | Length | 61–75 s (TikTok Creator Rewards needs > 1 min) |
 
@@ -197,7 +198,7 @@ Everything on screen (stickman, props, panels, text) is drawn by **one shared dr
 
 - Every visual (stickman, props, backgrounds, covers) is **drawn by our own code** from primitives (§1.3). The one later exception: licensed **real** stock photos in the top panel (§1.7). Those are photos, not AI images, and AI-generated stock is excluded. There are **no AI-generated images**, so there's nothing to "flag" and nothing to hide. That's the point: the character *is* hand-drawn-by-code, not a disguised AI image.
 - **Do not** add an image-generation step, and **do not** strip provenance metadata (C2PA/Content Credentials) from any file. TikTok treats undisclosed realistic AI content and evasion as integrity violations (§5.2).
-- The AI **voice** remains the one AI element. Decide on labeling per §5.2 (default: toggle TikTok's AI-generated label; TikTok says honest labeling doesn't reduce distribution).
+- The AI **voice** remains the one AI element. Labeling: owner decision 2026-10-31, **the TikTok AI label is not part of the pipeline for now** (see §5.2 for the risk).
 
 ### 1.5 Editing style: CapCut-style transitions, captions & SFX (built natively)
 
@@ -351,7 +352,7 @@ The top panel will also show **licensed stock photos**, switched with transition
 - **Stories pull people in.** Narrative transportation research (Green & Brock and a decade of follow-ups, incl. a meta-analysis) shows immersion in a story shifts attitudes and builds emotional engagement ([van Laer et al. meta-analysis](https://openaccess.city.ac.uk/id/eprint/16984/)). One large experiment found stories weren't more persuasive than a fact list directly, but they **increased warmth toward the hero character** ([ESCP library abstract](https://libraries.escp.eu/doc/bth/99543208)). For us: stories make people like the stickman; facts make them learn. Use both.
 
 ### 2.8.2 Honesty contract (non-negotiable)
-1. **Don't pretend the AI voice is a real person.** Use TikTok's AI-generated label on videos (voice) per §5.2. No bio disclosure line needed (owner decision).
+1. **Don't pretend the AI voice is a real person.** (TikTok AI label: not in the pipeline for now, owner decision 2026-10-31; see §5.2.) No bio disclosure line needed (owner decision).
 2. **The stickman never makes fake personal claims.** No "I made $50K last month", no fake screenshots, no invented testimonials. Hypotheticals are framed as hypotheticals ("Say you're 20 and…", "Meet Jay, a made-up 22-year-old…").
 3. **Every number has a source** (in the beat sheet, with a short source note in the caption when it matters).
 4. **One honest caveat per video** where it matters ("this works if you have no high-interest debt", "this is legal but not for everyone"). Nuance is a credibility signal, not a retention killer, if it's one line.
@@ -465,7 +466,8 @@ Fail render if missing: relatable scenario tag, POV line, source for every stat,
 - TikTok reads C2PA Content Credentials and auto-applies labels ([CineRads](https://www.cinerads.com/blog/tiktok-ai-content-policy)). Some guides say realistic AI voices are covered too ([Turrboo](https://turrboo.com/blog/does-tiktok-allow-ai-influencers)).
 - TikTok's help article (as quoted in [UGCVids](https://ugcvids.ai/blog/tiktok-ai-content-disclosure-rules-2026)) says turning on the AI label doesn't affect distribution if the video follows the guidelines.
 - YouTube auto-labels detected photorealistic AI use since 27 May 2026 ([Kineo](https://www.usekineo.com/brainrot-video-generator)).
-- **Decision:** cartoon characters are clearly stylized, but the voice is AI. **Default to toggling the AI label** (cheap insurance). Note: the reference example's cat looks photorealistic AI, which would get labeled.
+- **Original recommendation:** cartoon characters are clearly stylized, but the voice is AI. **Default to toggling the AI label** (cheap insurance). Note: the reference example's cat looks photorealistic AI, which would get labeled.
+- **Owner decision (2026-10-31): the AI label is removed from the pipeline until the owner asks for it.** Risk: TikTok may auto-label, restrict or remove realistic AI content that isn't labeled, and some guides say realistic AI voices are covered. The Content Posting API's `is_aigc` flag is left unset.
 
 ### 5.3 IP / copyright
 - TikTok's guidelines prohibit reposting copyrighted or trademarked work without permission ([Lilach Bullock summary](https://www.lilachbullock.com/tiktok-community-guidelines/)).
@@ -523,8 +525,8 @@ Layered, all inside TikTok's rules (no bots logging into TikTok Studio, no scrap
 |---|---|---|
 | Script authoring | Markdown/YAML "beat sheet" per video (see §7) | Human-editable; diff-able in git |
 | Script drafting help | LLM (Claude) via API, prompt seeded with hook pattern + topic + style guide | Human edits before render |
-| Voice | ElevenLabs `POST /v1/text-to-speech/{voice_id}/with-timestamps` | Returns audio plus **character-level timestamps in one call** ([ElevenLabs docs](https://elevenlabs.io/docs/api-reference/text-to-speech/convert-with-timestamps)); no Whisper drift |
-| Alignment for human voice (optional) | ElevenLabs forced alignment (audio + transcript → word timings) ([SDK docs](https://tessl.io/registry/tessl/npm-elevenlabs--elevenlabs-js/files/docs/content/forced-alignment.md)) | If we switch to a human VO later |
+| Voice | **Kokoro-82M** via `kokoro-js` (local, free, Apache 2.0). Each beat is voiced separately, silence-trimmed and joined, so beat boundaries are exact; word timings within a beat are spread by length | No per-word timestamps from the model; a local Whisper forced-alignment pass can refine word timings later |
+| Alignment (later) | Local Whisper word timestamps matched back to script words (also for a human VO) | Free; refines captions and mouth sync |
 | Rendering | **Remotion** (React → MP4 via FFmpeg) | Good fit for template-driven, data-driven video; has caption guidance ([Remotion best-practices skill](https://agentskillsfinder.com/skills/remotion)). Check its license terms for our use. Alternative: Python + FFmpeg |
 | Character system | **Procedural vector rig in code** (§1.2 option 1): joints → wobbly lines via shared primitives; poses (idle, point, shocked, thinking, holding-money, celebrate…) stored as joint-angle sets; mouth shapes as small drawn variants; color fills from `style.tokens.json`. No exported PNG/SVG pose files, no Rive/Lottie in v1 | Consistent identity; unlimited poses; no drift; fully code-controlled |
 | Stock images (later) | Pexels / Unsplash / Pixabay APIs behind a `StockProvider` interface; house treatment + transitions in the renderer | Free commercial-use licenses; consistent look via one treatment (§1.7) |
@@ -533,7 +535,7 @@ Layered, all inside TikTok's rules (no bots logging into TikTok Studio, no scrap
 | Posting | Manual upload at first → later an audited scheduler or our own audited app | See §5.7 |
 
 **Caption pitfalls to handle**
-- Numbers: the script shows "$1,000" but the voice says "one thousand dollars". Use ElevenLabs `normalized_alignment` vs `alignment` and map back to display tokens ([skill notes](https://skillselion.com/skills/coleam00/hyperframes-ai-video-generation/text-to-speech)).
+- Numbers: the script shows "$1,000" and captions show it as written. Check Kokoro's pronunciation of numbers, acronyms and names in `npm run voices` test renders; rewrite the spoken line if needed.
 - Merge character timings into words; group into 1–3-word caption chunks; never let a chunk cross the panel seam.
 - Pronunciation dictionary for finance terms (APR, IRA, 401(k), HYSA, ETF).
 
@@ -640,7 +642,7 @@ All paths are relative to **this repo's root** (whatever the repo is named). Eve
 ├── research/                        # outlier tracker (SQLite + importers), hook leaderboard,
 │                                    #   radar/ = daily topic radar (§0.5)
 ├── scripts/                         # beat sheets (YAML), retention + human-layer linter (§7, §2.8.7)
-├── voice/                           # VoiceProvider interface, ElevenLabs impl → word timings JSON
+├── voice/                           # VoiceProvider interface, Kokoro impl → WAV + word timings JSON
 ├── render/                          # Remotion project: drawing engine, rig, transitions, captions
 ├── editor/                          # review & tweak tool (§1.6)
 ├── analytics/                       # TikTok Display API pull + CSV/screenshot importers
@@ -657,7 +659,7 @@ All paths are relative to **this repo's root** (whatever the repo is named). Eve
 **Milestone 1: one finished TikTok video end-to-end (first priority)**
 1. `style.tokens.json` + drawing primitives + stickman rig (~8 poses, mouth shapes, line boil) + 5–10 starter props (§1.2, §1.3).
 2. Beat-sheet format + retention linter (§7).
-3. Voice provider (ElevenLabs with timestamps) → word timings JSON with number normalization.
+3. Voice provider (Kokoro, per-beat synthesis) → WAV + word timings JSON.
 4. Renderer v0: layout, frame-0 hook, captions (phrase groups + active word), pose switching, stage blocking, prop scenes, **stock-photo top panel with house treatment and transitions (§1.7)**, transition presets (§1.5), SFX track → 1080×1920 MP4, 61–75 s.
 4b. Meme library v0: 4–6 drawn meme formats + stickman reaction bits (§1.8).
 4c. Topic radar v0: daily shortlist of current controversies with scores (§0.5).
@@ -680,14 +682,14 @@ All paths are relative to **this repo's root** (whatever the repo is named). Eve
 ## 12. Open questions (owner)
 - ~~Which platform leads~~ → TikTok only for v1.
 - ~~Top-panel visuals~~ → code-drawn doodle props, consistent style; licensed stock photos with transitions added later (§1.7).
-- ~~Voice~~ → ElevenLabs default, swappable.
+- ~~Voice~~ → Kokoro (free, local), swappable.
 - Final layout: stacked split (§1) vs full-frame illustrated scenes like the second reference (§1.1)? Make both a config option; owner picks after seeing Milestone 1.
 - Stickman signature trait and name (placeholder: `mascot_v1`, blue tie).
 - Keep the red/blue color meanings given the partisan reading (§0.5)?
 - How hard the left lens leans: commentary with clear opinions vs explainer-first with a short take at the end?
 - Political-explainer competitors to track: owner to send profile screenshots (Popular + Latest tabs) of 4–6 accounts in this format.
 - Stock API keys: `PEXELS_API_KEY` / `PIXABAY_API_KEY` (free), and allow those hosts in the cloud environment's network settings.
-- Which specific ElevenLabs voice (pick from 3–5 test renders).
+- Which Kokoro voice (pick from `npm run voices` test renders).
 - Budget ceiling for APIs per month.
 - Posting cadence target (1/day vs 2/day).
 
@@ -737,7 +739,7 @@ Views don't automatically become followers (see Dirty Dollars: 557K followers bu
 
 | Item | Lean setup | Full setup | Notes |
 |---|---|---|---|
-| ElevenLabs voice | $22 (Creator, ~100K–121K credits) | $22–99 | Starter (~$5–6) has commercial rights but only ~30K credits, too tight for daily posting with retries ([Hackceleration](https://www.hackceleration.com/labs/elevenlabs-pricing), [DEV/TechSifted](https://dev.to/techsifted/elevenlabs-pricing-2026-plans-credits-and-api-costs-explained-1549)) |
+| Voice (Kokoro) | $0 | $0 | Runs locally (Apache 2.0) |
 | Rendering (Remotion) | $0 | $0 | Free for individuals and companies of up to 3 people, commercial use included ([Remotion LICENSE](https://cdn.jsdelivr.net/npm/remotion@4.0.529/LICENSE.md)). Render locally |
 | Script drafting LLM | ~$0–20 | ~$10–30 | Estimate; $0 if drafting in an existing Claude plan |
 | Scheduler / posting | $0 (manual upload) | ~$29 (e.g. Blotato Starter) | Already-audited TikTok posting ([That Marketing Buddy](https://thatmarketingbuddy.com/pricing/blotato)) |

@@ -15,7 +15,7 @@ if (!file) {
 }
 try {
   const plan = await planVideo(loadBeatSheet(file), { draft: args.includes('--draft') });
-  console.log(`voice: ${plan.voice.provider}${plan.voice.provider === 'estimate' ? ' (no narration; set ELEVENLABS_API_KEY + voice_id for real voice)' : ''}`);
+  console.log(`voice: ${plan.voice.provider}${plan.voice.note ? ` (${plan.voice.note}; rendering with estimated timings and no narration)` : ''}`);
   for (const i of plan.lint.issues) console.log(`  ${i.level === 'error' ? '✗' : '!'} [${i.rule}]${i.beat ? ` ${i.beat}:` : ''} ${i.message}`);
   if (plan.lint.issues.some((i) => i.level === 'error')) {
     console.error('Script fails with the real voice timings; fix the beat sheet and re-render.');

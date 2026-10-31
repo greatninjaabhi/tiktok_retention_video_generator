@@ -1,21 +1,40 @@
 import { describe, expect, it } from 'vitest';
-import { charsToWords } from '../voice/align';
+import { distributeWords, gapAfter, speechBounds } from '../voice/timing';
+import { estimateVoice, kokoroVoice, type Tts } from '../voice/providers';
 import { mixBed, scheduleSfx, SR, synth, toWav } from '../render/audio/sfx';
 import { coverSvg, frameSvg, planVideo, postText } from '../render/video';
 import { loadBeatSheet } from '../scripts/beatsheet';
 
-describe('ElevenLabs character alignment → words', () => {
-  it('merges characters into words, keeping written forms like $1,000', () => {
-    const text = 'It costs $1,000 now.';
-    const chars = [...text];
-    const words = charsToWords({
-      characters: chars,
-      character_start_times_seconds: chars.map((_, i) => i * 0.05),
-      character_end_times_seconds: chars.map((_, i) => i * 0.05 + 0.05),
-    });
-    expect(words.map((w) => w.text)).toEqual(['It', 'costs', '$1,000', 'now.']);
-    expect(words[2]!.start).toBeCloseTo(9 * 0.05);
-    expect(words[2]!.end).toBeCloseTo(15 * 0.05);
+describe('Kokoro voice (fake engine, no model download)', () => {
+  const sr = 24000;
+  // Fake TTS: 0.1 s silence, ~0.3 s of "speech" per word, 0.1 s silence.
+  const fake: Tts = {
+    generate: async (text) => {
+      const n = text.split(/\s+/).length;
+      const a = new Float32Array(Math.round(sr * (0.2 + 0.3 * n)));
+      for (let i = Math.round(sr * 0.1); i < a.length - Math.round(sr * 0.1); i++) a[i] = 0.3 * Math.sin(i / 5);
+      return { audio: a, sampling_rate: sr };
+    },
+  };
+  it('trims silence, keeps beat boundaries exact, and writes one WAV', async () => {
+    const r = await kokoroVoice({ voice: 'am_michael', speed: 1.1 }, fake).synthesize(['Why can\'t Congress pass anything?', 'Blame one rule.']);
+    expect(r.provider).toBe('kokoro:am_michael');
+    expect(r.words.map((w) => w.text)).toEqual(["Why", "can't", 'Congress', 'pass', 'anything?', 'Blame', 'one', 'rule.']);
+    const firstEnd = r.words[4]!.end, secondStart = r.words[5]!.start;
+    expect(secondStart - firstEnd).toBeGreaterThanOrEqual(0.2); // sentence pause
+    expect(secondStart - firstEnd).toBeLessThan(0.4); // R8 dead air
+    expect(r.audioFile).toMatch(/\.wav$/);
+  });
+  it('speech bounds and word spreading behave', () => {
+    const a = new Float32Array(sr);
+    for (let i = 6000; i < 18000; i++) a[i] = 0.5;
+    const b = speechBounds(a, sr);
+    expect(b.start).toBeLessThanOrEqual(6000);
+    expect(b.end).toBeGreaterThanOrEqual(18000);
+    const ws = distributeWords('Sixty votes, not fifty-one.', 1, 3);
+    expect(ws[0]!.start).toBe(1);
+    expect(ws.at(-1)!.end).toBeCloseTo(3);
+    expect(gapAfter('Done.')).toBeGreaterThan(gapAfter('and then'));
   });
 });
 
@@ -41,7 +60,7 @@ describe('synthesized SFX', () => {
 
 describe('render plan (offline voice)', async () => {
   const sheet = loadBeatSheet(new URL('../scripts/videos/2026-11-01-filibuster.yaml', import.meta.url).pathname);
-  const plan = await planVideo(sheet, { draft: true });
+  const plan = await planVideo(sheet, { draft: true, voice: estimateVoice(170) });
   it('uses estimated timings without a key, and marks drafts', () => {
     expect(plan.voice.provider).toBe('estimate');
     expect(plan.draft).toBe(true);
@@ -57,12 +76,12 @@ describe('render plan (offline voice)', async () => {
     expect(plan.sfx.some((e) => e.name === 'boom')).toBe(true); // the zoom_stare beat
   });
   it('refuses to plan a non-draft script that is not human-edited', async () => {
-    await expect(planVideo(sheet)).rejects.toThrow(/human-edit/);
+    await expect(planVideo(sheet, { voice: estimateVoice(170) })).rejects.toThrow(/human-edit/);
   });
   it('writes a post with sources and the AI-label reminder', () => {
     const post = postText(plan);
     expect(post).toContain('https://www.senate.gov/');
-    expect(post).toMatch(/AI-generated content/);
+    expect(post).not.toMatch(/AI-generated/);
     expect(post).toMatch(/DRAFT/);
     expect(coverSvg(plan)).toContain('<text');
   });

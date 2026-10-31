@@ -2,55 +2,83 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { estimateTimings } from '../render/captions/timing';
-import { charsToWords, type CharAlignment } from './align';
+import { toWav } from '../render/audio/sfx';
+import type { Word } from '../render/captions/types';
+import { distributeWords, gapAfter, speechBounds } from './timing';
 import type { VoiceProvider, VoiceResult } from './types';
 
 const CACHE = fileURLToPath(new URL('./cache/', import.meta.url));
 
+export type KokoroConfig = { voice: string; speed: number; model?: string; dtype?: 'fp32' | 'fp16' | 'q8' | 'q4' | 'q4f16' };
+/** The slice of kokoro-js we use (injectable for tests). */
+export type Tts = { generate(text: string, opts: { voice: string; speed: number }): Promise<{ audio: Float32Array; sampling_rate: number }> };
+
+export const KOKORO_MODEL = 'onnx-community/Kokoro-82M-v1.0-ONNX';
+
+async function loadKokoro(cfg: KokoroConfig): Promise<Tts> {
+  const { KokoroTTS } = await import('kokoro-js');
+  // First run downloads the model from Hugging Face (then it's cached locally).
+  return (await KokoroTTS.from_pretrained(cfg.model ?? KOKORO_MODEL, { dtype: cfg.dtype ?? 'q8', device: 'cpu' })) as unknown as Tts;
+}
+
 /**
- * ElevenLabs text-to-speech WITH timestamps: one call returns audio + character timings
- * (brief §6). Results are cached by (text, voice, model) so re-renders don't spend credits.
- * Needs ELEVENLABS_API_KEY and a voice id (channel.yaml voice_id or ELEVENLABS_VOICE_ID).
+ * Kokoro-82M (Apache 2.0): free, runs locally on CPU. Each segment (hook, then each beat) is
+ * voiced separately, silence-trimmed and joined with short pauses, so beat boundaries are exact.
+ * Results are cached by (model, voice, speed, text).
  */
-export function elevenLabs(voiceId: string | null, model = 'eleven_multilingual_v2'): VoiceProvider {
-  const vid = voiceId ?? process.env.ELEVENLABS_VOICE_ID ?? null;
+export function kokoroVoice(cfg: KokoroConfig, tts?: Tts): VoiceProvider {
   return {
-    id: 'elevenlabs',
-    available: () => !!process.env.ELEVENLABS_API_KEY && !!vid,
-    async synthesize(text): Promise<VoiceResult> {
-      const key = createHash('sha256').update(`${vid}|${model}|${text}`).digest('hex').slice(0, 16);
-      mkdirSync(CACHE, { recursive: true });
-      const mp3 = `${CACHE}${key}.mp3`, json = `${CACHE}${key}.json`;
-      if (!existsSync(json)) {
-        const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${vid}/with-timestamps?output_format=mp3_44100_128`, {
-          method: 'POST',
-          headers: { 'xi-api-key': process.env.ELEVENLABS_API_KEY!, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ text, model_id: model }),
-        });
-        if (!res.ok) throw new Error(`ElevenLabs ${res.status}: ${(await res.text()).slice(0, 200)}`);
-        const body = (await res.json()) as { audio_base64: string; alignment: CharAlignment };
-        writeFileSync(mp3, Buffer.from(body.audio_base64, 'base64'));
-        writeFileSync(json, JSON.stringify(body.alignment));
+    id: 'kokoro',
+    async synthesize(segments): Promise<VoiceResult> {
+      const key = createHash('sha256').update(JSON.stringify([cfg.model ?? KOKORO_MODEL, cfg.dtype ?? 'q8', cfg.voice, cfg.speed, segments])).digest('hex').slice(0, 16);
+      const wav = `${CACHE}${key}.wav`, json = `${CACHE}${key}.json`;
+      if (!tts && existsSync(wav) && existsSync(json)) return JSON.parse(readFileSync(json, 'utf8')) as VoiceResult;
+
+      const engine = tts ?? (await loadKokoro(cfg));
+      const parts: Float32Array[] = [];
+      const words: Word[] = [];
+      let sr = 24000, t = 0.15; // a breath of silence before the hook
+      parts.push(new Float32Array(Math.round(sr * t)));
+      for (const seg of segments) {
+        const out = await engine.generate(seg, { voice: cfg.voice, speed: cfg.speed });
+        sr = out.sampling_rate;
+        const { start, end } = speechBounds(out.audio, sr);
+        const speech = out.audio.subarray(start, end);
+        words.push(...distributeWords(seg, t, t + speech.length / sr));
+        parts.push(speech);
+        t += speech.length / sr;
+        const gap = gapAfter(seg);
+        parts.push(new Float32Array(Math.round(sr * gap)));
+        t += gap;
       }
-      const words = charsToWords(JSON.parse(readFileSync(json, 'utf8')) as CharAlignment);
-      return { audioFile: mp3, words, durationSec: (words[words.length - 1]?.end ?? 0) + 0.3, provider: 'elevenlabs' };
+      const all = new Float32Array(parts.reduce((a, p) => a + p.length, 0));
+      let o = 0;
+      for (const p of parts) { all.set(p, o); o += p.length; }
+      const result: VoiceResult = { audioFile: wav, words, durationSec: all.length / sr, provider: `kokoro:${cfg.voice}` };
+      mkdirSync(CACHE, { recursive: true });
+      writeFileSync(wav, toWav(all, sr));
+      writeFileSync(json, JSON.stringify(result));
+      return result;
     },
   };
 }
 
 /** Offline stand-in: estimated word timings and NO audio. Renders are marked as such. */
-export function estimateVoice(wpm: number): VoiceProvider {
+export function estimateVoice(wpm: number, note?: string): VoiceProvider {
   return {
     id: 'estimate',
-    available: () => true,
-    async synthesize(text) {
-      const words = estimateTimings(text, wpm);
-      return { audioFile: null, words, durationSec: (words[words.length - 1]?.end ?? 0) + 0.4, provider: 'estimate' };
+    async synthesize(segments) {
+      const words = estimateTimings(segments.join(' '), wpm);
+      return { audioFile: null, words, durationSec: (words[words.length - 1]?.end ?? 0) + 0.4, provider: 'estimate', note };
     },
   };
 }
 
-export function pickVoice(voiceId: string | null, wpm: number, model?: string): VoiceProvider {
-  const el = elevenLabs(voiceId, model);
-  return el.available() ? el : estimateVoice(wpm);
+/** Kokoro, or the estimate stand-in if the model can't be loaded (e.g. no network on first run). */
+export async function voiceScript(segments: string[], cfg: KokoroConfig, wpm: number): Promise<VoiceResult> {
+  try {
+    return await kokoroVoice(cfg).synthesize(segments);
+  } catch (e) {
+    return estimateVoice(wpm, `Kokoro unavailable: ${(e as Error).message.split('\n')[0]}`).synthesize(segments);
+  }
 }

@@ -43,7 +43,6 @@ export function preflight(sheet: BeatSheet, now = new Date()): Check[] {
 }
 
 export const MANUAL_STEPS = [
-  'Turn ON TikTok\'s "AI-generated content" label (the voice is AI).',
   'Pin a comment with the sources from post.txt.',
   'Account check: personal (not Business) account, holder 18+.',
   'Political content: no payment or perks from any campaign, party, PAC or advocacy group.',

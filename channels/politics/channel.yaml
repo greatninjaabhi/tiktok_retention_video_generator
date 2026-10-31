@@ -2,7 +2,10 @@
 id: politics
 character: mascot_v1
 lens: left-leaning, Gen Z voice; explain, don't sneer; facts and opinions always separated
-voice_id: null            # pick from 3–5 ElevenLabs test renders (brief §12)
+voice:
+  provider: kokoro        # Kokoro-82M, free and local (Apache 2.0). Owner decision 2026-10-31.
+  voice: am_michael       # `npm run voices` renders test lines; best-rated: af_heart (A), af_bella (A-); US male: am_michael, am_fenrir, am_puck (C+)
+  speed: 1.1              # tune so real renders land at 61–75 s
 wpm: 170                  # target narration pace (brief R9: 155–180)
 handle: "@yourhandle"     # for the "no branding in the first 3 s" check (brief R3)
 

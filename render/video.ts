@@ -27,8 +27,8 @@ import { PROPS } from '../assets/props/index';
 import { MEMES } from '../assets/memes/index';
 import { spokenScript, type BeatSheet, type Verdict } from '../scripts/beatsheet';
 import { lintScript, segmentTimes, type LintResult, type Segment } from '../scripts/lint';
-import { pickVoice } from '../voice/providers';
-import type { VoiceResult } from '../voice/types';
+import { voiceScript } from '../voice/providers';
+import type { VoiceProvider, VoiceResult } from '../voice/types';
 
 const { width: W, height: H, fps } = tokens.canvas;
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
@@ -55,13 +55,13 @@ export type Plan = {
   draft: boolean;
 };
 
-export async function planVideo(sheet: BeatSheet, opts: { draft?: boolean } = {}): Promise<Plan> {
+export async function planVideo(sheet: BeatSheet, opts: { draft?: boolean; voice?: VoiceProvider } = {}): Promise<Plan> {
   const channel = loadChannel(sheet.channel);
   const pre = lintScript(sheet, channel, { draft: opts.draft });
   const preErrors = pre.issues.filter((i) => i.level === 'error');
   if (preErrors.length) throw new Error(`script has ${preErrors.length} error(s):\n` + preErrors.map((i) => `  [${i.rule}] ${i.beat ?? ''} ${i.message}`).join('\n'));
 
-  const voice = await pickVoice(channel.voice_id, sheet.wpm ?? channel.wpm).synthesize(spokenScript(sheet).join(' '));
+  const voice = opts.voice ? await opts.voice.synthesize(spokenScript(sheet)) : await voiceScript(spokenScript(sheet), channel.voice, sheet.wpm ?? channel.wpm);
   const words = voice.words;
   // Re-lint with the real timings: duration and the 25–30 s re-hook depend on the actual voice.
   const lint = lintScript(sheet, channel, { draft: opts.draft, wordTimings: words });
@@ -260,7 +260,6 @@ export function postText(p: Plan): string {
     ...[...urls].map((u) => `- ${u}`),
     '',
     'Before posting:',
-    `- Turn ON TikTok's "AI-generated content" label (AI voice)${p.sheet.ai_voice_label ? '' : ' ⚠ ai_voice_label is false'}`,
     p.sheet.disclosures.length ? `- Turn ON content disclosure: ${p.sheet.disclosures.map((d) => d.sponsor).join(', ')}` : '- No sponsor: leave content disclosure off',
     p.draft ? '- ⚠ DRAFT: human_edited is false. Do not post.' : '',
     p.voice.provider === 'estimate' ? '- ⚠ No real voice: rendered with estimated timings and no narration.' : '',

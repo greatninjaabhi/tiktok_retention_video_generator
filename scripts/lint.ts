@@ -144,7 +144,6 @@ export function lintScript(b: BeatSheet, ch: ChannelConfig, opts: LintOptions = 
   const ageH = ((opts.now ?? new Date()).getTime() - new Date(b.topic.first_seen).getTime()) / 3.6e6;
   if (ageH > ch.max_topic_age_hours) warn('freshness', `topic first seen ${ageH.toFixed(0)} h ago (> ${ch.max_topic_age_hours} h); tie it to something current`);
   for (const d of b.disclosures) if (ch.forbidden_sponsor_types.includes(d.type)) err('disclosures', `no paid political content: sponsor type "${d.type}" is forbidden (§5.4b)`);
-  if (!b.ai_voice_label) err('ai-label', 'videos with an AI voice must use the AI-generated label (§5.2)');
   if (!b.human_edited) (opts.draft ? warn : err)('human-edit', 'a human must edit the angle, an example and the punchline, then set human_edited: true (§2.8.5)');
 
   return { issues, segments: segs, durationSec: duration };
