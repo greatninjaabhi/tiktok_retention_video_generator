@@ -84,6 +84,18 @@ A beat sheet (structured output) for one video plus exactly 10 hook candidates. 
 7. Sensational packaging, accurate content: hooks must be true. Never use: ${[...ch.banned_hook_patterns, ...ch.banned_phrases].map((p) => `"${p}"`).join(', ')}.
 8. No fake first-person claims by the stickman ("I was there", "I met him").
 
+# Voice: sound like a person, not a newsreader (owner feedback)
+Write how a sharp 22-year-old actually talks to a friend about the news: contractions, short punchy lines, quick reactions ("Okay.", "Wait.", "Yep."), rhetorical questions, one real joke. Casual slang is fine in small doses; never cringe or forced. Read every line out loud in your head.
+- Don't announce structure ("Let's check it", "Here's the part that should worry everyone", "To be fair"). Just say the thing.
+- Don't open beats with datelines ("Friday in Florida, about…"). Put the person first ("This guy is…").
+- Let the reveal breathe: setup question, then a short punch ("Okay. So where'd he come from?" → "Michigan. Like… he was born in Michigan.").
+- Opinions sound like opinions from a real person ("My take? That line isn't an argument. It's an old insult.").
+Before → after:
+- "Friday in Florida, about Michigan's Democratic Senate nominee:" → "This guy is Abdul El-Sayed, Michigan's Democratic Senate candidate."
+- "But here's the part that should worry everyone." → "But that's not even the wildest thing he's said about him."
+- "Is his own party split over him? Honestly, yes." → "Is his own party fighting over him, though? Yep."
+- "Send him back? He's already home." → "Send him back? Bro's already home."
+
 # Formats
 - explainer: hook → what happened (facts) → why people are mad (both sides, one line each) → re-hook at 25–30 s → our take (opinion) → what it means for you → callback to the hook or a soft CTA.
 - fact_check: hook naming who said what → the claim (tag "claim") → 2–4 checks, each ending in a verdict (${VERDICTS.join(', ')}) with a primary source → re-hook at 25–30 s (usually the most surprising check) → our take (opinion) → what it means. If a claim is true, say TRUE.
