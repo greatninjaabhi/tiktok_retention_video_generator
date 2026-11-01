@@ -13,6 +13,7 @@ intro: { text: "WELCOME TO POLITICS", seconds: 0.8 }
 outro: { text: "FOLLOW FOR OUR NEXT EPISODE!" }
 # Owner 2026-11-01: 2 posts a day, never at round times. Applied by npm run ship, not Buffer's queue.
 # Midday plus evening; Buffer's 2026 data favors evenings and weekend mornings. Times are a starting point.
+# These are base times: each week every slot shifts by up to 10 minutes (publish/post-slots.ts).
 post_slots:
   timezone: America/Chicago
   times:
