@@ -37,15 +37,13 @@ export function nextSlot(slots: PostSlots, scheduled: Date[], now = new Date()):
     const base = partsIn(new Date(now.getTime() + i * 86_400_000), slots.timezone);
     const noon = new Date(Date.UTC(base.y, base.mo - 1, base.d, 12));
     const times = slots.times[DAYS[noon.getUTCDay()]!] ?? [];
-    let taken = scheduled.filter((s) => dayKey(s, slots.timezone) === `${base.y}-${base.mo}-${base.d}`).length;
+    const taken = scheduled.filter((s) => dayKey(s, slots.timezone) === `${base.y}-${base.mo}-${base.d}`).length;
+    if (taken >= times.length) continue;
     for (const t of [...times].sort()) {
       const [h, mi] = t.split(':').map(Number) as [number, number];
       const at = zonedTime(base.y, base.mo, base.d, h, mi, slots.timezone);
-      if (scheduled.some((s) => s.getTime() === at.getTime())) continue; // that post already fills this slot
-      if (taken >= times.length) break;
-      if (at.getTime() >= earliest) return at;
+      if (at.getTime() >= earliest && !scheduled.some((s) => s.getTime() === at.getTime())) return at;
     }
-    taken = 0;
   }
   throw new Error('no open posting slot in the next 3 weeks');
 }
