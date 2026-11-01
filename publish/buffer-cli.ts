@@ -13,7 +13,7 @@ import { fileURLToPath } from 'node:url';
 import { createInterface } from 'node:readline/promises';
 import { loadBeatSheet } from '../scripts/beatsheet';
 import { preflight } from './preflight';
-import { BufferApiError, bufferCaption, createVideoPost, isTikTok, listChannels, videoUrlProblem } from './buffer-api';
+import { BufferApiError, bufferCaption, bufferKey, createVideoPost, isTikTok, listChannels, pickTikTokChannel, videoUrlProblem } from './buffer-api';
 import { readStore, writeStore } from '../analytics/store';
 import { registerVideo } from '../analytics/register';
 
@@ -21,17 +21,9 @@ const [cmd, ...rest] = process.argv.slice(2);
 const flag = (k: string) => { const i = rest.indexOf(k); return i >= 0 ? rest[i + 1] : undefined; };
 const fail = (msg: string): never => { console.error(msg); process.exit(1); };
 
-function apiKey(): string {
-  const envFile = fileURLToPath(new URL('../.env', import.meta.url));
-  if (existsSync(envFile)) process.loadEnvFile(envFile); // never overrides a variable that's already set
-  const key = process.env.BUFFER_API_KEY;
-  if (!key || key === 'paste-your-key-here') return fail('Put your key in the .env file as BUFFER_API_KEY=... (https://publish.buffer.com/settings/api).');
-  return key;
-}
-
 try {
   if (cmd === 'channels') {
-    const channels = await listChannels(fetch, apiKey());
+    const channels = await listChannels(fetch, bufferKey());
     for (const c of channels) console.log(`${isTikTok(c) ? '→' : ' '} ${c.id}  ${c.service}  ${c.name}`);
     if (!channels.some(isTikTok)) console.log('No TikTok channel is connected: https://publish.buffer.com/settings/channels');
   } else if (cmd === 'register') {
@@ -57,24 +49,21 @@ try {
     const problem = await videoUrlProblem(fetch, url!, statSync(video).size);
     if (problem) fail(problem);
 
-    const key = apiKey();
-    const channels = (await listChannels(fetch, key)).filter(isTikTok);
-    const wanted = flag('--channel') ?? process.env.BUFFER_CHANNEL_ID;
-    const channel = wanted ? channels.find((c) => c.id === wanted) : channels.length === 1 ? channels[0] : undefined;
-    if (!channel) fail(`Pick one TikTok channel with --channel. Found: ${channels.map((c) => `${c.id} (${c.name})`).join(', ') || 'none'}`);
+    const key = bufferKey();
+    const channel = await pickTikTokChannel(fetch, key, flag('--channel') ?? process.env.BUFFER_CHANNEL_ID);
 
     const text = bufferCaption(sheet);
     const dueAt = flag('--at');
-    console.log(`\nChannel: ${channel!.name}\nVideo: ${url}\nCaption:\n---\n${text}\n---`);
+    console.log(`\nChannel: ${channel.name}\nVideo: ${url}\nCaption:\n---\n${text}\n---`);
     if (publish) {
       const rl = createInterface({ input: process.stdin, output: process.stdout });
       const answer = (await rl.question(`Publishes PUBLICLY ${dueAt ? `at ${dueAt}` : 'from the Buffer queue'}. Type "post" to confirm: `)).trim();
       rl.close();
       if (answer !== 'post') fail('Not posted.');
     }
-    const id = await createVideoPost(fetch, key, { channelId: channel!.id, text, videoUrl: url!, dueAt, draft: !publish });
+    const id = await createVideoPost(fetch, key, { channelId: channel.id, text, videoUrl: url!, dueAt, draft: !publish });
     console.log(publish
-      ? `✓ scheduled in Buffer (${id}). Once it's live: pin the sources from post.txt, then npm run buffer -- register ${file} <tiktok video id>`
+      ? `✓ scheduled in Buffer (${id}). Once it's live: npm run buffer -- register ${file} <tiktok video id>`
       : `✓ saved as a Buffer draft (${id}). Nothing was published.`);
   } else {
     fail('usage: npm run buffer -- channels | post <yaml> --url <URL> [--publish] [--at <ISO>] | register <yaml> <tiktok id>');

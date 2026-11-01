@@ -44,7 +44,7 @@ export function preflight(sheet: BeatSheet, now = new Date()): Check[] {
 
 export const MANUAL_STEPS = [
   'Look at npm run frames: can you name every photo\'s subject in one second? Does the opening photo grab?',
-  'Pin a comment with the sources from post.txt.',
+  'Direct TikTok posts only: pin a comment with the sources from post.txt (Buffer posts carry them in the caption).',
   'Account check: personal (not Business) account, holder 18+.',
   'Political content: no payment or perks from any campaign, party, PAC or advocacy group.',
   'Re-watch once at full speed on a phone: captions readable, nothing over the right-side buttons.',

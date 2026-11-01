@@ -3,6 +3,17 @@ import type { BeatSheet } from '../scripts/beatsheet';
 
 export const MAX_CAPTION = 2200;
 
+/** Every source the script cites, in order. */
+export function sourcesOf(sheet: BeatSheet): string[] {
+  const urls = new Set<string>();
+  if (sheet.claim) urls.add(sheet.claim.source.url);
+  for (const b of sheet.beats) {
+    for (const c of b.claims ?? []) c.sources.forEach((s) => urls.add(s.url));
+    b.verdict?.sources.forEach((s) => urls.add(s.url));
+  }
+  return [...urls];
+}
+
 export function buildCaption(sheet: BeatSheet): string {
   const base = (sheet.caption ?? sheet.hook.spoken).trim();
   const tags = [...new Set((sheet.hashtags ?? []).map((h) => '#' + h.replace(/^#/, '').replace(/\s+/g, '').toLowerCase()).filter((h) => h.length > 1))];

@@ -56,13 +56,13 @@ Only photos you have the right to use: public-domain or CC0 (Wikimedia Commons, 
 
 ## Posting
 
-Post through Buffer: `npm run buffer -- post <yaml> --url <public link> ` saves a draft, and `--publish` queues it after preflight and a typed confirmation. TikTok's guidelines say its Direct Post API isn't meant for "a utility tool to help upload contents to the account(s) you or your team manages", so `npm run tiktok` is limited to private test posts or sending videos to TikTok drafts.
+The owner's only job is to watch the draft and say "post it". Then `npm run ship -- <yaml> --yes` marks it approved, renders the final without the draft stamp, runs preflight, hosts the file on a GitHub release and queues it in Buffer. Sources go in the caption, so there's nothing to pin. Owner decision 2026-10-31: this replaces the brief's requirement (§2.8.5) that a human rewrites part of each script; watch whether videos get flagged as unoriginal. TikTok's guidelines say its Direct Post API isn't meant for "a utility tool to help upload contents to the account(s) you or your team manages", so `npm run tiktok` is limited to private test posts or sending videos to TikTok drafts.
 
 Buffer takes video by public URL only, and allows up to 5 hashtags. Use its automatic publishing for now. Original audio is what we have anyway, since trending sounds aren't available through its API.
 
 ## What never bends for retention
 
-From `RESEARCH_BRIEF.md` §0.5: sourced facts, verbatim quotes, opinions marked as opinions, allegations said out loud as allegations, voting info only from official sources, no doctored photos, no paid political content, and a human edit before posting. Agents never set `human_edited: true`.
+From `RESEARCH_BRIEF.md` §0.5: sourced facts, verbatim quotes, opinions marked as opinions, allegations said out loud as allegations, voting info only from official sources, no doctored photos, no paid political content, and the owner watching every video before it posts.
 
 ## Reference frames
 

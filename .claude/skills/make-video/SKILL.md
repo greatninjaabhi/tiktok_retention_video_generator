@@ -5,7 +5,7 @@ description: Make a new political explainer or fact-check video to the owner-app
 
 # Make a video
 
-The goal is a video the owner would happily post after a light edit. Read `docs/PLAYBOOK.md` first and look at its reference frames; those are the bar. If you can't meet a step, stop and say so. Never lower the bar quietly.
+The goal is a video the owner can post after watching it once, with nothing else to do. Read `docs/PLAYBOOK.md` first and look at its reference frames; those are the bar. If you can't meet a step, stop and say so. Never lower the bar quietly.
 
 ## 1. Pick the topic
 
@@ -51,7 +51,9 @@ Then write the rest, using `channels/politics/voice.yaml`:
 - Opinions marked as opinions, and allegations said as allegations
 - The last two beats: a callback to the hook, then "Follow for our next episode!" tagged `cta`
 
-Read every line as if saying it to a friend, and rewrite any that sound like a newsreader. Leave `human_edited: false`, and put what the owner must verify at the top of the file.
+Read every line as if saying it to a friend, and rewrite any that sound like a newsreader. Leave `human_edited: false`.
+
+**You do the fact-checking; the owner won't.** Before moving on, check every line against what you actually read. Cut or reword anything you can't back up, including a quote you could only see secondhand, unless two independent outlets quote it the same way. If a claim could be stale by posting time, say "so far". Name anything still unresolved at the top of the file.
 
 ## 4. Find photos with a clear subject
 
@@ -101,17 +103,18 @@ The PC has to stay awake. Pull about 16 frames across the finished video with ff
 
 ## 7. Save and report
 
-Run `npm run check`, then commit and push. Report to the owner:
+Run `npm run check`, then commit and push. Open the video and keep the report short:
 
-- The video path, length, voice and linter warnings
-- What to verify, what you read only secondhand, and what could go stale
-- What you couldn't check, including pronunciation of unusual names
-- Any place you settled for less, such as a missing photo
+- The video path and length
+- At most three things worth their attention while watching: unusual names to listen for, a claim you had to soften, a photo you settled for
+- "Say **post it** when you're happy."
+
+When the owner says to post this video, run `npm run ship -- scripts/videos/<id>.yaml --yes`, commit and push the approval, and tell them it's queued. Before that, re-check for news that changed the story since the draft. If something changed, tell them instead of posting.
 
 ## Never
 
-- Set `human_edited: true`, or weaken a check, test or the pace to get a video through
-- Publish. Buffer drafts are fine if asked. `--publish` only when the owner asks, and only after they've edited the script.
+- Set `human_edited: true` by hand, or weaken a check, test or the pace to get a video through
+- Publish a video the owner hasn't watched and told you to post
 
 ## When the owner gives feedback
 

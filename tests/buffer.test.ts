@@ -1,5 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
+import { hostOnGitHub, repoFromRemote } from '../publish/github-host';
 import { BufferApiError, MAX_BUFFER_HASHTAGS, bufferCaption, createVideoPost, createVideoPostMutation, isTikTok, listChannels, videoUrlProblem } from '../publish/buffer-api';
 import type { Fetch } from '../publish/tiktok-api';
 import { loadBeatSheet } from '../scripts/beatsheet';
@@ -48,6 +49,51 @@ describe('Buffer posting', () => {
   it('keeps to Buffer\'s hashtag limit', () => {
     const tags = bufferCaption({ ...sheet, hashtags: ['a', 'b', 'c', 'd', 'e', 'f', 'g'] }).match(/#\w+/g)!;
     expect(tags).toHaveLength(MAX_BUFFER_HASHTAGS);
+  });
+});
+
+describe('sources in the caption', () => {
+  it('lists every source once, so nothing has to be pinned by hand', () => {
+    const c = bufferCaption(sheet);
+    expect(c).toContain('Sources:\nhttps://www.factcheck.org/');
+    expect(c.match(/vote\.gov/g)).toHaveLength(1);
+    expect(c.length).toBeLessThanOrEqual(2200);
+  });
+  it('drops the list rather than go over the limit', () => {
+    const c = bufferCaption({ ...sheet, caption: 'x'.repeat(2000) });
+    expect(c).not.toContain('Sources:');
+  });
+});
+
+describe('GitHub video hosting', () => {
+  it('reads the repo from either remote style', () => {
+    expect(repoFromRemote('https://github.com/a/b.git\n')).toBe('a/b');
+    expect(repoFromRemote('git@github.com:a/b.git')).toBe('a/b');
+  });
+  function fakeGitHub(existing: boolean) {
+    const calls: string[] = [];
+    const f: Fetch = async (url, init) => {
+      const u = String(url), method = init?.method ?? 'GET';
+      calls.push(`${method} ${u}`);
+      if (method === 'GET') return existing
+        ? Response.json({ upload_url: 'https://uploads.example/1/assets{?name,label}', assets: [{ id: 7, name: 'video.mp4', browser_download_url: 'old' }] })
+        : new Response('{}', { status: 404 });
+      if (method === 'DELETE') return new Response(null, { status: 204 });
+      if (u.endsWith('/releases')) return Response.json({ upload_url: 'https://uploads.example/1/assets{?name,label}', assets: [] });
+      return Response.json({ id: 8, name: 'video.mp4', browser_download_url: 'https://github.com/a/b/releases/download/video-v1/video.mp4' });
+    };
+    return { f, calls };
+  }
+  it('creates a release and uploads', async () => {
+    const { f, calls } = fakeGitHub(false);
+    expect(await hostOnGitHub(f, 't', 'a/b', 'v1', new Uint8Array(3))).toContain('/video-v1/video.mp4');
+    expect(calls).toContain('POST https://api.github.com/repos/a/b/releases');
+    expect(calls).toContain('POST https://uploads.example/1/assets?name=video.mp4');
+  });
+  it('replaces the old file on a re-render', async () => {
+    const { f, calls } = fakeGitHub(true);
+    await hostOnGitHub(f, 't', 'a/b', 'v1', new Uint8Array(3));
+    expect(calls).toContain('DELETE https://api.github.com/repos/a/b/releases/assets/7');
   });
 });
 

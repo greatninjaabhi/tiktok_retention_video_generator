@@ -4,8 +4,10 @@
  * ⚠️ Buffer's docs disagree on whether createPost accepts TikTok, and it takes video by public URL
  * only. `npm run buffer -- channels` and a draft are the way to find out on a real account.
  */
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import type { BeatSheet } from '../scripts/beatsheet';
-import { buildCaption } from './caption';
+import { buildCaption, MAX_CAPTION, sourcesOf } from './caption';
 import type { Fetch } from './tiktok-api';
 
 export const BUFFER_ENDPOINT = 'https://api.buffer.com';
@@ -16,6 +18,19 @@ export type BufferChannel = { id: string; name: string; service: string };
 export type VideoPost = { channelId: string; text: string; videoUrl: string; dueAt?: string; draft: boolean };
 
 export class BufferApiError extends Error {}
+
+/** Keys live in the gitignored .env file; a variable that's already set wins. */
+export function loadEnv(): void {
+  const envFile = fileURLToPath(new URL('../.env', import.meta.url));
+  if (existsSync(envFile)) process.loadEnvFile(envFile);
+}
+
+export function bufferKey(): string {
+  loadEnv();
+  const key = process.env.BUFFER_API_KEY;
+  if (!key || key === 'paste-your-key-here') throw new BufferApiError('put your key in the .env file as BUFFER_API_KEY=... (https://publish.buffer.com/settings/api)');
+  return key;
+}
 
 export async function gql<T>(f: Fetch, key: string, query: string): Promise<T> {
   const res = await f(BUFFER_ENDPOINT, {
@@ -42,8 +57,18 @@ export async function listChannels(f: Fetch, key: string): Promise<BufferChannel
 
 export const isTikTok = (c: BufferChannel) => /tiktok/i.test(c.service);
 
+export async function pickTikTokChannel(f: Fetch, key: string, wanted?: string): Promise<BufferChannel> {
+  const channels = (await listChannels(f, key)).filter(isTikTok);
+  const channel = wanted ? channels.find((c) => c.id === wanted) : channels.length === 1 ? channels[0] : undefined;
+  if (!channel) throw new BufferApiError(`pick one TikTok channel with --channel. Found: ${channels.map((c) => `${c.id} (${c.name})`).join(', ') || 'none'}`);
+  return channel;
+}
+
 export function bufferCaption(sheet: BeatSheet): string {
-  return buildCaption({ ...sheet, hashtags: (sheet.hashtags ?? []).slice(0, MAX_BUFFER_HASHTAGS) });
+  const caption = buildCaption({ ...sheet, hashtags: (sheet.hashtags ?? []).slice(0, MAX_BUFFER_HASHTAGS) });
+  // Sources travel with the post, so nobody has to pin a comment by hand.
+  const withSources = `${caption}\n\nSources:\n${sourcesOf(sheet).join('\n')}`;
+  return withSources.length <= MAX_CAPTION ? withSources : caption;
 }
 
 export function createVideoPostMutation(p: VideoPost): string {
