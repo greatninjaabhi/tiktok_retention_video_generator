@@ -1,9 +1,10 @@
 /**
- * npm run ship -- scripts/videos/<id>.yaml [--at <ISO time>] [--url <public mp4 link>] [--yes]
+ * npm run ship -- scripts/videos/<id>.yaml [--render-only | --no-render] [--at <ISO time>] [--url <public mp4 link>] [--yes]
  *
- * One step from "I watched it" to queued on TikTok: marks the script approved, renders the final
- * video without the draft stamp, runs preflight, hosts the file and queues it in Buffer.
- * Asks you to type "post"; agents pass --yes only after the owner says to post this video.
+ * From a checked script to queued on TikTok: clears the script to post, renders the final video
+ * without the draft stamp, runs preflight, hosts the file and queues it in Buffer.
+ * --render-only stops after the render so the video can be inspected; --no-render then queues it.
+ * Asks you to type "post"; agents pass --yes as part of /make-video.
  */
 import { execFileSync } from 'node:child_process';
 import { readFileSync, statSync, writeFileSync } from 'node:fs';
@@ -36,26 +37,32 @@ const text = bufferCaption(sheet);
 const dueAt = flag('--at');
 
 console.log(`\nChannel: ${channel.name}\nVideo: ${sheet.id}\nCaption:\n---\n${text}\n---`);
-if (!args.includes('--yes')) {
+if (!args.includes('--yes') && !args.includes('--render-only')) {
   const rl = createInterface({ input: process.stdin, output: process.stdout });
   const answer = (await rl.question(`Publishes PUBLICLY ${dueAt ? `at ${dueAt}` : 'from the Buffer queue'}. Type "post" to confirm: `)).trim();
   rl.close();
   if (answer !== 'post') fail('Not posted.');
 }
 
-// The approval is the owner watching the draft; say so in the script's history.
+// Record what the sign-off really was: the owner chose auto-queueing and can remove a video in Buffer.
 const today = new Date().toISOString().slice(0, 10);
-writeFileSync(file!, original.replace(/human_edited: false/, `human_edited: true # owner watched and approved ${today}`));
+writeFileSync(file!, original.replace(/human_edited: false/, `human_edited: true # cleared ${today}: fact-checked by the agent, auto-queued; owner can remove it in Buffer`));
 try {
   const approved = loadBeatSheet(file!);
-  console.log('Rendering the final video (about 9 minutes; keep the PC awake)…');
-  const plan = await planVideo(approved);
-  const blocking = plan.lint.issues.filter((i) => i.level === 'error');
-  if (blocking.length) throw new Error(`script fails with real timings: ${blocking.map((i) => i.message).join('; ')}`);
-  await renderVideo(plan);
+  if (!args.includes('--no-render')) {
+    console.log('Rendering the final video (about 9 minutes; keep the PC awake)…');
+    const plan = await planVideo(approved);
+    const blocking = plan.lint.issues.filter((i) => i.level === 'error');
+    if (blocking.length) throw new Error(`script fails with real timings: ${blocking.map((i) => i.message).join('; ')}`);
+    await renderVideo(plan);
+  }
 
   const failed = preflight(approved).filter((c) => !c.ok);
   if (failed.length) throw new Error(`preflight failed: ${failed.map((c) => c.label).join('; ')}`);
+  if (args.includes('--render-only')) {
+    console.log(`✓ out/${approved.id}/video.mp4 is ready. Inspect it, then: npm run ship -- ${file} --no-render --yes`);
+    process.exit(0);
+  }
 
   const video = fileURLToPath(new URL(`../out/${approved.id}/video.mp4`, import.meta.url));
   const repo = repoFromRemote(execFileSync('git', ['remote', 'get-url', 'origin'], { encoding: 'utf8' }));

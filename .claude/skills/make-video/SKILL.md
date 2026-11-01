@@ -5,7 +5,7 @@ description: Make a new political explainer or fact-check video to the owner-app
 
 # Make a video
 
-The goal is a video the owner can post after watching it once, with nothing else to do. Read `docs/PLAYBOOK.md` first and look at its reference frames; those are the bar. If you can't meet a step, stop and say so. Never lower the bar quietly.
+The goal is a video good enough to go out without anyone else touching it. Finished videos go straight into the Buffer queue, and the owner may not look before the slot arrives, so you are the last check. Read `docs/PLAYBOOK.md` first and look at its reference frames; those are the bar. If you can't meet a step, stop and say so. Never lower the bar quietly.
 
 ## 1. Pick the topic
 
@@ -80,7 +80,7 @@ npm run lint:script -- scripts/videos/<id>.yaml
 npm run frames -- scripts/videos/<id>.yaml --draft
 ```
 
-`lint:script` reports `human-edit` until the owner signs off; `--draft` allows that one. Its other timing is an estimate. `npm run frames` uses the real voice, so its numbers decide.
+`lint:script` reports `human-edit` until the final step clears the script; `--draft` allows that one. Its other timing is an estimate. `npm run frames` uses the real voice, so its numbers decide.
 
 Open `out/<id>/frames/sheet.png` next to the reference frames and go through this list:
 
@@ -93,28 +93,44 @@ Open `out/<id>/frames/sheet.png` next to the reference frames and go through thi
 
 If timing fails, change the words, not the speed. Under 61 s, add sourced lines. Rehook too early, add words before it. A line over 4.5 s gets split. Fix everything here: a render takes about 9 minutes.
 
-## 6. Render and inspect
+## 6. Decide whether it can queue on its own
+
+**Hold it for the owner instead of queueing** if any of these is true. Render with `npm run render -- <yaml> --draft`, then explain why you held it.
+
+- A central claim rests on one source, or on outlets that disagree
+- A quote in the script couldn't be confirmed word for word by two independent outlets or a primary source
+- It accuses someone of a crime or wrongdoing that hasn't been established, beyond reporting what's alleged and who denies it
+- It involves a private person, a minor, violence or a breaking event still unfolding
+- Your frames or fact-check left something you're unsure about
+
+Otherwise, re-check the news in case the story changed while you worked, then continue.
+
+## 7. Render the final and inspect it
 
 ```bash
-npm run render -- scripts/videos/<id>.yaml --draft
+npm run ship -- scripts/videos/<id>.yaml --render-only
 ```
 
-The PC has to stay awake. Pull about 16 frames across the finished video with ffmpeg and look at them, and confirm its length with ffprobe. You can't hear audio, so say that.
+The PC has to stay awake. Pull about 16 frames across the finished video with ffmpeg and look at them, and confirm its length with ffprobe. You can't hear audio, so say that. If something's wrong, fix it, set `human_edited` back to `false`, and go back to step 5.
 
-## 7. Save and report
+## 8. Queue it
+
+```bash
+npm run ship -- scripts/videos/<id>.yaml --no-render --yes
+```
+
+## 9. Save and report
 
 Run `npm run check`, then commit and push. Open the video and keep the report short:
 
-- The video path and length
-- At most three things worth their attention while watching: unusual names to listen for, a claim you had to soften, a photo you settled for
-- "Say **post it** when you're happy."
-
-When the owner says to post this video, run `npm run ship -- scripts/videos/<id>.yaml --yes`, commit and push the approval, and tell them it's queued. Before that, re-check for news that changed the story since the draft. If something changed, tell them instead of posting.
+- It's queued (or held, and why), with the video path and length
+- At most three things worth their attention: unusual names to listen for, a claim you softened, a photo you settled for, anything that could go stale before its slot
+- That they can remove it in Buffer before it posts
 
 ## Never
 
 - Set `human_edited: true` by hand, or weaken a check, test or the pace to get a video through
-- Publish a video the owner hasn't watched and told you to post
+- Queue a video that meets a hold rule, or skip the hold rules because a video is urgent
 
 ## When the owner gives feedback
 
