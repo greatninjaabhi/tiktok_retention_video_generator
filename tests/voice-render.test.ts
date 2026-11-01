@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { distributeWords, gapAfter, speechBounds } from '../voice/timing';
 import { estimateVoice, kokoroVoice, type Tts } from '../voice/providers';
@@ -59,13 +60,23 @@ describe('synthesized SFX', () => {
 });
 
 describe('render plan (offline voice)', async () => {
-  const sheet = loadBeatSheet(new URL('../scripts/videos/2026-11-01-filibuster.yaml', import.meta.url).pathname);
+  const sheet = loadBeatSheet(fileURLToPath(new URL('../scripts/videos/2026-11-01-filibuster.yaml', import.meta.url)));
   const plan = await planVideo(sheet, { draft: true, voice: estimateVoice(170) });
   it('uses estimated timings without a key, and marks drafts', () => {
     expect(plan.voice.provider).toBe('estimate');
     expect(plan.draft).toBe(true);
     expect(frameSvg(plan, 10)).toContain('DRAFT: NOT FOR POSTING');
     expect(frameSvg(plan, 10)).toContain('NO VOICE');
+  });
+  it('opens on the channel intro, then the hook frames', () => {
+    expect(plan.introSec).toBeGreaterThan(0);
+    expect(plan.words[0]!.start).toBeGreaterThanOrEqual(plan.introSec);
+    expect(frameSvg(plan, 0)).toContain('WELCOME');
+    expect(frameSvg(plan, Math.ceil(plan.introSec * 30))).not.toContain('WELCOME');
+  });
+  it('the intro sting is deterministic and bounded', () => {
+    expect(synth('sting', 's')).toEqual(synth('sting', 's'));
+    expect(Math.max(...synth('sting', 's').map(Math.abs))).toBeLessThanOrEqual(0.9001);
   });
   it('shows the on-screen hook on frame 0 (R1)', () => {
     expect(frameSvg(plan, 0)).toContain("WHY CONGRESS");

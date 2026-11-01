@@ -1,8 +1,9 @@
-import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { PROVIDERS } from './providers';
+import { PROVIDERS, USER_AGENT } from './providers';
 import { local } from './local';
-import { screen, type Rejection } from './filter';
+import { screen, screenFile, type Rejection } from './filter';
 import { CACHE_DIR, readManifest, upsert, writeManifest } from './manifest';
 import type { StockCandidate, StockProvider } from './types';
 
@@ -27,20 +28,26 @@ export async function searchStock(query: string, n = 3, providers: StockProvider
 
 const ext = (url: string) => (/\.png($|\?)/i.test(url) ? 'png' : 'jpg');
 export const cachePath = (c: StockCandidate) => `${CACHE_DIR}${c.id.replace(/[^\w.-]+/g, '_')}.${ext(c.downloadUrl)}`;
+/** Repo-relative, forward-slash path for the manifest, the same on every OS. */
+export const repoPath = (file: string) => `assets/stock/cache/${basename(file)}`;
 
 /** Download into assets/stock/cache/ and log the license in the manifest. Returns the local file. */
 export async function download(c: StockCandidate, query: string): Promise<string> {
   mkdirSync(CACHE_DIR, { recursive: true });
   const file = cachePath(c);
   if (!existsSync(file)) {
-    if (c.downloadUrl.startsWith('file://')) copyFileSync(fileURLToPath(c.downloadUrl), file);
+    let bytes: Buffer;
+    if (c.downloadUrl.startsWith('file://')) bytes = readFileSync(fileURLToPath(c.downloadUrl));
     else {
-      const res = await fetch(c.downloadUrl);
+      const res = await fetch(c.downloadUrl, { headers: { 'User-Agent': USER_AGENT } });
       if (!res.ok) throw new Error(`download ${c.id} failed: ${res.status}`);
-      writeFileSync(file, Buffer.from(await res.arrayBuffer()));
+      bytes = Buffer.from(await res.arrayBuffer());
     }
+    const problem = screenFile(bytes);
+    if (problem) throw new Error(`${c.id}: ${problem}`);
+    writeFileSync(file, bytes);
   }
-  writeManifest(upsert(readManifest(), c, query, file.slice(file.indexOf('assets/'))));
+  writeManifest(upsert(readManifest(), c, query, repoPath(file)));
   return file;
 }
 

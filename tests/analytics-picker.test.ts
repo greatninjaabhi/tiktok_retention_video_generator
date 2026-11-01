@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import type { Store, VideoRecord } from '../analytics/store';
 import { importStudioCsv, parseCsv, parseVideoList, recordSnapshots, toRate, toSeconds } from '../analytics/tiktok';
@@ -92,7 +93,7 @@ describe('picker', () => {
 
 describe('preflight', () => {
   it('blocks the draft sample', () => {
-    const checks = preflight(loadBeatSheet(new URL('../scripts/videos/2026-11-01-filibuster.yaml', import.meta.url).pathname));
+    const checks = preflight(loadBeatSheet(fileURLToPath(new URL('../scripts/videos/2026-11-01-filibuster.yaml', import.meta.url))));
     expect(checks.find((c) => c.label.startsWith('a human edited'))!.ok).toBe(false);
     expect(checks.some((c) => !c.ok)).toBe(true);
   });

@@ -14,13 +14,18 @@ export type Transition = 'whip' | 'punch' | 'flash';
 export type PanelShot = {
   start: number; // seconds
   query: string;
-  image: { id: string; dataUri: string } | null;
+  /** What the photo actually shows, and when: a file photo must never pass for the event in the script. */
+  caption?: string;
+  /** cropTop: crop from the top so the head stays in frame (default for tall portraits). */
+  image: { id: string; dataUri: string; cropTop?: boolean } | null;
 };
 
 const ST = tokens.stock;
 const W = tokens.canvas.width;
 const pad = tokens.layout.panelPaddingPx;
 export const PANEL = { x: pad, y: pad, w: W - 2 * pad, h: tokens.layout.topPanelPx - 2 * pad };
+
+const CAPTION_H = 84;
 
 const clamp01 = (t: number) => Math.min(1, Math.max(0, t));
 const easeInOut = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2);
@@ -41,7 +46,16 @@ function shotSvg(shot: PanelShot, kenBurns: number, dx: number, boilFrame: numbe
   const cx = PANEL.x + PANEL.w / 2, cy = PANEL.y + PANEL.h / 2;
   const move = `translate(${dx.toFixed(1)} 0) translate(${cx} ${cy}) scale(${kenBurns.toFixed(4)}) translate(${-cx} ${-cy})`;
   if (shot.image) {
-    return `<g clip-path="url(#panelClip)"><g transform="${move}"><image href="${shot.image.dataUri}" x="${PANEL.x}" y="${PANEL.y}" width="${PANEL.w}" height="${PANEL.h}" preserveAspectRatio="xMidYMid slice" filter="url(#grade)"/></g></g>`;
+    let caption = '';
+    if (shot.caption) {
+      const pen = new Pen({ seed: seed + '|photoCaption', boilFrame });
+      pen.at({ x: dx }, () => {
+        pen.rect(PANEL.x, PANEL.y + PANEL.h - CAPTION_H, PANEL.w, CAPTION_H, { fill: 'ink', outline: false });
+        pen.label(shot.caption!, cx, PANEL.y + PANEL.h - CAPTION_H / 2 - 4, { size: 'small', color: 'white' });
+      });
+      caption = itemsToSvg(pen.items);
+    }
+    return `<g clip-path="url(#panelClip)"><g transform="${move}"><image href="${shot.image.dataUri}" x="${PANEL.x}" y="${PANEL.y}" width="${PANEL.w}" height="${PANEL.h}" preserveAspectRatio="xMidY${shot.image.cropTop ? 'Min' : 'Mid'} slice" filter="url(#grade)"/></g>${caption}</g>`;
   }
   // Placeholder: obviously not a photo.
   const pen = new Pen({ seed: seed + '|placeholder', boilFrame });
@@ -54,7 +68,8 @@ function shotSvg(shot: PanelShot, kenBurns: number, dx: number, boilFrame: numbe
   return `<g clip-path="url(#panelClip)">${itemsToSvg(pen.items)}</g>`;
 }
 
-export function stockPanelSvg(shots: PanelShot[], t: number, fps: number, seed: string, boilFrame = 0): string {
+export function stockPanelSvg(shots: PanelShot[], t: number, fps: number, seed: string, boilFrame = 0, showCaption = true): string {
+  if (!showCaption) shots = shots.map((s) => ({ ...s, caption: undefined }));
   let i = -1;
   for (let k = 0; k < shots.length; k++) if (shots[k]!.start <= t) i = k;
   if (i < 0) return '';

@@ -14,6 +14,9 @@ rules:
   - Opinions sound like a person's opinion ("My take?", "Honestly?").
   - Say numbers the way people say them ("sixty votes", "a toss-up").
   - Read every line out loud. If you wouldn't say it to a friend, rewrite it.
+  - Open on the most recognizable name in the story. Grab first, explain second; never open on background.
+  - The hook creates a question the viewer has to stay for. Don't spend the payoff in it.
+  - Fast. No throat-clearing, no setup line that a sharper line could replace.
 
 # Phrases that make scripts sound like a robot or a newsreader. The linter warns on these,
 # and drafts that use them get sent back for a rewrite.
@@ -56,6 +59,8 @@ topic_notes:
 # Before → after lines (the voice we want). Approved scripts (human_edited: true) are added as
 # examples automatically; these seed it until there are some.
 examples:
+  - before: "Trump told a crowd: send this guy back where he came from."
+    after: "Trump wants to send this guy back. Wait till you hear where."
   - before: "Friday in Florida, about Michigan's Democratic Senate nominee:"
     after: "This guy is Abdul El-Sayed, Michigan's Democratic Senate candidate."
   - before: "So let's check it. Where did Abdul El-Sayed come from?"

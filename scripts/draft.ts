@@ -11,7 +11,7 @@ import type { ChannelConfig } from '../render/channel';
 import { stickman, POSE_NAMES } from '../assets/characters/stickman/character';
 import { PROPS } from '../assets/props/index';
 import { MEMES } from '../assets/memes/index';
-import { BEAT_TAGS, LEANS, VERDICTS, parseBeatSheet, type BeatSheet } from './beatsheet';
+import { BEAT_TAGS, LEANS, VERDICTS, parseBeatSheet, type BeatSheet, MAX_PHOTO_CAPTION } from './beatsheet';
 import { lintScript, type ScriptIssue } from './lint';
 import { scoreHook, type HookPattern } from './hooks';
 import { roboticHits, type VoiceConfig } from './voice';
@@ -34,7 +34,8 @@ export function draftSchema(ch: ChannelConfig, patterns: HookPattern[]) {
     expression: enumOrNone(Object.keys(stickman.expressions)),
     prop: enumOrNone(Object.keys(PROPS)),
     panel_kind: z.enum(['none', 'stock', 'meme']),
-    stock_query: z.string().describe('Stock photo search words if panel_kind is stock, else empty.'),
+    stock_query: z.string().describe('Photo search words if panel_kind is stock, else empty. Name the specific person, place or thing.'),
+    photo_caption: z.string().describe(`If panel_kind is stock: at most ${MAX_PHOTO_CAPTION} characters saying what the photo shows and when, e.g. "Trump at a rally in Nashville, 2017". Else empty.`),
     meme: enumOrNone(panelMemes),
     meme_text: z.array(z.object({ slot: z.string(), text: z.string() })),
     camera: enumOrNone(cameraMemes),
@@ -102,20 +103,20 @@ ${voiceSection(voice)}
 Required tags: ${Object.entries(ch.required_tags).map(([f, t]) => `${f}: ${t.join(', ')}`).join('; ')}.
 
 # Timing rules (narration at ${ch.wpm} words per minute)
-- Total spoken words (hook + all beats) ≈ 175–200, which lands at 61–75 s.
+- Total spoken words (hook + all beats) ≈ 190–235, which lands at 61–75 s with the fast house voice.
 - Hook: spoken 6–12 words; on-screen text 3–8 words. No channel name, "follow" or "subscribe" in the hook.
 - Every beat ≤ 12 words (≤ 4 s): each beat is a visual change. Split longer thoughts into several beats.
-- The beat tagged "rehook" starts after ≈ 70–85 spoken words (25–30 s). It opens a loop (opens: L1) that a later beat closes.
+- The beat tagged "rehook" starts after ≈ 72–88 spoken words (25–30 s). It opens a loop (opens: L1) that a later beat closes.
 - Open a small loop every 10–15 s (opens/closes ids like L0, L1, L2). Every opened loop must be closed.
-- Last beat: tag "callback" or "cta" (a soft follow ask is fine only at the end).
+- Second-to-last beat: a callback to the hook, tagged "callback". Last beat: exactly "Follow for our next episode!", tagged "cta".
 
 # Visual vocabulary (use only these)
 - pose: ${POSE_NAMES.join(', ')}. Change pose often; match the emotion (shocked for reveals, thinking before a twist, point_up when referring to the image above, present when explaining, celebrate for a win).
 - expression (optional): ${Object.keys(stickman.expressions).join(', ')}.
 - prop (optional, generic doodles only): ${props}.
-- panel: "stock" with a concrete, literal photo search (e.g. "us capitol building", "protest signs crowd"); "meme" with one of ${panelMemes.join(', ')} (slots: expectation_reality → left, right; nobody_me → who); or "none" to keep the previous photo. About one meme beat per 15–20 s, never in the first 2 s.
+- panel: "stock" with a photo search and a caption. The FIRST beat must have a photo, and it should show the most recognizable person in the story (often whoever made the claim, in any party). Every photo needs one clear subject you can name in a second: a person, a building, an object. No scenic, aerial, abstract or "from space" shots, and no crowds without a clear subject. Vary them; not every photo should be a headshot; "meme" with one of ${panelMemes.join(', ')} (slots: expectation_reality → left, right; nobody_me → who); or "none" to keep the previous photo. About one meme beat per 15–20 s, never in the first 2 s.
 - camera: ${cameraMemes.join(', ')} (deadpan push-in) for one punchline, or empty.
-- Never depict or name a real person as the stickman. Never ask for photos of specific politicians from stock: describe places, objects and crowds.
+- Never depict or name a real person as the stickman. Name real politicians in photo searches when they're in the story: free public-domain photos of them often exist. The stickman still never plays them. Captions state what the photo really shows and when; a file photo must never pass for the event in the script.
 
 # Hook patterns (choose the best fit; write 10 distinct candidates)
 ${patterns.map((p) => `- ${p.id}: "${p.template}" (use when: ${p.use_when})`).join('\n')}
@@ -177,7 +178,7 @@ export function toBeatSheet(d: Draft, input: DraftInput, ch: ChannelConfig): Bea
       pose: b.pose,
       ...(b.expression ? { expression: b.expression } : {}),
       ...(b.prop ? { prop: b.prop } : {}),
-      ...(b.panel_kind === 'stock' && b.stock_query ? { panel: { stock: b.stock_query } } : {}),
+      ...(b.panel_kind === 'stock' && b.stock_query ? { panel: { stock: b.stock_query, ...(b.photo_caption ? { caption: b.photo_caption } : {}) } } : {}),
       ...(b.panel_kind === 'meme' && b.meme ? { panel: { meme: b.meme, text: Object.fromEntries(b.meme_text.map((t) => [t.slot, t.text])) } } : {}),
       ...(b.camera ? { camera: b.camera } : {}),
       ...(b.claims.length ? { claims: b.claims } : {}),

@@ -14,7 +14,7 @@ topic:
   type: election_mechanics
   first_seen: "2026-10-31T02:00:00Z"
 hook:
-  spoken: "Trump told a crowd: send this guy back where he came from."
+  spoken: "Trump wants to send this guy back. Wait till you hear where."
   on_screen: "SEND HIM BACK… WHERE?"
   pattern: said_check
 claim:
@@ -35,10 +35,10 @@ research:
   - { url: "https://www.washingtonexaminer.com/?p=4674386", outlet: Washington Examiner, lean: lean_right }
 beats:
   - id: b01
-    line: "This guy is Abdul El-Sayed, Michigan's Democratic Senate candidate."
+    line: "He's Abdul El-Sayed, Michigan's Democratic Senate candidate."
     tags: [claim]
     pose: present
-    panel: { stock: "political rally crowd night" }
+    panel: { stock: "Trump Nashville (10)", caption: "Trump at a rally in Nashville, 2017" }
     claims:
       - text: "Abdul El-Sayed is the Democratic Senate nominee in Michigan; Trump spoke about him at a Daytona Beach, FL rally on Oct 30."
         sources: [{ url: "https://www.mediaite.com/media/tv/trump-demands-el-sayed-be-sent-back-to-the-united-states-send-him-back-to-where-he-came-from/", type: on_record_quote }]
@@ -50,12 +50,19 @@ beats:
     claims:
       - text: "Verbatim quote (confirm against the full rally video)."
         sources: [{ url: "https://www.mediaite.com/media/tv/trump-demands-el-sayed-be-sent-back-to-the-united-states-send-him-back-to-where-he-came-from/", type: on_record_quote }]
+  - id: b02b
+    line: "That was at a rally in Daytona Beach, Florida."
+    tags: [fact]
+    pose: present
+    claims:
+      - text: "Trump spoke at a rally in Daytona Beach, FL on Oct 30."
+        sources: [{ url: "https://www.mediaite.com/media/tv/trump-demands-el-sayed-be-sent-back-to-the-united-states-send-him-back-to-where-he-came-from/", type: on_record_quote }]
   - id: b03
     line: "Okay. So where'd he come from?"
     tags: []
     pose: thinking
     opens: L0
-    panel: { stock: "michigan state capitol lansing" }
+    panel: { stock: "Detroit Skyline from Riverwalk May 2024", caption: "Downtown Detroit, Michigan, 2024" }
   - id: b04
     line: "Michigan. Like… he was born in Michigan."
     tags: [fact, verdict]
@@ -69,6 +76,13 @@ beats:
     verdict:
       label: "FALSE"
       sources: [{ url: "https://www.huffpost.com/entry/trump-el-sayed-send-him-back-to-where-he-came-from_n_6ae55788e4b0b1f508d4cd32", type: major_outlet }]
+  - id: b04b
+    line: "In 1984, to Egyptian immigrant parents."
+    tags: [fact]
+    pose: present
+    claims:
+      - text: "El-Sayed was born in Michigan in 1984 to Egyptian immigrant parents (verify on his official bio)."
+        sources: [{ url: "https://www.huffpost.com/entry/trump-el-sayed-send-him-back-to-where-he-came-from_n_6ae55788e4b0b1f508d4cd32", type: major_outlet }]
   - id: b05
     line: "So sending him back is just… dropping him off at home?"
     tags: [joke]
@@ -86,13 +100,21 @@ beats:
     tags: [rehook]
     pose: shocked
     opens: L1
-    panel: { stock: "us capitol building" }
+    panel: { stock: "US Capitol Building at night Jan 2006", caption: "The U.S. Capitol at night" }
   - id: b08
     line: "He also called him a jihadist, at a rally in Michigan."
     tags: [fact]
     pose: present
+    panel: { stock: "Arrival Departure October 25 2026 P20261025PW-0128", caption: "Trump leaving for that Michigan rally, Oct. 25" }
     claims:
       - text: "At an Oct 25 rally in Port Huron, Michigan, Trump called El-Sayed a jihadist."
+        sources: [{ url: "https://www.foxcarolina.com/2026/10/25/trump-escalates-rhetoric-against-el-sayed-he-tries-undermine-democrat-michigan-senate-race/", type: wire_report }]
+  - id: b08b
+    line: "That was Port Huron, just last Sunday."
+    tags: [fact]
+    pose: point_up
+    claims:
+      - text: "The Port Huron rally was Sunday, Oct 25."
         sources: [{ url: "https://www.foxcarolina.com/2026/10/25/trump-escalates-rhetoric-against-el-sayed-he-tries-undermine-democrat-michigan-senate-race/", type: wire_report }]
   - id: b09
     line: "And said he's tied to the Muslim Brotherhood."
@@ -122,7 +144,7 @@ beats:
     tags: [fact]
     pose: present
     closes: L2
-    panel: { stock: "campaign rally stage" }
+    panel: { stock: "Haley Stevens, official portrait, 116th Congress", caption: "Rep. Haley Stevens, Michigan Democrat", crop: center }
     claims:
       - text: "El-Sayed's campaign asked Rep. Haley Stevens not to attend his final campaign events."
         sources: [{ url: "https://www.cbsnews.com/news/abdul-el-sayed-haley-stevens-feud-michigan-senate/", type: major_outlet }]
@@ -140,7 +162,7 @@ beats:
     tags: [fact, what_it_means]
     pose: point_up
     prop: ballot_box
-    panel: { stock: "voting booth" }
+    panel: { stock: "2020 I Voted sticker Santa Clara County California", caption: "An \"I Voted\" sticker from California, 2020" }
     claims:
       - text: "Michigan's Senate race, El-Sayed (D) vs Mike Rogers (R), is decided Tuesday Nov 3."
         sources: [{ url: "https://www.cbsnews.com/news/abdul-el-sayed-haley-stevens-feud-michigan-senate/", type: major_outlet }]
@@ -151,19 +173,30 @@ beats:
     claims:
       - text: "The Cook Political Report rates the race a toss-up."
         sources: [{ url: "https://www.nbcnews.com/politics/2026-election/haley-stevens-abdul-el-sayed-clash-israel-ad-ahead-sunday-rally-rcna606657", type: major_outlet }]
+  - id: b16b
+    line: "That's the Cook Political Report's rating."
+    tags: [fact]
+    pose: present
+    claims:
+      - text: "The Cook Political Report rates the race a toss-up."
+        sources: [{ url: "https://www.nbcnews.com/politics/2026-election/haley-stevens-abdul-el-sayed-clash-israel-ad-ahead-sunday-rally-rcna606657", type: major_outlet }]
   - id: b17
     line: "If you're in Michigan, find your polling place at vote.gov."
     tags: [what_it_means]
     pose: point_up
-    panel: { stock: "i voted stickers" }
+    panel: { stock: "ISS-64 Kate Rubins voting booth", caption: "Astronaut Kate Rubins voted from space, 2020" }
     claims:
       - text: "Official polling place lookup."
         sources: [{ url: "https://vote.gov/", type: official_data }]
   - id: b18
-    line: "Send him back? Bro's already home. Follow for the next one."
-    tags: [callback, cta]
-    pose: celebrate
+    line: "Send him back? Bro's already home."
+    tags: [callback]
+    pose: shrug
     camera: zoom_stare
+  - id: b19
+    line: "Follow for our next episode!"
+    tags: [cta]
+    pose: celebrate
 human_edited: false
 disclosures: []
 caption: "Trump said send him back where he came from. He's from Michigan 💀 sources in the comments"

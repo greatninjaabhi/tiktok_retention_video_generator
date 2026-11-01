@@ -4,7 +4,7 @@
  * too many accents, raw SVG or hex colors in prop files, unreadable text contrast.
  */
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { COLOR_NAMES, HU, STROKE_WIDTH_NAMES, tokens, type ColorName } from '../tokens';
 import { unionBBox } from '../draw/geometry';
@@ -66,7 +66,7 @@ export function lintProp(def: PropDef): Issue[] {
 /** Props and memes may only import their API module, and may not smuggle in raw SVG or hex colors. */
 export function lintPropSources(dir = join(ROOT, 'assets/props'), api = '../../render/props/api'): Issue[] {
   const issues: Issue[] = [];
-  const rel = dir.slice(dir.indexOf('assets/'));
+  const rel = relative(ROOT, dir).replaceAll('\\', '/');
   for (const f of readdirSync(dir).filter((n) => n.endsWith('.ts') && n !== 'index.ts')) {
     const src = readFileSync(join(dir, f), 'utf8');
     const add = (rule: string, message: string) => issues.push({ target: `${rel}/${f}`, rule, message });

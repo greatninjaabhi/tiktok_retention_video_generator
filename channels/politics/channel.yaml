@@ -5,8 +5,12 @@ lens: left-leaning, Gen Z voice; explain, don't sneer; facts and opinions always
 voice:
   provider: kokoro        # Kokoro-82M, free and local (Apache 2.0). Owner decision 2026-10-31.
   voice: am_michael       # `npm run voices` renders test lines; best-rated: af_heart (A), af_bella (A-); US male: am_michael, am_fenrir, am_puck (C+)
-  speed: 1.1              # tune so real renders land at 61–75 s
-wpm: 170                  # target narration pace (brief R9: 155–180)
+  speed: 1.25             # owner 2026-10-31: 1.05 felt too slow. Tune so real renders land at 61–75 s
+wpm: 200                  # target narration pace (owner 2026-10-31: faster than brief R9's 155–180)
+# Owner 2026-10-31: a loud, abrupt attention grab, short enough that the hook still lands.
+# Brief R3 advises against intros; seconds: 0 turns it off for testing.
+intro: { text: "WELCOME TO POLITICS", seconds: 0.8 }
+outro: { text: "FOLLOW FOR OUR NEXT EPISODE!" }
 handle: "@yourhandle"     # for the "no branding in the first 3 s" check (brief R3)
 
 # Caption word colors (brief §1.5). "good" = green, "bad" = red. Keep these about outcomes,

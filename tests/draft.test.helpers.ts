@@ -13,6 +13,7 @@ export function sampleAsDraft(b: BeatSheet): Draft {
       id: x.id, line: x.line, tags: x.tags, pose: x.pose as never, expression: x.expression ?? '', prop: x.prop ?? '',
       panel_kind: x.panel ? ('stock' in x.panel ? 'stock' : 'meme') : 'none',
       stock_query: x.panel && 'stock' in x.panel ? x.panel.stock : '',
+      photo_caption: x.panel && 'stock' in x.panel ? x.panel.caption ?? '' : '',
       meme: x.panel && 'meme' in x.panel ? x.panel.meme : '',
       meme_text: x.panel && 'meme' in x.panel ? Object.entries(x.panel.text ?? {}).map(([slot, text]) => ({ slot, text })) : [],
       camera: x.camera ?? '', claims: (x.claims ?? []).map((c) => ({ text: c.text, sources: c.sources.map((s) => ({ url: s.url, type: s.type })) })),

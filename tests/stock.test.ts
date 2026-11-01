@@ -2,8 +2,8 @@ import { mkdtempSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { parseOpenverse, parsePexels, parsePixabay } from '../render/stock/providers';
-import { screen } from '../render/stock/filter';
+import { parseOpenverse, parsePexels, parsePixabay, parseWikimedia } from '../render/stock/providers';
+import { imageInfo, screen, screenFile } from '../render/stock/filter';
 import { markUsed, upsert, type Manifest } from '../render/stock/manifest';
 import { localCandidates } from '../render/stock/local';
 import { transitionsFor } from '../render/stock/panel';
@@ -26,6 +26,36 @@ describe('provider parsers', () => {
       { id: 'c', url: 'c.jpg', foreign_landing_url: 'pc', license: 'pdm', width: 2000 },
     ] });
     expect(cs.map((c) => c.id)).toEqual(['openverse:a', 'openverse:c']);
+  });
+  it('wikimedia keeps only public domain / CC0 JPEG and PNG, in search order', () => {
+    const page = (index: number, name: string, mime: string, license: string, attribution = 'false') => ({
+      pageid: index * 100, index, title: `File:${name}`,
+      imageinfo: [{ url: `${name}-full`, thumburl: `${name}-1280`, thumbwidth: 1280, thumbheight: 800, width: 4000, height: 2500, mime, descriptionurl: `page-${name}`,
+        extmetadata: { License: { value: license }, LicenseShortName: { value: license }, AttributionRequired: { value: attribution }, Artist: { value: '<a href="x">NASA</a>' } } }],
+    });
+    const cs = parseWikimedia({ query: { pages: {
+      1: page(3, 'c.png', 'image/png', 'cc0'),
+      2: page(1, 'a.jpg', 'image/jpeg', 'pd'),
+      3: page(2, 'by.jpg', 'image/jpeg', 'cc-by-sa-4.0', 'true'),
+      4: page(4, 'b.tif', 'image/tiff', 'pd'),
+      5: page(5, 'pd-attr.jpg', 'image/jpeg', 'pd', 'true'),
+    } } });
+    expect(cs.map((c) => c.id)).toEqual(['wikimedia:100', 'wikimedia:300']);
+    expect(cs[0]).toMatchObject({ downloadUrl: 'a.jpg-1280', width: 1280, creator: 'NASA', attributionRequired: false });
+  });
+});
+
+describe('downloaded file check', () => {
+  const jpeg = (w: number, h: number) => Buffer.from([0xff, 0xd8, 0xff, 0xe0, 0, 4, 0, 0, 0xff, 0xc0, 0, 11, 8, h >> 8, h & 255, w >> 8, w & 255, 3, 0, 0, 0, 0]);
+  const png = (w: number, h: number) => { const b = Buffer.alloc(32); b.write('\x89PNG', 0, 'latin1'); b.writeUInt32BE(w, 16); b.writeUInt32BE(h, 20); return b; };
+  it('reads the real format and size from the bytes', () => {
+    expect(imageInfo(jpeg(1280, 800))).toEqual({ format: 'jpeg', width: 1280, height: 800 });
+    expect(imageInfo(png(2000, 900))).toEqual({ format: 'png', width: 2000, height: 900 });
+  });
+  it('rejects WebP files named .jpg and images smaller than advertised', () => {
+    expect(screenFile(Buffer.from('RIFF\x80\xb5\x05\x00WEBPVP8 ', 'latin1'))).toMatch(/not a real JPEG or PNG/);
+    expect(screenFile(jpeg(1024, 807))).toMatch(/too small \(1024px/);
+    expect(screenFile(jpeg(1280, 800))).toBeNull();
   });
 });
 

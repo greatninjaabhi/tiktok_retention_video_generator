@@ -17,6 +17,10 @@ export type ChannelConfig = {
   forbidden_sponsor_types: string[];
   caveat_rules: string[];
   wpm: number;
+  /** Title sting before the hook. */
+  intro?: { text: string; seconds: number };
+  /** End card shown over a final beat tagged cta. */
+  outro?: { text: string };
   handle: string;
   required_tags: Record<string, string[]>;
   opinion_markers: string[];

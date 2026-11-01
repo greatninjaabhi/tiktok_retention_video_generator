@@ -21,7 +21,7 @@ export type Beat = {
   pose: string;
   expression?: string;
   prop?: string;
-  panel?: { stock: string } | { meme: string; text?: Record<string, string> };
+  panel?: { stock: string; caption?: string; crop?: 'top' | 'center' } | { meme: string; text?: Record<string, string> };
   camera?: string; // camera meme, e.g. zoom_stare
   claims?: Claim[];
   verdict?: { label: Verdict; sources: Source[] };
@@ -48,6 +48,9 @@ export type BeatSheet = {
 
 export class BeatSheetError extends Error {}
 
+/** The most that fits on one line across the photo panel. */
+export const MAX_PHOTO_CAPTION = 46;
+
 const req = (cond: unknown, msg: string) => {
   if (!cond) throw new BeatSheetError(msg);
 };
@@ -72,6 +75,7 @@ export function parseBeatSheet(yamlText: string): BeatSheet {
     req(typeof beat.pose === 'string', `beat ${beat.id}: missing pose`);
     beat.tags ??= [];
     for (const t of beat.tags) req((BEAT_TAGS as readonly string[]).includes(t), `beat ${beat.id}: unknown tag "${t}"`);
+    if (beat.panel && 'caption' in beat.panel && beat.panel.caption) req(beat.panel.caption.length <= MAX_PHOTO_CAPTION, `beat ${beat.id}: photo caption is over ${MAX_PHOTO_CAPTION} characters`);
     if (beat.verdict) req((VERDICTS as readonly string[]).includes(beat.verdict.label), `beat ${beat.id}: verdict must be one of ${VERDICTS.join(', ')}`);
   }
   if (b.format === 'fact_check') req(b.claim?.quote && b.claim.source?.url, 'fact_check needs claim.quote and claim.source.url');

@@ -11,6 +11,7 @@
     "lint:style": "tsx render/tools/style-lint.ts",
     "contact-sheet": "tsx render/tools/contact-sheet.ts",
     "render": "tsx render/tools/render.ts",
+    "frames": "tsx render/tools/frames.ts",
     "voices": "tsx render/tools/voices.ts",
     "preview": "tsx render/tools/render.ts scripts/videos/2026-11-01-filibuster.yaml --draft",
     "stock": "tsx render/tools/stock.ts",

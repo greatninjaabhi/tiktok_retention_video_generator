@@ -4,6 +4,7 @@ id: 2026-11-01-filibuster
 channel: politics
 format: explainer
 character: mascot_v1
+wpm: 170 # timed for the old pace; needs more lines to stay above 61 s at the channel's faster voice
 topic:
   title: "Why Congress can't pass anything: the filibuster"
   type: policy_fight
@@ -22,7 +23,7 @@ beats:
     tags: [fact]
     pose: present
     prop: capitol
-    panel: { stock: "us capitol building" }
+    panel: { stock: "us capitol building", caption: "The U.S. Capitol" }
     claims:
       - text: "The filibuster is a Senate practice of extended debate that blocks a vote."
         sources: [{ url: "https://www.senate.gov/about/powers-procedures/filibusters-cloture.htm", type: official_data }]
@@ -30,7 +31,7 @@ beats:
     line: "Most bills need sixty votes just to end debate."
     tags: [fact]
     pose: point_up
-    panel: { stock: "senate chamber" }
+    panel: { stock: "senate chamber", caption: "The Senate chamber" }
     claims:
       - text: "Cloture on most measures requires three-fifths of senators duly chosen and sworn (60)."
         sources: [{ url: "https://www.rules.senate.gov/rules-of-the-senate", type: official_data, note: "Rule XXII" }]
@@ -64,7 +65,7 @@ beats:
     tags: [fact]
     pose: present
     prop: gavel
-    panel: { stock: "gavel law" }
+    panel: { stock: "gavel law", caption: "A judge's gavel" }
     claims:
       - text: "The Senate can change its rules and precedents."
         sources: [{ url: "https://www.senate.gov/about/powers-procedures/filibusters-cloture.htm", type: official_data }]
@@ -77,7 +78,7 @@ beats:
     tags: [rehook]
     pose: shocked
     opens: L1
-    panel: { stock: "senate floor debate" }
+    panel: { stock: "senate floor debate", caption: "A debate on the Senate floor" }
   - id: b09
     line: "In 2013, the Senate dropped sixty votes for most nominations."
     tags: [fact]
@@ -109,7 +110,7 @@ beats:
     line: "My take: every senator who protects it is picking gridlock."
     tags: [opinion]
     pose: shrug
-    panel: { stock: "capitol dome night" }
+    panel: { stock: "capitol dome night", caption: "The Capitol dome at night" }
   - id: b14
     line: "That's how bills with majority support still die."
     tags: [fact, what_it_means]

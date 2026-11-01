@@ -34,7 +34,8 @@ npm run lint:script -- scripts/videos/<id>.yaml          # 6. retention + honest
 ```
 
 ```bash
-npm run render -- scripts/videos/<id>.yaml               # 7. out/<id>/video.mp4, cover.png, post.txt
+npm run frames -- scripts/videos/<id>.yaml               # 7a. look at the key frames before spending minutes on a render
+npm run render -- scripts/videos/<id>.yaml               # 7b. out/<id>/video.mp4, cover.png, post.txt
 ```
 
 ```bash

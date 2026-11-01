@@ -4,7 +4,7 @@ import { BeatSheetError, parseBeatSheet, type BeatSheet } from '../scripts/beats
 import { lintScript } from '../scripts/lint';
 import { loadChannel } from '../render/channel';
 
-const ch = loadChannel('politics');
+const ch = { ...loadChannel('politics'), wpm: 170 }; // the fixtures are timed for this pace
 const sampleText = readFileSync(new URL('../scripts/videos/2026-11-01-filibuster.yaml', import.meta.url), 'utf8');
 const sample = () => parseBeatSheet(sampleText);
 const now = new Date('2026-11-01T12:00:00Z');

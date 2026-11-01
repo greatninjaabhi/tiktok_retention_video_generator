@@ -10,7 +10,7 @@ import { parseBeatSheet, type BeatSheet } from '../scripts/beatsheet';
 import { POSE_NAMES } from '../assets/characters/stickman/character';
 import { sampleAsDraft } from './draft.test.helpers';
 
-const ch = loadChannel('politics');
+const ch = { ...loadChannel('politics'), wpm: 170 }; // the fixtures are timed for this pace
 const patterns = loadHookPatterns('politics');
 const voice = loadVoice('politics');
 const sample = parseBeatSheet(readFileSync(new URL('../scripts/videos/2026-11-01-filibuster.yaml', import.meta.url), 'utf8'));

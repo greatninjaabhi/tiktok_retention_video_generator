@@ -93,13 +93,13 @@
   },
 
   "captions": {
-    "_comment": "Phrase groups, not single words (owner: 180 WPM is too fast for one word at a time). Active word highlighted.",
+    "_comment": "Short phrase groups, not single words (owner: 180 WPM is too fast for one word at a time, and up to 7 words felt too slow). Active word highlighted.",
     "font": "caption",
     "sizePx": 82,
     "lineHeight": 1.08,
     "uppercase": true,
-    "maxWordsPerChunk": 7,
-    "minWordsPerChunk": 3,
+    "maxWordsPerChunk": 4,
+    "minWordsPerChunk": 2,
     "maxLines": 2,
     "maxLineWidthPx": 820,
     "centerX": 500,

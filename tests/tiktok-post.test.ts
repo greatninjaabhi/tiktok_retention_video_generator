@@ -1,13 +1,14 @@
 import { mkdtempSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { buildCaption, MAX_CAPTION } from '../publish/caption';
 import { chunkPlan, directPostBody, initDirectPost, queryCreatorInfo, TikTokApiError, uploadVideo, waitForPublish, type CreatorInfo, type Fetch } from '../publish/tiktok-api';
 import { accessToken, authorizeUrl } from '../publish/tiktok-auth';
 import { loadBeatSheet } from '../scripts/beatsheet';
 
-const sheet = loadBeatSheet(new URL('../scripts/videos/2026-11-01-filibuster.yaml', import.meta.url).pathname);
+const sheet = loadBeatSheet(fileURLToPath(new URL('../scripts/videos/2026-11-01-filibuster.yaml', import.meta.url)));
 const info: CreatorInfo = { creator_nickname: 'Stick', privacy_level_options: ['PUBLIC_TO_EVERYONE', 'SELF_ONLY'], duet_disabled: true };
 const settings = { caption: 'c', privacy_level: 'PUBLIC_TO_EVERYONE', disable_comment: false, disable_duet: false, disable_stitch: false, brand_content_toggle: false, brand_organic_toggle: false };
 

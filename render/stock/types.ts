@@ -1,5 +1,5 @@
 /** Licensed stock photos for the top panel (brief §1.7). */
-export type ProviderId = 'pexels' | 'pixabay' | 'openverse' | 'local';
+export type ProviderId = 'pexels' | 'pixabay' | 'wikimedia' | 'openverse' | 'local';
 
 export type StockCandidate = {
   /** Globally unique: `<provider>:<id>`. */

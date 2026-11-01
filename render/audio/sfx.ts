@@ -6,14 +6,14 @@
 import { createRng } from '../rng';
 
 export const SR = 44100;
-export type SfxName = 'whoosh' | 'pop' | 'boom' | 'stamp' | 'ding' | 'buzz';
-export type SfxEvent = { t: number; name: SfxName; priority: number };
+export type SfxName = 'whoosh' | 'pop' | 'boom' | 'stamp' | 'ding' | 'buzz' | 'sting';
+export type SfxEvent = { t: number; name: SfxName; priority: number; gain?: number };
 
 const env = (t: number, tau: number) => Math.exp(-t / tau);
 
 export function synth(name: SfxName, seed = 'sfx'): Float32Array {
   const rng = createRng(`${seed}|${name}`);
-  const dur = { whoosh: 0.38, pop: 0.09, boom: 0.9, stamp: 0.28, ding: 0.75, buzz: 0.42 }[name];
+  const dur = { whoosh: 0.38, pop: 0.09, boom: 0.9, stamp: 0.28, ding: 0.75, buzz: 0.42, sting: 0.75 }[name];
   const n = Math.round(dur * SR);
   const out = new Float32Array(n);
   let lp = 0, phase = 0;
@@ -46,6 +46,18 @@ export function synth(name: SfxName, seed = 'sfx'): Float32Array {
       case 'ding':
         s = (Math.sin(2 * Math.PI * 1318.5 * t) + 0.5 * Math.sin(2 * Math.PI * 1975.5 * t)) * env(t, 0.25) * Math.min(1, t / 0.003);
         break;
+      case 'sting': { // loud and abrupt: a noise hit and low thump under a fast rising brass stab
+        const tone = (hz: number, at: number) => {
+          const d = t - at;
+          if (d < 0) return 0;
+          return Math.tanh(2.5 * (Math.sin(2 * Math.PI * hz * d) + 0.5 * Math.sin(4 * Math.PI * hz * d))) * env(d, 0.3);
+        };
+        phase += (2 * Math.PI * (55 + 70 * env(t, 0.05))) / SR;
+        s = (rng.next() * 2 - 1) * env(t, 0.03) + Math.sin(phase) * env(t, 0.16)
+          + 0.5 * tone(392, 0) + 0.6 * tone(523.25, 0.05) + 0.7 * tone(659.25, 0.1) + 0.8 * tone(783.99, 0.15) + 0.5 * tone(1046.5, 0.15);
+        s *= Math.min(1, (dur - t) / 0.05);
+        break;
+      }
       case 'buzz':
         s = (0.5 * Math.sign(Math.sin(2 * Math.PI * 110 * t)) + 0.5 * Math.sin(2 * Math.PI * 220 * t)) * Math.min(1, t / 0.01, (dur - t) / 0.05);
         break;
@@ -75,7 +87,7 @@ export function mixBed(events: SfxEvent[], durationSec: number, gain = 0.2, seed
     const s = cache.get(e.name) ?? synth(e.name, seed);
     cache.set(e.name, s);
     const off = Math.round(e.t * SR);
-    for (let i = 0; i < s.length && off + i < bed.length; i++) bed[off + i]! += s[i]! * gain;
+    for (let i = 0; i < s.length && off + i < bed.length; i++) bed[off + i]! += s[i]! * (e.gain ?? gain);
   }
   return bed;
 }

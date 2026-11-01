@@ -12,7 +12,7 @@ import { loadChannel } from '../render/channel';
 import { parseBeatSheet } from '../scripts/beatsheet';
 
 const voice = loadVoice('politics');
-const ch = loadChannel('politics');
+const ch = { ...loadChannel('politics'), wpm: 170 }; // the fixtures are timed for this pace
 const sampleText = readFileSync(new URL('../scripts/videos/2026-11-01-filibuster.yaml', import.meta.url), 'utf8');
 const input: DraftInput = { headline: 'Story', date: '2026-11-01', firstSeen: new Date().toISOString(), sources: [{ url: 'https://x.gov', outlet: 'X', lean: 'primary', title: 't' }] };
 

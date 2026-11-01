@@ -42,7 +42,7 @@ export function lintScript(b: BeatSheet, ch: ChannelConfig, opts: LintOptions = 
   const err = (rule: string, message: string, beat?: string) => issues.push({ level: 'error', rule, message, beat });
   const warn = (rule: string, message: string, beat?: string) => issues.push({ level: 'warn', rule, message, beat });
 
-  const timings = opts.wordTimings ?? estimateTimings(spokenScript(b).join(' '), b.wpm ?? ch.wpm);
+  const timings = opts.wordTimings ?? estimateTimings(spokenScript(b).join(' '), b.wpm ?? ch.wpm, 0.2 + (ch.intro?.seconds ?? 0));
   const segs = segmentTimes(b, timings);
   const duration = (timings[timings.length - 1]?.end ?? 0) + 0.4;
   const seg = (id: string) => segs.find((s) => s.id === id)!;
@@ -146,6 +146,17 @@ export function lintScript(b: BeatSheet, ch: ChannelConfig, opts: LintOptions = 
     if (x.prop && !PROPS[x.prop]) err('assets', `unknown prop "${x.prop}"`, x.id);
     if (x.panel && 'meme' in x.panel && MEMES[x.panel.meme]?.kind !== 'panel') err('assets', `unknown panel meme "${x.panel.meme}"`, x.id);
     if (x.camera && MEMES[x.camera]?.kind !== 'camera') err('assets', `unknown camera meme "${x.camera}"`, x.id);
+  }
+
+  // ---- house style (docs/PLAYBOOK.md)
+  const first = b.beats[0]!;
+  if (!first.panel || !('stock' in first.panel)) err('opening-photo', 'the first beat needs a stock photo: open on a clear, recognizable subject', first.id);
+  for (const x of b.beats) {
+    if (x.panel && 'stock' in x.panel && !x.panel.caption) err('photo-caption', 'every photo needs a caption saying what it shows and when, so it can\'t pass for the event in the script', x.id);
+  }
+  if (!/\p{Lu}.*\p{Lu}|\d/u.test(b.hook.spoken)) warn('hook-specific', 'hook names no person, place or number; lead with the most recognizable name in the story');
+  if (ch.outro && !(b.beats[b.beats.length - 1]!.tags.includes('cta') && /follow/i.test(b.beats[b.beats.length - 1]!.line))) {
+    err('outro', 'the last beat must be the follow line, tagged cta ("Follow for our next episode!")', b.beats[b.beats.length - 1]!.id);
   }
 
   // ---- ending, freshness, publishing gates

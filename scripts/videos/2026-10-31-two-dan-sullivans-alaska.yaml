@@ -1,0 +1,214 @@
+# DRAFT by Claude in a coding session on 2026-10-31 (not `npm run draft`: no API key set).
+# Writer brief: scripts/prompts/2026-10-31-two-dan-sullivans-alaska.md
+# BEFORE setting human_edited: true, the editor must:
+#  1. Confirm Trump's exact words against video or a transcript; replace claim.source (type: full_video).
+#  2. Read the Oct 28 New York Times story directly; this script relies on outlets describing it.
+#  3. Re-check for charges and court rulings on the day of posting. This is developing (brief §0.5 rule 6).
+#  4. Rewrite the angle, one example and the punchline in your own words (brief §2.8.5).
+id: 2026-10-31-two-dan-sullivans-alaska
+channel: politics
+format: fact_check
+character: mascot_v1
+topic:
+  title: "Two Dan Sullivans on Alaska's Senate ballot: is it 'voter fraud at the highest level'?"
+  type: scandal
+  first_seen: "2026-10-30T20:00:00Z"
+hook:
+  spoken: "Two Dan Sullivans are on Alaska's ballot. Trump says voter fraud."
+  on_screen: "TWO DAN SULLIVANS?!"
+  pattern: said_check
+claim:
+  speaker: "President Donald Trump"
+  quote: "voter fraud at the highest level"
+  said_at: "2026-10-29"
+  source:
+    url: "https://www.factcheck.org/2026/10/explaining-the-case-of-the-two-dan-sullivans-on-alaskas-ballot/"
+    type: on_record_quote
+    note: "replace with video or a transcript before posting"
+research:
+  - { url: "https://www.factcheck.org/2026/10/explaining-the-case-of-the-two-dan-sullivans-on-alaskas-ballot/", outlet: FactCheck.org, lean: fact_checker }
+  - { url: "https://www.huffpost.com/entry/alaska-senate-investigation-fbi-visit_n_6ae5e7dae4b038f4fbe0ef91", outlet: AP (via HuffPost), lean: left }
+  - { url: "https://www.npr.org/2026/10/31/nx-s1-6024423/criminal-probe-alaska-senate-candidate", outlet: NPR, lean: lean_left }
+  - { url: "https://www.bbc.co.uk/news/articles/cmwyq2gg1yzzo", outlet: BBC, lean: center }
+  - { url: "https://nypost.com/2026/10/30/us-news/feds-surge-law-enforcement-to-alaska-after-troubling-new-revelations-in-decoy-dan-senate-scheme/", outlet: New York Post, lean: lean_right }
+  - { url: "https://thefederalist.com/2026/10/30/sen-johnson-launches-probe-into-alaskas-decoy-dan-senate-race-scandal/", outlet: The Federalist, lean: right }
+beats:
+  - id: b01
+    line: "His exact words: \"voter fraud at the highest level.\""
+    tags: [claim]
+    pose: shocked
+    prop: megaphone
+    panel: { stock: "Arrival Departure October 25 2026 P20261025PW-0128", caption: "Trump leaving for a Michigan rally, Oct. 25" }
+    claims:
+      - text: "Trump called the issue \"voter fraud at the highest level\" (confirm against video or a transcript)."
+        sources: [{ url: "https://www.factcheck.org/2026/10/explaining-the-case-of-the-two-dan-sullivans-on-alaskas-ballot/", type: on_record_quote }]
+  - id: b02
+    line: "Okay. One Dan's the Republican senator. Dan S. Sullivan."
+    tags: [fact]
+    pose: present
+    panel: { stock: "Senator Dan Sullivan official", caption: "Sen. Dan S. Sullivan, Republican" }
+    claims:
+      - text: "Republican Sen. Dan S. Sullivan is the incumbent."
+        sources: [{ url: "https://www.npr.org/2026/10/31/nx-s1-6024423/criminal-probe-alaska-senate-candidate", type: major_outlet }]
+  - id: b03
+    line: "The other's a retired teacher. Daniel J. Sullivan Junior."
+    tags: [fact, verdict]
+    pose: point_up
+    panel: { stock: "Wrangell Narrows Alaska Petersburg small boat harbor looking west NARA 298794", caption: "The other Dan's town, Petersburg, in the 1920s" }
+    claims:
+      - text: "Retired teacher Daniel J. Sullivan Jr. of Petersburg is on the general election ballot, with no party listed."
+        sources: [{ url: "https://www.npr.org/2026/10/31/nx-s1-6024423/criminal-probe-alaska-senate-candidate", type: major_outlet }]
+    verdict:
+      label: "TRUE"
+      sources: [{ url: "https://www.factcheck.org/2026/10/explaining-the-case-of-the-two-dan-sullivans-on-alaskas-ballot/", type: major_outlet, note: "both names on the Nov 3 ballot, per the Division of Elections" }]
+  - id: b03b
+    line: "He lives in a tiny Alaska fishing town."
+    tags: [fact]
+    pose: present
+    claims:
+      - text: "Daniel J. Sullivan lives in Petersburg, a small fishing community reachable only by air or water."
+        sources: [{ url: "https://www.huffpost.com/entry/alaska-senate-investigation-fbi-visit_n_6ae5e7dae4b038f4fbe0ef91", type: wire_report }]
+  - id: b04
+    line: "And this race could decide who controls the whole Senate."
+    tags: [fact]
+    pose: shocked
+    prop: capitol
+    claims:
+      - text: "The race could determine control of the Senate; Cook rates it a toss-up."
+        sources: [{ url: "https://www.bbc.co.uk/news/articles/cmwyq2gg1yzzo", type: major_outlet }]
+  - id: b05
+    line: "So is the second Dan actually real, or is he a plant?"
+    tags: []
+    pose: thinking
+    opens: L0
+  - id: b06
+    line: "The New York Times says Democrats helped recruit him."
+    tags: [fact]
+    pose: present
+    claims:
+      - text: "The Times reported people connected to Peltola's campaign and senior DSCC aides worked to recruit him. The BBC has not independently verified it."
+        sources: [{ url: "https://www.bbc.co.uk/news/articles/cmwyq2gg1yzzo", type: major_outlet }]
+  - id: b07
+    line: "It gets weirder. A staffer was allegedly told: find more Dans."
+    tags: [rehook, fact]
+    pose: shocked
+    claims:
+      - text: "The Times story said a Peltola campaign staffer was tasked with finding as many people named Dan Sullivan in Alaska as possible."
+        sources: [{ url: "https://www.factcheck.org/2026/10/explaining-the-case-of-the-two-dan-sullivans-on-alaskas-ballot/", type: major_outlet }]
+  - id: b08
+    line: "Imagine your job is just… collecting Dans."
+    tags: [joke]
+    pose: shrug
+    panel: { meme: expectation_reality, text: { left: "CAMPAIGN JOB", right: "FINDING DANS" } }
+  - id: b09
+    line: "Did Peltola know? Her fired manager told the Times yes."
+    tags: [fact]
+    pose: thinking
+    panel: { stock: "Rep. Mary Peltola headshot", caption: "Mary Peltola, Alaska's Democratic candidate" }
+    claims:
+      - text: "Peltola's former campaign manager, fired in August, told the Times Peltola wasn't directly involved but was \"definitely aware.\""
+        sources: [{ url: "https://www.factcheck.org/2026/10/explaining-the-case-of-the-two-dan-sullivans-on-alaskas-ballot/", type: major_outlet }]
+  - id: b10
+    line: "She tried to retract. Peltola and the other Dan deny it."
+    tags: [fact, verdict]
+    pose: shrug
+    closes: L0
+    claims:
+      - text: "The manager later tried to retract. Peltola, her campaign, the DSCC and Daniel J. Sullivan all deny involvement."
+        sources:
+          - { url: "https://www.factcheck.org/2026/10/explaining-the-case-of-the-two-dan-sullivans-on-alaskas-ballot/", type: major_outlet }
+          - { url: "https://www.npr.org/2026/10/31/nx-s1-6024423/criminal-probe-alaska-senate-candidate", type: major_outlet }
+    verdict:
+      label: UNPROVEN
+      sources: [{ url: "https://www.factcheck.org/2026/10/explaining-the-case-of-the-two-dan-sullivans-on-alaskas-ballot/", type: major_outlet }]
+  - id: b11
+    line: "If true, tricking voters is a real problem."
+    tags: [steelman]
+    pose: present
+  - id: b12
+    line: "Is it voter fraud?"
+    tags: []
+    pose: thinking
+    opens: L1
+    panel: { stock: "US Department of Justice building with road", caption: "The Justice Department in Washington, D.C." }
+  - id: b13
+    line: "No charges so far."
+    tags: [fact, verdict]
+    pose: point_up
+    closes: L1
+    claims:
+      - text: "No charges had been filed as of Friday evening, Oct 30."
+        sources: [{ url: "https://www.bbc.co.uk/news/articles/cmwyq2gg1yzzo", type: major_outlet }]
+    verdict:
+      label: UNPROVEN
+      sources: [{ url: "https://www.bbc.co.uk/news/articles/cmwyq2gg1yzzo", type: major_outlet, note: "re-check for charges on the day of posting" }]
+  - id: b13b
+    line: "A Harvard professor says unsavory, not illegal."
+    tags: [fact]
+    pose: present
+    claims:
+      - text: "Harvard's Nicholas Stephanopoulos: ballot-stacking is \"unsavory\" but not illegal. Federal law could apply if campaign finance violations emerge; no such evidence yet (BBC)."
+        sources:
+          - { url: "https://www.factcheck.org/2026/10/explaining-the-case-of-the-two-dan-sullivans-on-alaskas-ballot/", type: major_outlet }
+          - { url: "https://www.bbc.co.uk/news/articles/cmwyq2gg1yzzo", type: major_outlet }
+  - id: b14
+    line: "A conservative activist did it in 2024."
+    tags: [fact]
+    pose: shocked
+    claims:
+      - text: "In Washington's 2024 governor's race, a conservative activist recruited two people named Bob Ferguson to challenge Democrat Bob Ferguson."
+        sources: [{ url: "https://www.factcheck.org/2026/10/explaining-the-case-of-the-two-dan-sullivans-on-alaskas-ballot/", type: major_outlet }]
+  - id: b14b
+    line: "Recruited two extra Bob Fergusons."
+    tags: [fact, joke]
+    pose: shrug
+    claims:
+      - text: "Same example: two people named Bob Ferguson."
+        sources: [{ url: "https://www.factcheck.org/2026/10/explaining-the-case-of-the-two-dan-sullivans-on-alaskas-ballot/", type: major_outlet }]
+  - id: b15
+    line: "The FBI even showed up at a boat dealership."
+    tags: [fact]
+    pose: present
+    opens: L2
+    panel: { stock: "Wrangell Narrows Alaska Petersburg small boat harbor City Float NARA 298793", caption: "Boats in Petersburg, back in the 1920s" }
+    claims:
+      - text: "An FBI agent visited a boat dealership in Petersburg and left a card for Charles Flint, a $500 donor to Daniel J. Sullivan."
+        sources: [{ url: "https://www.huffpost.com/entry/alaska-senate-investigation-fbi-visit_n_6ae5e7dae4b038f4fbe0ef91", type: wire_report }]
+  - id: b16
+    line: "Asking if a donor felt misled. He says nope."
+    tags: [fact, joke]
+    pose: shrug
+    closes: L2
+    claims:
+      - text: "The agent asked Flint's son whether Flint felt misled. Flint told AP: \"I don't feel like I've been misled at all.\""
+        sources: [{ url: "https://www.huffpost.com/entry/alaska-senate-investigation-fbi-visit_n_6ae5e7dae4b038f4fbe0ef91", type: wire_report }]
+  - id: b17
+    line: "My take? DOJ going public this late isn't normal."
+    tags: [opinion]
+    pose: present
+    expression: smug
+    claims:
+      - text: "NPR: it's highly unusual for DOJ officials to publicly discuss a criminal investigation, and DOJ has a long practice of avoiding public steps close to an election."
+        sources: [{ url: "https://www.npr.org/2026/10/31/nx-s1-6024423/criminal-probe-alaska-senate-candidate", type: major_outlet }]
+  - id: b18
+    line: "Find your polling place at vote.gov."
+    tags: [what_it_means]
+    pose: point_up
+    prop: ballot_box
+    panel: { stock: "2020 I Voted sticker Santa Clara County California", caption: "An \"I Voted\" sticker from California, 2020" }
+    claims:
+      - text: "Official polling place lookup."
+        sources: [{ url: "https://vote.gov/", type: official_data }]
+  - id: b19
+    line: "Two Dans. No charges yet. One unconfused boat guy."
+    tags: [callback]
+    pose: shrug
+    camera: zoom_stare
+  - id: b20
+    line: "Follow for our next episode!"
+    tags: [cta]
+    pose: celebrate
+human_edited: false
+disclosures: []
+caption: "Two Dan Sullivans on one ballot. What's proven, what's not, and why the FBI went to a boat dealership 💀 sources in the comments"
+hashtags: [factcheck, politics, alaska, midterms, dansullivan, senate]
