@@ -2,6 +2,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { parse } from 'yaml';
+import type { PostSlots } from '../publish/post-slots';
 
 export type ChannelConfig = {
   id: string;
@@ -19,6 +20,8 @@ export type ChannelConfig = {
   wpm: number;
   /** Title sting before the hook. */
   intro?: { text: string; seconds: number };
+  /** When videos go out (publish/post-slots.ts). */
+  post_slots?: PostSlots;
   /** End card shown over a final beat tagged cta. */
   outro?: { text: string };
   handle: string;

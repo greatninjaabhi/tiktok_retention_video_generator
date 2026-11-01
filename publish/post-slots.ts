@@ -1,0 +1,55 @@
+/**
+ * The posting schedule (channels/<id>/channel.yaml), which we apply ourselves because Buffer's API
+ * can't edit its queue slots: each post is sent with its own exact time.
+ */
+export type PostSlots = { timezone: string; times: Record<string, string[]> };
+
+const DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+/** Time to review a video in Buffer before it goes out. */
+export const MIN_LEAD_MINUTES = 120;
+
+/** Calendar parts of an instant in a time zone. */
+function partsIn(at: Date, tz: string) {
+  const parts = new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' }).formatToParts(at);
+  const get = (t: string) => Number(parts.find((p) => p.type === t)!.value);
+  return { y: get('year'), mo: get('month'), d: get('day'), h: get('hour'), mi: get('minute') };
+}
+
+/** The instant a wall-clock time happens in a time zone (handles daylight saving). */
+export function zonedTime(y: number, mo: number, d: number, h: number, mi: number, tz: string): Date {
+  const wanted = Date.UTC(y, mo - 1, d, h, mi);
+  const p = partsIn(new Date(wanted), tz);
+  const offset = Date.UTC(p.y, p.mo - 1, p.d, p.h, p.mi) - wanted;
+  const guess = new Date(wanted - offset);
+  const q = partsIn(guess, tz);
+  return new Date(guess.getTime() + (wanted - Date.UTC(q.y, q.mo - 1, q.d, q.h, q.mi)));
+}
+
+const dayKey = (at: Date, tz: string) => { const p = partsIn(at, tz); return `${p.y}-${p.mo}-${p.d}`; };
+
+/**
+ * The next open slot: far enough ahead to review, and on a day that isn't already full. Posts
+ * already scheduled at other times still count toward their day, so a day never exceeds its quota.
+ */
+export function nextSlot(slots: PostSlots, scheduled: Date[], now = new Date()): Date {
+  const earliest = now.getTime() + MIN_LEAD_MINUTES * 60_000;
+  for (let i = 0; i < 21; i++) {
+    const base = partsIn(new Date(now.getTime() + i * 86_400_000), slots.timezone);
+    const noon = new Date(Date.UTC(base.y, base.mo - 1, base.d, 12));
+    const times = slots.times[DAYS[noon.getUTCDay()]!] ?? [];
+    let taken = scheduled.filter((s) => dayKey(s, slots.timezone) === `${base.y}-${base.mo}-${base.d}`).length;
+    for (const t of [...times].sort()) {
+      const [h, mi] = t.split(':').map(Number) as [number, number];
+      const at = zonedTime(base.y, base.mo, base.d, h, mi, slots.timezone);
+      if (scheduled.some((s) => s.getTime() === at.getTime())) continue; // that post already fills this slot
+      if (taken >= times.length) break;
+      if (at.getTime() >= earliest) return at;
+    }
+    taken = 0;
+  }
+  throw new Error('no open posting slot in the next 3 weeks');
+}
+
+export function formatSlot(at: Date, tz: string): string {
+  return at.toLocaleString('en-US', { timeZone: tz, weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
+}

@@ -5,7 +5,7 @@ description: Make a new political explainer or fact-check video to the owner-app
 
 # Make a video
 
-The goal is a video good enough to go out as is. Finished videos always go into the Buffer queue, where the owner reviews each one before its slot. Read `docs/PLAYBOOK.md` first and look at its reference frames; those are the bar. If you can't meet a step, stop and say so. Never lower the bar quietly.
+The goal is a video good enough to go out as is. Finished videos are always scheduled in Buffer, in the next open slot of the 2-a-day schedule, and the owner reviews each one there. Read `docs/PLAYBOOK.md` first and look at its reference frames; those are the bar. If you can't meet a step, stop and say so. Never lower the bar quietly.
 
 ## 1. Pick the topic
 
@@ -120,7 +120,7 @@ npm run ship -- scripts/videos/<id>.yaml --no-render --yes
 
 Run `npm run check`, then commit and push. Open the video and keep the report short:
 
-- It's queued, with the video path and length
+- When it's scheduled, with the video path and length
 - What to check in Buffer, from step 6, plus unusual names to listen for and any photo you settled for. Lead with the biggest risk. If there's nothing, say so.
 
 ## Never

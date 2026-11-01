@@ -11,6 +11,18 @@ wpm: 200                  # target narration pace (owner 2026-10-31: faster than
 # Brief R3 advises against intros; seconds: 0 turns it off for testing.
 intro: { text: "WELCOME TO POLITICS", seconds: 0.8 }
 outro: { text: "FOLLOW FOR OUR NEXT EPISODE!" }
+# Owner 2026-11-01: 2 posts a day, never at round times. Applied by npm run ship, not Buffer's queue.
+# Midday plus evening; Buffer's 2026 data favors evenings and weekend mornings. Times are a starting point.
+post_slots:
+  timezone: America/Chicago
+  times:
+    sunday: ["09:07", "19:53"]
+    monday: ["12:47", "19:22"]
+    tuesday: ["12:13", "20:09"]
+    wednesday: ["12:38", "19:41"]
+    thursday: ["12:26", "20:17"]
+    friday: ["12:52", "21:06"]
+    saturday: ["10:34", "19:29"]
 handle: "@yourhandle"     # for the "no branding in the first 3 s" check (brief R3)
 
 # Caption word colors (brief §1.5). "good" = green, "bad" = red. Keep these about outcomes,

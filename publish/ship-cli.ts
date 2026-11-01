@@ -13,7 +13,9 @@ import { createInterface } from 'node:readline/promises';
 import { loadBeatSheet } from '../scripts/beatsheet';
 import { planVideo, renderVideo } from '../render/video';
 import { preflight } from './preflight';
-import { bufferCaption, bufferKey, createVideoPost, loadEnv, pickTikTokChannel, videoUrlProblem } from './buffer-api';
+import { loadChannel } from '../render/channel';
+import { bufferCaption, bufferKey, createVideoPost, loadEnv, pickTikTokChannel, scheduledTimes, videoUrlProblem } from './buffer-api';
+import { formatSlot, nextSlot } from './post-slots';
 import { hostOnGitHub, repoFromRemote } from './github-host';
 
 const args = process.argv.slice(2);
@@ -34,12 +36,16 @@ const channel = await pickTikTokChannel(fetch, key, flag('--channel') ?? process
 const original = readFileSync(file!, 'utf8');
 const sheet = loadBeatSheet(file!);
 const text = bufferCaption(sheet);
-const dueAt = flag('--at');
+const slots = loadChannel(sheet.channel).post_slots;
+if (!slots) fail('channel.yaml has no post_slots.');
+const slot = flag('--at') ? new Date(flag('--at')!) : nextSlot(slots!, await scheduledTimes(fetch, key, channel));
+const dueAt = slot.toISOString();
+const when = formatSlot(slot, slots!.timezone);
 
 console.log(`\nChannel: ${channel.name}\nVideo: ${sheet.id}\nCaption:\n---\n${text}\n---`);
 if (!args.includes('--yes') && !args.includes('--render-only')) {
   const rl = createInterface({ input: process.stdin, output: process.stdout });
-  const answer = (await rl.question(`Publishes PUBLICLY ${dueAt ? `at ${dueAt}` : 'from the Buffer queue'}. Type "post" to confirm: `)).trim();
+  const answer = (await rl.question(`Publishes PUBLICLY on ${when}. Type "post" to confirm: `)).trim();
   rl.close();
   if (answer !== 'post') fail('Not posted.');
 }
@@ -71,7 +77,7 @@ try {
   if (problem) throw new Error(problem);
 
   const id = await createVideoPost(fetch, key, { channelId: channel.id, text, videoUrl: link, dueAt, draft: false });
-  console.log(`✓ queued in Buffer (${id})\n  Video: ${link}\n  Once it's live: npm run buffer -- register ${file} <tiktok video id>`);
+  console.log(`✓ scheduled for ${when} (${id})\n  Video: ${link}\n  Once it's live: npm run buffer -- register ${file} <tiktok video id>`);
 } catch (e) {
   writeFileSync(file!, original); // not posted, so not approved
   fail(`Not posted: ${(e as Error).message}`);

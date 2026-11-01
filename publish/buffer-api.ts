@@ -14,7 +14,7 @@ export const BUFFER_ENDPOINT = 'https://api.buffer.com';
 /** Buffer rejects more than this on TikTok. */
 export const MAX_BUFFER_HASHTAGS = 5;
 
-export type BufferChannel = { id: string; name: string; service: string };
+export type BufferChannel = { id: string; name: string; service: string; organizationId?: string };
 export type VideoPost = { channelId: string; text: string; videoUrl: string; dueAt?: string; draft: boolean };
 
 export class BufferApiError extends Error {}
@@ -49,10 +49,17 @@ export async function listChannels(f: Fetch, key: string): Promise<BufferChannel
   const { account } = await gql<{ account: { organizations: { id: string }[] } }>(f, key, 'query { account { organizations { id } } }');
   const out: BufferChannel[] = [];
   for (const org of account.organizations) {
-    const { channels } = await gql<{ channels: BufferChannel[] }>(f, key, `query { channels(input: { organizationId: ${JSON.stringify(org.id)} }) { id name service } }`);
+    const { channels } = await gql<{ channels: BufferChannel[] }>(f, key, `query { channels(input: { organizationId: ${JSON.stringify(org.id)} }) { id name service organizationId } }`);
     out.push(...channels);
   }
   return out;
+}
+
+/** When this channel's scheduled posts go out. */
+export async function scheduledTimes(f: Fetch, key: string, c: BufferChannel): Promise<Date[]> {
+  const { posts } = await gql<{ posts: { edges: { node: { dueAt: string | null } }[] } }>(f, key,
+    `query { posts(first: 100, input: { organizationId: ${JSON.stringify(c.organizationId)}, filter: { status: [scheduled], channelIds: [${JSON.stringify(c.id)}] } }) { edges { node { dueAt } } } }`);
+  return posts.edges.flatMap((e) => (e.node.dueAt ? [new Date(e.node.dueAt)] : []));
 }
 
 export const isTikTok = (c: BufferChannel) => /tiktok/i.test(c.service);
