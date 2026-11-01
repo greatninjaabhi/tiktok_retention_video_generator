@@ -21,6 +21,19 @@ function Finish($code, $message) {
   exit $code
 }
 
+# Stay out of the way: everything this run starts inherits the low priority, so the PC stays usable.
+(Get-Process -Id $PID).PriorityClass = 'BelowNormal'
+
+# Don't drain a low battery. BatteryStatus 2 means plugged in.
+$battery = Get-CimInstance Win32_Battery | Select-Object -First 1
+if ($battery -and $battery.BatteryStatus -ne 2 -and $battery.EstimatedChargeRemaining -lt 30) {
+  Finish 0 "SKIPPED: on battery at $($battery.EstimatedChargeRemaining)%. No video this run."
+}
+
+# Keep the PC awake until this run ends, or it could sleep partway through on battery.
+Add-Type -Namespace Win32 -Name Power -MemberDefinition '[DllImport("kernel32.dll")] public static extern uint SetThreadExecutionState(uint flags);'
+[void][Win32.Power]::SetThreadExecutionState([uint32]'0x80000001')
+
 if (-not (Get-Command claude -ErrorAction SilentlyContinue)) { Finish 1 'FAILED: the claude command is not installed.' }
 
 $branch = git branch --show-current

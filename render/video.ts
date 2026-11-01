@@ -334,7 +334,7 @@ export async function renderVideo(p: Plan): Promise<string> {
   const mix = p.voice.audioFile ? ['-filter_complex', `[2:a]adelay=${delayMs}:all=1[v];[1:a][v]amix=inputs=2:duration=first:normalize=0[a]`, '-map', '0:v', '-map', '[a]'] : ['-map', '0:v', '-map', '1:a'];
   const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-i', '-',
     '-i', dir + 'sfx.wav', ...audioIn, ...mix,
-    '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '20', '-c:a', 'aac', '-b:a', '160k', '-t', dur.toFixed(2), '-movflags', '+faststart', dir + 'video.mp4'],
+    '-threads', '2', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '20', '-c:a', 'aac', '-b:a', '160k', '-t', dur.toFixed(2), '-movflags', '+faststart', dir + 'video.mp4'],
     { stdio: ['pipe', 'inherit', 'inherit'] });
   for (let f = 0; f < p.totalFrames; f++) {
     if (!ff.stdin.write(svgToPng(frameSvg(p, f)))) await new Promise((r) => ff.stdin.once('drain', r));

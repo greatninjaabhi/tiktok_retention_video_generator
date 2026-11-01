@@ -22,9 +22,10 @@ $triggers = @(
   (New-ScheduledTaskTrigger -Daily -At '2:30 PM')
 )
 
-# Plugged in only. A missed run happens when the PC is next available, and takes the next open slot.
-$settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -WakeToRun -ExecutionTimeLimit (New-TimeSpan -Hours 2) -MultipleInstances IgnoreNew
+# Battery is fine (run-video.ps1 skips below 30%). Low priority keeps the PC usable.
+# A missed run happens when the PC is next available, and takes the next open slot.
+$settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable -WakeToRun -Priority 7 -ExecutionTimeLimit (New-TimeSpan -Hours 2) -MultipleInstances IgnoreNew
 $principal = New-ScheduledTaskPrincipal -UserId ([Security.Principal.WindowsIdentity]::GetCurrent().Name) -LogonType Interactive -RunLevel Limited
 
 Register-ScheduledTask -TaskName $name -Action $action -Trigger $triggers -Settings $settings -Principal $principal -Force | Out-Null
-"Created '$name': runs daily at 5:30 AM and 2:30 PM, plugged in and signed in."
+"Created '$name': runs daily at 5:30 AM and 2:30 PM while you're signed in, including on battery above 30%."
