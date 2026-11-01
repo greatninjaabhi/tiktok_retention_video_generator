@@ -13,6 +13,10 @@ Doodle-stickman political videos, 61–75 s, built from YAML beat sheets. Pipeli
 - **Honesty:** every fact is sourced, quotes are verbatim, and allegations are said out loud as allegations. Finished videos always go into the Buffer queue through `npm run ship`, and the owner reviews each one there before its slot (owner decision). Flag anything risky in your report. Never set `human_edited: true` any other way.
 - **Record owner feedback.** New preferences go in `docs/PLAYBOOK.md`, and in a linter rule or test if a machine can check them.
 
+## Automation
+
+Task Scheduler runs `automation/run-video.ps1` twice a day, which runs `/make-video` unattended with a limited set of allowed commands (`automation/setup-tasks.ps1` creates the task). Results are in `out/auto-logs/LAST-RUN.txt`. If the skill starts needing a new command, add it to the list in `run-video.ps1`, or the run will be refused it.
+
 ## Commands
 
 `npm run check` (typecheck, style lint, tests) · `npm run radar` · `npm run article -- <url>` · `npm run photos -- "<query>"` · `npm run stock -- "<query>" --pick <n>` · `npm run lint:script -- <yaml>` · `npm run frames -- <yaml> --draft` · `npm run render -- <yaml> --draft` · `npm run preflight -- <yaml>` · `npm run ship -- <yaml>` · `npm run buffer -- channels`

@@ -27,7 +27,8 @@ describe('owner-approved schedule', () => {
     const weeks = [1, 8, 15, 22, 29].map(minutes); // the same weekday, week after week
     expect(new Set(weeks).size).toBeGreaterThan(1);
     for (const m of weeks) expect(Math.abs(m - (19 * 60 + 53))).toBeLessThanOrEqual(MAX_WEEKLY_SHIFT_MINUTES);
-    expect(minutes(1)).toBe(minutes(1));
+    const weekOf = (d: number) => weeklyTime('19:53', 2026, 11, d);
+    expect(weekOf(1)).toEqual(weekOf(1)); // the same run of the schedule always agrees with itself
   });
 });
 
