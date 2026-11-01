@@ -5,7 +5,7 @@
  *                                                             # queue or schedule it; needs preflight and a typed "post"
  * npm run buffer -- register scripts/videos/<id>.yaml <tiktok video id>  # link the live post to analytics
  *
- * Needs BUFFER_API_KEY (https://publish.buffer.com/settings/api). Buffer takes video by public URL only,
+ * Needs BUFFER_API_KEY (https://publish.buffer.com/settings/api), read from the gitignored .env file or the environment. Buffer takes video by public URL only,
  * so upload out/<id>/video.mp4 somewhere first. BUFFER_CHANNEL_ID or --channel picks a channel if there are several.
  */
 import { existsSync, statSync } from 'node:fs';
@@ -22,8 +22,11 @@ const flag = (k: string) => { const i = rest.indexOf(k); return i >= 0 ? rest[i 
 const fail = (msg: string): never => { console.error(msg); process.exit(1); };
 
 function apiKey(): string {
+  const envFile = fileURLToPath(new URL('../.env', import.meta.url));
+  if (existsSync(envFile)) process.loadEnvFile(envFile); // never overrides a variable that's already set
   const key = process.env.BUFFER_API_KEY;
-  return key ?? fail('Set BUFFER_API_KEY first (https://publish.buffer.com/settings/api).');
+  if (!key || key === 'paste-your-key-here') return fail('Put your key in the .env file as BUFFER_API_KEY=... (https://publish.buffer.com/settings/api).');
+  return key;
 }
 
 try {

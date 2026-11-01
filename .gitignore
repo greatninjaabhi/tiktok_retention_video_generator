@@ -5,3 +5,4 @@ out/
 assets/stock/cache/
 voice/cache/
 analytics/data/
+.env

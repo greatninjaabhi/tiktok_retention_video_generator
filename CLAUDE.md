@@ -21,4 +21,5 @@ Doodle-stickman political videos, 61–75 s, built from YAML beat sheets. Pipeli
 
 - Windows: use `fileURLToPath`, never `new URL(...).pathname`, and don't search paths for forward slashes.
 - `assets/stock/cache/`, `voice/cache/` and `out/` are gitignored. On a fresh clone, re-fetch photos by running `npm run stock` for each `stock:` query in the script.
+- API keys live in the gitignored `.env` file. Never print it, commit it or copy it anywhere.
 - Wikimedia Commons rate-limits; leave a few seconds between `npm run stock` calls.
