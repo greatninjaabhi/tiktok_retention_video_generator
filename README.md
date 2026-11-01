@@ -43,7 +43,7 @@ npm run preflight -- scripts/videos/<id>.yaml            # 8. blocks anything no
 ```
 
 ```bash
-npm run tiktok -- post scripts/videos/<id>.yaml           # 9. post to TikTok with caption + hashtags (auto-registers for analytics)
+npm run buffer -- post scripts/videos/<id>.yaml --url <public mp4 link> --publish  # 9. queue it through Buffer (no --publish = draft only)
 ```
 
 10. Pin a comment with the sources from `out/<id>/post.txt` (the API can't post comments).
@@ -65,7 +65,7 @@ npm run analytics -- import                              # 12. weekly: TikTok St
 | Beat sheet + linter | `scripts/` | Explainer and fact-check formats. Enforces hook length, 61–75 s, ≤ 4 s per beat, re-hook at 25–30 s, closed open loops, sources on facts and verdicts, opinion markers, verbatim quotes, official voting info, no paid political sponsors, left+right research, human-edit gate. |
 | Voice | `voice/` | Kokoro-82M (free, local, Apache 2.0), voiced beat by beat and cached; if the model can't load, estimated timings and no narration (clearly marked). |
 | Render | `render/` | Big moving stickman, phrase captions, stock panel with one house treatment and transitions, drawn memes, verdict stamps, synthesized SFX, hook on frame 0, cover, post text. |
-| Posting | `publish/tiktok-*.ts` | Official Content Posting API: shows account, caption + hashtags, privacy choice (no default), comment/duet/stitch and disclosure settings, posts only after you type `post`, then registers the video for analytics. `--inbox` sends it to your TikTok drafts instead. ⚠ Until TikTok audits your app, Direct Posts are private-only (use `--inbox` to go public from the app). |
+| Posting | `publish/buffer-*.ts`, `publish/tiktok-*.ts` | **Buffer (recommended):** draft by default; `--publish` needs preflight and a typed confirmation. Video by public URL, up to 5 hashtags. TikTok's guidelines don't accept internal upload tools for Direct Post audit, so the direct path below stays private or drafts-only. **TikTok direct:** official Content Posting API: shows account, caption + hashtags, privacy choice (no default), comment/duet/stitch and disclosure settings, posts only after you type `post`, then registers the video for analytics. `--inbox` sends it to your TikTok drafts instead. ⚠ Until TikTok audits your app, Direct Posts are private-only (use `--inbox` to go public from the app). |
 | Pre-post check | `publish/` | Lint clean, human-edited, real voice, 61–75 s, licensed images for every photo slot, cover, post text; then a manual checklist. |
 | Analytics + picker | `analytics/`, `picker/` | Display API + Studio CSV; reward = z-scores vs your last 20 videos; Thompson sampling with discounting over format × topic type × hook pattern. |
 

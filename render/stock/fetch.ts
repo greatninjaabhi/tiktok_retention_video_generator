@@ -7,6 +7,8 @@ import { screen, screenFile, type Rejection } from './filter';
 import { CACHE_DIR, readManifest, upsert, writeManifest } from './manifest';
 import type { StockCandidate, StockProvider } from './types';
 
+export const USER_AGENT_HEADERS = { headers: { 'User-Agent': USER_AGENT } };
+
 export type SearchReport = { candidates: StockCandidate[]; rejected: Rejection[]; errors: string[]; skippedProviders: string[] };
 
 /** Search providers in preference order (local drop folder first) until we have `n` usable images. */
@@ -39,7 +41,7 @@ export async function download(c: StockCandidate, query: string): Promise<string
     let bytes: Buffer;
     if (c.downloadUrl.startsWith('file://')) bytes = readFileSync(fileURLToPath(c.downloadUrl));
     else {
-      const res = await fetch(c.downloadUrl, { headers: { 'User-Agent': USER_AGENT } });
+      const res = await fetch(c.downloadUrl, USER_AGENT_HEADERS);
       if (!res.ok) throw new Error(`download ${c.id} failed: ${res.status}`);
       bytes = Buffer.from(await res.arrayBuffer());
     }

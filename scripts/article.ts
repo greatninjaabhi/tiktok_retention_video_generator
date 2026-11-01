@@ -15,7 +15,7 @@ export async function fetchArticleText(url: string, timeoutMs = 8000): Promise<s
   try {
     const res = await fetch(url, { signal: AbortSignal.timeout(timeoutMs), headers: { 'User-Agent': 'Mozilla/5.0 (research; tiktok-retention-video-generator)' } });
     if (!res.ok) return undefined;
-    const text = htmlToText(await res.text());
+    const text = htmlToText(await res.text(), 20000); // key facts like retractions are often far down the page
     return text.length > 200 ? text : undefined;
   } catch {
     return undefined;
