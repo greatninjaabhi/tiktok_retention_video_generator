@@ -5,7 +5,7 @@ description: Make a new political explainer or fact-check video to the owner-app
 
 # Make a video
 
-The goal is a video good enough to go out without anyone else touching it. Finished videos go straight into the Buffer queue, and the owner may not look before the slot arrives, so you are the last check. Read `docs/PLAYBOOK.md` first and look at its reference frames; those are the bar. If you can't meet a step, stop and say so. Never lower the bar quietly.
+The goal is a video good enough to go out as is. Finished videos always go into the Buffer queue, where the owner reviews each one before its slot. Read `docs/PLAYBOOK.md` first and look at its reference frames; those are the bar. If you can't meet a step, stop and say so. Never lower the bar quietly.
 
 ## 1. Pick the topic
 
@@ -93,17 +93,14 @@ Open `out/<id>/frames/sheet.png` next to the reference frames and go through thi
 
 If timing fails, change the words, not the speed. Under 61 s, add sourced lines. Rehook too early, add words before it. A line over 4.5 s gets split. Fix everything here: a render takes about 9 minutes.
 
-## 6. Decide whether it can queue on its own
+## 6. Re-check, and note what needs a look
 
-**Hold it for the owner instead of queueing** if any of these is true. Render with `npm run render -- <yaml> --draft`, then explain why you held it.
+Re-check the news in case the story changed while you worked, and update the script if it did. The video queues either way. Write down what the owner should look at when reviewing it in Buffer:
 
-- A central claim rests on one source, or on outlets that disagree
-- A quote in the script couldn't be confirmed word for word by two independent outlets or a primary source
-- It accuses someone of a crime or wrongdoing that hasn't been established, beyond reporting what's alleged and who denies it
-- It involves a private person, a minor, violence or a breaking event still unfolding
-- Your frames or fact-check left something you're unsure about
-
-Otherwise, re-check the news in case the story changed while you worked, then continue.
+- A central claim resting on one source, or outlets that disagree
+- A quote not confirmed word for word by two independent outlets or a primary source
+- Anything that could go stale before its slot
+- Anything else you're unsure about
 
 ## 7. Render the final and inspect it
 
@@ -123,14 +120,13 @@ npm run ship -- scripts/videos/<id>.yaml --no-render --yes
 
 Run `npm run check`, then commit and push. Open the video and keep the report short:
 
-- It's queued (or held, and why), with the video path and length
-- At most three things worth their attention: unusual names to listen for, a claim you softened, a photo you settled for, anything that could go stale before its slot
-- That they can remove it in Buffer before it posts
+- It's queued, with the video path and length
+- What to check in Buffer, from step 6, plus unusual names to listen for and any photo you settled for. Lead with the biggest risk. If there's nothing, say so.
 
 ## Never
 
 - Set `human_edited: true` by hand, or weaken a check, test or the pace to get a video through
-- Queue a video that meets a hold rule, or skip the hold rules because a video is urgent
+- Put a claim in a script that you can't source. Queueing everything doesn't relax the honesty rules: cut it or reword it.
 
 ## When the owner gives feedback
 

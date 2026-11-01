@@ -46,7 +46,7 @@ if (!args.includes('--yes') && !args.includes('--render-only')) {
 
 // Record what the sign-off really was: the owner chose auto-queueing and can remove a video in Buffer.
 const today = new Date().toISOString().slice(0, 10);
-writeFileSync(file!, original.replace(/human_edited: false/, `human_edited: true # cleared ${today}: fact-checked by the agent, auto-queued; owner can remove it in Buffer`));
+writeFileSync(file!, original.replace(/human_edited: false/, `human_edited: true # cleared ${today}: fact-checked by the agent, queued for owner review in Buffer`));
 try {
   const approved = loadBeatSheet(file!);
   if (!args.includes('--no-render')) {

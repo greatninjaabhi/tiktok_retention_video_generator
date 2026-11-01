@@ -10,7 +10,7 @@ Doodle-stickman political videos, 61–75 s, built from YAML beat sheets. Pipeli
 - **Keep the standard from drifting.** Don't slow the voice, lengthen captions or intro, or loosen a linter rule or `tests/house-style.test.ts` to get a video through. Change the script. Only the owner changes the standard, and when they do, update the playbook, what enforces it, and these rules together.
 - **Look before you render.** Run `npm run frames` and open `out/<id>/frames/sheet.png`. A full render takes about 9 minutes.
 - **Photos:** only public-domain, CC0, free-stock or owner-licensed images. Never scrape or download from news sites, even with credit.
-- **Honesty:** every fact is sourced, quotes are verbatim, and allegations are said out loud as allegations. Finished videos go straight into the Buffer queue through `npm run ship` (owner decision), and the owner can remove them there. Follow the hold rules in `/make-video`. Never set `human_edited: true` any other way.
+- **Honesty:** every fact is sourced, quotes are verbatim, and allegations are said out loud as allegations. Finished videos always go into the Buffer queue through `npm run ship`, and the owner reviews each one there before its slot (owner decision). Flag anything risky in your report. Never set `human_edited: true` any other way.
 - **Record owner feedback.** New preferences go in `docs/PLAYBOOK.md`, and in a linter rule or test if a machine can check them.
 
 ## Commands
