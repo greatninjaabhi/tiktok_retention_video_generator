@@ -1,8 +1,8 @@
 /**
  * Buffer GraphQL API (https://developers.buffer.com): schedules posts through Buffer's connection
  * to TikTok. Pure builders + a thin call, so it's testable without a key.
- * ⚠️ Buffer's docs disagree on whether createPost accepts TikTok, and it takes video by public URL
- * only. `npm run buffer -- channels` and a draft are the way to find out on a real account.
+ * Video by public URL only. Buffer's docs omit TikTok from createPost's platforms, but it accepted
+ * and scheduled TikTok posts on 2026-11-01.
  */
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
