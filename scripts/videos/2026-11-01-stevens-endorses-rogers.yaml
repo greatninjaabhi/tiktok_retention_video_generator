@@ -1,0 +1,233 @@
+# DRAFT by Claude in an unattended scheduled run on 2026-11-01 (not `npm run draft`: no API key there).
+# Writer brief: scripts/prompts/2026-11-01-stevens-endorses-rogers.md
+# UNRESOLVED:
+#  1. El-Sayed told reporters he doesn't agree with the ad (CBS), but the Guardian says he declined her request, and he did not say "condemn".
+#  2. That he asked her to stay away rests on unnamed sources (CBS: two) and her own account; no El-Sayed statement confirming it was read.
+#  3. "At least fourteen" is Mother Jones' count alone (one post plus "at least 13 other times"), and is attributed out loud.
+#  4. No free photo of El-Sayed exists at usable size, so Detroit stands in.
+id: 2026-11-01-stevens-endorses-rogers
+channel: politics
+format: fact_check
+character: mascot_v1
+topic:
+  title: "Haley Stevens endorses Republican Mike Rogers, and Trump calls it bravery"
+  type: policy_fight
+  first_seen: "2026-11-01T19:00:00Z"
+hook:
+  spoken: "Trump just called a Democrat brave. Wait till you hear why."
+  on_screen: "TRUMP CALLED A DEMOCRAT BRAVE?!"
+  pattern: said_check
+claim:
+  speaker: "President Donald Trump"
+  quote: "It's a thing called bravery"
+  said_at: "2026-11-01"
+  source:
+    url: "https://thehill.com/homenews/campaign/6187175-trump-praises-stevens-gop-endorsement/"
+    type: on_record_quote
+    note: "Truth Social post, quoted the same way by The Hill and the New York Post"
+research:
+  - { url: "https://www.npr.org/2026/11/01/nx-s1-6020993/michigan-senate-race-abdul-el-sayed-haley-stevens-mike-rogers", outlet: NPR, lean: lean_left }
+  - { url: "https://www.theguardian.com/us-news/2026/nov/01/abdul-el-sayed-haley-stevens-michigan-senate", outlet: The Guardian, lean: lean_left }
+  - { url: "https://www.motherjones.com/politics/2026/11/here-are-some-things-haley-stevens-said-about-mike-rogers-before-endorsing-him/", outlet: Mother Jones, lean: left }
+  - { url: "https://www.bbc.co.uk/news/articles/c95ynzv88n68o", outlet: BBC, lean: center }
+  - { url: "https://www.cbsnews.com/news/abdul-el-sayed-haley-stevens-feud-michigan-senate/", outlet: CBS News, lean: lean_left }
+  - { url: "https://thehill.com/homenews/campaign/6187640-democrats-blast-stevens-rogers-endorsement-michigan/", outlet: The Hill, lean: center }
+  - { url: "https://nypost.com/2026/11/01/us-news/abdul-el-sayeds-ex-dem-rival-rep-haley-stevens-makes-shocking-appearance-with-gop-rival-in-11th-hour-mich-senate-twist/", outlet: New York Post, lean: lean_right }
+  - { url: "https://www.washingtonexaminer.com/news/campaigns/congressional/4787408/chief-of-staff-haley-stevens-resigns-mike-rogers/", outlet: Washington Examiner, lean: lean_right }
+  - { url: "https://jewishinsider.com/2026/10/haley-stevens-fiancee-says-hes-voting-for-mike-rogers/", outlet: Jewish Insider, lean: center }
+  - { url: "https://politifact.com/factchecks/2026/oct/19/mike-rogers/el-sayed-muslim-brotherhood-michigan-senate/", outlet: PolitiFact, lean: fact_checker }
+beats:
+  - id: b01
+    line: "His exact words: \"It's a thing called bravery.\""
+    tags: [claim]
+    pose: shocked
+    prop: megaphone
+    panel: { stock: "Arrival Departure October 25 2026 P20261025PW-0128", caption: "Trump at the White House, Oct. 25" }
+    claims:
+      - text: "Trump on Truth Social, Nov. 1: \"It's a thing called bravery, and few people have it like just displayed by Congresswoman Haley Stevens!\""
+        sources:
+          - { url: "https://thehill.com/homenews/campaign/6187175-trump-praises-stevens-gop-endorsement/", type: on_record_quote }
+          - { url: "https://nypost.com/2026/11/01/us-news/abdul-el-sayeds-ex-dem-rival-rep-haley-stevens-makes-shocking-appearance-with-gop-rival-in-11th-hour-mich-senate-twist/", type: on_record_quote }
+  - id: b02
+    line: "He means Haley Stevens, a Michigan congresswoman."
+    tags: [fact]
+    pose: present
+    panel: { stock: "Haley Stevens, official portrait, 116th Congress", caption: "Rep. Haley Stevens, official House portrait", crop: center }
+    claims:
+      - text: "Rep. Haley Stevens is a Democratic congresswoman from Michigan."
+        sources: [{ url: "https://www.bbc.co.uk/news/articles/c95ynzv88n68o", type: major_outlet }]
+  - id: b03
+    line: "She just endorsed Republican Mike Rogers for Senate, two days out."
+    tags: [fact]
+    pose: point_up
+    panel: { stock: "Mike Rogers Michigan", caption: "Mike Rogers, official House portrait (older)", crop: center }
+    claims:
+      - text: "Stevens endorsed Rogers in a video on Sunday, Nov. 1, two days before Election Day (NPR: less than 48 hours)."
+        sources: [{ url: "https://www.npr.org/2026/11/01/nx-s1-6020993/michigan-senate-race-abdul-el-sayed-haley-stevens-mike-rogers", type: major_outlet }]
+  - id: b05
+    line: "Over Democrat Abdul El-Sayed, who narrowly beat her in August."
+    tags: [fact]
+    pose: present
+    panel: { stock: "Detroit Skyline from Riverwalk May 2024", caption: "Downtown Detroit, Michigan, 2024" }
+    claims:
+      - text: "El-Sayed narrowly beat Stevens in the August primary (The Hill; New York Post: by 1 point)."
+        sources: [{ url: "https://thehill.com/homenews/campaign/6187117-schumer-rips-stevens-rogers-endorsement/", type: major_outlet }]
+  - id: b06
+    line: "So what flipped her? Israel, mostly."
+    tags: [fact]
+    pose: thinking
+    opens: L0
+    claims:
+      - text: "The feud was primarily over support for Israel (Guardian); anger over Israel was central to the feud and her decision (The Hill)."
+        sources:
+          - { url: "https://www.theguardian.com/us-news/2026/nov/01/abdul-el-sayed-haley-stevens-michigan-senate", type: major_outlet }
+          - { url: "https://thehill.com/homenews/campaign/6187175-trump-praises-stevens-gop-endorsement/", type: major_outlet }
+  - id: b07
+    line: "An outside ad blamed Israel for high grocery prices."
+    tags: [fact]
+    pose: present
+    panel: { stock: "grocery store shelves", caption: "Eggs in a grocery store, a stock photo" }
+    claims:
+      - text: "An ad by Cenk Uygur, from an outside group, blamed Israel for high grocery prices."
+        sources:
+          - { url: "https://www.npr.org/2026/11/01/nx-s1-6020993/michigan-senate-race-abdul-el-sayed-haley-stevens-mike-rogers", type: major_outlet }
+          - { url: "https://www.bbc.co.uk/news/articles/c95ynzv88n68o", type: major_outlet }
+  - id: b08
+    line: "She said reject it and apologize, or she's not showing up."
+    tags: [fact]
+    pose: point_up
+    claims:
+      - text: "On Friday Stevens set a condition for the joint event: that El-Sayed reject the ad and apologize for rhetoric she considered inflammatory."
+        sources: [{ url: "https://www.npr.org/2026/11/01/nx-s1-6020993/michigan-senate-race-abdul-el-sayed-haley-stevens-mike-rogers", type: major_outlet }]
+  - id: b09
+    line: "So he uninvited her. And she went to church with Rogers."
+    tags: [rehook, fact]
+    pose: shocked
+    panel: { stock: "Mike Rogers Michigan", caption: "Mike Rogers, official House portrait (older)", crop: center }
+    claims:
+      - text: "El-Sayed disinvited Stevens (The Hill, citing sources; the Guardian). She then appeared with Rogers at a Detroit church."
+        sources:
+          - { url: "https://thehill.com/homenews/campaign/6187117-schumer-rips-stevens-rogers-endorsement/", type: major_outlet }
+          - { url: "https://www.theguardian.com/us-news/2026/nov/01/abdul-el-sayed-haley-stevens-michigan-senate", type: major_outlet }
+  - id: b10
+    line: "Reports back her up: he told her to stay away."
+    tags: [fact, verdict]
+    pose: present
+    panel: { stock: "Haley Stevens, official portrait, 116th Congress", caption: "Rep. Haley Stevens, official House portrait", crop: center }
+    claims:
+      - text: "Stevens: Abdul \"said I was no longer welcome in his campaign and that I should stay away.\" Outlets report he asked her not to come."
+        sources:
+          - { url: "https://www.npr.org/2026/11/01/nx-s1-6020993/michigan-senate-race-abdul-el-sayed-haley-stevens-mike-rogers", type: on_record_quote }
+          - { url: "https://www.bbc.co.uk/news/articles/c95ynzv88n68o", type: major_outlet }
+    verdict:
+      label: "TRUE"
+      sources:
+        - { url: "https://thehill.com/homenews/administration/6187354-trump-haley-stevens-join-republican-party/", type: major_outlet, note: "The Hill: he dropped her from the event, per sources familiar" }
+        - { url: "https://www.cbsnews.com/news/abdul-el-sayed-haley-stevens-feud-michigan-senate/", type: major_outlet, note: "CBS: he asked her to stay away from all remaining events, per two sources" }
+  - id: b11
+    line: "He says that ad's not his, and he disagrees with it."
+    tags: [fact]
+    pose: shrug
+    closes: L0
+    panel: { stock: "Detroit Skyline from Riverwalk May 2024", caption: "Downtown Detroit, Michigan, 2024" }
+    claims:
+      - text: "El-Sayed, Saturday: \"that ad was not made by me, and I do not agree with the contents of that ad.\" The Guardian reports he declined her request to denounce it."
+        sources:
+          - { url: "https://www.cbsnews.com/news/abdul-el-sayed-haley-stevens-feud-michigan-senate/", type: on_record_quote }
+          - { url: "https://www.npr.org/2026/11/01/nx-s1-6020993/michigan-senate-race-abdul-el-sayed-haley-stevens-mike-rogers", type: major_outlet }
+          - { url: "https://www.bbc.co.uk/news/articles/c95ynzv88n68o", type: major_outlet }
+  - id: b12
+    line: "She's got company. Her fiancé and old campaign chair back Rogers."
+    tags: [fact, steelman]
+    pose: thinking
+    panel: { stock: "Mike Rogers Michigan", caption: "Mike Rogers, official House portrait (older)", crop: center }
+    claims:
+      - text: "Fiancé Jason Turkish and former campaign chair David Kramer both said they plan to vote for Rogers."
+        sources: [{ url: "https://jewishinsider.com/2026/10/haley-stevens-fiancee-says-hes-voting-for-mike-rogers/", type: major_outlet }]
+  - id: b13
+    line: "She won't stand with Hasan Piker, a streamer he campaigned with."
+    tags: [fact, steelman]
+    pose: present
+    panel: { stock: "Hasan Piker", caption: "Hasan Piker, left, at a festival, 2026" }
+    claims:
+      - text: "Stevens said she does not stand with Hasan Piker, a streamer El-Sayed campaigned with during the primary. He distanced himself in August but stopped short of disavowing Piker."
+        sources: [{ url: "https://www.npr.org/2026/11/01/nx-s1-6020993/michigan-senate-race-abdul-el-sayed-haley-stevens-mike-rogers", type: major_outlet }]
+  - id: b14
+    line: "And before all this? She called Rogers a Trump rubber stamp."
+    tags: [fact]
+    pose: thinking
+    opens: L1
+    claims:
+      - text: "She previously called Rogers a rubber stamp for the president."
+        sources:
+          - { url: "https://thehill.com/homenews/campaign/6187117-schumer-rips-stevens-rogers-endorsement/", type: major_outlet }
+          - { url: "https://www.motherjones.com/politics/2026/11/here-are-some-things-haley-stevens-said-about-mike-rogers-before-endorsing-him/", type: major_outlet }
+  - id: b15
+    line: "Fourteen-plus times, Mother Jones counted."
+    tags: [fact, verdict]
+    pose: point_up
+    closes: L1
+    panel: { stock: "rubber stamp", caption: "Actual rubber stamps, on an office carousel" }
+    claims:
+      - text: "Stevens called Rogers a \"rubber stamp\" for Trump; Mother Jones counts one August post plus \"at least 13 other times\"."
+        sources:
+          - { url: "https://www.motherjones.com/politics/2026/11/here-are-some-things-haley-stevens-said-about-mike-rogers-before-endorsing-him/", type: major_outlet }
+          - { url: "https://thehill.com/homenews/campaign/6187117-schumer-rips-stevens-rogers-endorsement/", type: major_outlet }
+    verdict:
+      label: "TRUE"
+      sources: [{ url: "https://thehill.com/homenews/campaign/6187117-schumer-rips-stevens-rogers-endorsement/", type: major_outlet, note: "The Hill: she previously called Rogers a rubber stamp for the president" }]
+  - id: b16
+    line: "That's a lot of rubber stamps to walk back."
+    tags: [joke]
+    pose: shrug
+    panel: { meme: expectation_reality, text: { left: "RUBBER STAMP", right: "ENDORSED" } }
+  - id: b17
+    line: "Schumer backed her in the primary. Now it's despicable betrayal."
+    tags: [fact]
+    pose: shocked
+    panel: { stock: "Chuck Schumer", caption: "Chuck Schumer, official Senate portrait", crop: center }
+    claims:
+      - text: "Schumer backed Stevens in the primary, then called the endorsement \"a despicable betrayal\"."
+        sources:
+          - { url: "https://thehill.com/homenews/campaign/6187117-schumer-rips-stevens-rogers-endorsement/", type: on_record_quote }
+          - { url: "https://www.bbc.co.uk/news/articles/c95ynzv88n68o", type: on_record_quote }
+  - id: b19
+    line: "Michigan's party chair says she's out. She says she's a Democrat."
+    tags: [fact]
+    pose: shrug
+    panel: { stock: "Haley Stevens, official portrait, 116th Congress", caption: "Rep. Haley Stevens, official House portrait", crop: center }
+    claims:
+      - text: "Hertel: Stevens \"is not a current member of the Michigan Democratic Party, nor will she be in the future.\" Stevens: \"I'm still a very proud Democrat.\""
+        sources:
+          - { url: "https://thehill.com/homenews/campaign/6187117-schumer-rips-stevens-rogers-endorsement/", type: on_record_quote }
+          - { url: "https://nypost.com/2026/11/01/us-news/abdul-el-sayeds-ex-dem-rival-rep-haley-stevens-makes-shocking-appearance-with-gop-rival-in-11th-hour-mich-senate-twist/", type: on_record_quote }
+  - id: b20
+    line: "Trump says he'd love to have her. He's never met her."
+    tags: [fact]
+    pose: shocked
+    panel: { stock: "Arrival Departure October 25 2026 P20261025PW-0128", caption: "Trump at the White House, Oct. 25" }
+    claims:
+      - text: "Trump: \"I'd love to have her\" and \"I've never met her\"."
+        sources:
+          - { url: "https://thehill.com/homenews/administration/6187354-trump-haley-stevens-join-republican-party/", type: on_record_quote }
+          - { url: "https://www.bbc.co.uk/news/articles/c95ynzv88n68o", type: on_record_quote }
+  - id: b21
+    line: "My take? Getting uninvited stinks. Doesn't erase those rubber stamps."
+    tags: [opinion]
+    pose: present
+    expression: smug
+    panel: { stock: "rubber stamp", caption: "Actual rubber stamps, on an office carousel" }
+  - id: b23
+    line: "Trump calls her brave. She called his guy a rubber stamp."
+    tags: [callback]
+    pose: shrug
+    camera: zoom_stare
+    panel: { stock: "Arrival Departure October 25 2026 P20261025PW-0128", caption: "Trump at the White House, Oct. 25" }
+  - id: b24
+    line: "Follow for our next episode!"
+    tags: [cta]
+    pose: celebrate
+human_edited: true # cleared 2026-11-02: fact-checked by the agent, queued for owner review in Buffer
+disclosures: []
+caption: "She called him a rubber stamp. Then she endorsed him, two days out 💀 what's true on both sides, sources below"
+hashtags: [politics, michigan, midterms, haleystevens, senate]

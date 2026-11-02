@@ -64,6 +64,22 @@
       "downloadedAt": "2026-11-01T02:10:08.836Z",
       "usedIn": []
     },
+    "wikimedia:155329696": {
+      "id": "wikimedia:155329696",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Mike-Rogers-Head-Shot-2_(3x4_cropped).jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/Mike-Rogers-Head-Shot-2_%283x4_cropped%29.jpg/1280px-Mike-Rogers-Head-Shot-2_%283x4_cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1710,
+      "creator": "United States Congress",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Mike-Rogers-Head-Shot-2_(3x4_cropped).jpg",
+      "attributionRequired": false,
+      "query": "Mike Rogers Michigan",
+      "file": "assets/stock/cache/wikimedia_155329696.jpg",
+      "downloadedAt": "2026-11-02T04:02:33.534Z",
+      "usedIn": []
+    },
     "wikimedia:155331020": {
       "id": "wikimedia:155331020",
       "provider": "wikimedia",
@@ -110,6 +126,38 @@
       "query": "Mary Peltola Town Hall 2024",
       "file": "assets/stock/cache/wikimedia_191135034.jpg",
       "downloadedAt": "2026-10-31T21:16:26.001Z",
+      "usedIn": []
+    },
+    "wikimedia:19810280": {
+      "id": "wikimedia:19810280",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:GroceryStoreEggs.JPG",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/GroceryStoreEggs.JPG/1280px-GroceryStoreEggs.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 848,
+      "creator": "Raysonho @ Open Grid Scheduler / Grid Engine",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "attributionRequired": false,
+      "query": "grocery store shelves",
+      "file": "assets/stock/cache/wikimedia_19810280.jpg",
+      "downloadedAt": "2026-11-02T04:03:46.207Z",
+      "usedIn": []
+    },
+    "wikimedia:199470678": {
+      "id": "wikimedia:199470678",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Hasan_Piker_and_Line_De_Witte,_Fakto_interview,_ManiFiesta_2026.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Hasan_Piker_and_Line_De_Witte%2C_Fakto_interview%2C_ManiFiesta_2026.jpg/1280px-Hasan_Piker_and_Line_De_Witte%2C_Fakto_interview%2C_ManiFiesta_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 853,
+      "creator": "DimiTalen",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "attributionRequired": false,
+      "query": "Hasan Piker",
+      "file": "assets/stock/cache/wikimedia_199470678.jpg",
+      "downloadedAt": "2026-11-02T04:10:00.699Z",
       "usedIn": []
     },
     "wikimedia:202267030": {
@@ -272,6 +320,22 @@
       "downloadedAt": "2026-10-31T21:09:05.684Z",
       "usedIn": []
     },
+    "wikimedia:73114008": {
+      "id": "wikimedia:73114008",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Chuck_Schumer_official_photo_(cropped_2).jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Chuck_Schumer_official_photo_%28cropped_2%29.jpg/1280px-Chuck_Schumer_official_photo_%28cropped_2%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1636,
+      "creator": "U.S. Senate Photographic Studio/Jeff McEvoy",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Chuck_Schumer_official_photo_(cropped_2).jpg",
+      "attributionRequired": false,
+      "query": "Chuck Schumer",
+      "file": "assets/stock/cache/wikimedia_73114008.jpg",
+      "downloadedAt": "2026-11-02T04:03:39.124Z",
+      "usedIn": []
+    },
     "wikimedia:75591686": {
       "id": "wikimedia:75591686",
       "provider": "wikimedia",
@@ -286,6 +350,22 @@
       "query": "Haley Stevens, official portrait, 116th Congress",
       "file": "assets/stock/cache/wikimedia_75591686.jpg",
       "downloadedAt": "2026-11-01T02:10:16.945Z",
+      "usedIn": []
+    },
+    "wikimedia:801580": {
+      "id": "wikimedia:801580",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Stempelkarussel.JPG",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Stempelkarussel.JPG/1280px-Stempelkarussel.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 960,
+      "creator": "Carl Steinbeisser",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Stempelkarussel.JPG",
+      "attributionRequired": false,
+      "query": "rubber stamp",
+      "file": "assets/stock/cache/wikimedia_801580.jpg",
+      "downloadedAt": "2026-11-02T04:03:42.866Z",
       "usedIn": []
     },
     "wikimedia:86845536": {
