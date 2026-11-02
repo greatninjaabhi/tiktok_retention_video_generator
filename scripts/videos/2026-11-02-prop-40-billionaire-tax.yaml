@@ -1,0 +1,213 @@
+# DRAFT by Claude in an unattended scheduled run on 2026-11-02 (not `npm run draft`: no API key there).
+# Writer brief: scripts/prompts/2026-11-02-prop-40-billionaire-tax.md
+# UNRESOLVED:
+#  1. Whether Brin and others really ended California residency is disputed (Rauh says yes; Zucman and a drafter doubt it). The script says only that he lists a Nevada address and that backers doubt it counts.
+#  2. The $100 billion and -$39 billion figures are both projections from advocates of each side. Attributed out loud.
+#  3. Goes stale when California's polls close Tuesday night, Nov. 3.
+id: 2026-11-02-prop-40-billionaire-tax
+channel: politics
+format: explainer
+character: mascot_v1
+topic:
+  title: "Prop 40: California's billionaire tax, and why Gavin Newsom's a no"
+  type: money_in_politics
+  first_seen: "2026-11-02T10:00:00Z"
+hook:
+  spoken: "Gavin Newsom's voting no on one tax. Guess who'd pay it."
+  on_screen: "NEWSOM'S VOTING NO. GUESS WHO PAYS"
+  pattern: question_blame
+research:
+  - { url: "https://voterguide.sos.ca.gov/propositions/40/analysis.htm", outlet: California Legislative Analyst, lean: primary }
+  - { url: "https://www.npr.org/sections/planet-money/2026/11/02/g-s1-151009/two-economists-studied-californias-billionaire-tax-they-reached-wildly-different-conclusions", outlet: NPR Planet Money, lean: lean_left }
+  - { url: "https://timesofsandiego.com/politics/2026/10/30/who-are-the-billionaires-behind-the-304-million-effort-to-defeat-californias-wealth-tax/", outlet: Capital & Main, lean: left }
+  - { url: "https://www.cnbc.com/2026/10/22/california-proposition-40-billionaire-tax-wealth.html", outlet: CNBC, lean: center }
+  - { url: "https://www.accountingtoday.com/articles/meta-cuts-deal-to-keep-zuckerberg-in-california-amid-tax-threat", outlet: Bloomberg via Accounting Today, lean: center }
+  - { url: "https://www.newsweek.com/california-billionaire-tax-could-lose-even-if-voters-approve-it-12560468", outlet: Newsweek, lean: center }
+  - { url: "https://sfstandard.com/2026/10/27/billionaire-tax-prop-40-ppic-poll-october/", outlet: SF Standard, lean: center }
+  - { url: "https://nypost.com/2026/11/01/us-news/billionaire-don-hankey-slams-prop-40-after-leaving-california/", outlet: New York Post, lean: lean_right }
+  - { url: "https://calmatters.org/health/2026/10/prop-40-billionaire-tax-fact-check/", outlet: CalMatters, lean: fact_checker }
+beats:
+  - id: b01
+    line: "Billionaires. A couple hundred, all in California."
+    tags: [fact]
+    pose: shocked
+    panel: { stock: "Gavin Newsom", caption: "Gov. Gavin Newsom, 2026 official portrait", crop: center }
+    claims:
+      - text: "Newsom said he's a No vote on Prop 40, which would tax an estimated 200-250 California billionaires."
+        sources:
+          - { url: "https://www.cnbc.com/2026/10/22/california-proposition-40-billionaire-tax-wealth.html", type: major_outlet }
+          - { url: "https://voterguide.sos.ca.gov/propositions/40/analysis.htm", type: official_data }
+  - id: b02
+    line: "It's Prop 40. One time, five percent of their net worth."
+    tags: [fact]
+    pose: present
+    panel: { stock: "California State Capitol Sacramento", caption: "California State Capitol, Sacramento" }
+    claims:
+      - text: "One-time state tax equal to 5 percent of net worth, on billionaires who were residents on Jan. 1, 2026."
+        sources: [{ url: "https://voterguide.sos.ca.gov/propositions/40/analysis.htm", type: official_data }]
+  - id: b03
+    line: "Mostly for health care, as Trump's bill cuts Medicaid."
+    tags: [fact]
+    pose: point_up
+    claims:
+      - text: "Ninety percent must go to health care. The money would help offset cuts from the One Big Beautiful Bill Act, signed by Trump."
+        sources:
+          - { url: "https://voterguide.sos.ca.gov/propositions/40/analysis.htm", type: official_data }
+          - { url: "https://www.cnbc.com/2026/10/22/california-proposition-40-billionaire-tax-wealth.html", type: major_outlet }
+  - id: b04
+    line: "Bernie Sanders and California's Democratic Party are yes."
+    tags: [fact]
+    pose: present
+    panel: { stock: "Bernie Sanders 2016 DNC", caption: "Sen. Bernie Sanders at the 2016 DNC", crop: top }
+    claims:
+      - text: "Sanders and the California Democratic Party support Prop 40."
+        sources:
+          - { url: "https://timesofsandiego.com/politics/2026/10/30/who-are-the-billionaires-behind-the-304-million-effort-to-defeat-californias-wealth-tax/", type: major_outlet }
+          - { url: "https://www.newsweek.com/california-billionaire-tax-could-lose-even-if-voters-approve-it-12560468", type: major_outlet }
+  - id: b05
+    line: "Why's Newsom a no? He wants it national. Billionaires can move."
+    tags: [fact, steelman]
+    pose: thinking
+    panel: { stock: "Gavin Newsom", caption: "Gov. Gavin Newsom, 2026 official portrait", crop: center }
+    claims:
+      - text: "Newsom:\"You may not be able to pick up and move to Texas or Florida to shelter your income from taxation, but I promise you that billionaires can, and do.\" His office says he supports a national tax on billionaires."
+        sources:
+          - { url: "https://www.cnbc.com/2026/10/22/california-proposition-40-billionaire-tax-wealth.html", type: on_record_quote }
+          - { url: "https://www.newsweek.com/california-billionaire-tax-could-lose-even-if-voters-approve-it-12560468", type: on_record_quote }
+  - id: b06
+    line: "Google co-founder Sergey Brin now lists a Nevada address."
+    tags: [fact]
+    pose: shocked
+    panel: { stock: "Sergey Brin", caption: "Sergey Brin, right, Washington, Oct. 8, 2026" }
+    claims:
+      - text: "Brin now lists Nevada as his address in campaign donation filings (Bloomberg)."
+        sources: [{ url: "https://www.accountingtoday.com/articles/meta-cuts-deal-to-keep-zuckerberg-in-california-amid-tax-threat", type: major_outlet }]
+  - id: b07
+    line: "Backers say that might not count."
+    tags: [fact]
+    pose: shrug
+    claims:
+      - text: "Zucman says legal experts he trusts think it's unlikely Brin and others successfully ended residency before the cutoff; Rauh says Brin has likely succeeded."
+        sources: [{ url: "https://www.npr.org/sections/planet-money/2026/11/02/g-s1-151009/two-economists-studied-californias-billionaire-tax-they-reached-wildly-different-conclusions", type: major_outlet }]
+  - id: b08
+    line: "He also gave a hundred two million to fight it."
+    tags: [rehook, fact]
+    pose: shocked
+    panel: { stock: "Sergey Brin", caption: "Sergey Brin, right, Washington, Oct. 8, 2026" }
+    claims:
+      - text: "Brin gave $102 million to Building a Better California, which opposes Prop 40."
+        sources:
+          - { url: "https://timesofsandiego.com/politics/2026/10/30/who-are-the-billionaires-behind-the-304-million-effort-to-defeat-californias-wealth-tax/", type: official_data }
+          - { url: "https://www.ynetnews.com/business/article/r15b5qytgx", type: major_outlet }
+  - id: b09
+    line: "That group's put in over three hundred million. Yes side raised thirty-four."
+    tags: [fact]
+    pose: point_up
+    panel: { stock: "United States one hundred dollar bill", caption: "A U.S. hundred-dollar bill, a stock photo" }
+    claims:
+      - text: "Through Oct. 20, Building a Better California gave $118.5M against Prop 40 and $186M for Props 41 and 42, more than $304M. Backers raised $34.3M."
+        sources:
+          - { url: "https://timesofsandiego.com/politics/2026/10/30/who-are-the-billionaires-behind-the-304-million-effort-to-defeat-californias-wealth-tax/", type: official_data }
+          - { url: "https://www.yahoo.com/news/politics/articles/billionaires-fighting-california-wealth-tax-180242242.html", type: major_outlet }
+  - id: b12
+    line: "Nvidia's Jensen Huang calls his eight billion bill a privilege."
+    tags: [fact]
+    pose: present
+    panel: { stock: "Jensen Huang", caption: "Jensen Huang on stage at a 2018 conference" }
+    claims:
+      - text: "Huang: \"The fact that I can afford to pay $8 billion in taxes over five years is a privilege.\""
+        sources:
+          - { url: "https://fortune.com/2026/10/20/as-billionaires-fight-tax-hike-jensen-huang-paying-8-billion-is-privilidge-just-afraid-of-being-poor/", type: on_record_quote }
+          - { url: "https://www.moneytalksnews.com/jensen-huang-calls-his-billion-tax-bill-a-privilege-im-a-cpa-and-heres-where-hes-right/", type: on_record_quote }
+  - id: b13
+    line: "He's worth over a hundred eighty billion. \"I'm just afraid of being poor.\""
+    tags: [fact, joke]
+    pose: shocked
+    panel: { stock: "Jensen Huang", caption: "Jensen Huang on stage at a 2018 conference" }
+    claims:
+      - text: "Huang: \"I'm just afraid of being poor.\" Net worth: $180B (Fortune), about $184B (Money Talks News)."
+        sources:
+          - { url: "https://fortune.com/2026/10/20/as-billionaires-fight-tax-hike-jensen-huang-paying-8-billion-is-privilidge-just-afraid-of-being-poor/", type: on_record_quote }
+          - { url: "https://www.moneytalksnews.com/jensen-huang-calls-his-billion-tax-bill-a-privilege-im-a-cpa-and-heres-where-hes-right/", type: on_record_quote }
+  - id: b14
+    line: "How much money? Backers say a hundred billion."
+    tags: [fact]
+    pose: thinking
+    opens: L1
+    claims:
+      - text: "Zucman, Boll and Saez estimate about $100 billion."
+        sources: [{ url: "https://www.npr.org/sections/planet-money/2026/11/02/g-s1-151009/two-economists-studied-californias-billionaire-tax-they-reached-wildly-different-conclusions", type: major_outlet }]
+  - id: b15
+    line: "A Stanford economist says California loses thirty-nine billion."
+    tags: [fact]
+    pose: shocked
+    panel: { stock: "Hoover Tower Stanford", caption: "Hoover Institution at Stanford, old postcard" }
+    claims:
+      - text: "Joshua Rauh, Stanford and Hoover Institution: \"We calculate that Proposition 40 would cost the state of California $39 billion.\" This assumes lost income tax from departures continues indefinitely."
+        sources:
+          - { url: "https://www.npr.org/sections/planet-money/2026/11/02/g-s1-151009/two-economists-studied-californias-billionaire-tax-they-reached-wildly-different-conclusions", type: on_record_quote }
+          - { url: "https://www.cnbc.com/2026/10/22/california-proposition-40-billionaire-tax-wealth.html", type: major_outlet }
+  - id: b16
+    line: "The state's analyst: tens of billions, minus under a billion yearly."
+    tags: [fact, what_it_means]
+    pose: present
+    closes: L1
+    panel: { stock: "California State Capitol Sacramento", caption: "California State Capitol, Sacramento" }
+    claims:
+      - text: "Legislative Analyst: the state probably would collect tens of billions of dollars, and responses probably would reduce revenues by less than $1 billion per year."
+        sources: [{ url: "https://voterguide.sos.ca.gov/propositions/40/analysis.htm", type: official_data }]
+  - id: b17
+    line: "Bad news for the left: past wealth taxes mostly flopped."
+    tags: [fact, steelman]
+    pose: shrug
+    opens: L2
+    panel: { stock: "Eiffel Tower Paris", caption: "Paris. France scrapped its wealth tax in 2018", crop: center }
+    claims:
+      - text: "NPR: wealth taxes have had a dismal track record. France scrapped its wealth tax in 2018."
+        sources: [{ url: "https://www.npr.org/sections/planet-money/2026/11/02/g-s1-151009/two-economists-studied-californias-billionaire-tax-they-reached-wildly-different-conclusions", type: major_outlet }]
+  - id: b18
+    line: "A leading backer admits it. He says this one plugs leaks."
+    tags: [fact]
+    pose: thinking
+    closes: L2
+    claims:
+      - text: "Zucman writes that past wealth taxes \"by and large, have been abject failures\"; Prop 40's designers tried to plug potential leaks."
+        sources: [{ url: "https://www.npr.org/sections/planet-money/2026/11/02/g-s1-151009/two-economists-studied-californias-billionaire-tax-they-reached-wildly-different-conclusions", type: on_record_quote }]
+  - id: b19
+    line: "Ads say it'll spread to you? That'd likely take another vote."
+    tags: [fact]
+    pose: point_up
+    panel: { meme: expectation_reality, text: { left: "ADS: YOU'RE NEXT", right: "ANOTHER VOTE" } }
+    claims:
+      - text: "Opponents' ads call it a Trojan horse. CalMatters: Prop 40 writes the tax into the Constitution, so expanding it would likely require another trip to the ballot, though disputes could end up in court."
+        sources: [{ url: "https://calmatters.org/health/2026/10/prop-40-billionaire-tax-fact-check/", type: fact_check }]
+  - id: b20
+    line: "If Prop 41 or 42 gets more votes, it could die."
+    tags: [fact, what_it_means]
+    pose: shocked
+    panel: { stock: "2020 I Voted sticker Santa Clara County California", caption: "An \"I Voted\" sticker from California, 2020" }
+    claims:
+      - text: "Legislative Analyst: if Prop 41 or 42 receives more yes votes, Prop 40 could be stopped even with a majority, because courts could find they conflict."
+        sources:
+          - { url: "https://www.cnbc.com/2026/10/22/california-proposition-40-billionaire-tax-wealth.html", type: major_outlet }
+          - { url: "https://www.newsweek.com/california-billionaire-tax-could-lose-even-if-voters-approve-it-12560468", type: major_outlet }
+  - id: b21
+    line: "My take? The math's disputed. Who's paying to stop it isn't."
+    tags: [opinion]
+    pose: present
+    expression: smug
+    panel: { stock: "United States one hundred dollar bill", caption: "A U.S. hundred-dollar bill, a stock photo" }
+  - id: b22
+    line: "Guess who'd pay? Billionaires. California decides Tuesday."
+    tags: [callback]
+    pose: shrug
+    camera: zoom_stare
+    panel: { stock: "2020 I Voted sticker Santa Clara County California", caption: "An \"I Voted\" sticker from California, 2020" }
+  - id: b23
+    line: "Follow for our next episode!"
+    tags: [cta]
+    pose: celebrate
+human_edited: true # cleared 2026-11-02: fact-checked by the agent, queued for owner review in Buffer
+disclosures: []
+caption: "A Democratic governor vs a tax on billionaires, and the math nobody agrees on 💀 what's true on both sides, sources below"
+hashtags: [politics, california, prop40, billionaires, newsom]
