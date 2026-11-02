@@ -12,9 +12,9 @@ const slot = (y: number, mo: number, d: number, base: string) => {
 };
 
 describe('owner-approved schedule', () => {
-  it('posts twice a day, 14 a week', () => {
+  it('posts three times a day, 21 a week', () => {
     expect(Object.keys(slots.times)).toHaveLength(7);
-    for (const times of Object.values(slots.times)) expect(times).toHaveLength(2);
+    for (const times of Object.values(slots.times)) expect(times).toHaveLength(3);
   });
   it('never uses a round time, in any week', () => {
     for (const t of Object.values(slots.times).flat()) {
@@ -33,28 +33,28 @@ describe('owner-approved schedule', () => {
 });
 
 describe('next open slot', () => {
-  const morning = () => slot(2026, 11, 1, '09:07'); // Sunday's first slot, already filled in these tests
+  const sun = (base: string) => slot(2026, 11, 1, base);
+  const morning = () => sun('09:07');
   it('handles daylight saving', () => {
     expect(at(2026, 11, 1, 19, 53).toISOString()).toBe('2026-11-02T01:53:00.000Z'); // CST, UTC-6
     expect(at(2026, 10, 31, 9, 7).toISOString()).toBe('2026-10-31T14:07:00.000Z'); // CDT, UTC-5
   });
   it('picks the next slot with time to review', () => {
-    const now = at(2026, 11, 1, 11, 43);
-    expect(nextSlot(slots, [], now, [morning()]).getTime()).toBe(slot(2026, 11, 1, '19:53').getTime());
+    expect(nextSlot(slots, [], at(2026, 11, 1, 11, 43), [morning()]).getTime()).toBe(sun('14:41').getTime());
   });
   it('skips a slot too soon to review', () => {
-    const now = new Date(slot(2026, 11, 1, '19:53').getTime() - (MIN_LEAD_MINUTES - 1) * 60_000);
-    expect(nextSlot(slots, [], now, [morning()]).getTime()).toBe(slot(2026, 11, 2, '12:47').getTime());
+    const now = new Date(sun('14:41').getTime() - (MIN_LEAD_MINUTES - 1) * 60_000);
+    expect(nextSlot(slots, [], now, [morning()]).getTime()).toBe(sun('19:53').getTime());
   });
   it('skips filled slots', () => {
-    const now = at(2026, 11, 1, 11, 43);
-    expect(nextSlot(slots, [slot(2026, 11, 1, '19:53')], now, [morning()]).getTime()).toBe(slot(2026, 11, 2, '12:47').getTime());
+    expect(nextSlot(slots, [sun('14:41')], at(2026, 11, 1, 11, 43), [morning()]).getTime()).toBe(sun('19:53').getTime());
   });
-  it('counts a post at another time toward its day, so a day stays at two', () => {
-    const now = at(2026, 11, 2, 8, 0);
+  it('counts a post at another time toward its day, so a day stays at three', () => {
+    const now = at(2026, 11, 2, 5, 0);
     const alaska = at(2026, 11, 2, 9, 41);
-    expect(nextSlot(slots, [alaska], now).getTime()).toBe(slot(2026, 11, 2, '12:47').getTime());
-    expect(nextSlot(slots, [alaska, slot(2026, 11, 2, '12:47')], now).getTime()).toBe(slot(2026, 11, 3, '12:13').getTime());
+    const mon = (base: string) => slot(2026, 11, 2, base);
+    expect(nextSlot(slots, [alaska], now).getTime()).toBe(mon('08:23').getTime());
+    expect(nextSlot(slots, [alaska, mon('08:23'), mon('12:47')], now).getTime()).toBe(slot(2026, 11, 3, '08:12').getTime());
   });
   it('catches up soon if a slot was missed earlier today', () => {
     const now = at(2026, 11, 1, 11, 43);
@@ -64,15 +64,12 @@ describe('next open slot', () => {
     expect(got.getUTCMinutes() % 5).not.toBe(0);
   });
   it('waits for the next slot instead of posting overnight', () => {
-    const now = at(2026, 11, 1, 23, 30); // both of today's slots missed
-    expect(nextSlot(slots, [], now).getTime()).toBe(slot(2026, 11, 2, '12:47').getTime());
+    expect(nextSlot(slots, [], at(2026, 11, 1, 23, 30)).getTime()).toBe(slot(2026, 11, 2, '08:23').getTime());
   });
   it('makes a video only when one is due, so they never pile up', () => {
-    const evening = slot(2026, 11, 1, '19:53');
-    expect(needsVideo(slots, [], at(2026, 11, 1, 14, 30), [morning()])).toBe(true);
-    expect(needsVideo(slots, [evening], at(2026, 11, 1, 14, 30), [morning()])).toBe(false);
-    expect(needsVideo(slots, [], at(2026, 11, 1, 22, 30), [morning(), evening])).toBe(false);
-    expect(needsVideo(slots, [], at(2026, 11, 2, 5, 30))).toBe(true);
+    expect(needsVideo(slots, [], at(2026, 11, 1, 14, 30), [morning(), sun('14:41')])).toBe(true);
+    expect(needsVideo(slots, [sun('19:53')], at(2026, 11, 1, 14, 30), [morning(), sun('14:41')])).toBe(false);
+    expect(needsVideo(slots, [], at(2026, 11, 2, 4, 30))).toBe(true);
   });
   it('shows the time in the channel\'s zone', () => {
     expect(formatSlot(at(2026, 11, 1, 19, 53), tz)).toContain('7:53');

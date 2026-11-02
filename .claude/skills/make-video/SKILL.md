@@ -5,7 +5,7 @@ description: Make a new political explainer or fact-check video to the owner-app
 
 # Make a video
 
-The goal is a video good enough to go out as is. Finished videos are always scheduled in Buffer, in the next open slot of the 2-a-day schedule, and the owner reviews each one there. Read `docs/PLAYBOOK.md` first and look at its reference frames; those are the bar. If you can't meet a step, stop and say so. Never lower the bar quietly.
+The goal is a video good enough to go out as is. Finished videos are always scheduled in Buffer, in the next open slot of the 3-a-day schedule, and the owner reviews each one there. Read `docs/PLAYBOOK.md` first and look at its reference frames; those are the bar. If you can't meet a step, stop and say so. Never lower the bar quietly.
 
 ## 1. Pick the topic
 
@@ -16,7 +16,7 @@ Run `npm run radar` and read `out/radar/<date>.md`. If the owner named a topic, 
 - A recognizable person to open on
 - An absurd but true detail to build the joke from
 
-Then check `scripts/videos/` and avoid repeating the last video's topic. Don't let every video target the same person or party either: the channel leans left, but it should check anyone in power.
+Then check `scripts/videos/`. At 3 videos a day, freshness is the first thing to slip: don't cover a story that's already been covered unless there's a real new development, and make sure each video adds something the last one didn't. If no strong new story exists, make an explainer tied to a live fight, or a fact-check of a claim in the news, rather than a weak news video. Vary the opening person and the format across the day. Don't let every video target the same person or party either: the channel leans left, but it should check anyone in power.
 
 Skip anything graphic or involving minors, and anything with fewer than two independent credible confirmations.
 
@@ -108,7 +108,7 @@ Re-check the news in case the story changed while you worked, and update the scr
 npm run ship -- scripts/videos/<id>.yaml --render-only
 ```
 
-The PC has to stay awake. Pull about 16 frames across the finished video with ffmpeg and look at them, and confirm its length with ffprobe. You can't hear audio, so say that. If something's wrong, fix it, set `human_edited` back to `false`, and go back to step 5.
+Give this command a 2-hour limit and run it in the background. It usually takes 10–40 minutes, but it runs at low priority on a laptop in use, and a 25-minute limit killed a healthy render once. If a render is killed, set `human_edited` back to `false` before rerunning. Pull about 16 frames across the finished video with ffmpeg and look at them, and confirm its length with ffprobe. You can't hear audio, so say that. If something's wrong, fix it, set `human_edited` back to `false`, and go back to step 5.
 
 ## 8. Queue it
 
@@ -118,7 +118,7 @@ npm run ship -- scripts/videos/<id>.yaml --no-render --yes
 
 ## 9. Save and report
 
-Run `npm run check`, then commit and push. Open the video and keep the report short:
+Run `npm run check`, then commit and push. Open the video if someone's there (scheduled runs can't), and keep the report short:
 
 - When it's scheduled, with the video path and length
 - What to check in Buffer, from step 6, plus unusual names to listen for and any photo you settled for. Lead with the biggest risk. If there's nothing, say so.

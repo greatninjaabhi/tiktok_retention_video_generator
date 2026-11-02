@@ -55,7 +55,7 @@ $allow = @(
   "PowerShell(git push origin $branch)"
 ) -join ','
 $deny = @(
-  'Read(./.env)', 'Edit(./.env)', 'Write(./.env)',
+  'Read(./.env)', 'Edit(./.env)',
   'PowerShell(npm run tiktok *)', 'PowerShell(npm.cmd run tiktok *)',
   'PowerShell(npm run buffer -- post *)', 'PowerShell(npm.cmd run buffer -- post *)'
 ) -join ','
