@@ -108,7 +108,7 @@ Re-check the news in case the story changed while you worked, and update the scr
 npm run ship -- scripts/videos/<id>.yaml --render-only
 ```
 
-Give this command a 2-hour limit and run it in the background. It usually takes 10–40 minutes, but it runs at low priority on a laptop in use, and a 25-minute limit killed a healthy render once. If a render is killed, set `human_edited` back to `false` before rerunning. Pull about 16 frames across the finished video with ffmpeg and look at them, and confirm its length with ffprobe. You can't hear audio, so say that. If something's wrong, fix it, set `human_edited` back to `false`, and go back to step 5.
+Give this command a 2-hour limit and run it in the background, then wait for it to finish before doing anything else. The job isn't done until step 8 has run. It usually takes 10–40 minutes, but it runs at low priority on a laptop in use, and a 25-minute limit killed a healthy render once. If a render is killed, set `human_edited` back to `false` before rerunning. Pull about 16 frames across the finished video with ffmpeg and look at them, and confirm its length with ffprobe. You can't hear audio, so say that. If something's wrong, fix it, set `human_edited` back to `false`, and go back to step 5.
 
 ## 8. Queue it
 
