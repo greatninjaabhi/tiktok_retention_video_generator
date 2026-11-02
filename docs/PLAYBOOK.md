@@ -13,6 +13,10 @@ How a video on this channel should look, sound and open. This is the owner-appro
 - **The hook creates a question and holds back the answer.** "Trump wants to send this guy back. Wait till you hear where." beat "Trump told a crowd: send this guy back where he came from."
 - **Hook text sits on a solid bar**, so it reads over any photo.
 
+## Volume
+
+The owner wants to post a lot, because TikTok keeps showing videos for days. Three a day is the current ceiling: it's the top of Buffer's suggested 1 to 3. TikTok publishes no limit for being flagged, so don't raise it without checking retention and reach first. Scripts should age well, and videos should vary so they don't look mass-produced.
+
 ## Pace
 
 - Voice speed 1.25 and up to 4 words per caption group. Speed 1.05 with 7-word groups was "way too slow".

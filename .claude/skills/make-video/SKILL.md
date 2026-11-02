@@ -53,6 +53,10 @@ Then write the rest, using `channels/politics/voice.yaml`:
 
 Read every line as if saying it to a friend, and rewrite any that sound like a newsreader. Leave `human_edited: false`.
 
+**Write it to hold up days later,** because TikTok keeps showing videos long after they post. Prefer dates to words like "today" or "this Tuesday", and tie changeable facts to a date ("no charges as of Nov. 2") rather than "no charges yet". On voting, never tell people to vote in a way that would be wrong after Election Day.
+
+**Don't let videos look mass-produced.** Vary the hook pattern, opening person, jokes and photos across videos. Volume is fine; near-identical videos are what risk being flagged.
+
 **You do the fact-checking; the owner won't.** Before moving on, check every line against what you actually read. Cut or reword anything you can't back up, including a quote you could only see secondhand, unless two independent outlets quote it the same way. If a claim could be stale by posting time, say "so far". Name anything still unresolved at the top of the file.
 
 ## 4. Find photos with a clear subject
