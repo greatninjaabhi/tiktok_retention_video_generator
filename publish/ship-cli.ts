@@ -14,7 +14,7 @@ import { loadBeatSheet } from '../scripts/beatsheet';
 import { planVideo, renderVideo } from '../render/video';
 import { preflight } from './preflight';
 import { loadChannel } from '../render/channel';
-import { bufferCaption, bufferKey, createVideoPost, loadEnv, pickTikTokChannel, scheduledTimes, videoUrlProblem } from './buffer-api';
+import { bufferCaption, bufferKey, createVideoPost, loadEnv, pickTikTokChannel, scheduledTimes, sentTimes, videoUrlProblem } from './buffer-api';
 import { formatSlot, nextSlot } from './post-slots';
 import { hostOnGitHub, repoFromRemote } from './github-host';
 
@@ -38,7 +38,7 @@ const sheet = loadBeatSheet(file!);
 const text = bufferCaption(sheet);
 const slots = loadChannel(sheet.channel).post_slots;
 if (!slots) fail('channel.yaml has no post_slots.');
-const slot = flag('--at') ? new Date(flag('--at')!) : nextSlot(slots!, await scheduledTimes(fetch, key, channel));
+const slot = flag('--at') ? new Date(flag('--at')!) : nextSlot(slots!, await scheduledTimes(fetch, key, channel), new Date(), await sentTimes(fetch, key, channel));
 const dueAt = slot.toISOString();
 const when = formatSlot(slot, slots!.timezone);
 

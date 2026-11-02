@@ -55,12 +55,16 @@ export async function listChannels(f: Fetch, key: string): Promise<BufferChannel
   return out;
 }
 
-/** When this channel's scheduled posts go out. */
-export async function scheduledTimes(f: Fetch, key: string, c: BufferChannel): Promise<Date[]> {
+async function postTimes(f: Fetch, key: string, c: BufferChannel, status: 'scheduled' | 'sent'): Promise<Date[]> {
   const { posts } = await gql<{ posts: { edges: { node: { dueAt: string | null } }[] } }>(f, key,
-    `query { posts(first: 100, input: { organizationId: ${JSON.stringify(c.organizationId)}, filter: { status: [scheduled], channelIds: [${JSON.stringify(c.id)}] } }) { edges { node { dueAt } } } }`);
+    `query { posts(first: 100, input: { organizationId: ${JSON.stringify(c.organizationId)}, filter: { status: [${status}], channelIds: [${JSON.stringify(c.id)}] } }) { edges { node { dueAt } } } }`);
   return posts.edges.flatMap((e) => (e.node.dueAt ? [new Date(e.node.dueAt)] : []));
 }
+
+/** When this channel's scheduled posts go out. */
+export const scheduledTimes = (f: Fetch, key: string, c: BufferChannel) => postTimes(f, key, c, 'scheduled');
+/** When this channel's published posts went out. */
+export const sentTimes = (f: Fetch, key: string, c: BufferChannel) => postTimes(f, key, c, 'sent');
 
 export const isTikTok = (c: BufferChannel) => /tiktok/i.test(c.service);
 

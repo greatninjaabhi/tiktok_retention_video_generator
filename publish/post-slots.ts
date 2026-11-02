@@ -12,6 +12,12 @@ const DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 
 export const MIN_LEAD_MINUTES = 120;
 /** The most a slot moves from its base time in channel.yaml. */
 export const MAX_WEEKLY_SHIFT_MINUTES = 10;
+/** A slot missed earlier today posts this soon after the video is ready. */
+export const CATCH_UP_MINUTES = 30;
+/** Catch-up posts only go out between these local hours; overnight they wait for the next slot. */
+const CATCH_UP_HOURS = { from: 7, to: 22 };
+/** Don't make a video for a slot further off than this, so videos never pile up. */
+export const MAX_AHEAD_HOURS = 14;
 
 /** Calendar parts of an instant in a time zone. */
 function partsIn(at: Date, tz: string) {
@@ -44,25 +50,51 @@ export function weeklyTime(base: string, y: number, mo: number, d: number): { h:
 
 const dayKey = (at: Date, tz: string) => { const p = partsIn(at, tz); return `${p.y}-${p.mo}-${p.d}`; };
 
+/** A time soon after `now`, if a slot earlier today went unfilled and it's a sensible hour. */
+function catchUpTime(slots: PostSlots, posts: Date[], now: Date): Date | null {
+  const today = partsIn(now, slots.timezone);
+  if (today.h < CATCH_UP_HOURS.from || today.h >= CATCH_UP_HOURS.to) return null;
+  const times = slots.times[DAYS[new Date(Date.UTC(today.y, today.mo - 1, today.d, 12)).getUTCDay()]!] ?? [];
+  const passed = times.filter((t) => {
+    const { h, mi } = weeklyTime(t, today.y, today.mo, today.d);
+    return zonedTime(today.y, today.mo, today.d, h, mi, slots.timezone).getTime() < now.getTime();
+  }).length;
+  const filled = posts.filter((p) => dayKey(p, slots.timezone) === `${today.y}-${today.mo}-${today.d}`).length;
+  if (filled >= passed) return null;
+  const at = new Date(now.getTime() + CATCH_UP_MINUTES * 60_000);
+  at.setUTCSeconds(0, 0);
+  if (at.getUTCMinutes() % 5 === 0) at.setUTCMinutes(at.getUTCMinutes() + 1); // never a round time
+  return at;
+}
+
 /**
- * The next open slot: far enough ahead to review, and on a day that isn't already full. Posts
- * already scheduled at other times still count toward their day, so a day never exceeds its quota.
+ * When the next video should post: soon, if a slot was missed earlier today, or else the next
+ * open slot far enough ahead to review. `scheduled` and `sent` both count toward a day's quota,
+ * including posts at other times, so a day never goes over.
  */
-export function nextSlot(slots: PostSlots, scheduled: Date[], now = new Date()): Date {
+export function nextSlot(slots: PostSlots, scheduled: Date[], now = new Date(), sent: Date[] = []): Date {
+  const posts = [...scheduled, ...sent];
+  const catchUp = catchUpTime(slots, posts, now);
+  if (catchUp) return catchUp;
   const earliest = now.getTime() + MIN_LEAD_MINUTES * 60_000;
   for (let i = 0; i < 21; i++) {
     const base = partsIn(new Date(now.getTime() + i * 86_400_000), slots.timezone);
     const noon = new Date(Date.UTC(base.y, base.mo - 1, base.d, 12));
     const times = slots.times[DAYS[noon.getUTCDay()]!] ?? [];
-    const taken = scheduled.filter((s) => dayKey(s, slots.timezone) === `${base.y}-${base.mo}-${base.d}`).length;
+    const taken = posts.filter((s) => dayKey(s, slots.timezone) === `${base.y}-${base.mo}-${base.d}`).length;
     if (taken >= times.length) continue;
     for (const t of [...times].sort()) {
       const { h, mi } = weeklyTime(t, base.y, base.mo, base.d);
       const at = zonedTime(base.y, base.mo, base.d, h, mi, slots.timezone);
-      if (at.getTime() >= earliest && !scheduled.some((s) => s.getTime() === at.getTime())) return at;
+      if (at.getTime() >= earliest && !posts.some((s) => s.getTime() === at.getTime())) return at;
     }
   }
   throw new Error('no open posting slot in the next 3 weeks');
+}
+
+/** Whether a run should make a video now. False means the next slot is covered or still far off. */
+export function needsVideo(slots: PostSlots, scheduled: Date[], now = new Date(), sent: Date[] = []): boolean {
+  return nextSlot(slots, scheduled, now, sent).getTime() <= now.getTime() + MAX_AHEAD_HOURS * 3_600_000;
 }
 
 export function formatSlot(at: Date, tz: string): string {

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { loadChannel } from '../render/channel';
-import { MAX_WEEKLY_SHIFT_MINUTES, MIN_LEAD_MINUTES, formatSlot, nextSlot, weeklyTime, zonedTime, type PostSlots } from '../publish/post-slots';
+import { CATCH_UP_MINUTES, MAX_WEEKLY_SHIFT_MINUTES, MIN_LEAD_MINUTES, formatSlot, needsVideo, nextSlot, weeklyTime, zonedTime, type PostSlots } from '../publish/post-slots';
 
 const slots = loadChannel('politics').post_slots as PostSlots;
 const tz = slots.timezone;
@@ -33,27 +33,46 @@ describe('owner-approved schedule', () => {
 });
 
 describe('next open slot', () => {
+  const morning = () => slot(2026, 11, 1, '09:07'); // Sunday's first slot, already filled in these tests
   it('handles daylight saving', () => {
     expect(at(2026, 11, 1, 19, 53).toISOString()).toBe('2026-11-02T01:53:00.000Z'); // CST, UTC-6
     expect(at(2026, 10, 31, 9, 7).toISOString()).toBe('2026-10-31T14:07:00.000Z'); // CDT, UTC-5
   });
   it('picks the next slot with time to review', () => {
     const now = at(2026, 11, 1, 11, 43);
-    expect(nextSlot(slots, [], now).getTime()).toBe(slot(2026, 11, 1, '19:53').getTime());
+    expect(nextSlot(slots, [], now, [morning()]).getTime()).toBe(slot(2026, 11, 1, '19:53').getTime());
   });
   it('skips a slot too soon to review', () => {
     const now = new Date(slot(2026, 11, 1, '19:53').getTime() - (MIN_LEAD_MINUTES - 1) * 60_000);
-    expect(nextSlot(slots, [], now).getTime()).toBe(slot(2026, 11, 2, '12:47').getTime());
+    expect(nextSlot(slots, [], now, [morning()]).getTime()).toBe(slot(2026, 11, 2, '12:47').getTime());
   });
   it('skips filled slots', () => {
     const now = at(2026, 11, 1, 11, 43);
-    expect(nextSlot(slots, [slot(2026, 11, 1, '19:53')], now).getTime()).toBe(slot(2026, 11, 2, '12:47').getTime());
+    expect(nextSlot(slots, [slot(2026, 11, 1, '19:53')], now, [morning()]).getTime()).toBe(slot(2026, 11, 2, '12:47').getTime());
   });
   it('counts a post at another time toward its day, so a day stays at two', () => {
     const now = at(2026, 11, 2, 8, 0);
     const alaska = at(2026, 11, 2, 9, 41);
     expect(nextSlot(slots, [alaska], now).getTime()).toBe(slot(2026, 11, 2, '12:47').getTime());
     expect(nextSlot(slots, [alaska, slot(2026, 11, 2, '12:47')], now).getTime()).toBe(slot(2026, 11, 3, '12:13').getTime());
+  });
+  it('catches up soon if a slot was missed earlier today', () => {
+    const now = at(2026, 11, 1, 11, 43);
+    const got = nextSlot(slots, [], now);
+    expect(got.getTime() - now.getTime()).toBeGreaterThanOrEqual(CATCH_UP_MINUTES * 60_000);
+    expect(got.getTime() - now.getTime()).toBeLessThanOrEqual((CATCH_UP_MINUTES + 1) * 60_000);
+    expect(got.getUTCMinutes() % 5).not.toBe(0);
+  });
+  it('waits for the next slot instead of posting overnight', () => {
+    const now = at(2026, 11, 1, 23, 30); // both of today's slots missed
+    expect(nextSlot(slots, [], now).getTime()).toBe(slot(2026, 11, 2, '12:47').getTime());
+  });
+  it('makes a video only when one is due, so they never pile up', () => {
+    const evening = slot(2026, 11, 1, '19:53');
+    expect(needsVideo(slots, [], at(2026, 11, 1, 14, 30), [morning()])).toBe(true);
+    expect(needsVideo(slots, [evening], at(2026, 11, 1, 14, 30), [morning()])).toBe(false);
+    expect(needsVideo(slots, [], at(2026, 11, 1, 22, 30), [morning(), evening])).toBe(false);
+    expect(needsVideo(slots, [], at(2026, 11, 2, 5, 30))).toBe(true);
   });
   it('shows the time in the channel\'s zone', () => {
     expect(formatSlot(at(2026, 11, 1, 19, 53), tz)).toContain('7:53');

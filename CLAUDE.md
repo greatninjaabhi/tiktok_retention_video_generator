@@ -15,7 +15,7 @@ Doodle-stickman political videos, 61–75 s, built from YAML beat sheets. Pipeli
 
 ## Automation
 
-Task Scheduler runs `automation/run-video.ps1` twice a day, which runs `/make-video` unattended with a limited set of allowed commands (`automation/setup-tasks.ps1` creates the task). Results are in `out/auto-logs/LAST-RUN.txt`. If the skill starts needing a new command, add it to the list in `run-video.ps1`, or the run will be refused it.
+Task Scheduler runs `automation/run-video.ps1` at 5:30 AM, 2:30 PM and at sign-in. If a video is due (`npm run buffer -- need`), it runs `/make-video` unattended with a limited set of allowed commands (`automation/setup-tasks.ps1` creates the task). Results are in `out/auto-logs/LAST-RUN.txt`. If the skill starts needing a new command, add it to the list in `run-video.ps1`, or the run will be refused it.
 
 ## Commands
 

@@ -4,6 +4,7 @@
  * npm run buffer -- post <...> --url <URL> --publish [--at 2026-11-02T18:00:00Z]
  *                                                             # queue or schedule it; needs preflight and a typed "post"
  * npm run buffer -- register scripts/videos/<id>.yaml <tiktok video id>  # link the live post to analytics
+ * npm run buffer -- need                                     # exit 0 if a video is due, 3 if not (used by automation)
  *
  * Needs BUFFER_API_KEY (https://publish.buffer.com/settings/api), read from the gitignored .env file or the environment. Buffer takes video by public URL only,
  * so upload out/<id>/video.mp4 somewhere first. BUFFER_CHANNEL_ID or --channel picks a channel if there are several.
@@ -13,7 +14,9 @@ import { fileURLToPath } from 'node:url';
 import { createInterface } from 'node:readline/promises';
 import { loadBeatSheet } from '../scripts/beatsheet';
 import { preflight } from './preflight';
-import { BufferApiError, bufferCaption, bufferKey, createVideoPost, isTikTok, listChannels, pickTikTokChannel, videoUrlProblem } from './buffer-api';
+import { loadChannel } from '../render/channel';
+import { BufferApiError, bufferCaption, bufferKey, createVideoPost, isTikTok, listChannels, pickTikTokChannel, scheduledTimes, sentTimes, videoUrlProblem } from './buffer-api';
+import { formatSlot, needsVideo, nextSlot } from './post-slots';
 import { readStore, writeStore } from '../analytics/store';
 import { registerVideo } from '../analytics/register';
 
@@ -26,6 +29,17 @@ try {
     const channels = await listChannels(fetch, bufferKey());
     for (const c of channels) console.log(`${isTikTok(c) ? '→' : ' '} ${c.id}  ${c.service}  ${c.name}`);
     if (!channels.some(isTikTok)) console.log('No TikTok channel is connected: https://publish.buffer.com/settings/channels');
+  } else if (cmd === 'need') {
+    const slots = loadChannel('politics').post_slots!;
+    const key = bufferKey();
+    const channel = await pickTikTokChannel(fetch, key, process.env.BUFFER_CHANNEL_ID);
+    const [scheduled, sent] = [await scheduledTimes(fetch, key, channel), await sentTimes(fetch, key, channel)];
+    const next = formatSlot(nextSlot(slots, scheduled, new Date(), sent), slots.timezone);
+    if (!needsVideo(slots, scheduled, new Date(), sent)) {
+      console.log(`No video due: the next open slot is ${next}.`);
+      process.exit(3);
+    }
+    console.log(`Video due for ${next}.`);
   } else if (cmd === 'register') {
     const [file, tiktokId] = rest;
     if (!file || !tiktokId) fail('usage: npm run buffer -- register scripts/videos/<id>.yaml <tiktok video id>');
@@ -66,7 +80,7 @@ try {
       ? `✓ scheduled in Buffer (${id}). Once it's live: npm run buffer -- register ${file} <tiktok video id>`
       : `✓ saved as a Buffer draft (${id}). Nothing was published.`);
   } else {
-    fail('usage: npm run buffer -- channels | post <yaml> --url <URL> [--publish] [--at <ISO>] | register <yaml> <tiktok id>');
+    fail('usage: npm run buffer -- channels | need | post <yaml> --url <URL> [--publish] [--at <ISO>] | register <yaml> <tiktok id>');
   }
 } catch (e) {
   if (e instanceof BufferApiError) fail(`Buffer: ${e.message}`);
