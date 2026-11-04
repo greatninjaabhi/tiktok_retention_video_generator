@@ -1,0 +1,245 @@
+# DRAFT by Claude in an unattended scheduled run on 2026-11-03 (not `npm run draft`: no API key there).
+# Writer brief: scripts/prompts/2026-11-03-trump-ends-israel-aid.md
+# UNRESOLVED:
+#  1. That Netanyahu agreed to end aid by Dec. 31 is Trump's claim alone. Netanyahu's office hadn't commented as of Nov. 3. The script says only that Israel hadn't confirmed it.
+#  2. "Caught off guard" rests on the Jerusalem Post's defense sources and Eisenkot's statement via CNN. Said as "reportedly".
+#  3. "Any way you want to define it": CNN, Breitbart and the JPost transcript agree on that phrase but not the words before it, so only the phrase is used (b06, spoken as his answer, without quote marks).
+#  Re-checked 2026-11-03 evening (CNN, ABC, CBC, Fox, The Hill): no Netanyahu or White House clarification yet; MOU still runs to Sept 2028.
+#  4. Could go stale fast: the White House or Netanyahu may explain how, or walk it back.
+id: 2026-11-03-trump-ends-israel-aid
+channel: politics
+format: fact_check
+character: mascot_v1
+topic:
+  title: "Trump says Israel's $4 billion a year ends by New Year's. The deal says 2028."
+  type: foreign_policy
+  first_seen: "2026-11-03T12:00:00Z"
+hook:
+  spoken: "Netanyahu wanted ten years to quit U.S. aid. Trump says New Year's."
+  on_screen: "10 YEARS? TRUMP SAYS NEW YEAR'S"
+  pattern: before_after
+claim:
+  speaker: "President Donald Trump"
+  quote: "We've already agreed that by the end of this year we won't be paying Israel."
+  said_at: "2026-11-03"
+  source:
+    url: "https://www.usnews.com/news/world/articles/2026-11-03/trump-says-us-will-stop-paying-israel-after-year-end"
+    type: on_record_quote
+    note: "Fox & Friends phone interview; quoted the same way by Reuters, France 24 and the Jerusalem Post transcript"
+research:
+  - { url: "https://www.usnews.com/news/world/articles/2026-11-03/trump-says-us-will-stop-paying-israel-after-year-end", outlet: Reuters via US News, lean: center }
+  - { url: "https://www.cnn.com/2026/11/03/politics/trump-us-aid-israel", outlet: CNN, lean: lean_left }
+  - { url: "https://www.huffpost.com/entry/trump-israel-funding_n_6ae9e8ede4b086126ce9853e", outlet: HuffPost (Reuters), lean: left }
+  - { url: "https://thehill.com/homenews/administration/6191387-trump-netanyahu-end-us-aid/", outlet: The Hill, lean: center }
+  - { url: "https://www.france24.com/en/middle-east/20261103-trump-says-us-will-halt-4-billion-in-aid-to-israel-after-end-of-this-year", outlet: France 24, lean: center }
+  - { url: "https://www.jpost.com/international/article-913711", outlet: Jerusalem Post, lean: center }
+  - { url: "https://nypost.com/2026/11/03/us-news/trump-says-us-will-end-4b-in-annual-aid-to-israelthey-dont-need-it/", outlet: New York Post, lean: lean_right }
+  - { url: "https://www.breitbart.com/politics/2026/11/03/donald-trump-confirms-u-s-cutting-off-4-billion-in-annual-aid-to-israel-thriving-country/", outlet: Breitbart, lean: right }
+  - { url: "https://www.everycrsreport.com/files/2023-03-01_RL33222_7ba4408ea8cf4a56fc01dbcb3d6b1154f8868dc3.html", outlet: Congressional Research Service, lean: primary }
+beats:
+  - id: b01
+    line: "Trump's words: \"by the end of this year we won't be paying Israel.\""
+    tags: [claim]
+    pose: shocked
+    prop: megaphone
+    panel: { stock: "Trump Netanyahu White House 2025", caption: "Trump and Netanyahu, White House, July 2025", crop: top }
+    claims:
+      - text: "Trump on Fox & Friends, Nov. 3: \"We've already agreed that by the end of this year we won't be paying Israel.\""
+        sources:
+          - { url: "https://www.usnews.com/news/world/articles/2026-11-03/trump-says-us-will-stop-paying-israel-after-year-end", type: on_record_quote }
+          - { url: "https://www.france24.com/en/middle-east/20261103-trump-says-us-will-halt-4-billion-in-aid-to-israel-after-end-of-this-year", type: on_record_quote }
+          - { url: "https://www.jpost.com/international/article-913711", type: on_record_quote }
+      - text: "Netanyahu, CBS 60 Minutes, May: draw U.S. financial support down to zero \"over the next decade, over the next 10 years\"."
+        sources:
+          - { url: "https://thehill.com/homenews/administration/6191387-trump-netanyahu-end-us-aid/", type: on_record_quote }
+          - { url: "https://www.jpost.com/international/article-913711", type: major_outlet }
+  - id: b02
+    line: "That's about four billion a year. His reason?"
+    tags: [fact]
+    pose: present
+    opens: L2
+    panel: { stock: "Official Presidential Portrait of Donald Trump 2025", caption: "Trump's official portrait, 2025", crop: center }
+    claims:
+      - text: "U.S. gives Israel $3.8 billion a year, which Trump rounded to $4 billion. Trump: \"They don't need it.\""
+        sources:
+          - { url: "https://www.cnn.com/2026/11/03/politics/trump-us-aid-israel", type: on_record_quote }
+          - { url: "https://nypost.com/2026/11/03/us-news/trump-says-us-will-end-4b-in-annual-aid-to-israelthey-dont-need-it/", type: on_record_quote }
+  - id: b03
+    line: "One, they don't need it. Two, it's a bad talking point."
+    tags: [fact]
+    pose: point_up
+    closes: L2
+    claims:
+      - text: "Trump: \"why should we suffer the slings from lunatics like El-Sayed when they don't need it? It's a bad talking point.\" El-Sayed is Michigan's Democratic Senate nominee and opposes unconditional military aid to Israel."
+        sources:
+          - { url: "https://thehill.com/homenews/administration/6191387-trump-netanyahu-end-us-aid/", type: on_record_quote }
+          - { url: "https://www.usnews.com/news/world/articles/2026-11-03/trump-says-us-will-stop-paying-israel-after-year-end", type: on_record_quote }
+  - id: b04
+    line: "For Michigan Democrat Abdul El-Sayed. Whom he called a lunatic."
+    tags: [fact]
+    pose: shocked
+    claims:
+      - text: "Trump called El-Sayed one of the \"lunatics\" (CNN, The Hill, Reuters, NY Post, Breitbart)."
+        sources:
+          - { url: "https://www.cnn.com/2026/11/03/politics/trump-us-aid-israel", type: on_record_quote }
+          - { url: "https://www.breitbart.com/politics/2026/11/03/donald-trump-confirms-u-s-cutting-off-4-billion-in-annual-aid-to-israel-thriving-country/", type: on_record_quote }
+  - id: b05
+    line: "Then Fox asked: so, weapons? Or a check?"
+    tags: [fact]
+    pose: thinking
+    opens: L0
+    panel: { stock: "Fox and Friends studio", caption: "The Fox & Friends set in New York, 2020" }
+    claims:
+      - text: "A host asked whether he meant $4 billion in military aid/hardware or $4 billion \"as in a check\"."
+        sources:
+          - { url: "https://www.cnn.com/2026/11/03/politics/trump-us-aid-israel", type: major_outlet }
+          - { url: "https://www.breitbart.com/politics/2026/11/03/donald-trump-confirms-u-s-cutting-off-4-billion-in-annual-aid-to-israel-thriving-country/", type: on_record_quote }
+  - id: b06
+    line: "His answer? Any way you want to define it."
+    tags: [fact]
+    pose: shrug
+    closes: L0
+    claims:
+      - text: "Trump: \"Any way you want to define it\" (CNN); \"In any way you want to define it\" (Breitbart); \"I'm giving four in any way you want to define it\" (JPost transcript)."
+        sources:
+          - { url: "https://www.cnn.com/2026/11/03/politics/trump-us-aid-israel", type: on_record_quote }
+          - { url: "https://www.breitbart.com/politics/2026/11/03/donald-trump-confirms-u-s-cutting-off-4-billion-in-annual-aid-to-israel-thriving-country/", type: on_record_quote }
+          - { url: "https://www.jpost.com/international/article-913711", type: on_record_quote }
+  - id: b07
+    line: "Israel's military? Reportedly caught off guard. By Fox and Friends."
+    tags: [fact, joke]
+    pose: shocked
+    claims:
+      - text: "JPost: an IDF source expressed surprise; the defense, diplomatic and finance establishments appear to have been caught by surprise. CNN: Eisenkot said the defense establishment is learning about the change through the media."
+        sources:
+          - { url: "https://www.jpost.com/international/article-913711", type: major_outlet }
+          - { url: "https://www.cnn.com/2026/11/03/politics/trump-us-aid-israel", type: on_record_quote }
+  - id: b08
+    line: "But \"end of this year\" has a problem. It's called 2028."
+    tags: [rehook, fact]
+    pose: point_up
+    panel: { stock: "Obama Netanyahu Oval Office", caption: "Obama and Netanyahu in the Oval Office, 2009" }
+    claims:
+      - text: "The memorandum providing $3.8 billion a year doesn't expire until September 2028."
+        sources:
+          - { url: "https://www.usnews.com/news/world/articles/2026-11-03/trump-says-us-will-stop-paying-israel-after-year-end", type: major_outlet }
+          - { url: "https://www.everycrsreport.com/files/2023-03-01_RL33222_7ba4408ea8cf4a56fc01dbcb3d6b1154f8868dc3.html", type: official_data }
+  - id: b09
+    line: "The ten-year deal, signed under Obama, runs through September 2028."
+    tags: [fact]
+    pose: present
+    claims:
+      - text: "In 2016 the U.S. and Israel signed a 10-year MOU covering FY2019-FY2028 ($38 billion), under the Obama administration."
+        sources:
+          - { url: "https://www.everycrsreport.com/files/2023-03-01_RL33222_7ba4408ea8cf4a56fc01dbcb3d6b1154f8868dc3.html", type: official_data }
+          - { url: "https://www.jpost.com/international/article-913711", type: major_outlet }
+      - text: "Expires September 2028 (Reuters); runs through fiscal year 2028 (NY Post, CRS)."
+        sources:
+          - { url: "https://www.usnews.com/news/world/articles/2026-11-03/trump-says-us-will-stop-paying-israel-after-year-end", type: major_outlet }
+          - { url: "https://nypost.com/2026/11/03/us-news/trump-says-us-will-end-4b-in-annual-aid-to-israelthey-dont-need-it/", type: major_outlet }
+  - id: b11
+    line: "And Congress votes that money every year. Not the president."
+    tags: [fact]
+    pose: present
+    panel: { stock: "US Capitol Building at night Jan 2006", caption: "The U.S. Capitol at night, 2006" }
+    claims:
+      - text: "The MOU is subject to congressional appropriation; the Senate and House must pass appropriations bills every year to release the funds."
+        sources:
+          - { url: "https://www.everycrsreport.com/files/2023-03-01_RL33222_7ba4408ea8cf4a56fc01dbcb3d6b1154f8868dc3.html", type: official_data }
+          - { url: "https://www.usnews.com/news/world/articles/2026-11-03/trump-says-us-will-stop-paying-israel-after-year-end", type: major_outlet }
+  - id: b12
+    line: "So how's it end early? He didn't say."
+    tags: [fact, verdict]
+    pose: shrug
+    claims:
+      - text: "Trump did not explain how the funding would be stopped at the end of the year (Reuters); no detailed implementation plan was presented (JPost)."
+        sources:
+          - { url: "https://www.usnews.com/news/world/articles/2026-11-03/trump-says-us-will-stop-paying-israel-after-year-end", type: major_outlet }
+          - { url: "https://www.jpost.com/international/article-913711", type: major_outlet }
+    verdict:
+      label: "NEEDS_CONTEXT"
+      sources:
+        - { url: "https://www.usnews.com/news/world/articles/2026-11-03/trump-says-us-will-stop-paying-israel-after-year-end", type: major_outlet, note: "Reuters: he did not explain how, given the MOU runs to September 2028" }
+        - { url: "https://www.everycrsreport.com/files/2023-03-01_RL33222_7ba4408ea8cf4a56fc01dbcb3d6b1154f8868dc3.html", type: official_data, note: "CRS: the MOU is subject to congressional appropriation" }
+  - id: b13
+    line: "And as of Nov. 3, Israel's government hadn't confirmed it."
+    tags: [fact]
+    pose: thinking
+    panel: { stock: "Benjamin Netanyahu", caption: "Benjamin Netanyahu, 2010 photo", crop: center }
+    claims:
+      - text: "No immediate comment from Netanyahu's office (Reuters, CNN). JPost: the accelerated timetable has not yet been independently confirmed by the Israeli government."
+        sources:
+          - { url: "https://www.jpost.com/international/article-913711", type: major_outlet }
+          - { url: "https://www.usnews.com/news/world/articles/2026-11-03/trump-says-us-will-stop-paying-israel-after-year-end", type: major_outlet }
+  - id: b14
+    line: "Is he right we give them the most? Since World War II, yep."
+    tags: [fact, verdict]
+    pose: point_up
+    panel: { stock: "Israeli Air Force F-35I Adir", caption: "Israeli F-35I, bought with U.S. aid, 2019" }
+    claims:
+      - text: "Trump: \"we give them more than anybody else.\" CRS: Israel is the largest cumulative recipient of U.S. foreign assistance since World War II."
+        sources:
+          - { url: "https://www.breitbart.com/politics/2026/11/03/donald-trump-confirms-u-s-cutting-off-4-billion-in-annual-aid-to-israel-thriving-country/", type: on_record_quote }
+          - { url: "https://www.everycrsreport.com/files/2023-03-01_RL33222_7ba4408ea8cf4a56fc01dbcb3d6b1154f8868dc3.html", type: official_data }
+      - text: "CRS: \"Israel is the largest cumulative recipient of U.S. foreign assistance since World War II.\" Its F-35s were purchased with U.S. assistance."
+        sources: [{ url: "https://www.everycrsreport.com/files/2023-03-01_RL33222_7ba4408ea8cf4a56fc01dbcb3d6b1154f8868dc3.html", type: official_data }]
+    verdict:
+      label: "TRUE"
+      sources: [{ url: "https://www.everycrsreport.com/files/2023-03-01_RL33222_7ba4408ea8cf4a56fc01dbcb3d6b1154f8868dc3.html", type: official_data, note: "CRS RL33222: largest cumulative recipient since World War II" }]
+  - id: b16
+    line: "Cheering on the left? He says Israel can still buy American weapons."
+    tags: [fact, steelman]
+    pose: shrug
+    claims:
+      - text: "Trump said Israel can still buy U.S. weapons."
+        sources:
+          - { url: "https://www.usnews.com/news/world/articles/2026-11-03/trump-says-us-will-stop-paying-israel-after-year-end", type: major_outlet }
+          - { url: "https://www.jpost.com/international/article-913711", type: major_outlet }
+      - text: "Trump: \"They can buy whatever they want.\""
+        sources:
+          - { url: "https://www.france24.com/en/middle-east/20261103-trump-says-us-will-halt-4-billion-in-aid-to-israel-after-end-of-this-year", type: on_record_quote }
+          - { url: "https://nypost.com/2026/11/03/us-news/trump-says-us-will-end-4b-in-annual-aid-to-israelthey-dont-need-it/", type: on_record_quote }
+  - id: b18
+    line: "Voters are moving, though."
+    tags: [fact]
+    pose: thinking
+    opens: L1
+    panel: { stock: "US Capitol Building at night Jan 2006", caption: "The U.S. Capitol at night, 2006" }
+    claims:
+      - text: "Quinnipiac, June: 48% say the U.S. is too supportive of Israel, up from 16% in 2017."
+        sources:
+          - { url: "https://www.usnews.com/news/world/articles/2026-11-03/trump-says-us-will-stop-paying-israel-after-year-end", type: major_outlet }
+  - id: b18b
+    line: "A June poll: forty-eight percent say we're too supportive."
+    tags: [fact]
+    pose: point_up
+    closes: L1
+    claims:
+      - text: "June Quinnipiac poll: 48% of voters believe the U.S. is too supportive of Israel, up from 16% in 2017."
+        sources:
+          - { url: "https://www.usnews.com/news/world/articles/2026-11-03/trump-says-us-will-stop-paying-israel-after-year-end", type: major_outlet }
+          - { url: "https://www.france24.com/en/middle-east/20261103-trump-says-us-will-halt-4-billion-in-aid-to-israel-after-end-of-this-year", type: major_outlet }
+  - id: b19
+    line: "My take? Announcing it on Election Day, while naming a Democrat?"
+    tags: [opinion]
+    pose: thinking
+    panel: { stock: "Trump Netanyahu White House 2025", caption: "Trump and Netanyahu, White House, July 2025", crop: top }
+  - id: b20
+    line: "Honestly, that sounds more like a campaign ad."
+    tags: [opinion]
+    pose: present
+    expression: smug
+  - id: b21
+    line: "Ten years, or New Year's? Congress still holds the checkbook."
+    tags: [callback]
+    pose: shrug
+    camera: zoom_stare
+    panel: { stock: "US Capitol Building at night Jan 2006", caption: "The U.S. Capitol at night, 2006" }
+  - id: b22
+    line: "Follow for our next episode!"
+    tags: [cta]
+    pose: celebrate
+human_edited: false
+disclosures: []
+caption: "Trump says Israel's $4B a year ends by New Year's. The deal says 2028, and Congress holds the money 💀 sources below"
+hashtags: [politics, israel, trump, netanyahu, foreignaid]
