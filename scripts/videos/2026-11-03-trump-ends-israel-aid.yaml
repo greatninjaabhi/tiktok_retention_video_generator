@@ -239,7 +239,7 @@ beats:
     line: "Follow for our next episode!"
     tags: [cta]
     pose: celebrate
-human_edited: false
+human_edited: true # cleared 2026-11-04: fact-checked by the agent, queued for owner review in Buffer
 disclosures: []
 caption: "Trump says Israel's $4B a year ends by New Year's. The deal says 2028, and Congress holds the money 💀 sources below"
 hashtags: [politics, israel, trump, netanyahu, foreignaid]
