@@ -1,0 +1,234 @@
+# DRAFT by Claude in an unattended scheduled run on 2026-11-04 (not `npm run draft`: no API key there).
+# Writer brief: scripts/prompts/2026-11-04-vance-blames-iran-war.md
+# UNRESOLVED:
+#  1. The 74% exit-poll figure comes from The Federalist, Common Dreams and The Blaze (34% crucial + 40% major,
+#     re-checked 2026-11-05), all citing the NBC/network exit poll. NBC's own write-up (read in full) gives the
+#     57% immigration figure but not the 74%.
+#  2. "Over fifteen minutes" of construction talk: outlets say 15+, 20 and 25 minutes. The script uses the floor.
+#  3. Vance's private doubts about the war are reported, not confirmed. Said as "reportedly".
+#  4. Seat counts were still moving on Nov. 4, so the script gives none.
+id: 2026-11-04-vance-blames-iran-war
+channel: politics
+format: fact_check
+character: mascot_v1
+topic:
+  title: "Vance says the war is why Republicans lost. Trump answers from his ballroom."
+  type: policy_fight
+  first_seen: "2026-11-04T16:00:00Z"
+hook:
+  spoken: "JD Vance says one thing sank Republicans. Trump answered from his ballroom."
+  on_screen: "WHAT SANK REPUBLICANS?"
+  pattern: name_tease
+claim:
+  speaker: "Vice President JD Vance"
+  quote: "The reason we lost is the war. The president himself said so last night."
+  said_at: "2026-11-04"
+  source:
+    url: "https://www.cbsnews.com/news/jd-vance-2026-midterms-iran/"
+    type: on_record_quote
+    note: "Post on X; quoted the same way by CBS, The Hill, NBC and the NY Post"
+research:
+  - { url: "https://www.cbsnews.com/news/jd-vance-2026-midterms-iran/", outlet: CBS News, lean: center }
+  - { url: "https://thehill.com/homenews/campaign/6197976-vance-midterms-iran-war-trump/", outlet: The Hill, lean: center }
+  - { url: "https://www.nbcnews.com/politics/2026-election/vance-says-ranger-iran-war-caused-gop-midterm-losses-rcna607446", outlet: NBC News, lean: lean_left }
+  - { url: "https://www.nbcnews.com/politics/2026-election/exit-poll-trump-midterms-voters-economy-disapproval-rcna607045", outlet: NBC News Exit Poll, lean: primary }
+  - { url: "https://nypost.com/2026/11/04/us-news/jd-vance-blames-iran-war-and-israel-for-gop-midterm-bloodbath/", outlet: New York Post, lean: lean_right }
+  - { url: "https://nypost.com/2026/11/04/us-news/trump-cheers-himself-up-after-midterm-wipeout-by-touting-white-house-ballroom-helipad/", outlet: New York Post, lean: lean_right }
+  - { url: "https://www.cbsnews.com/news/trump-2026-midterms-republicans-white-house-ballroom/", outlet: CBS News, lean: center }
+  - { url: "https://www.newsweek.com/donald-trump-white-house-ballroom-gop-midterm-defeat-12665960", outlet: Newsweek, lean: center }
+  - { url: "https://thefederalist.com/2026/11/03/exit-poll-iran-war-was-crucial-or-major-factor-for-3-in-4-voters/", outlet: The Federalist, lean: right }
+  - { url: "https://thefederalist.com/2026/11/04/the-best-and-worst-explanations-for-republicans-midterm-losses/", outlet: The Federalist, lean: right }
+  - { url: "https://www.commondreams.org/news/dems-urged-to-become-anti-war-party", outlet: Common Dreams, lean: left }
+  - { url: "https://www.theblaze.com/news/iran-war-was-crucial-factor-in-republican-rout-exit-polls", outlet: The Blaze, lean: right }
+  - { url: "https://abcnews.com/Politics/vance-blames-iran-war-republicans-midterms-defeat-trump/story?id=137849295", outlet: ABC News (AP), lean: center }
+beats:
+  - id: b01
+    line: "His words: \"The reason we lost is the war.\""
+    tags: [claim]
+    pose: shocked
+    prop: megaphone
+    panel: { stock: "JD Vance official portrait", caption: "Vice President JD Vance, portrait, March 2026", crop: center }
+    claims:
+      - text: "Vance on X after the Nov. 3 midterms: \"The reason we lost is the war. The president himself said so last night.\""
+        sources:
+          - { url: "https://www.cbsnews.com/news/jd-vance-2026-midterms-iran/", type: on_record_quote }
+          - { url: "https://thehill.com/homenews/campaign/6197976-vance-midterms-iran-war-trump/", type: on_record_quote }
+          - { url: "https://www.nbcnews.com/politics/2026-election/vance-says-ranger-iran-war-caused-gop-midterm-losses-rcna607446", type: on_record_quote }
+  - id: b02
+    line: "The Iran war. Eight months in."
+    tags: [fact]
+    pose: present
+    claims:
+      - text: "Trump launched the war in Iran in late February; it is in its eighth month."
+        sources:
+          - { url: "https://www.cbsnews.com/news/jd-vance-2026-midterms-iran/", type: major_outlet }
+          - { url: "https://thehill.com/homenews/campaign/6197976-vance-midterms-iran-war-trump/", type: major_outlet }
+  - id: b03
+    line: "Then he dared his party: argue losing the Senate was worth it."
+    tags: [fact]
+    pose: point_up
+    panel: { stock: "United States Capitol dome", caption: "The U.S. Capitol, Washington, D.C." }
+    claims:
+      - text: "Vance: \"If you'd like to argue it was worth it, that losing the Senate for the next 6 years was worth it, then do so.\""
+        sources:
+          - { url: "https://www.cbsnews.com/news/jd-vance-2026-midterms-iran/", type: on_record_quote }
+          - { url: "https://thehill.com/homenews/campaign/6197976-vance-midterms-iran-war-trump/", type: on_record_quote }
+  - id: b05
+    line: "Trump's own son? Posted that he agreed with every word."
+    tags: [fact]
+    pose: shocked
+    claims:
+      - text: "Donald Trump Jr. wrote on X that \"every word\" of Vance's post was 100 percent."
+        sources:
+          - { url: "https://thehill.com/homenews/campaign/6197976-vance-midterms-iran-war-trump/", type: on_record_quote }
+          - { url: "https://nypost.com/2026/11/04/us-news/jd-vance-blames-iran-war-and-israel-for-gop-midterm-bloodbath/", type: on_record_quote }
+  - id: b06
+    line: "So how'd Trump take it?"
+    tags: []
+    pose: thinking
+    opens: L0
+  - id: b07
+    line: "His first appearance after the losses? At his half-built ballroom."
+    tags: [fact]
+    pose: present
+    panel: { stock: "Trump visits Ballroom and East Wing construction", caption: "Trump at the ballroom construction, May 2026" }
+    claims:
+      - text: "Trump's first appearance since the midterm losses was an event in the unfinished White House ballroom, Nov. 4."
+        sources:
+          - { url: "https://www.cbsnews.com/news/trump-2026-midterms-republicans-white-house-ballroom/", type: major_outlet }
+          - { url: "https://www.newsweek.com/donald-trump-white-house-ballroom-gop-midterm-defeat-12665960", type: major_outlet }
+  - id: b08
+    line: "He talked construction for over fifteen minutes before any questions."
+    tags: [fact]
+    pose: shrug
+    claims:
+      - text: "NY Post: 25 minutes on construction projects before questions about the losses. Newsweek: 20 minutes of remarks before taking questions."
+        sources:
+          - { url: "https://nypost.com/2026/11/04/us-news/trump-cheers-himself-up-after-midterm-wipeout-by-touting-white-house-ballroom-helipad/", type: major_outlet }
+          - { url: "https://www.newsweek.com/donald-trump-white-house-ballroom-gop-midterm-defeat-12665960", type: major_outlet }
+  - id: b08b
+    line: "And wait till you see what he wrote on a beam."
+    tags: [rehook]
+    pose: point_up
+    opens: L2
+  - id: b09
+    line: "First, he called Vance's take largely true. Gas went up."
+    tags: [fact]
+    pose: present
+    closes: L0
+    claims:
+      - text: "Trump said it's \"largely true\" that the war was a major factor, because it drove up gas prices."
+        sources:
+          - { url: "https://www.cbsnews.com/news/trump-2026-midterms-republicans-white-house-ballroom/", type: on_record_quote }
+          - { url: "https://nypost.com/2026/11/04/us-news/trump-cheers-himself-up-after-midterm-wipeout-by-touting-white-house-ballroom-helipad/", type: on_record_quote }
+  - id: b10
+    line: "He'd do it again, though. Iran can't get a nuke."
+    tags: [fact]
+    pose: shrug
+    panel: { stock: "White House East Wing ballroom construction", caption: "Trump at the ballroom site, May 2026" }
+    claims:
+      - text: "Trump: \"if I had it to do again, I'd have to do it again\" (NY Post); \"I would have done it again\" (WSJ, via NBC). Iran \"can't have a nuclear weapon\" (The Hill)."
+        sources:
+          - { url: "https://nypost.com/2026/11/04/us-news/trump-cheers-himself-up-after-midterm-wipeout-by-touting-white-house-ballroom-helipad/", type: on_record_quote }
+          - { url: "https://www.nbcnews.com/politics/2026-election/vance-says-ranger-iran-war-caused-gop-midterm-losses-rcna607446", type: on_record_quote }
+          - { url: "https://thehill.com/homenews/campaign/6197976-vance-midterms-iran-war-trump/", type: on_record_quote }
+  - id: b11
+    line: "He said his rally love didn't transfer to the candidates."
+    tags: [fact]
+    pose: thinking
+    claims:
+      - text: "Trump said the enthusiasm at his rallies didn't carry over: \"we weren't able to transfer love to the candidates\" (Newsweek); \"transfer the love to candidates\" (NY Post). Paraphrased."
+        sources:
+          - { url: "https://www.newsweek.com/donald-trump-white-house-ballroom-gop-midterm-defeat-12665960", type: on_record_quote }
+          - { url: "https://nypost.com/2026/11/04/us-news/trump-cheers-himself-up-after-midterm-wipeout-by-touting-white-house-ballroom-helipad/", type: on_record_quote }
+  - id: b12
+    line: "Then he signed the last steel beam. Above his name? Love."
+    tags: [fact]
+    pose: shocked
+    closes: L2
+    claims:
+      - text: "Trump signed the final steel beam and wrote \"Love!\" above his name."
+        sources:
+          - { url: "https://www.cbsnews.com/news/trump-2026-midterms-republicans-white-house-ballroom/", type: major_outlet }
+          - { url: "https://www.newsweek.com/donald-trump-white-house-ballroom-gop-midterm-defeat-12665960", type: major_outlet }
+  - id: b13
+    line: "So the love did transfer. To a beam."
+    tags: [joke]
+    pose: shrug
+    expression: smug
+  - id: b14
+    line: "Is Vance right? Seventy-four percent called the war a big factor."
+    tags: [fact, verdict]
+    pose: point_up
+    opens: L1
+    panel: { stock: "I Voted sticker", caption: "\"I Voted\" stickers, St. Paul, Minnesota" }
+    claims:
+      - text: "NBC News exit poll: 74% called the Iran war a \"crucial\" or \"major\" factor in their vote; Democrats won 63% of them."
+        sources:
+          - { url: "https://thefederalist.com/2026/11/03/exit-poll-iran-war-was-crucial-or-major-factor-for-3-in-4-voters/", type: major_outlet }
+          - { url: "https://www.commondreams.org/news/dems-urged-to-become-anti-war-party", type: major_outlet }
+          - { url: "https://www.theblaze.com/news/iran-war-was-crucial-factor-in-republican-rout-exit-polls", type: major_outlet, note: "34% crucial + 40% major factor, exit polling by NBC News and other outlets" }
+    verdict:
+      label: "TRUE"
+      sources:
+        - { url: "https://thefederalist.com/2026/11/03/exit-poll-iran-war-was-crucial-or-major-factor-for-3-in-4-voters/", type: major_outlet, note: "NBC exit poll: 74% crucial or major factor" }
+        - { url: "https://www.commondreams.org/news/dems-urged-to-become-anti-war-party", type: major_outlet, note: "Same NBC figures" }
+  - id: b17
+    line: "But fifty-seven percent said his immigration crackdown went too far."
+    tags: [fact]
+    pose: present
+    panel: { stock: "ICE officers immigration enforcement", caption: "ICE arrest in Chicago, January 2025" }
+    claims:
+      - text: "NBC News exit poll: 57% said Trump's immigration enforcement actions have gone too far."
+        sources:
+          - { url: "https://www.nbcnews.com/politics/2026-election/exit-poll-trump-midterms-voters-economy-disapproval-rcna607045", type: official_data }
+  - id: b18
+    line: "Though voters still trusted Republicans more on immigration."
+    tags: [fact, steelman]
+    pose: shrug
+    claims:
+      - text: "NBC News exit poll: the GOP held an advantage on immigration."
+        sources:
+          - { url: "https://www.nbcnews.com/politics/2026-election/exit-poll-trump-midterms-voters-economy-disapproval-rcna607045", type: official_data }
+          - { url: "https://thefederalist.com/2026/11/04/the-best-and-worst-explanations-for-republicans-midterm-losses/", type: major_outlet, note: "NBC exit poll: 44% to 41% on which party better handles immigration" }
+  - id: b19
+    line: "So the war mattered. It just wasn't the only reason."
+    tags: [verdict]
+    pose: present
+    closes: L1
+    panel: { stock: "I Voted sticker", caption: "\"I Voted\" stickers, St. Paul, Minnesota" }
+    verdict:
+      label: "NEEDS_CONTEXT"
+      sources:
+        - { url: "https://www.nbcnews.com/politics/2026-election/exit-poll-trump-midterms-voters-economy-disapproval-rcna607045", type: official_data, note: "Economy, immigration and opposition to Trump also drove votes" }
+        - { url: "https://thefederalist.com/2026/11/03/exit-poll-iran-war-was-crucial-or-major-factor-for-3-in-4-voters/", type: major_outlet, note: "74% called the war a crucial or major factor" }
+  - id: b20
+    line: "And Vance? Reportedly doubted the war privately. Publicly, he defended it."
+    tags: [fact]
+    pose: thinking
+    panel: { stock: "Trump and Vance White House", caption: "Trump, Vance in the Situation Room, June 2025" }
+    claims:
+      - text: "Early in the war it was reported that Vance was dubious of and opposed to striking Tehran; after it began he publicly defended Operation Epic Fury."
+        sources:
+          - { url: "https://thehill.com/homenews/campaign/6197976-vance-midterms-iran-war-trump/", type: major_outlet }
+          - { url: "https://nypost.com/2026/11/04/us-news/jd-vance-blames-iran-war-and-israel-for-gop-midterm-bloodbath/", type: major_outlet }
+  - id: b21
+    line: "My take? That's a handy story if you're eyeing 2028."
+    tags: [opinion]
+    pose: present
+    expression: smug
+    panel: { stock: "JD Vance official portrait", caption: "Vice President JD Vance, portrait, March 2026", crop: center }
+  - id: b22
+    line: "One thing? Voters named several. The beam got the love."
+    tags: [callback]
+    pose: shrug
+    camera: zoom_stare
+    panel: { stock: "Trump visits Ballroom and East Wing construction", caption: "Trump at the ballroom construction, May 2026" }
+  - id: b23
+    line: "Follow for our next episode!"
+    tags: [cta]
+    pose: celebrate
+human_edited: false
+disclosures: []
+caption: "JD Vance says the Iran war is why Republicans lost. Trump agreed, then wrote \"Love!\" on a beam. The exit poll says it's more than one thing 💀 sources below"
+hashtags: [politics, jdvance, midterms, trump, iranwar]

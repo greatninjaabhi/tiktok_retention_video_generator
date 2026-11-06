@@ -160,6 +160,22 @@
       "downloadedAt": "2026-11-02T15:13:16.058Z",
       "usedIn": []
     },
+    "wikimedia:168367844": {
+      "id": "wikimedia:168367844",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:President_Donald_Trump_and_his_national_security_team_meet_in_the_Situation_Room_of_the_White_House_(54607926187).jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/President_Donald_Trump_and_his_national_security_team_meet_in_the_Situation_Room_of_the_White_House_%2854607926187%29.jpg/1280px-President_Donald_Trump_and_his_national_security_team_meet_in_the_Situation_Room_of_the_White_House_%2854607926187%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 853,
+      "creator": "The White House",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:President_Donald_Trump_and_his_national_security_team_meet_in_the_Situation_Room_of_the_White_House_(54607926187).jpg",
+      "attributionRequired": false,
+      "query": "Trump and Vance White House",
+      "file": "assets/stock/cache/wikimedia_168367844.jpg",
+      "downloadedAt": "2026-11-04T20:35:57.158Z",
+      "usedIn": []
+    },
     "wikimedia:170234576": {
       "id": "wikimedia:170234576",
       "provider": "wikimedia",
@@ -192,6 +208,22 @@
       "downloadedAt": "2026-11-03T17:39:39.807Z",
       "usedIn": []
     },
+    "wikimedia:174331925": {
+      "id": "wikimedia:174331925",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:U.S._Immigration_and_Customs_Enforcement_(ICE)_Enforcement_and_Removal_Operations%27_(ERO)_officers_in_Chicago,_January_2025.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/U.S._Immigration_and_Customs_Enforcement_%28ICE%29_Enforcement_and_Removal_Operations%27_%28ERO%29_officers_in_Chicago%2C_January_2025.jpg/1280px-U.S._Immigration_and_Customs_Enforcement_%28ICE%29_Enforcement_and_Removal_Operations%27_%28ERO%29_officers_in_Chicago%2C_January_2025.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 854,
+      "creator": "usicegov",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:U.S._Immigration_and_Customs_Enforcement_(ICE)_Enforcement_and_Removal_Operations%27_(ERO)_officers_in_Chicago,_January_2025.jpg",
+      "attributionRequired": false,
+      "query": "ICE officers immigration enforcement",
+      "file": "assets/stock/cache/wikimedia_174331925.jpg",
+      "downloadedAt": "2026-11-05T16:11:14.732Z",
+      "usedIn": []
+    },
     "wikimedia:175246496": {
       "id": "wikimedia:175246496",
       "provider": "wikimedia",
@@ -206,6 +238,22 @@
       "query": "2020 I Voted sticker Santa Clara County California",
       "file": "assets/stock/cache/wikimedia_175246496.png",
       "downloadedAt": "2026-11-02T15:13:24.065Z",
+      "usedIn": []
+    },
+    "wikimedia:178055112": {
+      "id": "wikimedia:178055112",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Pile_of_%22I_Voted%22_stickers.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Pile_of_%22I_Voted%22_stickers.jpg/1280px-Pile_of_%22I_Voted%22_stickers.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1707,
+      "creator": "Funknendai",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "attributionRequired": false,
+      "query": "I Voted sticker",
+      "file": "assets/stock/cache/wikimedia_178055112.jpg",
+      "downloadedAt": "2026-11-04T20:36:11.850Z",
       "usedIn": []
     },
     "wikimedia:185395772": {
@@ -240,6 +288,22 @@
       "downloadedAt": "2026-11-02T15:12:41.302Z",
       "usedIn": []
     },
+    "wikimedia:189869928": {
+      "id": "wikimedia:189869928",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:March_2026_Official_Vice_Presidential_Portrait_of_JD_Vance_(cropped).jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/March_2026_Official_Vice_Presidential_Portrait_of_JD_Vance_%28cropped%29.jpg/1280px-March_2026_Official_Vice_Presidential_Portrait_of_JD_Vance_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1600,
+      "creator": "Emily J. Higgins",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:March_2026_Official_Vice_Presidential_Portrait_of_JD_Vance_(cropped).jpg",
+      "attributionRequired": false,
+      "query": "JD Vance official portrait",
+      "file": "assets/stock/cache/wikimedia_189869928.jpg",
+      "downloadedAt": "2026-11-04T20:35:44.711Z",
+      "usedIn": []
+    },
     "wikimedia:191135034": {
       "id": "wikimedia:191135034",
       "provider": "wikimedia",
@@ -254,6 +318,38 @@
       "query": "Mary Peltola Town Hall 2024",
       "file": "assets/stock/cache/wikimedia_191135034.jpg",
       "downloadedAt": "2026-10-31T21:16:26.001Z",
+      "usedIn": []
+    },
+    "wikimedia:192852014": {
+      "id": "wikimedia:192852014",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:P20260519JB-0353_President_Donald_Trump_visits_Ballroom_and_East_Wing_construction.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/P20260519JB-0353_President_Donald_Trump_visits_Ballroom_and_East_Wing_construction.jpg/1280px-P20260519JB-0353_President_Donald_Trump_visits_Ballroom_and_East_Wing_construction.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 853,
+      "creator": "The White House",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:P20260519JB-0353_President_Donald_Trump_visits_Ballroom_and_East_Wing_construction.jpg",
+      "attributionRequired": false,
+      "query": "White House East Wing ballroom construction",
+      "file": "assets/stock/cache/wikimedia_192852014.jpg",
+      "downloadedAt": "2026-11-04T20:36:29.671Z",
+      "usedIn": []
+    },
+    "wikimedia:192852025": {
+      "id": "wikimedia:192852025",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:P20260519JB-0601_President_Donald_Trump_visits_Ballroom_and_East_Wing_construction.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/P20260519JB-0601_President_Donald_Trump_visits_Ballroom_and_East_Wing_construction.jpg/1280px-P20260519JB-0601_President_Donald_Trump_visits_Ballroom_and_East_Wing_construction.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 853,
+      "creator": "The White House",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:P20260519JB-0601_President_Donald_Trump_visits_Ballroom_and_East_Wing_construction.jpg",
+      "attributionRequired": false,
+      "query": "Trump visits Ballroom and East Wing construction",
+      "file": "assets/stock/cache/wikimedia_192852025.jpg",
+      "downloadedAt": "2026-11-04T20:35:50.782Z",
       "usedIn": []
     },
     "wikimedia:195006426": {
@@ -350,6 +446,22 @@
       "query": "Arrival Departure October 25 2026 P20261025PW-0141",
       "file": "assets/stock/cache/wikimedia_202267044.jpg",
       "downloadedAt": "2026-11-01T02:10:32.789Z",
+      "usedIn": []
+    },
+    "wikimedia:2598899": {
+      "id": "wikimedia:2598899",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Capitol_Building_Full_View.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Capitol_Building_Full_View.jpg/1280px-Capitol_Building_Full_View.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 549,
+      "creator": "Noclip",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Capitol_Building_Full_View.jpg",
+      "attributionRequired": false,
+      "query": "United States Capitol dome",
+      "file": "assets/stock/cache/wikimedia_2598899.jpg",
+      "downloadedAt": "2026-11-04T20:36:17.813Z",
       "usedIn": []
     },
     "wikimedia:32915388": {
@@ -606,6 +718,22 @@
       "query": "Chuck Schumer",
       "file": "assets/stock/cache/wikimedia_73114008.jpg",
       "downloadedAt": "2026-11-02T04:03:39.124Z",
+      "usedIn": []
+    },
+    "wikimedia:7342752": {
+      "id": "wikimedia:7342752",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:US_Capitol_1814c.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/US_Capitol_1814c.jpg/1280px-US_Capitol_1814c.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 751,
+      "creator": "George Munger",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:US_Capitol_1814c.jpg",
+      "attributionRequired": false,
+      "query": "US Capitol 1814 burned",
+      "file": "assets/stock/cache/wikimedia_7342752.jpg",
+      "downloadedAt": "2026-11-04T20:36:23.759Z",
       "usedIn": []
     },
     "wikimedia:75591686": {
