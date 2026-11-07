@@ -36,6 +36,7 @@
 ## Re-check, 2026-11-06 afternoon (third resumed run)
 - The Nov. 5 afternoon render was killed again (video.mp4 had no moov atom, last written 2:41 PM). `human_edited` reset to false. Frames re-checked (66.2 s voiced, unchanged), then rendered again.
 - CBS re-read in full: Vance quotes unchanged. War still unresolved on Nov. 6: Trump weighing new strikes while Qatar mediates talks (CBS, Fox, Al Jazeera, Bloomberg live coverage). If a deal is signed before the slot, "Eight months in" still holds as a description of the war's length, but the video wouldn't mention the deal.
+- The Nov. 6 render (started 3:14 PM) hit the 2-hour background limit and was killed. video.mp4 was 48 bytes, last written 3:14:55 PM, so the render stalled within seconds rather than running slow. This is the third render of this script in a row to die. `human_edited` reset to false. Not restarted: the run had already used the longest allowed limit.
 
 ## Could not read
 - New York Times (403) and The Daily Signal (403). Their versions came through other outlets.
