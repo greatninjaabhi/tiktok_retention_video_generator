@@ -38,6 +38,12 @@
 - CBS re-read in full: Vance quotes unchanged. War still unresolved on Nov. 6: Trump weighing new strikes while Qatar mediates talks (CBS, Fox, Al Jazeera, Bloomberg live coverage). If a deal is signed before the slot, "Eight months in" still holds as a description of the war's length, but the video wouldn't mention the deal.
 - The Nov. 6 render (started 3:14 PM) hit the 2-hour background limit and was killed. video.mp4 was 48 bytes, last written 3:14:55 PM, so the render stalled within seconds rather than running slow. This is the third render of this script in a row to die. `human_edited` reset to false. Not restarted: the run had already used the longest allowed limit.
 
+## Re-check, 2026-11-07 evening (fourth resumed run)
+- video.mp4 from the Nov. 6 render had no moov atom (ffprobe), so it was rendered again. The Nov. 7 12:14 and 12:20 PM scheduled runs left logs that stop at "Video due" and no commits, so they ended before doing any work.
+- War still unresolved on Nov. 7: Trump confirmed new "limited" strikes on Iran that week (search summaries only, not read in full; the video doesn't mention them), and Iran passed a nuclear proposal through Qatar (CBS live updates, HNGN, Business Standard). No deal, so "Eight months in" still holds.
+- AP VoteCast via the Vance search: about a third of voters called the war "crucial", in line with the 34% "crucial" half of the 74%.
+- Story is now about 3.5 days old (lint freshness warning). Still the live argument about why the GOP lost, but it's older than the 72-hour target.
+
 ## Could not read
 - New York Times (403) and The Daily Signal (403). Their versions came through other outlets.
 - Vance's X post itself. Quotes rely on CBS, The Hill, NBC and the NY Post, which agree word for word.
