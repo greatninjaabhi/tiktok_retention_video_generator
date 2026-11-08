@@ -25,7 +25,7 @@
 
 ## Re-check, 2026-11-08 evening
 - Search across NBC, CBS, The Hill, CNBC, NPR and WaPo: still no appointment, no public yes or no from White, and no report from the Monday meeting. "Still open as of Nov. 8" holds.
-- Frames: 67.7 s voiced, rehook at 25.5 s. "Nov. 8" split across caption groups ("8, TRUMP SHARED A"), so b16 now says "The next day". Dana White's portrait switched to `crop: top` so his whole head shows.
+- Frames: 67.7 s voiced, rehook at 25.5 s. "Nov. 8" split across caption groups ("8, TRUMP SHARED A"), so b16 now says "The next day". Tried `crop: top` on Dana White's portrait, but it cut his mouth; back to `crop: center`, which shows eyes to chin (top of head cut). Re-run: 67.0 s, rehook at 25.5 s.
 
 ## Could not read
 - Mediaite (403). The Daily Beast and Yahoo pieces were seen only as search results.
