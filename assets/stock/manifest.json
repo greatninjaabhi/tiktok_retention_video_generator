@@ -16,6 +16,22 @@
       "downloadedAt": "2026-11-01T02:10:25.054Z",
       "usedIn": []
     },
+    "wikimedia:107593084": {
+      "id": "wikimedia:107593084",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:President_Donald_Trump_and_Dana_White.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/President_Donald_Trump_and_Dana_White.jpg/1280px-President_Donald_Trump_and_Dana_White.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1030,
+      "creator": "Dan Scavino Jr.",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:President_Donald_Trump_and_Dana_White.jpg",
+      "attributionRequired": false,
+      "query": "Dana White Donald Trump",
+      "file": "assets/stock/cache/wikimedia_107593084.jpg",
+      "downloadedAt": "2026-11-08T22:44:48.586Z",
+      "usedIn": []
+    },
     "wikimedia:12106561": {
       "id": "wikimedia:12106561",
       "provider": "wikimedia",
@@ -46,6 +62,22 @@
       "query": "Rep. Mary Peltola headshot",
       "file": "assets/stock/cache/wikimedia_125640882.jpg",
       "downloadedAt": "2026-11-01T02:11:37.755Z",
+      "usedIn": []
+    },
+    "wikimedia:143438306": {
+      "id": "wikimedia:143438306",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:James_S._Brady_Press_Briefing_Room_of_the_White_House,_Monday,_December_4,_2023.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/James_S._Brady_Press_Briefing_Room_of_the_White_House%2C_Monday%2C_December_4%2C_2023.jpg/1280px-James_S._Brady_Press_Briefing_Room_of_the_White_House%2C_Monday%2C_December_4%2C_2023.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1920,
+      "creator": "The White House",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:James_S._Brady_Press_Briefing_Room_of_the_White_House,_Monday,_December_4,_2023.jpg",
+      "attributionRequired": false,
+      "query": "White House press lectern Brady Briefing Room December 2023",
+      "file": "assets/stock/cache/wikimedia_143438306.jpg",
+      "downloadedAt": "2026-11-08T22:46:15.809Z",
       "usedIn": []
     },
     "wikimedia:148257865": {
@@ -158,6 +190,22 @@
       "query": "Hoover Tower Stanford",
       "file": "assets/stock/cache/wikimedia_163790507.png",
       "downloadedAt": "2026-11-02T15:13:16.058Z",
+      "usedIn": []
+    },
+    "wikimedia:167227894": {
+      "id": "wikimedia:167227894",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:President_Donald_Trump_attends_UFC_316_at_the_Prudential_Center_(54577774974).jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/President_Donald_Trump_attends_UFC_316_at_the_Prudential_Center_%2854577774974%29.jpg/1280px-President_Donald_Trump_attends_UFC_316_at_the_Prudential_Center_%2854577774974%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 853,
+      "creator": "The White House",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:President_Donald_Trump_attends_UFC_316_at_the_Prudential_Center_(54577774974).jpg",
+      "attributionRequired": false,
+      "query": "Trump Dana White UFC 316 Prudential Center",
+      "file": "assets/stock/cache/wikimedia_167227894.jpg",
+      "downloadedAt": "2026-11-08T22:45:07.430Z",
       "usedIn": []
     },
     "wikimedia:168367844": {
@@ -352,6 +400,22 @@
       "downloadedAt": "2026-11-04T20:35:50.782Z",
       "usedIn": []
     },
+    "wikimedia:193973861": {
+      "id": "wikimedia:193973861",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:U.S._Park_Police_Officers_meet_Dana_White_at_the_UFC_Freedom_250_Press_Conference_(27)_(cropped).jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/1/15/U.S._Park_Police_Officers_meet_Dana_White_at_the_UFC_Freedom_250_Press_Conference_%2827%29_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 1280,
+      "height": 1707,
+      "creator": "Sgt. Christian Brown",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:U.S._Park_Police_Officers_meet_Dana_White_at_the_UFC_Freedom_250_Press_Conference_(27)_(cropped).jpg",
+      "attributionRequired": false,
+      "query": "Dana White UFC president",
+      "file": "assets/stock/cache/wikimedia_193973861.jpg",
+      "downloadedAt": "2026-11-08T22:48:06.153Z",
+      "usedIn": []
+    },
     "wikimedia:195006426": {
       "id": "wikimedia:195006426",
       "provider": "wikimedia",
@@ -366,6 +430,38 @@
       "query": "Donald Trump speaks to reporters 2026",
       "file": "assets/stock/cache/wikimedia_195006426.jpg",
       "downloadedAt": "2026-11-03T17:41:33.210Z",
+      "usedIn": []
+    },
+    "wikimedia:197895140": {
+      "id": "wikimedia:197895140",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:UFC_Freedom_250_on_the_South_Lawn_of_the_White_House_in_Washington,_D.C._on_June_14,_2026_-_4.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/UFC_Freedom_250_on_the_South_Lawn_of_the_White_House_in_Washington%2C_D.C._on_June_14%2C_2026_-_4.jpg/1280px-UFC_Freedom_250_on_the_South_Lawn_of_the_White_House_in_Washington%2C_D.C._on_June_14%2C_2026_-_4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 853,
+      "creator": "U.S. Department of the Interior",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:UFC_Freedom_250_on_the_South_Lawn_of_the_White_House_in_Washington,_D.C._on_June_14,_2026_-_4.jpg",
+      "attributionRequired": false,
+      "query": "UFC Freedom 250 on the South Lawn of the White House",
+      "file": "assets/stock/cache/wikimedia_197895140.jpg",
+      "downloadedAt": "2026-11-08T22:47:39.203Z",
+      "usedIn": []
+    },
+    "wikimedia:197895181": {
+      "id": "wikimedia:197895181",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:UFC_Freedom_250_on_the_South_Lawn_of_the_White_House_in_Washington,_D.C._on_June_14,_2026_-_25.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/UFC_Freedom_250_on_the_South_Lawn_of_the_White_House_in_Washington%2C_D.C._on_June_14%2C_2026_-_25.jpg/1280px-UFC_Freedom_250_on_the_South_Lawn_of_the_White_House_in_Washington%2C_D.C._on_June_14%2C_2026_-_25.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 853,
+      "creator": "U.S. Department of the Interior",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:UFC_Freedom_250_on_the_South_Lawn_of_the_White_House_in_Washington,_D.C._on_June_14,_2026_-_25.jpg",
+      "attributionRequired": false,
+      "query": "UFC Freedom 250 White House",
+      "file": "assets/stock/cache/wikimedia_197895181.jpg",
+      "downloadedAt": "2026-11-08T22:47:12.094Z",
       "usedIn": []
     },
     "wikimedia:19810280": {
@@ -606,6 +702,22 @@
       "query": "Alaska's Pavlof Volcano NASA's View from Space 8805097211",
       "file": "assets/stock/cache/wikimedia_51483973.jpg",
       "downloadedAt": "2026-10-31T21:16:51.244Z",
+      "usedIn": []
+    },
+    "wikimedia:51548504": {
+      "id": "wikimedia:51548504",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Photograph_of_Socks_the_Cat_Standing_on_the_Press_Podium_in_the_Press_Room_at_the_White_House_-_DPLA_-_b43230131468abf8b366dbd1cc664f6c.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Photograph_of_Socks_the_Cat_Standing_on_the_Press_Podium_in_the_Press_Room_at_the_White_House_-_DPLA_-_b43230131468abf8b366dbd1cc664f6c.jpg/1280px-Photograph_of_Socks_the_Cat_Standing_on_the_Press_Podium_in_the_Press_Room_at_the_White_House_-_DPLA_-_b43230131468abf8b366dbd1cc664f6c.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 872,
+      "creator": "President (1993-2001 : Clinton). White House Photograph Office. 1/20/1993-1/20/2001",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Photograph_of_Socks_the_Cat_Standing_on_the_Press_Podium_in_the_Press_Room_at_the_White_House_-_DPLA_-_b43230131468abf8b366dbd1cc664f6c.jpg",
+      "attributionRequired": false,
+      "query": "James S. Brady Press Briefing Room podium",
+      "file": "assets/stock/cache/wikimedia_51548504.jpg",
+      "downloadedAt": "2026-11-08T22:46:03.584Z",
       "usedIn": []
     },
     "wikimedia:52237016": {
