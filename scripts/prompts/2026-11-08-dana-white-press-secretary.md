@@ -27,6 +27,8 @@
 - Search across NBC, CBS, The Hill, CNBC, NPR and WaPo: still no appointment, no public yes or no from White, and no report from the Monday meeting. "Still open as of Nov. 8" holds.
 - Frames: 67.7 s voiced, rehook at 25.5 s. "Nov. 8" split across caption groups ("8, TRUMP SHARED A"), so b16 now says "The next day". Tried `crop: top` on Dana White's portrait, but it cut his mouth; back to `crop: center`, which shows eyes to chin (top of head cut). Re-run: 67.0 s, rehook at 25.5 s.
 
+- Final render: 67.0 s, 1080×1920, 16 frames checked (no draft stamp, captions readable, faces in frame, end card shows). Audio not checked (can't be heard here). Queued in Buffer for Sun, Nov 8, 6:18 PM CST (the 5:11 PM slot had passed).
+
 ## Could not read
 - Mediaite (403). The Daily Beast and Yahoo pieces were seen only as search results.
 - Trump's Truth Social post itself. The quotes rely on CNN, NPR, BBC and the NY Post, which agree word for word.
