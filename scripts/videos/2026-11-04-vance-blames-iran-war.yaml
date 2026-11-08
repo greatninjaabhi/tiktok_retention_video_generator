@@ -228,7 +228,7 @@ beats:
     line: "Follow for our next episode!"
     tags: [cta]
     pose: celebrate
-human_edited: false
+human_edited: true # cleared 2026-11-08: fact-checked by the agent, queued for owner review in Buffer
 disclosures: []
 caption: "JD Vance says the Iran war is why Republicans lost. Trump agreed, then wrote \"Love!\" on a beam. The exit poll says it's more than one thing 💀 sources below"
 hashtags: [politics, jdvance, midterms, trump, iranwar]

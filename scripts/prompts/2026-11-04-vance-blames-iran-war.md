@@ -42,6 +42,7 @@
 - video.mp4 from the Nov. 6 render had no moov atom (ffprobe), so it was rendered again. The Nov. 7 12:14 and 12:20 PM scheduled runs left logs that stop at "Video due" and no commits, so they ended before doing any work.
 - War still unresolved on Nov. 7: Trump confirmed new "limited" strikes on Iran that week (search summaries only, not read in full; the video doesn't mention them), and Iran passed a nuclear proposal through Qatar (CBS live updates, HNGN, Business Standard). No deal, so "Eight months in" still holds.
 - AP VoteCast via the Vance search: about a third of voters called the war "crucial", in line with the 34% "crucial" half of the 74%.
+- This render finished in about 10 minutes (66.2 s, 1080×1920), so the earlier stalls look like a PC or session problem, not the script. 16 frames checked. Queued for Sat, Nov 7, 8:17 PM CST.
 - Story is now about 3.5 days old (lint freshness warning). Still the live argument about why the GOP lost, but it's older than the 72-hour target.
 
 ## Could not read
