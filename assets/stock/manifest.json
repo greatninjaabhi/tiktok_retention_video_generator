@@ -176,6 +176,22 @@
       "downloadedAt": "2026-11-02T15:12:45.010Z",
       "usedIn": []
     },
+    "wikimedia:158753615": {
+      "id": "wikimedia:158753615",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Official_portrait_of_Secretary_Marco_Rubio,_January_2025.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Official_portrait_of_Secretary_Marco_Rubio%2C_January_2025.jpg/1280px-Official_portrait_of_Secretary_Marco_Rubio%2C_January_2025.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1760,
+      "creator": "U.S. Department of State",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Official_portrait_of_Secretary_Marco_Rubio,_January_2025.jpg",
+      "attributionRequired": false,
+      "query": "Marco Rubio Secretary of State",
+      "file": "assets/stock/cache/wikimedia_158753615.jpg",
+      "downloadedAt": "2026-11-09T16:47:50.112Z",
+      "usedIn": []
+    },
     "wikimedia:163790507": {
       "id": "wikimedia:163790507",
       "provider": "wikimedia",
@@ -190,6 +206,22 @@
       "query": "Hoover Tower Stanford",
       "file": "assets/stock/cache/wikimedia_163790507.png",
       "downloadedAt": "2026-11-02T15:13:16.058Z",
+      "usedIn": []
+    },
+    "wikimedia:164509227": {
+      "id": "wikimedia:164509227",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:P20250430JB-0891.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/P20250430JB-0891.jpg/1280px-P20250430JB-0891.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 853,
+      "creator": "The White House",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:P20250430JB-0891.jpg",
+      "attributionRequired": false,
+      "query": "Donald Trump Jensen Huang",
+      "file": "assets/stock/cache/wikimedia_164509227.jpg",
+      "downloadedAt": "2026-11-09T16:49:41.607Z",
       "usedIn": []
     },
     "wikimedia:167227894": {
@@ -238,6 +270,22 @@
       "query": "Official Presidential Portrait of Donald Trump 2025",
       "file": "assets/stock/cache/wikimedia_170234576.jpg",
       "downloadedAt": "2026-11-04T01:20:48.543Z",
+      "usedIn": []
+    },
+    "wikimedia:170654260": {
+      "id": "wikimedia:170654260",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Nvidia_CEO_Jensen_Huang_is_recognized_by_President_Donald_Trump_during_remarks_at_the_White_House_AI_Summit_at_Andrew_W._Mellon_Auditorium_in_Washington_(54677035268).jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Nvidia_CEO_Jensen_Huang_is_recognized_by_President_Donald_Trump_during_remarks_at_the_White_House_AI_Summit_at_Andrew_W._Mellon_Auditorium_in_Washington_%2854677035268%29.jpg/1280px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 853,
+      "creator": "The White House",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Nvidia_CEO_Jensen_Huang_is_recognized_by_President_Donald_Trump_during_remarks_at_the_White_House_AI_Summit_at_Andrew_W._Mellon_Auditorium_in_Washington_(54677035268).jpg",
+      "attributionRequired": false,
+      "query": "Jensen Huang Nvidia CEO",
+      "file": "assets/stock/cache/wikimedia_170654260.jpg",
+      "downloadedAt": "2026-11-09T16:46:36.884Z",
       "usedIn": []
     },
     "wikimedia:170764721": {
@@ -590,6 +638,22 @@
       "query": "Wrangell Narrows Alaska Petersburg small boat harbor looking west NARA 298794",
       "file": "assets/stock/cache/wikimedia_32915992.jpg",
       "downloadedAt": "2026-10-31T21:16:43.007Z",
+      "usedIn": []
+    },
+    "wikimedia:39728925": {
+      "id": "wikimedia:39728925",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Nvidia-7900GS-Video-Card.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Nvidia-7900GS-Video-Card.jpg/1280px-Nvidia-7900GS-Video-Card.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 872,
+      "creator": "Evan-Amos",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Nvidia-7900GS-Video-Card.jpg",
+      "attributionRequired": false,
+      "query": "Nvidia graphics card",
+      "file": "assets/stock/cache/wikimedia_39728925.jpg",
+      "downloadedAt": "2026-11-09T16:47:25.968Z",
       "usedIn": []
     },
     "wikimedia:42105926": {

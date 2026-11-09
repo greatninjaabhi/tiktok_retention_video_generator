@@ -1,0 +1,239 @@
+# DRAFT by Claude in an unattended scheduled run on 2026-11-09 (not `npm run draft`: no API key there).
+# Writer brief: scripts/prompts/2026-11-09-nvidia-huang-spy-probe.md
+# UNRESOLVED:
+#  1. The spy claim and the Rubio memo come from the NYT (403 here), read via BBC, NY Post and CNBC.
+#  2. Huang didn't name the woman; the link to Alice Huang is from reporting (FT via CNN, NY Post, BBC).
+#  3. Nvidia's board probe is ongoing; Huang's Nov. 18 briefing with House GOP chairs isn't confirmed.
+id: 2026-11-09-nvidia-huang-spy-probe
+channel: politics
+format: explainer
+character: mascot_v1
+topic:
+  title: "Nvidia's Jensen Huang admits an affair as his board probes a suspected Chinese spy op; Trump calls him honorable"
+  type: scandal
+  first_seen: "2026-11-08T18:00:00Z"
+hook:
+  spoken: "Nvidia's boss admitted an affair. Now his company's checking for spies."
+  on_screen: "NVIDIA'S BOSS AND A SPY PROBE?"
+  pattern: just_happened
+research:
+  - { url: "https://www.bbc.co.uk/news/articles/ckgel338xql3o", outlet: BBC News, lean: center }
+  - { url: "https://www.cnn.com/2026/11/08/business/nvidia-investigation-ceo-jensen-huang", outlet: CNN, lean: lean_left }
+  - { url: "https://www.cnbc.com/2026/11/09/nvidia-jensen-huang-chinese-spy-investigation.html", outlet: CNBC, lean: center }
+  - { url: "https://thehill.com/policy/technology/6208192-jensen-huang-nvidia-ceo-chinese-spy-affair/", outlet: The Hill, lean: center }
+  - { url: "https://thehill.com/policy/technology/6207787-jensen-huang-affair-nvidia-stock-falls/", outlet: The Hill, lean: center }
+  - { url: "https://nypost.com/2026/11/09/us-news/trump-defends-honorable-nvidia-boss-after-explosive-affair-with-chinese-spy-revealed/", outlet: New York Post, lean: lean_right }
+  - { url: "https://www.foxnews.com/live-news/ai-news-nvidia-jensen-huang-trump-11-09-26", outlet: Fox News, lean: lean_right }
+  - { url: "https://cbs12.com/news/nation-world/president-donald-trump-calls-ai-chipmaker-nvidia-ceo-jensen-huang-honorable-guy-amid-probe-into-ties-to-suspected-chinese-spy-beijing-admitted-affair-alice-huang-foreign-intelligence", outlet: The National News Desk, lean: center }
+beats:
+  - id: b01
+    line: "That's Jensen Huang. His chips power the AI boom."
+    tags: [fact]
+    pose: present
+    panel: { stock: "Jensen Huang Nvidia CEO", caption: "Jensen Huang at a White House AI summit, 2025" }
+    claims:
+      - text: "Jensen Huang co-founded and leads Nvidia, whose chips dominate AI; CNN calls it a poster child for the AI boom."
+        sources:
+          - { url: "https://www.bbc.co.uk/news/articles/ckgel338xql3o", type: major_outlet }
+          - { url: "https://www.cnn.com/2026/11/08/business/nvidia-investigation-ceo-jensen-huang", type: major_outlet }
+  - id: b02
+    line: "In a note to staff, he wrote: \"I was unfaithful to my wife.\""
+    tags: [claim]
+    pose: shocked
+    panel: { stock: "Jensen Huang", caption: "Jensen Huang on stage at a conference, 2018" }
+    claims:
+      - text: "In a Nov. 8 note to Nvidia employees, Huang wrote: \"I was unfaithful to my wife. My actions hurt her and our children.\""
+        sources:
+          - { url: "https://thehill.com/policy/technology/6208192-jensen-huang-nvidia-ceo-chinese-spy-affair/", type: on_record_quote }
+          - { url: "https://www.cnbc.com/2026/11/09/nvidia-jensen-huang-chinese-spy-investigation.html", type: on_record_quote }
+          - { url: "https://www.foxnews.com/live-news/ai-news-nvidia-jensen-huang-trump-11-09-26", type: on_record_quote, note: "letter to employees Sunday (Nov. 8)" }
+  - id: b03
+    line: "He didn't name her. Reports point to Alice Huang. No relation."
+    tags: [fact]
+    pose: thinking
+    opens: L0
+    claims:
+      - text: "Huang did not identify the woman. Reporting ties him romantically to Alice Huang, a Megaspeed executive, who is not related to him."
+        sources:
+          - { url: "https://www.cnn.com/2026/11/08/business/nvidia-investigation-ceo-jensen-huang", type: major_outlet, note: "did not name the other person; FT reported US intelligence believed the two were in a romantic relationship; no relation" }
+          - { url: "https://www.foxnews.com/live-news/ai-news-nvidia-jensen-huang-trump-11-09-26", type: major_outlet, note: "did not identify the woman involved; not related" }
+          - { url: "https://www.bbc.co.uk/news/articles/ckgel338xql3o", type: major_outlet }
+  - id: b05
+    line: "U.S. officials reportedly believe China's spy agency recruited her."
+    tags: [fact]
+    pose: shocked
+    closes: L0
+    claims:
+      - text: "US officials believed Alice Huang had been recruited by China's top intelligence agency (BBC citing NYT); allegedly recruited by China's Ministry of State Security per a State Department memo (NY Post citing NYT)."
+        sources:
+          - { url: "https://www.bbc.co.uk/news/articles/ckgel338xql3o", type: major_outlet }
+          - { url: "https://nypost.com/2026/11/09/us-news/trump-defends-honorable-nvidia-boss-after-explosive-affair-with-chinese-spy-revealed/", type: major_outlet }
+          - { url: "https://www.cnbc.com/2026/11/09/nvidia-jensen-huang-chinese-spy-investigation.html", type: major_outlet }
+  - id: b06
+    line: "She worked at Megaspeed, which bought billions in Nvidia chips."
+    tags: [fact]
+    pose: point_up
+    panel: { stock: "Nvidia graphics card", caption: "An old Nvidia GeForce graphics card" }
+    claims:
+      - text: "Alice Huang has been an executive at Singapore-based Megaspeed, which bought more than $4.8 billion in Nvidia chips over two years."
+        sources:
+          - { url: "https://cbs12.com/news/nation-world/president-donald-trump-calls-ai-chipmaker-nvidia-ceo-jensen-huang-honorable-guy-amid-probe-into-ties-to-suspected-chinese-spy-beijing-admitted-affair-alice-huang-foreign-intelligence", type: major_outlet }
+          - { url: "https://nypost.com/2026/11/09/us-news/trump-defends-honorable-nvidia-boss-after-explosive-affair-with-chinese-spy-revealed/", type: major_outlet, note: "purchased billions in AI chips from Nvidia" }
+          - { url: "https://www.bbc.co.uk/news/articles/ckgel338xql3o", type: major_outlet, note: "top executive March to November 2023" }
+  - id: b07
+    line: "Singapore's probing claims it dodged U.S. export limits."
+    tags: [fact]
+    pose: thinking
+    opens: L3
+    claims:
+      - text: "Megaspeed is under investigation by Singapore over allegations it circumvented US export restrictions on Nvidia's high-end chips."
+        sources:
+          - { url: "https://www.bbc.co.uk/news/articles/ckgel338xql3o", type: major_outlet }
+          - { url: "https://nypost.com/2026/11/09/us-news/trump-defends-honorable-nvidia-boss-after-explosive-affair-with-chinese-spy-revealed/", type: major_outlet, note: "US and Singaporean authorities" }
+  - id: b08
+    line: "Nvidia says that was debunked."
+    tags: [fact]
+    pose: shrug
+    closes: L3
+    claims:
+      - text: "Nvidia maintains the chip-diversion concern was investigated and debunked."
+        sources:
+          - { url: "https://www.bbc.co.uk/news/articles/ckgel338xql3o", type: major_outlet }
+          - { url: "https://www.cnn.com/2026/11/08/business/nvidia-investigation-ceo-jensen-huang", type: major_outlet, note: "\"debunked last year\"" }
+  - id: b09
+    line: "But the wildest reaction came from Trump."
+    tags: [rehook]
+    pose: point_up
+    opens: L1
+    panel: { stock: "Donald Trump Jensen Huang", caption: "Huang and Trump at the White House, April 2025" }
+  - id: b10
+    line: "He was reportedly briefed on her last year."
+    tags: [fact]
+    pose: thinking
+    claims:
+      - text: "The NYT reported Trump had been briefed last year on intelligence alleging Alice Huang was spying for China."
+        sources:
+          - { url: "https://www.bbc.co.uk/news/articles/ckgel338xql3o", type: major_outlet }
+          - { url: "https://www.cnn.com/2026/11/08/business/nvidia-investigation-ceo-jensen-huang", type: major_outlet, note: "asked if he wished he had acted when briefed on the intelligence last year" }
+  - id: b11
+    line: "Rubio even oversaw a warning memo, the Times reported."
+    tags: [fact]
+    pose: present
+    panel: { stock: "Marco Rubio Secretary of State", caption: "Official portrait of Marco Rubio, Jan. 2025", crop: center }
+    claims:
+      - text: "Last spring, Rubio reportedly oversaw the drafting of a memo warning the administration about Huang's relationship (NYT, via BBC and NY Post)."
+        sources:
+          - { url: "https://www.bbc.co.uk/news/articles/ckgel338xql3o", type: major_outlet }
+          - { url: "https://nypost.com/2026/11/09/us-news/trump-defends-honorable-nvidia-boss-after-explosive-affair-with-chinese-spy-revealed/", type: major_outlet }
+  - id: b12
+    line: "Does he wish he'd acted? \"No, I don't think so.\""
+    tags: [claim]
+    pose: shocked
+    opens: L4
+    panel: { stock: "Official Presidential Portrait of Donald Trump 2025", caption: "Trump's official portrait, 2025" }
+    claims:
+      - text: "Asked on Nov. 8 whether he wished he had acted on the intelligence, Trump said: \"No, I don't think so.\""
+        sources:
+          - { url: "https://www.bbc.co.uk/news/articles/ckgel338xql3o", type: on_record_quote }
+          - { url: "https://www.cnn.com/2026/11/08/business/nvidia-investigation-ceo-jensen-huang", type: on_record_quote }
+  - id: b13
+    line: "\"I think he's an honorable guy.\""
+    tags: [claim]
+    pose: present
+    closes: L4
+    claims:
+      - text: "Trump: \"I think he's an honorable guy.\""
+        sources:
+          - { url: "https://www.cnn.com/2026/11/08/business/nvidia-investigation-ceo-jensen-huang", type: on_record_quote }
+          - { url: "https://www.cnbc.com/2026/11/09/nvidia-jensen-huang-chinese-spy-investigation.html", type: on_record_quote }
+  - id: b14
+    line: "\"I think he probably has an excuse for it.\""
+    tags: [claim]
+    pose: shrug
+    claims:
+      - text: "Trump: \"I think he probably has an excuse for it.\""
+        sources:
+          - { url: "https://www.cnn.com/2026/11/08/business/nvidia-investigation-ceo-jensen-huang", type: on_record_quote }
+          - { url: "https://www.cnbc.com/2026/11/09/nvidia-jensen-huang-chinese-spy-investigation.html", type: on_record_quote }
+          - { url: "https://www.foxnews.com/live-news/ai-news-nvidia-jensen-huang-trump-11-09-26", type: on_record_quote }
+  - id: b15
+    line: "\"He dealt with somebody but, you know, so does everybody else.\""
+    tags: [claim]
+    pose: shrug
+    closes: L1
+    claims:
+      - text: "Trump: \"I haven't heard he's done anything wrong. He dealt with somebody but, you know, so does everybody else.\""
+        sources:
+          - { url: "https://www.foxnews.com/live-news/ai-news-nvidia-jensen-huang-trump-11-09-26", type: on_record_quote }
+          - { url: "https://nypost.com/2026/11/09/us-news/trump-defends-honorable-nvidia-boss-after-explosive-affair-with-chinese-spy-revealed/", type: on_record_quote }
+  - id: b16
+    line: "Everybody else? Most of us aren't in a State Department memo."
+    tags: [joke]
+    pose: present
+    expression: smug
+    camera: zoom_stare
+  - id: b17
+    line: "Fair point: Nvidia's board sees no sign secrets leaked."
+    tags: [fact, steelman]
+    pose: present
+    opens: L2
+    panel: { stock: "Jensen Huang", caption: "Jensen Huang on stage at a conference, 2018" }
+    claims:
+      - text: "Nvidia's board: \"no reason to believe that either national security or NVIDIA secrets were compromised.\""
+        sources:
+          - { url: "https://thehill.com/policy/technology/6207787-jensen-huang-affair-nvidia-stock-falls/", type: on_record_quote }
+          - { url: "https://www.cnn.com/2026/11/08/business/nvidia-investigation-ceo-jensen-huang", type: on_record_quote }
+  - id: b18
+    line: "And China calls the spy claims \"groundless.\""
+    tags: [claim]
+    pose: shrug
+    claims:
+      - text: "China's Foreign Ministry spokesperson Guo Jiakun called the allegations \"entirely groundless, speculative\" (BBC) / \"purely groundless speculation\" (CNN)."
+        sources:
+          - { url: "https://www.bbc.co.uk/news/articles/ckgel338xql3o", type: on_record_quote }
+          - { url: "https://www.cnn.com/2026/11/08/business/nvidia-investigation-ceo-jensen-huang", type: on_record_quote }
+  - id: b19
+    line: "Still, three GOP chairs want answers from him on Nov. 18."
+    tags: [fact]
+    pose: point_up
+    closes: L2
+    panel: { stock: "United States Capitol dome", caption: "The U.S. Capitol, Washington, D.C." }
+    claims:
+      - text: "GOP Reps. Moolenaar, Mast and Crawford, chairs of the China, Foreign Affairs and Intelligence committees, asked Huang for a closed-door briefing on Nov. 18."
+        sources:
+          - { url: "https://thehill.com/policy/technology/6207787-jensen-huang-affair-nvidia-stock-falls/", type: major_outlet }
+          - { url: "https://cbs12.com/news/nation-world/president-donald-trump-calls-ai-chipmaker-nvidia-ceo-jensen-huang-honorable-guy-amid-probe-into-ties-to-suspected-chinese-spy-beijing-admitted-affair-alice-huang-foreign-intelligence", type: major_outlet }
+          - { url: "https://www.cnn.com/2026/11/08/business/nvidia-investigation-ceo-jensen-huang", type: major_outlet, note: "letter from the three chairmen" }
+  - id: b20
+    line: "Why care? He's lobbied to sell more AI chips to China."
+    tags: [what_it_means, fact]
+    pose: thinking
+    panel: { stock: "Donald Trump Jensen Huang", caption: "Huang and Trump at the White House, April 2025" }
+    claims:
+      - text: "Huang has advocated for fewer restrictions on chip sales to China (The Hill); chip sales to China, which Huang has previously lobbied for (CNN)."
+        sources:
+          - { url: "https://thehill.com/policy/technology/6208192-jensen-huang-nvidia-ceo-chinese-spy-affair/", type: major_outlet }
+          - { url: "https://www.cnn.com/2026/11/08/business/nvidia-investigation-ceo-jensen-huang", type: major_outlet }
+  - id: b21
+    line: "My take? A shrug isn't a security check."
+    tags: [opinion]
+    pose: present
+    expression: smug
+  - id: b22
+    line: "An honorable guy? Maybe."
+    tags: [callback]
+    pose: shrug
+    panel: { stock: "Jensen Huang Nvidia CEO", caption: "Jensen Huang at a White House AI summit, 2025" }
+  - id: b22b
+    line: "But his own board's still checking, as of Nov. 9."
+    tags: [callback]
+    pose: thinking
+    camera: zoom_stare
+  - id: b23
+    line: "Follow for our next episode!"
+    tags: [cta]
+    pose: celebrate
+human_edited: false
+disclosures: []
+caption: "Nvidia's CEO admitted an affair. Reports tie it to a woman U.S. officials reportedly suspect of spying for China. Trump's take: \"honorable guy\" 🫠 sources below"
+hashtags: [politics, nvidia, jensenhuang, trump, ai]
