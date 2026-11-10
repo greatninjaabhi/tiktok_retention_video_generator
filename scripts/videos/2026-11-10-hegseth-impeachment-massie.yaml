@@ -221,7 +221,7 @@ beats:
     line: "Follow for our next episode!"
     tags: [cta]
     pose: celebrate
-human_edited: false
+human_edited: true # cleared 2026-11-10: fact-checked by the agent, queued for owner review in Buffer
 disclosures: []
 caption: "A Republican filed 8 impeachment articles against Pete Hegseth. Hegseth campaigned against him in May. Hegseth's word for it: \"sabotage\" sources below"
 hashtags: [politics, hegseth, impeachment, congress, massie]

@@ -64,6 +64,22 @@
       "downloadedAt": "2026-11-01T02:11:37.755Z",
       "usedIn": []
     },
+    "wikimedia:133778654": {
+      "id": "wikimedia:133778654",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Anas_platyrhynchos_in_Montreal,_Canada.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Anas_platyrhynchos_in_Montreal%2C_Canada.jpg/1280px-Anas_platyrhynchos_in_Montreal%2C_Canada.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 853,
+      "creator": "Wilfredor",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "attributionRequired": false,
+      "query": "mallard duck",
+      "file": "assets/stock/cache/wikimedia_133778654.jpg",
+      "downloadedAt": "2026-11-10T15:33:17.491Z",
+      "usedIn": []
+    },
     "wikimedia:143438306": {
       "id": "wikimedia:143438306",
       "provider": "wikimedia",
@@ -176,6 +192,22 @@
       "downloadedAt": "2026-11-02T15:12:45.010Z",
       "usedIn": []
     },
+    "wikimedia:158691985": {
+      "id": "wikimedia:158691985",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Pete_Hegseth_Official_Portrait.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Pete_Hegseth_Official_Portrait.jpg/1280px-Pete_Hegseth_Official_Portrait.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1656,
+      "creator": "U.S. Department of Defense",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Pete_Hegseth_Official_Portrait.jpg",
+      "attributionRequired": false,
+      "query": "Pete Hegseth official portrait",
+      "file": "assets/stock/cache/wikimedia_158691985.jpg",
+      "downloadedAt": "2026-11-10T15:30:55.141Z",
+      "usedIn": []
+    },
     "wikimedia:158753615": {
       "id": "wikimedia:158753615",
       "provider": "wikimedia",
@@ -254,6 +286,22 @@
       "query": "Trump and Vance White House",
       "file": "assets/stock/cache/wikimedia_168367844.jpg",
       "downloadedAt": "2026-11-04T20:35:57.158Z",
+      "usedIn": []
+    },
+    "wikimedia:1697801": {
+      "id": "wikimedia:1697801",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:B-2_Spirit_original.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/B-2_Spirit_original.jpg/1280px-B-2_Spirit_original.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 801,
+      "creator": "U.S. Air Force photo/Staff Sgt. Bennie J. Davis III",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:B-2_Spirit_original.jpg",
+      "attributionRequired": false,
+      "query": "B-2 Spirit bomber",
+      "file": "assets/stock/cache/wikimedia_1697801.jpg",
+      "downloadedAt": "2026-11-10T15:49:27.659Z",
       "usedIn": []
     },
     "wikimedia:170234576": {
@@ -382,6 +430,38 @@
       "query": "Gavin Newsom",
       "file": "assets/stock/cache/wikimedia_187155211.jpg",
       "downloadedAt": "2026-11-02T15:12:41.302Z",
+      "usedIn": []
+    },
+    "wikimedia:188620135": {
+      "id": "wikimedia:188620135",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Secretary_of_Defense_Pete_Hegseth_and_Chairman_of_the_Joint_Chiefs_of_Staff_U.S._Air_Force_General_Dan_Caine_at_a_press_briefing_on_Operation_Epic_Fury_at_the_Pentagon,_USA_on_April_8,_2026_-_1.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Secretary_of_Defense_Pete_Hegseth_and_Chairman_of_the_Joint_Chiefs_of_Staff_U.S._Air_Force_General_Dan_Caine_at_a_press_briefing_on_Operation_Epic_Fury_at_the_Pentagon%2C_USA_on_April_8%2C_2026_-_1.jpg/1280px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 853,
+      "creator": "SECWAR",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Secretary_of_Defense_Pete_Hegseth_and_Chairman_of_the_Joint_Chiefs_of_Staff_U.S._Air_Force_General_Dan_Caine_at_a_press_briefing_on_Operation_Epic_Fury_at_the_Pentagon,_USA_on_April_8,_2026_-_1.jpg",
+      "attributionRequired": false,
+      "query": "Pete Hegseth press briefing",
+      "file": "assets/stock/cache/wikimedia_188620135.jpg",
+      "downloadedAt": "2026-11-10T15:33:12.501Z",
+      "usedIn": []
+    },
+    "wikimedia:188620153": {
+      "id": "wikimedia:188620153",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Secretary_of_Defense_Pete_Hegseth_and_Chairman_of_the_Joint_Chiefs_of_Staff_U.S._Air_Force_General_Dan_Caine_at_a_press_briefing_on_Operation_Epic_Fury_at_the_Pentagon,_USA_on_April_8,_2026_-_13.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Secretary_of_Defense_Pete_Hegseth_and_Chairman_of_the_Joint_Chiefs_of_Staff_U.S._Air_Force_General_Dan_Caine_at_a_press_briefing_on_Operation_Epic_Fury_at_the_Pentagon%2C_USA_on_April_8%2C_2026_-_13.jpg/1280px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 853,
+      "creator": "SECWAR",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Secretary_of_Defense_Pete_Hegseth_and_Chairman_of_the_Joint_Chiefs_of_Staff_U.S._Air_Force_General_Dan_Caine_at_a_press_briefing_on_Operation_Epic_Fury_at_the_Pentagon,_USA_on_April_8,_2026_-_13.jpg",
+      "attributionRequired": false,
+      "query": "Pete Hegseth Pentagon podium",
+      "file": "assets/stock/cache/wikimedia_188620153.jpg",
+      "downloadedAt": "2026-11-10T15:58:08.230Z",
       "usedIn": []
     },
     "wikimedia:189869928": {
@@ -1008,6 +1088,22 @@
       "downloadedAt": "2026-11-03T17:41:21.523Z",
       "usedIn": []
     },
+    "wikimedia:93424659": {
+      "id": "wikimedia:93424659",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Jared_Polis_Thomas_Massie_forbidden_meal_2.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Jared_Polis_Thomas_Massie_forbidden_meal_2.jpg/1280px-Jared_Polis_Thomas_Massie_forbidden_meal_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 853,
+      "creator": "United States Congress, Office of Jared Polis",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Jared_Polis_Thomas_Massie_forbidden_meal_2.jpg",
+      "attributionRequired": false,
+      "query": "Rep. Thomas Massie",
+      "file": "assets/stock/cache/wikimedia_93424659.jpg",
+      "downloadedAt": "2026-11-10T15:32:31.624Z",
+      "usedIn": []
+    },
     "wikimedia:94756903": {
       "id": "wikimedia:94756903",
       "provider": "wikimedia",
@@ -1054,6 +1150,22 @@
       "query": "Speaker's Platform Audience Campaign Rally Nassau Veterans Memorial Coliseum",
       "file": "assets/stock/cache/wikimedia_96425077.jpg",
       "downloadedAt": "2026-10-31T21:08:54.130Z",
+      "usedIn": []
+    },
+    "wikimedia:99772245": {
+      "id": "wikimedia:99772245",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Secretary_Mayorkas_Official_Photo.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Secretary_Mayorkas_Official_Photo.jpg/1280px-Secretary_Mayorkas_Official_Photo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1656,
+      "creator": "Zachary Hupp/U.S. Department of Homeland Security",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Secretary_Mayorkas_Official_Photo.jpg",
+      "attributionRequired": false,
+      "query": "Alejandro Mayorkas official portrait",
+      "file": "assets/stock/cache/wikimedia_99772245.jpg",
+      "downloadedAt": "2026-11-10T15:48:40.836Z",
       "usedIn": []
     }
   }
