@@ -233,7 +233,7 @@ beats:
     line: "Follow for our next episode!"
     tags: [cta]
     pose: celebrate
-human_edited: false
+human_edited: true # cleared 2026-11-10: fact-checked by the agent, queued for owner review in Buffer
 disclosures: []
 caption: "Nvidia's CEO admitted an affair. Reports tie it to a woman U.S. officials reportedly suspect of spying for China. Trump's take: \"honorable guy\" 🫠 sources below"
 hashtags: [politics, nvidia, jensenhuang, trump, ai]
