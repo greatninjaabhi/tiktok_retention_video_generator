@@ -1,0 +1,227 @@
+# DRAFT by Claude in an unattended scheduled run on 2026-11-10 (not `npm run draft`: no API key there).
+# Writer brief: scripts/prompts/2026-11-10-hegseth-impeachment-massie.md
+# UNRESOLVED:
+#  1. The House's first vote was set for 5:30 p.m. ET on Nov. 10, after this script was written. The script dates it and doesn't predict the result.
+#  2. No usable public-domain portrait of Massie exists at full size; the panel uses a House photo of him (right) with then-Rep. Jared Polis.
+#  3. NYT and National Review answered 403; facts rest on Guardian, NY Post, Mother Jones, NPR, The Hill, Washington Examiner, WLOS.
+id: 2026-11-10-hegseth-impeachment-massie
+channel: politics
+format: explainer
+character: mascot_v1
+topic:
+  title: "Republican Thomas Massie files eight impeachment articles against Pete Hegseth; Hegseth calls it sabotage"
+  type: policy_fight
+  first_seen: "2026-11-09T22:00:00Z"
+hook:
+  spoken: "Pete Hegseth could be impeached. By a guy he campaigned against."
+  on_screen: "WHO'S COMING FOR HEGSETH?"
+  pattern: who_tease
+research:
+  - { url: "https://www.theguardian.com/us-news/2026/nov/10/pete-hegseth-impeachment-massie", outlet: The Guardian, lean: lean_left }
+  - { url: "https://nypost.com/2026/11/10/us-news/hegseth-rips-impeachment-effort-in-press-conference-this-is-not-patriotism-this-is-sabotage/", outlet: New York Post, lean: lean_right }
+  - { url: "https://www.washingtonexaminer.com/policy/defense/4798310/hegseth-defiant-thomas-massie-articles-impeachment/", outlet: Washington Examiner, lean: lean_right }
+  - { url: "https://www.motherjones.com/politics/2026/11/hegseth-impeachment-sabotage-massie-iran-boat-strikes-legal/", outlet: Mother Jones, lean: left }
+  - { url: "https://www.npr.org/2026/11/10/g-s1-152777/up-first-newsletter-pete-hegseth-impeachment-trump-iran-nvidia-border-wall-texas", outlet: NPR, lean: lean_left }
+  - { url: "https://thehill.com/homenews/administration/6209586-live-updates-trump-hegseth-impeachment-iran-war-midterms-gop-leadership-elections/", outlet: The Hill, lean: center }
+  - { url: "https://wlos.com/news/nation-world/pete-hegseth-secretary-of-war-rallies-president-donald-trump-backed-ed-gallrein-ahead-costly-kentucky-gop-primary-vs-thomas-massie-republican-republicans-voters-vote-election-day-polls-policies-political-democrats-taxpayers-taxes-money-debate", outlet: WLOS / WKRC, lean: center }
+  - { url: "https://www.nujournal.com/news/national-news-apwire/2024/04/18/senate-dismisses-two-articles-of-impeachment-against-mayorkas/", outlet: Associated Press, lean: center }
+  - { url: "https://globalnews.ca/news/10430894/mayorkas-impeachment-dismissed-senate-us", outlet: Global News (AP), lean: center }
+beats:
+  - id: b01
+    line: "That's Pete Hegseth. He runs Trump's military."
+    tags: [fact]
+    pose: present
+    panel: { stock: "Pete Hegseth press briefing", caption: "Hegseth at a Pentagon briefing, April 8, 2026" }
+    claims:
+      - text: "Pete Hegseth is Trump's defense secretary (styled secretary of war), leading the Pentagon."
+        sources:
+          - { url: "https://www.theguardian.com/us-news/2026/nov/10/pete-hegseth-impeachment-massie", type: major_outlet }
+          - { url: "https://nypost.com/2026/11/10/us-news/hegseth-rips-impeachment-effort-in-press-conference-this-is-not-patriotism-this-is-sabotage/", type: major_outlet }
+  - id: b02
+    line: "On Nov. 9, a congressman moved to impeach him."
+    tags: [fact]
+    pose: shocked
+    opens: L0
+    claims:
+      - text: "On Monday, Nov. 9, Rep. Thomas Massie introduced eight articles of impeachment against Hegseth."
+        sources:
+          - { url: "https://www.theguardian.com/us-news/2026/nov/10/pete-hegseth-impeachment-massie", type: major_outlet }
+          - { url: "https://www.npr.org/2026/11/10/g-s1-152777/up-first-newsletter-pete-hegseth-impeachment-trump-iran-nvidia-border-wall-texas", type: major_outlet }
+  - id: b03
+    line: "Who? Thomas Massie. A Kentucky Republican."
+    tags: [fact]
+    pose: point_up
+    closes: L0
+    panel: { stock: "Rep. Thomas Massie", caption: "Thomas Massie (right) with Jared Polis, 2010s", crop: center }
+    claims:
+      - text: "Massie is a Republican congressman from Kentucky."
+        sources:
+          - { url: "https://www.theguardian.com/us-news/2026/nov/10/pete-hegseth-impeachment-massie", type: major_outlet }
+          - { url: "https://nypost.com/2026/11/10/us-news/hegseth-rips-impeachment-effort-in-press-conference-this-is-not-patriotism-this-is-sabotage/", type: major_outlet }
+  - id: b04
+    line: "In May, Hegseth campaigned against him the day before his primary."
+    tags: [fact]
+    pose: thinking
+    claims:
+      - text: "On Monday, May 18, the day before the May 19 Kentucky primary, Hegseth spoke at Ed Gallrein's final rally in Hebron, Ky., and sharply criticized Massie."
+        sources:
+          - { url: "https://wlos.com/news/nation-world/pete-hegseth-secretary-of-war-rallies-president-donald-trump-backed-ed-gallrein-ahead-costly-kentucky-gop-primary-vs-thomas-massie-republican-republicans-voters-vote-election-day-polls-policies-political-democrats-taxpayers-taxes-money-debate", type: major_outlet }
+          - { url: "https://nypost.com/2026/11/10/us-news/hegseth-rips-impeachment-effort-in-press-conference-this-is-not-patriotism-this-is-sabotage/", type: major_outlet, note: "took the unprecedented step of campaigning against Massie's bid for re-election" }
+  - id: b05
+    line: "Massie lost. Trump's pick won. Massie's out in January."
+    tags: [fact]
+    pose: shrug
+    opens: L4
+    claims:
+      - text: "Massie lost his primary to Trump-endorsed Ed Gallrein; he is an outgoing congressman, and the new Congress is sworn in Jan. 3."
+        sources:
+          - { url: "https://www.theguardian.com/us-news/2026/nov/10/pete-hegseth-impeachment-massie", type: major_outlet }
+          - { url: "https://nypost.com/2026/11/10/us-news/hegseth-rips-impeachment-effort-in-press-conference-this-is-not-patriotism-this-is-sabotage/", type: major_outlet }
+  - id: b06
+    line: "So Hegseth campaigned to make him a lame duck."
+    tags: [joke]
+    pose: present
+    expression: smug
+    panel: { stock: "mallard duck", caption: "A mallard duck. Not a congressman." }
+  - id: b07
+    line: "Small problem: lame ducks still get a vote."
+    tags: [joke]
+    pose: present
+    expression: smug
+    camera: zoom_stare
+    closes: L4
+  - id: b08
+    line: "Massie alleges Hegseth fought Iran without Congress's OK."
+    tags: [claim]
+    pose: thinking
+    panel: { stock: "B-2 Spirit bomber", caption: "A U.S. B-2 stealth bomber, 2006" }
+    claims:
+      - text: "Three articles cite the War Powers Resolution over the Iran war; the first charges Hegseth with proceeding without a declaration of war, statutory authorization, an attack on the US or an imminent threat."
+        sources:
+          - { url: "https://www.theguardian.com/us-news/2026/nov/10/pete-hegseth-impeachment-massie", type: major_outlet }
+          - { url: "https://nypost.com/2026/11/10/us-news/hegseth-rips-impeachment-effort-in-press-conference-this-is-not-patriotism-this-is-sabotage/", type: major_outlet }
+  - id: b09
+    line: "Hegseth's answer came Nov. 10. It was not subtle."
+    tags: [rehook]
+    pose: point_up
+    opens: L1
+    panel: { stock: "Pete Hegseth Pentagon podium", caption: "Hegseth taking questions, April 8, 2026" }
+  - id: b11
+    line: "\"This is not patriotism. This is sabotage.\""
+    tags: [claim]
+    pose: shocked
+    claims:
+      - text: "Hegseth on Nov. 10: \"This is not patriotism. This is sabotage.\""
+        sources:
+          - { url: "https://www.theguardian.com/us-news/2026/nov/10/pete-hegseth-impeachment-massie", type: on_record_quote }
+          - { url: "https://nypost.com/2026/11/10/us-news/hegseth-rips-impeachment-effort-in-press-conference-this-is-not-patriotism-this-is-sabotage/", type: on_record_quote }
+          - { url: "https://www.motherjones.com/politics/2026/11/hegseth-impeachment-sabotage-massie-iran-boat-strikes-legal/", type: on_record_quote }
+  - id: b12
+    line: "He called Massie a \"disgruntled congressman.\""
+    tags: [claim]
+    pose: shrug
+    claims:
+      - text: "Hegseth called Massie a \"disgruntled congressman\"."
+        sources:
+          - { url: "https://thehill.com/homenews/administration/6209586-live-updates-trump-hegseth-impeachment-iran-war-midterms-gop-leadership-elections/", type: on_record_quote }
+          - { url: "https://nypost.com/2026/11/10/us-news/hegseth-rips-impeachment-effort-in-press-conference-this-is-not-patriotism-this-is-sabotage/", type: on_record_quote, note: "\"The disgruntled congressman even admitted this.\"" }
+  - id: b15
+    line: "He says every operation was legal, and ordered by Trump."
+    tags: [claim]
+    pose: present
+    claims:
+      - text: "Hegseth insisted every operation the articles cite was lawful, ordered by Trump and notified to Congress."
+        sources:
+          - { url: "https://www.theguardian.com/us-news/2026/nov/10/pete-hegseth-impeachment-massie", type: major_outlet }
+          - { url: "https://www.motherjones.com/politics/2026/11/hegseth-impeachment-sabotage-massie-iran-boat-strikes-legal/", type: on_record_quote, note: "\"every one was a lawful operation\"" }
+  - id: b16
+    line: "\"I would do it again tomorrow.\""
+    tags: [claim]
+    pose: present
+    expression: smug
+    closes: L1
+    claims:
+      - text: "Hegseth: \"I stand behind every one of these operations. I was proud to execute them, and I would do it again tomorrow.\""
+        sources:
+          - { url: "https://www.washingtonexaminer.com/policy/defense/4798310/hegseth-defiant-thomas-massie-articles-impeachment/", type: on_record_quote }
+          - { url: "https://nypost.com/2026/11/10/us-news/hegseth-rips-impeachment-effort-in-press-conference-this-is-not-patriotism-this-is-sabotage/", type: on_record_quote }
+  - id: b17
+    line: "Fair point for Hegseth: Democrats have made his argument before."
+    tags: [steelman]
+    pose: thinking
+    opens: L2
+    panel: { stock: "Alejandro Mayorkas official portrait", caption: "Alejandro Mayorkas, DHS secretary 2021–2025" }
+  - id: b18
+    line: "In 2024, they tossed Mayorkas's impeachment without a trial."
+    tags: [fact, steelman]
+    pose: present
+    claims:
+      - text: "On April 17, 2024, the Democratic-led Senate dismissed both House impeachment articles against Mayorkas before arguments began."
+        sources:
+          - { url: "https://www.nujournal.com/news/national-news-apwire/2024/04/18/senate-dismisses-two-articles-of-impeachment-against-mayorkas/", type: wire_report }
+          - { url: "https://globalnews.ca/news/10430894/mayorkas-impeachment-dismissed-senate-us", type: wire_report }
+  - id: b19
+    line: "Their reason? It didn't rise to high crimes."
+    tags: [fact, steelman]
+    pose: shrug
+    closes: L2
+    claims:
+      - text: "Schumer said the House case failed to meet \"the high standard of high crimes and misdemeanors\"; Democrats argued the articles were unconstitutional. Hegseth argued on Nov. 10 that impeachment isn't a remedy for policy disagreements."
+        sources:
+          - { url: "https://www.nujournal.com/news/national-news-apwire/2024/04/18/senate-dismisses-two-articles-of-impeachment-against-mayorkas/", type: wire_report }
+          - { url: "https://globalnews.ca/news/10430894/mayorkas-impeachment-dismissed-senate-us", type: wire_report }
+          - { url: "https://nypost.com/2026/11/10/us-news/hegseth-rips-impeachment-effort-in-press-conference-this-is-not-patriotism-this-is-sabotage/", type: major_outlet }
+  - id: b20
+    line: "So can it pass? Republicans hold the House 218 to 214."
+    tags: [fact]
+    pose: point_up
+    opens: L3
+    panel: { stock: "United States Capitol dome", caption: "The U.S. Capitol, Washington, D.C." }
+    claims:
+      - text: "The Republican House majority stands at 218-214; only members present can vote."
+        sources:
+          - { url: "https://www.theguardian.com/us-news/2026/nov/10/pete-hegseth-impeachment-massie", type: major_outlet }
+          - { url: "https://www.npr.org/2026/11/10/g-s1-152777/up-first-newsletter-pete-hegseth-impeachment-trump-iran-nvidia-border-wall-texas", type: major_outlet, note: "only a few Republicans need to support impeachment for it to be possible" }
+  - id: b22
+    line: "If impeached, he'd be just the third cabinet secretary ever."
+    tags: [fact]
+    pose: shocked
+    claims:
+      - text: "Only two cabinet secretaries have been impeached: William Belknap (1876) and Alejandro Mayorkas (2024)."
+        sources:
+          - { url: "https://nypost.com/2026/11/10/us-news/hegseth-rips-impeachment-effort-in-press-conference-this-is-not-patriotism-this-is-sabotage/", type: major_outlet }
+          - { url: "https://www.theguardian.com/us-news/2026/nov/10/pete-hegseth-impeachment-massie", type: major_outlet }
+  - id: b23
+    line: "But removing him takes 67 senators. Neither party has that."
+    tags: [fact, what_it_means]
+    pose: shrug
+    closes: L3
+    claims:
+      - text: "Conviction requires a two-thirds Senate majority (67 senators); NPR says that will be challenging even once Democrats take control."
+        sources:
+          - { url: "https://www.npr.org/2026/11/10/g-s1-152777/up-first-newsletter-pete-hegseth-impeachment-trump-iran-nvidia-border-wall-texas", type: major_outlet }
+          - { url: "https://www.theguardian.com/us-news/2026/nov/10/pete-hegseth-impeachment-massie", type: major_outlet }
+  - id: b24
+    line: "My take? Bad blood doesn't answer whether it was legal."
+    tags: [opinion]
+    pose: present
+    expression: smug
+  - id: b25
+    line: "Hegseth campaigned to end Massie's career."
+    tags: [callback]
+    pose: point_up
+    panel: { stock: "Pete Hegseth official portrait", caption: "Hegseth's official Pentagon portrait, 2025" }
+  - id: b26
+    line: "Massie's spending what's left of it on him."
+    tags: [callback]
+    pose: present
+    expression: smug
+    camera: zoom_stare
+  - id: b27
+    line: "Follow for our next episode!"
+    tags: [cta]
+    pose: celebrate
+human_edited: false
+disclosures: []
+caption: "A Republican filed 8 impeachment articles against Pete Hegseth. Hegseth campaigned against him in May. Hegseth's word for it: \"sabotage\" sources below"
+hashtags: [politics, hegseth, impeachment, congress, massie]
