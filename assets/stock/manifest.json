@@ -32,6 +32,22 @@
       "downloadedAt": "2026-11-08T22:44:48.586Z",
       "usedIn": []
     },
+    "wikimedia:114952423": {
+      "id": "wikimedia:114952423",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Us_rep_mike_johnson_official_photo.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Us_rep_mike_johnson_official_photo.jpg/1280px-Us_rep_mike_johnson_official_photo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1600,
+      "creator": "United States Congress",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Us_rep_mike_johnson_official_photo.jpg",
+      "attributionRequired": false,
+      "query": "Mike Johnson speaker of the house",
+      "file": "assets/stock/cache/wikimedia_114952423.jpg",
+      "downloadedAt": "2026-11-10T20:11:33.559Z",
+      "usedIn": []
+    },
     "wikimedia:12106561": {
       "id": "wikimedia:12106561",
       "provider": "wikimedia",
@@ -62,6 +78,38 @@
       "query": "Rep. Mary Peltola headshot",
       "file": "assets/stock/cache/wikimedia_125640882.jpg",
       "downloadedAt": "2026-11-01T02:11:37.755Z",
+      "usedIn": []
+    },
+    "wikimedia:127528395": {
+      "id": "wikimedia:127528395",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Speaker_John_Boehner_and_Senate_Majority_Leader_Mitch_McConnell_meet_in_the_U.S._Capitol.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Speaker_John_Boehner_and_Senate_Majority_Leader_Mitch_McConnell_meet_in_the_U.S._Capitol.jpg/1280px-Speaker_John_Boehner_and_Senate_Majority_Leader_Mitch_McConnell_meet_in_the_U.S._Capitol.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 853,
+      "creator": "(Official Photo by Caleb Smith)",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Speaker_John_Boehner_and_Senate_Majority_Leader_Mitch_McConnell_meet_in_the_U.S._Capitol.jpg",
+      "attributionRequired": false,
+      "query": "Speaker John Boehner",
+      "file": "assets/stock/cache/wikimedia_127528395.jpg",
+      "downloadedAt": "2026-11-10T20:11:39.647Z",
+      "usedIn": []
+    },
+    "wikimedia:127677538": {
+      "id": "wikimedia:127677538",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Kevin_McCarthy,_official_portrait,_speaker.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Kevin_McCarthy%2C_official_portrait%2C_speaker.jpg/1280px-Kevin_McCarthy%2C_official_portrait%2C_speaker.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1600,
+      "creator": "US House Photography",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Kevin_McCarthy,_official_portrait,_speaker.jpg",
+      "attributionRequired": false,
+      "query": "Kevin McCarthy speaker",
+      "file": "assets/stock/cache/wikimedia_127677538.jpg",
+      "downloadedAt": "2026-11-10T20:12:40.449Z",
       "usedIn": []
     },
     "wikimedia:133778654": {
@@ -256,6 +304,22 @@
       "downloadedAt": "2026-11-09T16:49:41.607Z",
       "usedIn": []
     },
+    "wikimedia:164896554": {
+      "id": "wikimedia:164896554",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Brian_Burburija_(USAFA)_after_winning_197_pound_NCAA_collegiate_wrestling_match_against_Thomas_Dineen_(SDSU)_on_2025-01-18_(54292055079).jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Brian_Burburija_%28USAFA%29_after_winning_197_pound_NCAA_collegiate_wrestling_match_against_Thomas_Dineen_%28SDSU%29_on_2025-01-18_%2854292055079%29.jpg/1280px-Brian_Burburija_%28USAFA%29_after_winning_197_pound_NCAA_collegiate_wrestling_match_against_Thomas_Dineen_%28SDSU%29_on_2025-01-18_%2854292055079%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 852,
+      "creator": "U.S. Air Force photograph by Justin Pacheco",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Brian_Burburija_(USAFA)_after_winning_197_pound_NCAA_collegiate_wrestling_match_against_Thomas_Dineen_(SDSU)_on_2025-01-18_(54292055079).jpg",
+      "attributionRequired": false,
+      "query": "collegiate wrestling match",
+      "file": "assets/stock/cache/wikimedia_164896554.jpg",
+      "downloadedAt": "2026-11-10T20:11:43.786Z",
+      "usedIn": []
+    },
     "wikimedia:167227894": {
       "id": "wikimedia:167227894",
       "provider": "wikimedia",
@@ -398,6 +462,22 @@
       "query": "I Voted sticker",
       "file": "assets/stock/cache/wikimedia_178055112.jpg",
       "downloadedAt": "2026-11-04T20:36:11.850Z",
+      "usedIn": []
+    },
+    "wikimedia:179665890": {
+      "id": "wikimedia:179665890",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Jim_Jordan_at_FBI_oversight_hearing_July_2023.png",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Jim_Jordan_at_FBI_oversight_hearing_July_2023.png/1280px-Jim_Jordan_at_FBI_oversight_hearing_July_2023.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 792,
+      "creator": "United States House of Representatives",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Jim_Jordan_at_FBI_oversight_hearing_July_2023.png",
+      "attributionRequired": false,
+      "query": "Jim Jordan speaking",
+      "file": "assets/stock/cache/wikimedia_179665890.png",
+      "downloadedAt": "2026-11-10T20:11:20.999Z",
       "usedIn": []
     },
     "wikimedia:185395772": {
@@ -592,6 +672,22 @@
       "downloadedAt": "2026-11-08T22:47:12.094Z",
       "usedIn": []
     },
+    "wikimedia:197999069": {
+      "id": "wikimedia:197999069",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Hakeem_Jeffries_speaking_at_the_opening_day_of_118th_Congress.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Hakeem_Jeffries_speaking_at_the_opening_day_of_118th_Congress.jpg/1280px-Hakeem_Jeffries_speaking_at_the_opening_day_of_118th_Congress.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 720,
+      "creator": "U.S. government",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Hakeem_Jeffries_speaking_at_the_opening_day_of_118th_Congress.jpg",
+      "attributionRequired": false,
+      "query": "Hakeem Jeffries",
+      "file": "assets/stock/cache/wikimedia_197999069.jpg",
+      "downloadedAt": "2026-11-10T20:11:49.618Z",
+      "usedIn": []
+    },
     "wikimedia:19810280": {
       "id": "wikimedia:19810280",
       "provider": "wikimedia",
@@ -734,6 +830,22 @@
       "query": "Nvidia graphics card",
       "file": "assets/stock/cache/wikimedia_39728925.jpg",
       "downloadedAt": "2026-11-09T16:47:25.968Z",
+      "usedIn": []
+    },
+    "wikimedia:41968523": {
+      "id": "wikimedia:41968523",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Jim_Jordan_official_photo,_114th_Congress.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Jim_Jordan_official_photo%2C_114th_Congress.jpg/1280px-Jim_Jordan_official_photo%2C_114th_Congress.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1892,
+      "creator": "United States Congress",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Jim_Jordan_official_photo,_114th_Congress.jpg",
+      "attributionRequired": false,
+      "query": "Jim Jordan Ohio politician",
+      "file": "assets/stock/cache/wikimedia_41968523.jpg",
+      "downloadedAt": "2026-11-10T20:11:55.488Z",
       "usedIn": []
     },
     "wikimedia:42105926": {
@@ -912,6 +1024,22 @@
       "downloadedAt": "2026-10-31T21:08:35.526Z",
       "usedIn": []
     },
+    "wikimedia:57398786": {
+      "id": "wikimedia:57398786",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:United_States_House_of_Representatives_chamber.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/9/90/United_States_House_of_Representatives_chamber.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 1280,
+      "height": 671,
+      "creator": "United States House of Representatives or Office of the Speaker of the House",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:United_States_House_of_Representatives_chamber.jpg",
+      "attributionRequired": false,
+      "query": "House of Representatives chamber",
+      "file": "assets/stock/cache/wikimedia_57398786.jpg",
+      "downloadedAt": "2026-11-10T20:12:46.357Z",
+      "usedIn": []
+    },
     "wikimedia:58143673": {
       "id": "wikimedia:58143673",
       "provider": "wikimedia",
@@ -1006,6 +1134,22 @@
       "query": "Haley Stevens, official portrait, 116th Congress",
       "file": "assets/stock/cache/wikimedia_75591686.jpg",
       "downloadedAt": "2026-11-01T02:10:16.945Z",
+      "usedIn": []
+    },
+    "wikimedia:76397132": {
+      "id": "wikimedia:76397132",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Steve_Scalise_116th_Congress_official_photo.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Steve_Scalise_116th_Congress_official_photo.jpg/1280px-Steve_Scalise_116th_Congress_official_photo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1708,
+      "creator": "US House Office of Photography",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Steve_Scalise_116th_Congress_official_photo.jpg",
+      "attributionRequired": false,
+      "query": "Steve Scalise",
+      "file": "assets/stock/cache/wikimedia_76397132.jpg",
+      "downloadedAt": "2026-11-10T20:11:27.157Z",
       "usedIn": []
     },
     "wikimedia:78896541": {

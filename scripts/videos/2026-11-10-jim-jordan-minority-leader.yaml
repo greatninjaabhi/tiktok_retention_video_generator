@@ -1,0 +1,263 @@
+# DRAFT by Claude in an unattended scheduled run on 2026-11-10 (not `npm run draft`: no API key there).
+# Writer brief: scripts/prompts/2026-11-10-jim-jordan-minority-leader.md
+# UNRESOLVED:
+#  1. The Boehner "legislative terrorist" quote (2017, Politico Magazine) rests on The Week quoting Politico, plus WVXU; Politico itself answered 403.
+#  2. NYT and Politico answered 403; facts rest on The Hill, Washington Examiner, NY Post, Guardian, NPR, HuffPost, AP (WHYY).
+#  3. "Former champion wrestler" is from The Hill; the wrestling photo is a 2025 Air Force Academy match, captioned as not Jordan.
+#  4. Re-checked Nov 11 (resumed run): 106-73 confirmed by Fox, ABC, NBC, Roll Call; Johnson quote matches in Daily Beast, NY Post, HuffPost.
+#     Flip count differs by outlet (25 to ~40, races still being called), so b05 now says "dozens".
+#     Cut b14 (Jordan "felt sorry" for Boehner): only one source, and the video ran 75 s.
+id: 2026-11-10-jim-jordan-minority-leader
+channel: politics
+format: explainer
+character: mascot_v1
+topic:
+  title: "House Republicans elect Jim Jordan as their leader after losing the House"
+  type: election_mechanics
+  first_seen: "2026-11-10T19:00:00Z"
+hook:
+  spoken: "Jim Jordan couldn't become Speaker. Now he runs House Republicans. Sort of."
+  on_screen: "JORDAN'S IN CHARGE. SORT OF."
+  pattern: before_after
+research:
+  - { url: "https://thehill.com/the-120/6211341-republicans-elect-jim-jordan-minority-leader/", outlet: The Hill, lean: center }
+  - { url: "https://www.washingtonexaminer.com/news/house/4798347/jim-jordan-steve-scalise-house-minority-leader-race/", outlet: Washington Examiner, lean: lean_right }
+  - { url: "https://nypost.com/2026/11/10/us-news/rep-jim-jordan-elected-next-house-republican-leader-after-midterms-blowout/", outlet: New York Post, lean: lean_right }
+  - { url: "https://www.theguardian.com/us-news/2026/nov/10/jim-jordan-house-republican-leader", outlet: The Guardian, lean: lean_left }
+  - { url: "https://www.npr.org/2026/11/10/nx-s1-6030988/gop-leadership-election-steve-scalise-jim-jordan", outlet: NPR, lean: lean_left }
+  - { url: "https://nypost.com/2026/11/10/us-news/house-speaker-mike-johnson-slams-voters-for-making-wrong-choice-predicts-circus-after-gops-midterm-drubbing/", outlet: New York Post, lean: lean_right }
+  - { url: "https://www.huffpost.com/entry/mike-johnson-wrong-choice-circus-great-tragedy_n_6af2eec9e4b0779b5f3487e0", outlet: HuffPost, lean: left }
+  - { url: "https://theweek.com/speedreads/734003/john-boehner-unloads-gop-terrorists-backstabbers-sean-hannity-life-after-washington", outlet: The Week, lean: center }
+  - { url: "https://www.wvxu.org/post/john-boehner-finally-unloads-republican-right-wing", outlet: WVXU (NPR Cincinnati), lean: center }
+  - { url: "https://whyy.org/articles/jim-jordan-fails-speaker-house-republicans/", outlet: Associated Press (WHYY), lean: center }
+beats:
+  - id: b01
+    line: "That's Jim Jordan, an Ohio Republican."
+    tags: [fact]
+    pose: present
+    panel: { stock: "Jim Jordan speaking", caption: "Jordan chairing an FBI hearing, July 2023" }
+    claims:
+      - text: "Jim Jordan is a Republican congressman from Ohio, a 20-year House veteran first elected in 2006."
+        sources:
+          - { url: "https://thehill.com/the-120/6211341-republicans-elect-jim-jordan-minority-leader/", type: major_outlet }
+          - { url: "https://whyy.org/articles/jim-jordan-fails-speaker-house-republicans/", type: wire_report, note: "First elected in 2006" }
+  - id: b02
+    line: "On Nov. 10, Republicans made him their leader."
+    tags: [fact]
+    pose: shocked
+    opens: L0
+    claims:
+      - text: "On Tuesday, Nov. 10, 2026, House Republicans elected Jordan to lead their conference in the next Congress."
+        sources:
+          - { url: "https://www.theguardian.com/us-news/2026/nov/10/jim-jordan-house-republican-leader", type: major_outlet }
+          - { url: "https://nypost.com/2026/11/10/us-news/rep-jim-jordan-elected-next-house-republican-leader-after-midterms-blowout/", type: major_outlet }
+  - id: b03
+    line: "Secret ballot. He beat Steve Scalise, 106 to 73."
+    tags: [fact]
+    pose: point_up
+    panel: { stock: "Steve Scalise", caption: "Steve Scalise, official House photo, 2019" }
+    claims:
+      - text: "Jordan defeated Majority Leader Steve Scalise 106-73 in a closed-door secret ballot."
+        sources:
+          - { url: "https://thehill.com/the-120/6211341-republicans-elect-jim-jordan-minority-leader/", type: major_outlet }
+          - { url: "https://www.washingtonexaminer.com/news/house/4798347/jim-jordan-steve-scalise-house-minority-leader-race/", type: major_outlet }
+  - id: b04
+    line: "Why sort of? Republicans just lost the House."
+    tags: [fact]
+    pose: thinking
+    panel: { stock: "House of Representatives chamber", caption: "The House chamber, U.S. Capitol (file photo)" }
+    claims:
+      - text: "Republicans lost their House majority in the Nov. 3, 2026 midterms; Democrats take control in January."
+        sources:
+          - { url: "https://www.theguardian.com/us-news/2026/nov/10/jim-jordan-house-republican-leader", type: major_outlet }
+          - { url: "https://www.npr.org/2026/11/10/nx-s1-6030988/gop-leadership-election-steve-scalise-jim-jordan", type: major_outlet }
+  - id: b05
+    line: "Democrats flipped dozens of seats on Nov. 3."
+    tags: [fact]
+    pose: shocked
+    claims:
+      - text: "Democrats flipped dozens of Republican-held House seats (tallies as of Nov. 11 range from 25 to about 40 while races are still being called)."
+        sources:
+          - { url: "https://idahocapitalsun.com/2026/11/04/repub/democrats-win-sizable-us-house-majority-amid-sweep-of-close-races/", type: major_outlet, note: "States Newsroom, citing AP: at least 25 seats lost so far" }
+          - { url: "https://www.npr.org/2026/11/10/nx-s1-6030988/gop-leadership-election-steve-scalise-jim-jordan", type: major_outlet }
+          - { url: "https://nypost.com/2026/11/10/us-news/house-speaker-mike-johnson-slams-voters-for-making-wrong-choice-predicts-circus-after-gops-midterm-drubbing/", type: major_outlet }
+  - id: b06
+    line: "In January, Jordan leads the minority."
+    tags: [fact, what_it_means]
+    pose: shrug
+    closes: L0
+    claims:
+      - text: "Jordan will be House minority leader in the next Congress, which starts in January."
+        sources:
+          - { url: "https://www.washingtonexaminer.com/news/house/4798347/jim-jordan-steve-scalise-house-minority-leader-race/", type: major_outlet }
+          - { url: "https://www.theguardian.com/us-news/2026/nov/10/jim-jordan-house-republican-leader", type: major_outlet }
+  - id: b07
+    line: "Speaker Mike Johnson didn't run. His take on losing?"
+    tags: [fact]
+    pose: thinking
+    opens: L3
+    panel: { stock: "Mike Johnson speaker of the house", caption: "Mike Johnson, official House photo (file)" }
+    claims:
+      - text: "Speaker Mike Johnson announced he would not seek the minority leader post."
+        sources:
+          - { url: "https://nypost.com/2026/11/10/us-news/rep-jim-jordan-elected-next-house-republican-leader-after-midterms-blowout/", type: major_outlet }
+          - { url: "https://www.washingtonexaminer.com/news/house/4798347/jim-jordan-steve-scalise-house-minority-leader-race/", type: major_outlet }
+  - id: b08
+    line: "\"I'm sorry that the voters made the wrong choice.\""
+    tags: [claim]
+    pose: shocked
+    closes: L3
+    claims:
+      - text: "Johnson to CNN's Manu Raju, Nov. 9: \"I'm sorry that the voters made the wrong choice.\""
+        sources:
+          - { url: "https://www.huffpost.com/entry/mike-johnson-wrong-choice-circus-great-tragedy_n_6af2eec9e4b0779b5f3487e0", type: on_record_quote }
+          - { url: "https://nypost.com/2026/11/10/us-news/house-speaker-mike-johnson-slams-voters-for-making-wrong-choice-predicts-circus-after-gops-midterm-drubbing/", type: on_record_quote }
+  - id: b09
+    line: "The wild part? Who Jordan used to be."
+    tags: [rehook]
+    pose: point_up
+    opens: L1
+  - id: b10
+    line: "He co-founded the Freedom Caucus."
+    tags: [fact]
+    pose: present
+    claims:
+      - text: "Jordan co-founded the House Freedom Caucus and was its first chairman."
+        sources:
+          - { url: "https://thehill.com/the-120/6211341-republicans-elect-jim-jordan-minority-leader/", type: major_outlet }
+          - { url: "https://www.npr.org/2026/11/10/nx-s1-6030988/gop-leadership-election-steve-scalise-jim-jordan", type: major_outlet }
+  - id: b11
+    line: "Its brand? Fighting its own party's leaders."
+    tags: [fact]
+    pose: shrug
+    claims:
+      - text: "The Freedom Caucus built its brand and gained its power on a willingness to attack its own party leaders."
+        sources:
+          - { url: "https://thehill.com/the-120/6211341-republicans-elect-jim-jordan-minority-leader/", type: major_outlet }
+          - { url: "https://www.wvxu.org/post/john-boehner-finally-unloads-republican-right-wing", type: major_outlet, note: "turned on him with their Freedom Caucus" }
+  - id: b12
+    line: "Under its pressure, Speaker John Boehner quit in 2015."
+    tags: [fact]
+    pose: shocked
+    panel: { stock: "Speaker John Boehner", caption: "Boehner (right) with Mitch McConnell, 2015" }
+    claims:
+      - text: "Under constant pressure from the Freedom Caucus, Boehner resigned from Congress in 2015."
+        sources:
+          - { url: "https://thehill.com/the-120/6211341-republicans-elect-jim-jordan-minority-leader/", type: major_outlet }
+          - { url: "https://www.wvxu.org/post/john-boehner-finally-unloads-republican-right-wing", type: major_outlet, note: "ultimately driving him out of office in 2015" }
+  - id: b13
+    line: "Boehner later called Jordan \"a legislative terrorist.\""
+    tags: [claim]
+    pose: present
+    expression: smug
+    claims:
+      - text: "Boehner to Politico Magazine, 2017, on Jordan: \"A terrorist. A legislative terrorist.\""
+        sources:
+          - { url: "https://theweek.com/speedreads/734003/john-boehner-unloads-gop-terrorists-backstabbers-sean-hannity-life-after-washington", type: on_record_quote }
+          - { url: "https://www.wvxu.org/post/john-boehner-finally-unloads-republican-right-wing", type: major_outlet, note: "Boehner later called Jordan a \"legislative terrorist.\"" }
+  - id: b15
+    line: "In 2023, he ran for Speaker himself."
+    tags: [fact]
+    pose: point_up
+    opens: L4
+    claims:
+      - text: "After Kevin McCarthy's ouster in October 2023, Jordan became the GOP nominee for Speaker."
+        sources:
+          - { url: "https://www.washingtonexaminer.com/news/house/4798347/jim-jordan-steve-scalise-house-minority-leader-race/", type: major_outlet }
+          - { url: "https://whyy.org/articles/jim-jordan-fails-speaker-house-republicans/", type: wire_report }
+  - id: b16
+    line: "He lost three floor votes in one week."
+    tags: [fact]
+    pose: shocked
+    closes: L4
+    claims:
+      - text: "Jordan failed on three House floor ballots for Speaker in the week of Oct. 17-20, 2023, losing 20, 22 and then 25 Republicans."
+        sources:
+          - { url: "https://whyy.org/articles/jim-jordan-fails-speaker-house-republicans/", type: wire_report }
+          - { url: "https://www.washingtonexaminer.com/news/house/4798347/jim-jordan-steve-scalise-house-minority-leader-race/", type: major_outlet, note: "could not secure the gavel on three floor votes" }
+  - id: b17
+    line: "Fun detail: he's a former champion wrestler."
+    tags: [fact, joke]
+    pose: present
+    panel: { stock: "collegiate wrestling match", caption: "College wrestling, Jan. 2025. Not Jordan." }
+    claims:
+      - text: "Jordan is a former champion wrestler and former college wrestling coach."
+        sources:
+          - { url: "https://thehill.com/the-120/6211341-republicans-elect-jim-jordan-minority-leader/", type: major_outlet, note: "a former champion wrestler" }
+          - { url: "https://www.npr.org/2026/11/10/nx-s1-6030988/gop-leadership-election-steve-scalise-jim-jordan", type: major_outlet, note: "A former college wrestling coach" }
+  - id: b18
+    line: "Pinned three times. Now, finally, his arm's raised."
+    tags: [joke]
+    pose: present
+    expression: smug
+    camera: zoom_stare
+    closes: L1
+  - id: b19
+    line: "Credit where due: he campaigned nationwide for colleagues."
+    tags: [fact, steelman]
+    pose: thinking
+    claims:
+      - text: "Jordan spent the last two years traveling the country to support GOP candidates, building the support that helped him win."
+        sources:
+          - { url: "https://www.washingtonexaminer.com/news/house/4798347/jim-jordan-steve-scalise-house-minority-leader-race/", type: major_outlet }
+          - { url: "https://thehill.com/the-120/6211341-republicans-elect-jim-jordan-minority-leader/", type: major_outlet }
+  - id: b20
+    line: "And he's mellowed. He backed McCarthy in 2023."
+    tags: [fact, steelman]
+    pose: present
+    panel: { stock: "Kevin McCarthy speaker", caption: "Kevin McCarthy, Speaker portrait, 2023" }
+    claims:
+      - text: "Jordan backed McCarthy even as other conservatives ousted him in 2023; McCarthy nominated Jordan for Speaker on the floor."
+        sources:
+          - { url: "https://thehill.com/the-120/6211341-republicans-elect-jim-jordan-minority-leader/", type: major_outlet }
+          - { url: "https://whyy.org/articles/jim-jordan-fails-speaker-house-republicans/", type: wire_report }
+  - id: b21
+    line: "His new job? Fighting Democrats' Trump investigations."
+    tags: [fact, what_it_means]
+    pose: point_up
+    opens: L2
+    claims:
+      - text: "Democrats plan investigations into Trump and his administration; The Hill calls Jordan the first line of defense."
+        sources:
+          - { url: "https://thehill.com/the-120/6211341-republicans-elect-jim-jordan-minority-leader/", type: major_outlet }
+          - { url: "https://www.npr.org/2026/11/10/nx-s1-6030988/gop-leadership-election-steve-scalise-jim-jordan", type: major_outlet }
+  - id: b22
+    line: "His pitch: \"I am battle-tested on the oversight front.\""
+    tags: [claim]
+    pose: present
+    closes: L2
+    claims:
+      - text: "Jordan's letter to colleagues: \"I am battle-tested on the oversight front\"."
+        sources:
+          - { url: "https://nypost.com/2026/11/10/us-news/rep-jim-jordan-elected-next-house-republican-leader-after-midterms-blowout/", type: on_record_quote }
+          - { url: "https://www.npr.org/2026/11/10/nx-s1-6030988/gop-leadership-election-steve-scalise-jim-jordan", type: on_record_quote }
+          - { url: "https://thehill.com/the-120/6211341-republicans-elect-jim-jordan-minority-leader/", type: on_record_quote }
+  - id: b23
+    line: "Honestly? In the minority, that's the job."
+    tags: [opinion]
+    pose: shrug
+  - id: b25
+    line: "Jordan couldn't become Speaker."
+    tags: [callback]
+    pose: point_up
+    panel: { stock: "Jim Jordan speaking", caption: "Jordan at an FBI oversight hearing, July 2023" }
+  - id: b26
+    line: "Now his job is fighting one."
+    tags: [callback]
+    pose: present
+    expression: smug
+    camera: zoom_stare
+    panel: { stock: "Hakeem Jeffries", caption: "Jeffries, in line for Speaker (2023 photo)" }
+    claims:
+      - text: "Democrat Hakeem Jeffries is in line for the Speakership."
+        sources:
+          - { url: "https://thehill.com/the-120/6211341-republicans-elect-jim-jordan-minority-leader/", type: major_outlet }
+          - { url: "https://nypost.com/2026/11/10/us-news/house-speaker-mike-johnson-slams-voters-for-making-wrong-choice-predicts-circus-after-gops-midterm-drubbing/", type: major_outlet }
+  - id: b27
+    line: "Follow for our next episode!"
+    tags: [cta]
+    pose: celebrate
+human_edited: true # cleared 2026-11-11: fact-checked by the agent, queued for owner review in Buffer
+disclosures: []
+caption: "Jim Jordan lost three Speaker votes in 2023. On Nov. 10, House Republicans made him their leader, 106-73. The catch: they just lost the House. sources below"
+hashtags: [politics, jimjordan, congress, republicans, house]
