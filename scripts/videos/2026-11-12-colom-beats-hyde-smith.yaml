@@ -7,6 +7,10 @@
 #  3. Politico answered 403. No fact-checker has covered the race.
 #  5. Re-checked Nov 14: race called Nov 11 and conceded; no recount (Mississippi has no recount law). Margin
 #     reported as ~3,000 votes by WLOX on Nov 11; script says "under five thousand", true either way.
+#     Re-checked again Nov 14 before the re-render (first final render was killed): nothing changed. CBS/NBC
+#     say first Democrat elected since 1982; Yahoo says "since 1989" (Stennis's last year in office).
+#     Third check Nov 14 2:30 PM (second render also killed): no change. One outlet (Fox affiliates) gives the
+#     margin as 4,669, so "under five thousand" holds, but it's close if certification shifts it.
 #  4. Hyde-Smith's election-night line is quoted only up to "federal judge" (the second half differs by one word
 #     between NPR and the Guardian), and the rest is paraphrased.
 id: 2026-11-12-colom-beats-hyde-smith
@@ -281,7 +285,7 @@ beats:
     line: "Follow for our next episode!"
     tags: [cta]
     pose: celebrate
-human_edited: false
+human_edited: true # cleared 2026-11-14: fact-checked by the agent, queued for owner review in Buffer
 disclosures: []
 caption: "She blocked him from becoming a judge. Then, asked about beef prices, she said there are \"so many proteins to choose from.\" Mississippi picked another senator 🥩 sources below"
 hashtags: [politics, mississippi, senate, election, scottcolom]
