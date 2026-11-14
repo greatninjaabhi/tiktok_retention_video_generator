@@ -1,5 +1,21 @@
 {
   "images": {
+    "wikimedia:103323939": {
+      "id": "wikimedia:103323939",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Joe_Biden_presidential_portrait.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Joe_Biden_presidential_portrait.jpg/1280px-Joe_Biden_presidential_portrait.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1600,
+      "creator": "Adam Schultz",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Joe_Biden_presidential_portrait.jpg",
+      "attributionRequired": false,
+      "query": "Joe Biden official portrait",
+      "file": "assets/stock/cache/wikimedia_103323939.jpg",
+      "downloadedAt": "2026-11-12T15:34:32.831Z",
+      "usedIn": []
+    },
     "wikimedia:105128769": {
       "id": "wikimedia:105128769",
       "provider": "wikimedia",
@@ -126,6 +142,22 @@
       "query": "mallard duck",
       "file": "assets/stock/cache/wikimedia_133778654.jpg",
       "downloadedAt": "2026-11-10T15:33:17.491Z",
+      "usedIn": []
+    },
+    "wikimedia:1391804": {
+      "id": "wikimedia:1391804",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Blanche_Bruce_-_Brady-Handy.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Blanche_Bruce_-_Brady-Handy.jpg/1280px-Blanche_Bruce_-_Brady-Handy.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1568,
+      "creator": "Mathew Benjamin Brady / Levin Corbin Handy",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Blanche_Bruce_-_Brady-Handy.jpg",
+      "attributionRequired": false,
+      "query": "Blanche K. Bruce",
+      "file": "assets/stock/cache/wikimedia_1391804.jpg",
+      "downloadedAt": "2026-11-12T15:33:49.134Z",
       "usedIn": []
     },
     "wikimedia:143438306": {
@@ -270,6 +302,22 @@
       "query": "Marco Rubio Secretary of State",
       "file": "assets/stock/cache/wikimedia_158753615.jpg",
       "downloadedAt": "2026-11-09T16:47:50.112Z",
+      "usedIn": []
+    },
+    "wikimedia:160250418": {
+      "id": "wikimedia:160250418",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Close-up_of_a_cow_(53584280540).jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Close-up_of_a_cow_%2853584280540%29.jpg/1280px-Close-up_of_a_cow_%2853584280540%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 829,
+      "creator": "BLMUtah",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Close-up_of_a_cow_(53584280540).jpg",
+      "attributionRequired": false,
+      "query": "cow close up",
+      "file": "assets/stock/cache/wikimedia_160250418.jpg",
+      "downloadedAt": "2026-11-12T15:35:30.394Z",
       "usedIn": []
     },
     "wikimedia:163790507": {
@@ -768,6 +816,22 @@
       "downloadedAt": "2026-11-01T02:10:32.789Z",
       "usedIn": []
     },
+    "wikimedia:24906037": {
+      "id": "wikimedia:24906037",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Steaks_beef_grilling_grilled_smoke_smokey_meat.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Steaks_beef_grilling_grilled_smoke_smokey_meat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 1280,
+      "height": 960,
+      "creator": "Jon Sullivan",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Steaks_beef_grilling_grilled_smoke_smokey_meat.jpg",
+      "attributionRequired": false,
+      "query": "beef steaks",
+      "file": "assets/stock/cache/wikimedia_24906037.jpg",
+      "downloadedAt": "2026-11-12T15:35:01.921Z",
+      "usedIn": []
+    },
     "wikimedia:2598899": {
       "id": "wikimedia:2598899",
       "provider": "wikimedia",
@@ -1056,6 +1120,22 @@
       "downloadedAt": "2026-11-01T02:10:00.782Z",
       "usedIn": []
     },
+    "wikimedia:61665664": {
+      "id": "wikimedia:61665664",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Grill_Out_(Unsplash).jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Grill_Out_%28Unsplash%29.jpg/1280px-Grill_Out_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 857,
+      "creator": "Declan Rex d3c1an",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "attributionRequired": false,
+      "query": "hamburgers on a grill",
+      "file": "assets/stock/cache/wikimedia_61665664.jpg",
+      "downloadedAt": "2026-11-12T15:34:44.557Z",
+      "usedIn": []
+    },
     "wikimedia:67377899": {
       "id": "wikimedia:67377899",
       "provider": "wikimedia",
@@ -1070,6 +1150,22 @@
       "query": "Delux election bldg voting booth Lanham npcc.12529",
       "file": "assets/stock/cache/wikimedia_67377899.jpg",
       "downloadedAt": "2026-10-31T21:09:05.684Z",
+      "usedIn": []
+    },
+    "wikimedia:68661054": {
+      "id": "wikimedia:68661054",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Cindy_Hyde-Smith_official_photo.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Cindy_Hyde-Smith_official_photo.jpg/1280px-Cindy_Hyde-Smith_official_photo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1600,
+      "creator": "U.S. Senate",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Cindy_Hyde-Smith_official_photo.jpg",
+      "attributionRequired": false,
+      "query": "Cindy Hyde-Smith",
+      "file": "assets/stock/cache/wikimedia_68661054.jpg",
+      "downloadedAt": "2026-11-12T15:32:02.470Z",
       "usedIn": []
     },
     "wikimedia:6926930": {
@@ -1118,6 +1214,22 @@
       "query": "US Capitol 1814 burned",
       "file": "assets/stock/cache/wikimedia_7342752.jpg",
       "downloadedAt": "2026-11-04T20:36:23.759Z",
+      "usedIn": []
+    },
+    "wikimedia:74065898": {
+      "id": "wikimedia:74065898",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:U.S._Senator_Roger_F._Wicker_Official_Portrait,_2018.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/U.S._Senator_Roger_F._Wicker_Official_Portrait%2C_2018.jpg/1280px-U.S._Senator_Roger_F._Wicker_Official_Portrait%2C_2018.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1281,
+      "creator": "U.S. Senate Photo Studio",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:U.S._Senator_Roger_F._Wicker_Official_Portrait,_2018.jpg",
+      "attributionRequired": false,
+      "query": "Roger Wicker",
+      "file": "assets/stock/cache/wikimedia_74065898.jpg",
+      "downloadedAt": "2026-11-12T15:34:12.081Z",
       "usedIn": []
     },
     "wikimedia:75591686": {

@@ -1,0 +1,287 @@
+# DRAFT by Claude in an unattended scheduled run on 2026-11-12 (not `npm run draft`: no API key there).
+# Writer brief: scripts/prompts/2026-11-12-colom-beats-hyde-smith.md
+# UNRESOLVED:
+#  1. No free photo of Scott Colom exists; he never appears on screen. Stand-ins are captioned as stock.
+#  2. "You have so many proteins to choose from": full wording from the Guardian; the Washington Examiner
+#     quotes "have so many proteins to choose from". Original was a WLOX interview (NPR), not watched directly.
+#  3. Politico answered 403. No fact-checker has covered the race.
+#  5. Re-checked Nov 14: race called Nov 11 and conceded; no recount (Mississippi has no recount law). Margin
+#     reported as ~3,000 votes by WLOX on Nov 11; script says "under five thousand", true either way.
+#  4. Hyde-Smith's election-night line is quoted only up to "federal judge" (the second half differs by one word
+#     between NPR and the Guardian), and the rest is paraphrased.
+id: 2026-11-12-colom-beats-hyde-smith
+channel: politics
+format: explainer
+character: mascot_v1
+topic:
+  title: "Democrat Scott Colom unseats Cindy Hyde-Smith, the senator who blocked his judgeship"
+  type: election_mechanics
+  first_seen: "2026-11-11T23:00:00Z"
+hook:
+  spoken: "Senator Hyde-Smith blocked a Democrat from becoming a judge. He came back."
+  on_screen: "SHE BLOCKED HIM. HE CAME BACK."
+  pattern: before_after
+research:
+  - { url: "https://www.washingtonexaminer.com/news/campaigns/congressional/4801158/scott-colom-viral-ads-secure-mississippi-senate/", outlet: Washington Examiner, lean: lean_right }
+  - { url: "https://nypost.com/2026/11/11/us-news/mississippi-dem-scott-colom-defeats-hyde-smith-in-senate-race/", outlet: New York Post, lean: lean_right }
+  - { url: "https://www.theguardian.com/us-news/2026/nov/11/scott-colom-mississippi-democrat-senate-midterms", outlet: The Guardian, lean: lean_left }
+  - { url: "https://www.npr.org/2026/11/12/nx-s1-6037438/scott-colom-defied-the-odds-mississippi-democratic-senator", outlet: NPR, lean: lean_left }
+  - { url: "https://www.bbc.co.uk/news/articles/cw7vppyr80eeo", outlet: BBC News, lean: center }
+  - { url: "https://www.motherjones.com/politics/2026/11/mississippi-jim-crow-epicenter-elects-scott-colom-first-black-senator-since-reconstruction/", outlet: Mother Jones, lean: left }
+beats:
+  - id: b01
+    line: "That's Cindy Hyde-Smith, Mississippi's Republican senator since 2018."
+    tags: [fact]
+    pose: present
+    panel: { stock: "Cindy Hyde-Smith", caption: "Hyde-Smith, official Senate portrait (file)", crop: center }
+    claims:
+      - text: "Cindy Hyde-Smith, a Republican, has represented Mississippi in the Senate since 2018."
+        sources:
+          - { url: "https://www.bbc.co.uk/news/articles/cw7vppyr80eeo", type: major_outlet, note: "has been in the Senate since 2018" }
+          - { url: "https://nypost.com/2026/11/11/us-news/mississippi-dem-scott-colom-defeats-hyde-smith-in-senate-race/", type: major_outlet, note: "first appointed to the Senate in 2018" }
+  - id: b02
+    line: "Biden nominated prosecutor Scott Colom to be a federal judge."
+    tags: [fact]
+    pose: point_up
+    opens: L0
+    panel: { stock: "Joe Biden official portrait", caption: "Joe Biden, official portrait, 2021" }
+    claims:
+      - text: "President Biden nominated Colom, a district attorney, to the U.S. District Court for the Northern District of Mississippi (year given as 2022 by the Examiner, 2023 by NPR and the Guardian, so the script gives none)."
+        sources:
+          - { url: "https://www.washingtonexaminer.com/news/campaigns/congressional/4801158/scott-colom-viral-ads-secure-mississippi-senate/", type: major_outlet }
+          - { url: "https://www.npr.org/2026/11/12/nx-s1-6037438/scott-colom-defied-the-odds-mississippi-democratic-senator", type: major_outlet }
+          - { url: "https://www.theguardian.com/us-news/2026/nov/11/scott-colom-mississippi-democrat-senate-midterms", type: major_outlet }
+  - id: b03
+    line: "Even fellow Republican Roger Wicker was on board."
+    tags: [fact]
+    pose: shocked
+    panel: { stock: "Roger Wicker", caption: "Sen. Roger Wicker, official portrait, 2018" }
+    claims:
+      - text: "Mississippi's senior senator, Republican Roger Wicker, indicated he would support the nomination."
+        sources:
+          - { url: "https://www.npr.org/2026/11/12/nx-s1-6037438/scott-colom-defied-the-odds-mississippi-democratic-senator", type: major_outlet, note: "Wicker, a Republican, indicated he would support his nomination" }
+          - { url: "https://www.theguardian.com/us-news/2026/nov/11/scott-colom-mississippi-democrat-senate-midterms", type: major_outlet, note: "Republicans, including the senator Roger Wicker, and Democrats alike supported the nomination" }
+  - id: b04
+    line: "Hyde-Smith blocked him anyway."
+    tags: [fact]
+    pose: shrug
+    closes: L0
+    panel: { stock: "Cindy Hyde-Smith", caption: "Hyde-Smith, official Senate portrait (file)", crop: top }
+    claims:
+      - text: "Hyde-Smith blocked the nomination by declining to return her blue slip."
+        sources:
+          - { url: "https://www.washingtonexaminer.com/news/campaigns/congressional/4801158/scott-colom-viral-ads-secure-mississippi-senate/", type: major_outlet }
+          - { url: "https://www.npr.org/2026/11/12/nx-s1-6037438/scott-colom-defied-the-odds-mississippi-democratic-senator", type: major_outlet }
+  - id: b05
+    line: "She cited George Soros PAC money and trans athletes."
+    tags: [fact, steelman]
+    pose: thinking
+    claims:
+      - text: "She cited Soros donations to a PAC around Colom's DA run (Colom said it was an independent PAC, not his campaign) and his position on legislation about transgender athletes."
+        sources:
+          - { url: "https://www.npr.org/2026/11/12/nx-s1-6037438/scott-colom-defied-the-odds-mississippi-democratic-senator", type: major_outlet }
+          - { url: "https://www.washingtonexaminer.com/news/campaigns/congressional/4801158/scott-colom-viral-ads-secure-mississippi-senate/", type: major_outlet }
+  - id: b06
+    line: "So Colom ran for her seat."
+    tags: [fact]
+    pose: point_up
+    opens: L1
+    panel: { stock: "United States Capitol dome", caption: "U.S. Capitol, where the Senate meets (file)" }
+    claims:
+      - text: "Colom then launched a Senate campaign against Hyde-Smith."
+        sources:
+          - { url: "https://www.washingtonexaminer.com/news/campaigns/congressional/4801158/scott-colom-viral-ads-secure-mississippi-senate/", type: major_outlet }
+          - { url: "https://www.npr.org/2026/11/12/nx-s1-6037438/scott-colom-defied-the-odds-mississippi-democratic-senator", type: major_outlet }
+  - id: b07
+    line: "Then she got asked about rising beef prices."
+    tags: [fact]
+    pose: thinking
+    opens: L2
+    panel: { stock: "beef steaks", caption: "Steaks on a grill (stock photo)" }
+    claims:
+      - text: "Hyde-Smith was asked about rising beef prices (in a WLOX interview, per NPR)."
+        sources:
+          - { url: "https://www.theguardian.com/us-news/2026/nov/11/scott-colom-mississippi-democrat-senate-midterms", type: major_outlet }
+          - { url: "https://www.npr.org/2026/11/12/nx-s1-6037438/scott-colom-defied-the-odds-mississippi-democratic-senator", type: major_outlet }
+  - id: b08
+    line: "\"You have so many proteins to choose from.\""
+    tags: [claim]
+    pose: shocked
+    closes: L2
+    panel: { stock: "hamburgers on a grill", caption: "Plenty of proteins (stock photo)" }
+    claims:
+      - text: "Hyde-Smith: \"You know, you have so many proteins to choose from\" (Guardian); consumers \"have so many proteins to choose from\" (Examiner)."
+        sources:
+          - { url: "https://www.theguardian.com/us-news/2026/nov/11/scott-colom-mississippi-democrat-senate-midterms", type: on_record_quote }
+          - { url: "https://www.washingtonexaminer.com/news/campaigns/congressional/4801158/scott-colom-viral-ads-secure-mississippi-senate/", type: on_record_quote }
+  - id: b09
+    line: "Small detail: she's a cattle farmer."
+    tags: [fact, joke]
+    pose: present
+    expression: smug
+    camera: zoom_stare
+    panel: { stock: "cow close up", caption: "Cattle grazing in Utah (stock). Not her herd." }
+    claims:
+      - text: "Hyde-Smith is a cattle farmer and former Mississippi agriculture commissioner."
+        sources:
+          - { url: "https://www.theguardian.com/us-news/2026/nov/11/scott-colom-mississippi-democrat-senate-midterms", type: major_outlet }
+          - { url: "https://www.washingtonexaminer.com/news/campaigns/congressional/4801158/scott-colom-viral-ads-secure-mississippi-senate/", type: major_outlet }
+  - id: b10
+    line: "Colom's answer? A guy at a grill."
+    tags: [rehook]
+    pose: point_up
+    opens: L3
+  - id: b11
+    line: "\"Pick another protein?\" He'd rather \"pick another senator instead.\""
+    tags: [claim]
+    pose: present
+    expression: smug
+    panel: { stock: "hamburgers on a grill", caption: "Stock grill photo, not from the ad" }
+    claims:
+      - text: "In Colom's ad, a man at a grill says \"Pick another protein?\" and that he'd rather \"pick another senator instead.\""
+        sources:
+          - { url: "https://www.theguardian.com/us-news/2026/nov/11/scott-colom-mississippi-democrat-senate-midterms", type: on_record_quote }
+          - { url: "https://www.washingtonexaminer.com/news/campaigns/congressional/4801158/scott-colom-viral-ads-secure-mississippi-senate/", type: on_record_quote }
+  - id: b12
+    line: "It went viral nationwide."
+    tags: [fact]
+    pose: celebrate
+    closes: L3
+    claims:
+      - text: "The ad went viral, and it's widely seen as the moment the nation took notice of the race."
+        sources:
+          - { url: "https://www.bbc.co.uk/news/articles/cw7vppyr80eeo", type: major_outlet, note: "turned into a viral advert" }
+          - { url: "https://www.theguardian.com/us-news/2026/nov/11/scott-colom-mississippi-democrat-senate-midterms", type: major_outlet, note: "many say it was the moment the nation took notice" }
+          - { url: "https://www.npr.org/2026/11/12/nx-s1-6037438/scott-colom-defied-the-odds-mississippi-democratic-senator", type: major_outlet, note: "Eventually, the rest of the country started listening" }
+  - id: b13
+    line: "Plain truth: national Democrats' money and attention came late."
+    tags: [fact, steelman]
+    pose: shrug
+    panel: { stock: "Chuck Schumer", caption: "Chuck Schumer (file). Allied PAC: $1.2M, late" }
+    claims:
+      - text: "National Democratic money and attention came late (NPR: attention and funds \"came late\"): serious party cash only about a month before the election; a Schumer-aligned PAC added $1.2 million about two weeks out. The Hill notes an Obama endorsement and Harris campaigning, so the line says 'came late', not 'no help'."
+        sources:
+          - { url: "https://www.theguardian.com/us-news/2026/nov/11/scott-colom-mississippi-democrat-senate-midterms", type: major_outlet }
+          - { url: "https://www.npr.org/2026/11/12/nx-s1-6037438/scott-colom-defied-the-odds-mississippi-democratic-senator", type: major_outlet }
+          - { url: "https://www.washingtonexaminer.com/news/campaigns/congressional/4801158/scott-colom-viral-ads-secure-mississippi-senate/", type: major_outlet, note: "a late $1.2 million advertising investment" }
+  - id: b14
+    line: "On election night, Hyde-Smith told supporters:"
+    tags: [fact]
+    pose: thinking
+    opens: L4
+    panel: { stock: "Cindy Hyde-Smith", caption: "Hyde-Smith, official Senate portrait (file)", crop: top }
+    claims:
+      - text: "On election night (NPR; the Guardian says election day, well before the race was called), Hyde-Smith addressed her supporters."
+        sources:
+          - { url: "https://www.npr.org/2026/11/12/nx-s1-6037438/scott-colom-defied-the-odds-mississippi-democratic-senator", type: major_outlet, note: "on election night ... telling her supporters" }
+          - { url: "https://www.theguardian.com/us-news/2026/nov/11/scott-colom-mississippi-democrat-senate-midterms", type: major_outlet }
+  - id: b15
+    line: "\"I blocked Scott Colom from being a federal judge.\""
+    tags: [claim]
+    pose: shocked
+    closes: L4
+    claims:
+      - text: "Hyde-Smith to supporters: \"I blocked Scott Colom from being a federal judge, and you blocked him from being U.S. senator.\" (NPR; the Guardian has \"a US Senator\")."
+        sources:
+          - { url: "https://www.npr.org/2026/11/12/nx-s1-6037438/scott-colom-defied-the-odds-mississippi-democratic-senator", type: on_record_quote }
+          - { url: "https://www.theguardian.com/us-news/2026/nov/11/scott-colom-mississippi-democrat-senate-midterms", type: on_record_quote }
+  - id: b16
+    line: "Her next line? Voters had blocked him too."
+    tags: [fact]
+    pose: present
+    opens: L6
+    claims:
+      - text: "The rest of the line: \"and you blocked him from being U.S. senator\" (NPR) / \"a US Senator\" (Guardian), paraphrased because the wording differs by one word."
+        sources:
+          - { url: "https://www.npr.org/2026/11/12/nx-s1-6037438/scott-colom-defied-the-odds-mississippi-democratic-senator", type: on_record_quote }
+          - { url: "https://www.theguardian.com/us-news/2026/nov/11/scott-colom-mississippi-democrat-senate-midterms", type: on_record_quote }
+  - id: b18
+    line: "Spoiler: on Nov. 11, the AP called it for Colom."
+    tags: [fact]
+    pose: celebrate
+    expression: smug
+    closes: L6
+    panel: { stock: "I Voted sticker", caption: "\"I Voted\" stickers (file photo)" }
+    claims:
+      - text: "The Associated Press called the race for Colom on Wednesday, Nov. 11: 49.2% to 48.7%."
+        sources:
+          - { url: "https://www.washingtonexaminer.com/news/campaigns/congressional/4801158/scott-colom-viral-ads-secure-mississippi-senate/", type: major_outlet }
+          - { url: "https://www.npr.org/2026/11/12/nx-s1-6037438/scott-colom-defied-the-odds-mississippi-democratic-senator", type: major_outlet }
+          - { url: "https://www.bbc.co.uk/news/articles/cw7vppyr80eeo", type: major_outlet }
+  - id: b19
+    line: "First Democrat to win a Senate race there since 1982."
+    tags: [fact]
+    pose: point_up
+    closes: L1
+    claims:
+      - text: "Colom is the first Democrat to win a Mississippi Senate race since 1982."
+        sources:
+          - { url: "https://nypost.com/2026/11/11/us-news/mississippi-dem-scott-colom-defeats-hyde-smith-in-senate-race/", type: major_outlet }
+          - { url: "https://www.washingtonexaminer.com/news/campaigns/congressional/4801158/scott-colom-viral-ads-secure-mississippi-senate/", type: major_outlet }
+          - { url: "https://www.npr.org/2026/11/12/nx-s1-6037438/scott-colom-defied-the-odds-mississippi-democratic-senator", type: major_outlet }
+  - id: b21
+    line: "And Mississippi's first Black senator since Reconstruction."
+    tags: [fact]
+    pose: present
+    panel: { stock: "Blanche K. Bruce", caption: "Sen. Blanche K. Bruce, served 1875–1881", crop: top }
+    claims:
+      - text: "Colom is the first Black senator from Mississippi since Reconstruction; the last was Blanche Bruce (1875-1881)."
+        sources:
+          - { url: "https://www.bbc.co.uk/news/articles/cw7vppyr80eeo", type: major_outlet }
+          - { url: "https://nypost.com/2026/11/11/us-news/mississippi-dem-scott-colom-defeats-hyde-smith-in-senate-race/", type: major_outlet }
+          - { url: "https://www.motherjones.com/politics/2026/11/mississippi-jim-crow-epicenter-elects-scott-colom-first-black-senator-since-reconstruction/", type: major_outlet }
+  - id: b22
+    line: "Real talk: he won by under five thousand votes."
+    tags: [fact, caveat]
+    pose: thinking
+    opens: L5
+    claims:
+      - text: "Fewer than 5,000 votes separated the candidates."
+        sources:
+          - { url: "https://www.bbc.co.uk/news/articles/cw7vppyr80eeo", type: major_outlet }
+          - { url: "https://www.npr.org/2026/11/12/nx-s1-6037438/scott-colom-defied-the-odds-mississippi-democratic-senator", type: major_outlet }
+  - id: b23
+    line: "Out of nearly a million. Not a landslide."
+    tags: [fact, caveat]
+    pose: shrug
+    closes: L5
+    claims:
+      - text: "Fewer than five thousand votes out of nearly a million counted."
+        sources:
+          - { url: "https://www.bbc.co.uk/news/articles/cw7vppyr80eeo", type: major_outlet }
+          - { url: "https://nypost.com/2026/11/11/us-news/mississippi-dem-scott-colom-defeats-hyde-smith-in-senate-race/", type: major_outlet, note: "49.2% to 48.7%, separated by less than 5,000 votes" }
+  - id: b24
+    line: "My take? Shrug off grocery prices, and no seat is safe."
+    tags: [opinion, what_it_means]
+    pose: point_up
+    panel: { stock: "beef steaks", caption: "Steaks on a grill (stock photo)" }
+    claims:
+      - text: "Context for the opinion: Colom ran on affordability and hit Hyde-Smith on grocery prices; Trump won Mississippi by more than 22 points in 2024."
+        sources:
+          - { url: "https://www.washingtonexaminer.com/news/campaigns/congressional/4801158/scott-colom-viral-ads-secure-mississippi-senate/", type: major_outlet }
+          - { url: "https://www.bbc.co.uk/news/articles/cw7vppyr80eeo", type: major_outlet }
+  - id: b25
+    line: "She conceded: \"I respect the decision of Mississippi voters.\""
+    tags: [claim]
+    pose: present
+    panel: { stock: "Cindy Hyde-Smith", caption: "Hyde-Smith, official Senate portrait (file)", crop: top }
+    claims:
+      - text: "Hyde-Smith, in a video on X: \"I respect the decision of Mississippi voters.\""
+        sources:
+          - { url: "https://nypost.com/2026/11/11/us-news/mississippi-dem-scott-colom-defeats-hyde-smith-in-senate-race/", type: on_record_quote }
+          - { url: "https://www.bbc.co.uk/news/articles/cw7vppyr80eeo", type: on_record_quote }
+  - id: b26
+    line: "She blocked him from the bench. Mississippi picked another senator."
+    tags: [callback]
+    pose: present
+    expression: smug
+    camera: zoom_stare
+    panel: { stock: "hamburgers on a grill", caption: "Plenty of proteins (stock photo)" }
+  - id: b27
+    line: "Follow for our next episode!"
+    tags: [cta]
+    pose: celebrate
+human_edited: false
+disclosures: []
+caption: "She blocked him from becoming a judge. Then, asked about beef prices, she said there are \"so many proteins to choose from.\" Mississippi picked another senator 🥩 sources below"
+hashtags: [politics, mississippi, senate, election, scottcolom]
