@@ -1,0 +1,251 @@
+# DRAFT by Claude in an unattended scheduled run on 2026-11-16 (not `npm run draft`: no API key there).
+# Writer brief: scripts/prompts/2026-11-16-van-hollen-vs-schumer.md
+# UNRESOLVED:
+#  1. The vote is set for Dec. 1 "so far": Politico reports Schumer allies privately discussed moving it up
+#     to the week of Nov. 16; nothing decided as of Nov. 16. If it's moved and held before this posts,
+#     the "Dec. 1, so far" line is stale.
+#  2. Van Hollen's claim that names on the pro-Schumer list privately committed to him is his claim only
+#     (The Hill and NY Post quote it identically); he named nobody.
+#  3. NYT and Washington Times answered 403. No fact-checker has covered this (it's a leadership race).
+id: 2026-11-16-van-hollen-vs-schumer
+channel: politics
+format: explainer
+character: mascot_v1
+topic:
+  title: "Chris Van Hollen challenges Chuck Schumer to lead Senate Democrats"
+  type: policy_fight
+  first_seen: "2026-11-13T00:00:00Z"
+hook:
+  spoken: "Chuck Schumer's party won the Senate. Why do some want him gone?"
+  on_screen: "THEY WON. SO WHY DUMP HIM?"
+  pattern: question_blame
+research:
+  - { url: "https://www.npr.org/2026/11/16/nx-s1-6041687/chris-van-hollen-chuck-schumer-senate-leader", outlet: NPR, lean: lean_left }
+  - { url: "https://www.cnn.com/2026/11/12/politics/chris-van-hollen-chuck-schumer-senate-democratic-leader", outlet: CNN, lean: lean_left }
+  - { url: "https://www.huffpost.com/entry/chris-van-hollen-senate-majority-leader_n_6af670b4e4b06534290681e3", outlet: HuffPost, lean: left }
+  - { url: "https://www.motherjones.com/politics/2026/11/van-hollen-senate-majority-leader-campaign-schumer-congress-democrats/", outlet: Mother Jones, lean: left }
+  - { url: "https://thehill.com/homenews/senate/6221394-van-hollen-challenges-schumer/", outlet: The Hill, lean: center }
+  - { url: "https://www.yahoo.com/news/politics/articles/van-hollen-challenge-throws-senate-002035623.html", outlet: Politico (via Yahoo), lean: lean_left }
+  - { url: "https://nypost.com/2026/11/15/us-news/van-hollen-boasts-he-has-very-open-lane-take-senate-leadership-from-schumer/", outlet: New York Post, lean: lean_right }
+  - { url: "https://www.washingtonexaminer.com/news/senate/4804520/bernie-sanders-endorses-chris-van-hollen-senate-majority-leader/", outlet: Washington Examiner, lean: lean_right }
+  - { url: "https://www.yahoo.com/news/politics/articles/baldwin-backs-schumer-despite-senate-153821996.html", outlet: Milwaukee Journal Sentinel (via Yahoo), lean: center }
+beats:
+  - id: b01
+    line: "That's Chuck Schumer. He's led Senate Democrats since 2017."
+    tags: [fact]
+    pose: present
+    panel: { stock: "Chuck Schumer", caption: "Chuck Schumer, official Senate portrait (file)", crop: center }
+    claims:
+      - text: "Schumer has led the Senate Democratic caucus since 2017."
+        sources:
+          - { url: "https://www.cnn.com/2026/11/12/politics/chris-van-hollen-chuck-schumer-senate-democratic-leader", type: major_outlet, note: "has led the Senate Democratic caucus since 2017" }
+          - { url: "https://nypost.com/2026/11/15/us-news/van-hollen-boasts-he-has-very-open-lane-take-senate-leadership-from-schumer/", type: major_outlet, note: "has led the Senate Democrats since 2017" }
+  - id: b02
+    line: "His party just won at least fifty-five Senate seats."
+    tags: [fact]
+    pose: celebrate
+    panel: { stock: "United States Capitol dome", caption: "U.S. Capitol, where the Senate meets (file)" }
+    claims:
+      - text: "Democrats will enter January with at least 55 senators (56 if Peltola wins Alaska)."
+        sources:
+          - { url: "https://www.cnn.com/2026/11/12/politics/chris-van-hollen-chuck-schumer-senate-democratic-leader", type: major_outlet }
+          - { url: "https://www.motherjones.com/politics/2026/11/van-hollen-senate-majority-leader-campaign-schumer-congress-democrats/", type: major_outlet, note: "at least 55, and maybe 56" }
+  - id: b03
+    line: "Then Maryland's Chris Van Hollen came for his job."
+    tags: [fact]
+    pose: shocked
+    opens: L0
+    panel: { stock: "Chris Van Hollen", caption: "Van Hollen, official House portrait, 2010", crop: center }
+    claims:
+      - text: "Sen. Chris Van Hollen (D-Md.) announced Thursday, Nov. 12, that he'd challenge Schumer for majority leader."
+        sources:
+          - { url: "https://www.huffpost.com/entry/chris-van-hollen-senate-majority-leader_n_6af670b4e4b06534290681e3", type: major_outlet }
+          - { url: "https://www.cnn.com/2026/11/12/politics/chris-van-hollen-chuck-schumer-senate-democratic-leader", type: major_outlet }
+  - id: b04
+    line: "His pitch? Voters want change, not business as usual."
+    tags: [fact]
+    pose: point_up
+    closes: L0
+    claims:
+      - text: "Van Hollen's case: voters rejected the status quo and 'business as usual', so Democrats need new leadership."
+        sources:
+          - { url: "https://www.cnn.com/2026/11/12/politics/chris-van-hollen-chuck-schumer-senate-democratic-leader", type: on_record_quote, note: "reject the status quo and to reject business as usual" }
+          - { url: "https://nypost.com/2026/11/15/us-news/van-hollen-boasts-he-has-very-open-lane-take-senate-leadership-from-schumer/", type: major_outlet, note: "cannot simply return to 'business as usual'" }
+          - { url: "https://www.huffpost.com/entry/chris-van-hollen-rules-out-presidential-bid-majority-leader_n_6af75ed5e4b0476a159b6487", type: on_record_quote, note: "we can't go back to business as usual" }
+  - id: b05
+    line: "Small detail: the change candidate is only eight years younger than Schumer."
+    tags: [fact, joke]
+    pose: present
+    expression: smug
+    camera: zoom_stare
+    opens: L5
+    panel: { stock: "Chris Van Hollen", caption: "Van Hollen, House portrait from 2010", crop: center }
+    claims:
+      - text: "Van Hollen is 67; Schumer is 75 (turns 76 on Nov. 23). Mother Jones: 'only eight years younger than Schumer'."
+        sources:
+          - { url: "https://www.motherjones.com/politics/2026/11/van-hollen-senate-majority-leader-campaign-schumer-congress-democrats/", type: major_outlet }
+          - { url: "https://www.cnn.com/2026/11/12/politics/chris-van-hollen-chuck-schumer-senate-democratic-leader", type: major_outlet, note: "The 67-year-old Van Hollen ... The 75-year-old [Schumer]" }
+  - id: b06
+    line: "With over twenty years in Congress."
+    tags: [fact, steelman]
+    pose: shrug
+    closes: L5
+    claims:
+      - text: "Van Hollen has served in Congress for over two decades (Senate since 2017, 14 years in the House before that)."
+        sources:
+          - { url: "https://www.cnn.com/2026/11/12/politics/chris-van-hollen-chuck-schumer-senate-democratic-leader", type: major_outlet, note: "served in Congress for over two decades" }
+          - { url: "https://www.npr.org/2026/11/16/nx-s1-6041687/chris-van-hollen-chuck-schumer-senate-leader", type: major_outlet, note: "spent 25 years on Capitol Hill" }
+  - id: b07
+    line: "Still, Bernie Sanders is backing him."
+    tags: [fact]
+    pose: point_up
+    panel: { stock: "Bernie Sanders official portrait", caption: "Sen. Bernie Sanders at a 2014 hearing" }
+    claims:
+      - text: "Sanders backs Van Hollen and says he won't support Schumer."
+        sources:
+          - { url: "https://www.huffpost.com/entry/chris-van-hollen-senate-majority-leader_n_6af670b4e4b06534290681e3", type: major_outlet }
+          - { url: "https://www.washingtonexaminer.com/news/senate/4804520/bernie-sanders-endorses-chris-van-hollen-senate-majority-leader/", type: major_outlet }
+          - { url: "https://thehill.com/homenews/senate/6221394-van-hollen-challenges-schumer/", type: major_outlet }
+  - id: b08
+    line: "So can he win? Here's the math."
+    tags: [rehook]
+    pose: thinking
+    opens: L1
+  - id: b09
+    line: "He needs about twenty-eight votes, by secret ballot."
+    tags: [fact]
+    pose: present
+    panel: { stock: "ballot box", caption: "A ballot box in Poland, 2023 (stand-in)" }
+    claims:
+      - text: "The caucus votes by secret ballot; the winner needs a simple majority, 28 or 29 votes (Politico), close to 30 (NPR)."
+        sources:
+          - { url: "https://www.yahoo.com/news/politics/articles/van-hollen-challenge-throws-senate-002035623.html", type: major_outlet, note: "the 28 or 29 votes he will need to win" }
+          - { url: "https://www.npr.org/2026/11/16/nx-s1-6041687/chris-van-hollen-chuck-schumer-senate-leader", type: major_outlet, note: "close to 30 votes ... secret ballot" }
+  - id: b10
+    line: "He claims more than ten. Publicly? Just a handful."
+    tags: [fact, caveat]
+    pose: shrug
+    claims:
+      - text: "Van Hollen said Nov. 12 he had 'more than 10' senators; four have endorsed him publicly as of Nov. 15 (Axios counts five)."
+        sources:
+          - { url: "https://www.cnn.com/2026/11/12/politics/chris-van-hollen-chuck-schumer-senate-democratic-leader", type: major_outlet, note: "more than 10" }
+          - { url: "https://www.yahoo.com/news/politics/articles/van-hollen-challenge-throws-senate-002035623.html", type: major_outlet, note: "the support of more than 10 senators" }
+          - { url: "https://thehill.com/homenews/senate/6221394-van-hollen-challenges-schumer/", type: major_outlet, note: "public endorsements from Sanders, Merkley, El-Sayed, Flanagan" }
+  - id: b11
+    line: "Schumer's response: \"I have the votes to continue serving as Democratic Leader.\""
+    tags: [claim]
+    pose: present
+    panel: { stock: "Chuck Schumer", caption: "Chuck Schumer, official Senate portrait (file)", crop: center }
+    claims:
+      - text: "Schumer on X, Nov. 12: '... and I have the votes to continue serving as Democratic Leader.'"
+        sources:
+          - { url: "https://www.huffpost.com/entry/chris-van-hollen-senate-majority-leader_n_6af670b4e4b06534290681e3", type: on_record_quote }
+          - { url: "https://www.cnn.com/2026/11/12/politics/chris-van-hollen-chuck-schumer-senate-democratic-leader", type: on_record_quote }
+          - { url: "https://www.motherjones.com/politics/2026/11/van-hollen-senate-majority-leader-campaign-schumer-congress-democrats/", type: on_record_quote }
+  - id: b13
+    line: "Van Hollen says some on a pro-Schumer list privately picked him."
+    tags: [claim]
+    pose: thinking
+    opens: L2
+    claims:
+      - text: "Van Hollen on CNN, Nov. 15: 'a number of those people on that list have actually committed to voting for me'. His claim; he didn't name them. The Hill: the list didn't come from Schumer or his office."
+        sources:
+          - { url: "https://thehill.com/homenews/senate/6221394-van-hollen-challenges-schumer/", type: on_record_quote }
+          - { url: "https://nypost.com/2026/11/15/us-news/van-hollen-boasts-he-has-very-open-lane-take-senate-leadership-from-schumer/", type: on_record_quote }
+  - id: b14
+    line: "Which ones? He won't say."
+    tags: [fact]
+    pose: shrug
+    closes: L2
+    claims:
+      - text: "Van Hollen did not identify which senators had privately pledged support."
+        sources:
+          - { url: "https://thehill.com/homenews/senate/6221394-van-hollen-challenges-schumer/", type: major_outlet }
+          - { url: "https://www.yahoo.com/news/politics/articles/schumer-allies-voice-confidence-argue-110000873.html", type: major_outlet, note: "He declined ... to reveal his whip count" }
+  - id: b15
+    line: "And Tammy Baldwin's case for Schumer? Baseball."
+    tags: [fact]
+    pose: shocked
+    opens: L3
+    panel: { stock: "Tammy Baldwin", caption: "Sen. Tammy Baldwin of Wisconsin (file)" }
+    claims:
+      - text: "Sen. Tammy Baldwin (D-Wis.) backed Schumer in a Nov. 12 statement built on a Brewers analogy."
+        sources:
+          - { url: "https://www.huffpost.com/entry/chris-van-hollen-senate-majority-leader_n_6af670b4e4b06534290681e3", type: major_outlet }
+          - { url: "https://www.yahoo.com/news/politics/articles/baldwin-backs-schumer-despite-senate-153821996.html", type: major_outlet }
+  - id: b16
+    line: "\"The Brewers just had a record season,\""
+    tags: [claim, joke]
+    pose: present
+    expression: smug
+    panel: { stock: "American Family Field", caption: "The Brewers' ballpark in Milwaukee, 2018" }
+    claims:
+      - text: "Baldwin: 'The Brewers just had a record season, and next year is not the time to change our management.'"
+        sources:
+          - { url: "https://www.huffpost.com/entry/chris-van-hollen-senate-majority-leader_n_6af670b4e4b06534290681e3", type: on_record_quote }
+          - { url: "https://www.yahoo.com/news/politics/articles/baldwin-backs-schumer-despite-senate-153821996.html", type: on_record_quote }
+  - id: b17
+    line: "\"and next year is not the time to change our management.\""
+    tags: [claim]
+    pose: point_up
+    closes: L3
+    claims:
+      - text: "Second half of the same Baldwin statement, verbatim in both outlets."
+        sources:
+          - { url: "https://www.huffpost.com/entry/chris-van-hollen-senate-majority-leader_n_6af670b4e4b06534290681e3", type: on_record_quote }
+          - { url: "https://www.yahoo.com/news/politics/articles/baldwin-backs-schumer-despite-senate-153821996.html", type: on_record_quote }
+  - id: b18
+    line: "Plain truth: Schumer's favored, and many credit him for the win."
+    tags: [fact, steelman]
+    pose: thinking
+    closes: L1
+    panel: { stock: "Chuck Schumer", caption: "Chuck Schumer, official Senate portrait (file)", crop: center }
+    claims:
+      - text: "Schumer is the favorite; most Democrats, per insiders, credit him for the sweeping win."
+        sources:
+          - { url: "https://www.yahoo.com/news/politics/articles/van-hollen-challenge-throws-senate-002035623.html", type: major_outlet, note: "Schumer, who is the favorite in the race ... believe he deserves some credit" }
+          - { url: "https://www.cnn.com/2026/11/12/politics/chris-van-hollen-chuck-schumer-senate-democratic-leader", type: major_outlet, note: "uphill battle; others support Schumer based on his work to retake the majority" }
+  - id: b20
+    line: "Van Hollen's big gamble: risk a December shutdown over Iran war money."
+    tags: [fact, caveat]
+    pose: shocked
+    opens: L4
+    panel: { stock: "government shutdown closed sign", caption: "A national park closed sign (stand-in)" }
+    claims:
+      - text: "Van Hollen would withhold support from the funding bill due Dec. 11 and risk a shutdown unless Trump agrees to end the Iran war."
+        sources:
+          - { url: "https://www.huffpost.com/entry/chris-van-hollen-senate-majority-leader_n_6af670b4e4b06534290681e3", type: major_outlet }
+          - { url: "https://www.npr.org/2026/11/16/nx-s1-6041687/chris-van-hollen-chuck-schumer-senate-leader", type: on_record_quote, note: "not one penny in mid-December to continue this war" }
+  - id: b21
+    line: "The vote's set for Dec. 1, so far."
+    tags: [fact]
+    pose: present
+    closes: L4
+    panel: { stock: "United States Capitol dome", caption: "U.S. Capitol (file)" }
+    claims:
+      - text: "The closed-ballot election is scheduled for Dec. 1; Schumer allies have discussed moving it up (nothing decided as of Nov. 16)."
+        sources:
+          - { url: "https://www.cnn.com/2026/11/12/politics/chris-van-hollen-chuck-schumer-senate-democratic-leader", type: major_outlet }
+          - { url: "https://www.yahoo.com/news/politics/articles/van-hollen-challenge-throws-senate-002035623.html", type: major_outlet }
+          - { url: "https://nypost.com/2026/11/15/us-news/van-hollen-boasts-he-has-very-open-lane-take-senate-leadership-from-schumer/", type: major_outlet }
+  - id: b22
+    line: "My take? Win the Senate, then fight over the keys."
+    tags: [opinion, what_it_means]
+    pose: shrug
+    opens: L6
+  - id: b23
+    line: "Record season. And the manager still has to survive a vote."
+    tags: [callback]
+    pose: present
+    closes: L6
+    expression: smug
+    camera: zoom_stare
+    panel: { stock: "American Family Field", caption: "The Brewers' ballpark in Milwaukee, 2018" }
+  - id: b24
+    line: "Follow for our next episode!"
+    tags: [cta]
+    pose: celebrate
+human_edited: false
+disclosures: []
+caption: "Democrats won the Senate. Now Chris Van Hollen wants Chuck Schumer's job, and Schumer's defense involves the Milwaukee Brewers ⚾ sources below"
+hashtags: [politics, schumer, senate, democrats, vanhollen]
