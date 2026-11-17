@@ -144,6 +144,22 @@
       "downloadedAt": "2026-11-10T15:33:17.491Z",
       "usedIn": []
     },
+    "wikimedia:138976025": {
+      "id": "wikimedia:138976025",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:2023_Polish_parliamentary_election_and_referendum._October_2023._Ballot_box_in_Tomasz%C3%B3w_Mazowiecki,_Sikorskiego_Street_6A.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/2023_Polish_parliamentary_election_and_referendum._October_2023._Ballot_box_in_Tomasz%C3%B3w_Mazowiecki%2C_Sikorskiego_Street_6A.jpg/1280px-2023_Polish_parliamentary_election_and_referendum._October_2023._Ballot_box_in_Tomasz%C3%B3w_Mazowiecki%2C_Sikorskiego_Street_6A.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 960,
+      "creator": "WrS.tm.pl",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:2023_Polish_parliamentary_election_and_referendum._October_2023._Ballot_box_in_Tomasz%C3%B3w_Mazowiecki,_Sikorskiego_Street_6A.jpg",
+      "attributionRequired": false,
+      "query": "ballot box",
+      "file": "assets/stock/cache/wikimedia_138976025.jpg",
+      "downloadedAt": "2026-11-16T16:51:04.555Z",
+      "usedIn": []
+    },
     "wikimedia:1391804": {
       "id": "wikimedia:1391804",
       "provider": "wikimedia",
@@ -816,6 +832,22 @@
       "downloadedAt": "2026-11-01T02:10:32.789Z",
       "usedIn": []
     },
+    "wikimedia:22277865": {
+      "id": "wikimedia:22277865",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Chris_Van_Hollen_official_portrait,_2010.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Chris_Van_Hollen_official_portrait%2C_2010.jpg/1280px-Chris_Van_Hollen_official_portrait%2C_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1924,
+      "creator": "U.S. House of Representatives",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Chris_Van_Hollen_official_portrait,_2010.jpg",
+      "attributionRequired": false,
+      "query": "Chris Van Hollen",
+      "file": "assets/stock/cache/wikimedia_22277865.jpg",
+      "downloadedAt": "2026-11-16T16:16:40.529Z",
+      "usedIn": []
+    },
     "wikimedia:24906037": {
       "id": "wikimedia:24906037",
       "provider": "wikimedia",
@@ -832,6 +864,22 @@
       "downloadedAt": "2026-11-12T15:35:01.921Z",
       "usedIn": []
     },
+    "wikimedia:25886412": {
+      "id": "wikimedia:25886412",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Tammy_Baldwin,_official_portrait,_113th_Congress.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Tammy_Baldwin%2C_official_portrait%2C_113th_Congress.jpg/1280px-Tammy_Baldwin%2C_official_portrait%2C_113th_Congress.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1621,
+      "creator": "United States Senate",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Tammy_Baldwin,_official_portrait,_113th_Congress.jpg",
+      "attributionRequired": false,
+      "query": "Tammy Baldwin",
+      "file": "assets/stock/cache/wikimedia_25886412.jpg",
+      "downloadedAt": "2026-11-16T16:50:26.515Z",
+      "usedIn": []
+    },
     "wikimedia:2598899": {
       "id": "wikimedia:2598899",
       "provider": "wikimedia",
@@ -846,6 +894,22 @@
       "query": "United States Capitol dome",
       "file": "assets/stock/cache/wikimedia_2598899.jpg",
       "downloadedAt": "2026-11-04T20:36:17.813Z",
+      "usedIn": []
+    },
+    "wikimedia:28823858": {
+      "id": "wikimedia:28823858",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Haleakala_National_Park_CLOSED_Sign.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Haleakala_National_Park_CLOSED_Sign.jpg/1280px-Haleakala_National_Park_CLOSED_Sign.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1707,
+      "creator": "293.xx.xxx.xx",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "attributionRequired": false,
+      "query": "government shutdown closed sign",
+      "file": "assets/stock/cache/wikimedia_28823858.jpg",
+      "downloadedAt": "2026-11-16T16:51:16.230Z",
       "usedIn": []
     },
     "wikimedia:32915388": {
@@ -926,6 +990,22 @@
       "query": "Senator Dan Sullivan official",
       "file": "assets/stock/cache/wikimedia_42105926.jpg",
       "downloadedAt": "2026-11-01T02:10:41.567Z",
+      "usedIn": []
+    },
+    "wikimedia:42156106": {
+      "id": "wikimedia:42156106",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Bernie_Sanders_2014.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Bernie_Sanders_2014.jpg/1280px-Bernie_Sanders_2014.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1363,
+      "creator": "United States Department of Veterans Affairs",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Bernie_Sanders_2014.jpg",
+      "attributionRequired": false,
+      "query": "Bernie Sanders official portrait",
+      "file": "assets/stock/cache/wikimedia_42156106.jpg",
+      "downloadedAt": "2026-11-16T16:50:05.269Z",
       "usedIn": []
     },
     "wikimedia:44810122": {
@@ -1278,6 +1358,22 @@
       "query": "Israeli Air Force F-35I Adir",
       "file": "assets/stock/cache/wikimedia_78896541.jpg",
       "downloadedAt": "2026-11-03T17:40:05.667Z",
+      "usedIn": []
+    },
+    "wikimedia:79641234": {
+      "id": "wikimedia:79641234",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Miller_Park_2018.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Miller_Park_2018.jpg/1280px-Miller_Park_2018.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 960,
+      "creator": "Kyvuh",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "attributionRequired": false,
+      "query": "American Family Field",
+      "file": "assets/stock/cache/wikimedia_79641234.jpg",
+      "downloadedAt": "2026-11-16T16:50:40.422Z",
       "usedIn": []
     },
     "wikimedia:801580": {

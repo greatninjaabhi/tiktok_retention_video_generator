@@ -2,8 +2,9 @@
 # Writer brief: scripts/prompts/2026-11-16-van-hollen-vs-schumer.md
 # UNRESOLVED:
 #  1. The vote is set for Dec. 1 "so far": Politico reports Schumer allies privately discussed moving it up
-#     to the week of Nov. 16; nothing decided as of Nov. 16. If it's moved and held before this posts,
-#     the "Dec. 1, so far" line is stale.
+#     to the week of Nov. 16; still Dec. 1 per The Hill on Nov. 17 (Van Hollen says he'll fight any change).
+#     If it's moved and held before this posts, the "Dec. 1, so far" line is stale.
+#  1b. Re-checked Nov. 17: b10 updated. Van Hollen's "15" (Nov. 16) is his own unverified count; 4 public.
 #  2. Van Hollen's claim that names on the pro-Schumer list privately committed to him is his claim only
 #     (The Hill and NY Post quote it identically); he named nobody.
 #  3. NYT and Washington Times answered 403. No fact-checker has covered this (it's a leadership race).
@@ -29,6 +30,8 @@ research:
   - { url: "https://nypost.com/2026/11/15/us-news/van-hollen-boasts-he-has-very-open-lane-take-senate-leadership-from-schumer/", outlet: New York Post, lean: lean_right }
   - { url: "https://www.washingtonexaminer.com/news/senate/4804520/bernie-sanders-endorses-chris-van-hollen-senate-majority-leader/", outlet: Washington Examiner, lean: lean_right }
   - { url: "https://www.yahoo.com/news/politics/articles/baldwin-backs-schumer-despite-senate-153821996.html", outlet: Milwaukee Journal Sentinel (via Yahoo), lean: center }
+  - { url: "https://thehill.com/homenews/senate/6223801-democrats-clash-majority-leader-election/", outlet: The Hill (Nov. 17), lean: center }
+  - { url: "https://www.yahoo.com/news/politics/articles/chuck-schumer-challenger-reveals-many-213348670.html", outlet: NJ.com (via Yahoo), lean: center }
 beats:
   - id: b01
     line: "That's Chuck Schumer. He's led Senate Democrats since 2017."
@@ -122,15 +125,15 @@ beats:
           - { url: "https://www.yahoo.com/news/politics/articles/van-hollen-challenge-throws-senate-002035623.html", type: major_outlet, note: "the 28 or 29 votes he will need to win" }
           - { url: "https://www.npr.org/2026/11/16/nx-s1-6041687/chris-van-hollen-chuck-schumer-senate-leader", type: major_outlet, note: "close to 30 votes ... secret ballot" }
   - id: b10
-    line: "He claims more than ten. Publicly? Just a handful."
+    line: "He now claims fifteen. Publicly? Just four so far."
     tags: [fact, caveat]
     pose: shrug
     claims:
-      - text: "Van Hollen said Nov. 12 he had 'more than 10' senators; four have endorsed him publicly as of Nov. 15 (Axios counts five)."
+      - text: "Van Hollen said Nov. 16 that at least 15 senators and senators-elect back him (up from 'more than 10' on Nov. 12); only four have said so publicly as of Nov. 17."
         sources:
-          - { url: "https://www.cnn.com/2026/11/12/politics/chris-van-hollen-chuck-schumer-senate-democratic-leader", type: major_outlet, note: "more than 10" }
-          - { url: "https://www.yahoo.com/news/politics/articles/van-hollen-challenge-throws-senate-002035623.html", type: major_outlet, note: "the support of more than 10 senators" }
-          - { url: "https://thehill.com/homenews/senate/6221394-van-hollen-challenges-schumer/", type: major_outlet, note: "public endorsements from Sanders, Merkley, El-Sayed, Flanagan" }
+          - { url: "https://thehill.com/homenews/senate/6223801-democrats-clash-majority-leader-election/", type: major_outlet, note: "says he has locked down 15 votes ... Only four Democratic senators and senators-elect have said publicly" }
+          - { url: "https://www.yahoo.com/news/politics/articles/chuck-schumer-challenger-reveals-many-213348670.html", type: major_outlet, note: "NJ.com: at least 15 members ... only four have expressed support for his effort publicly" }
+          - { url: "https://www.cnn.com/2026/11/12/politics/chris-van-hollen-chuck-schumer-senate-democratic-leader", type: major_outlet, note: "earlier claim: more than 10" }
   - id: b11
     line: "Schumer's response: \"I have the votes to continue serving as Democratic Leader.\""
     tags: [claim]
@@ -245,7 +248,7 @@ beats:
     line: "Follow for our next episode!"
     tags: [cta]
     pose: celebrate
-human_edited: false
+human_edited: true # cleared 2026-11-17: fact-checked by the agent, queued for owner review in Buffer
 disclosures: []
 caption: "Democrats won the Senate. Now Chris Van Hollen wants Chuck Schumer's job, and Schumer's defense involves the Milwaukee Brewers ⚾ sources below"
 hashtags: [politics, schumer, senate, democrats, vanhollen]
