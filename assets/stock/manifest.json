@@ -64,6 +64,22 @@
       "downloadedAt": "2026-11-10T20:11:33.559Z",
       "usedIn": []
     },
+    "wikimedia:117718651": {
+      "id": "wikimedia:117718651",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Prague_Airport_Flight_Information_Display_(2018-06-03_14.48.52_Piqsels.com).jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Prague_Airport_Flight_Information_Display_%282018-06-03_14.48.52_Piqsels.com%29.jpg/1280px-Prague_Airport_Flight_Information_Display_%282018-06-03_14.48.52_Piqsels.com%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 854,
+      "creator": "Unknown author Unknown author",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "attributionRequired": false,
+      "query": "flight information display",
+      "file": "assets/stock/cache/wikimedia_117718651.jpg",
+      "downloadedAt": "2026-11-18T03:31:49.011Z",
+      "usedIn": []
+    },
     "wikimedia:12106561": {
       "id": "wikimedia:12106561",
       "provider": "wikimedia",
@@ -240,6 +256,22 @@
       "downloadedAt": "2026-11-02T15:13:24.030Z",
       "usedIn": []
     },
+    "wikimedia:153897031": {
+      "id": "wikimedia:153897031",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:2017,_10028,_C-37A_Gulfstream,_Fairford,_USAF_-_3202_(53950166123).jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/2017%2C_10028%2C_C-37A_Gulfstream%2C_Fairford%2C_USAF_-_3202_%2853950166123%29.jpg/1280px-2017%2C_10028%2C_C-37A_Gulfstream%2C_Fairford%2C_USAF_-_3202_%2853950166123%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 720,
+      "creator": "Jim van de Burgt from Wijk bij Duurstede, Netherlands",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "attributionRequired": false,
+      "query": "C-37A Gulfstream",
+      "file": "assets/stock/cache/wikimedia_153897031.jpg",
+      "downloadedAt": "2026-11-18T03:35:51.692Z",
+      "usedIn": []
+    },
     "wikimedia:155329696": {
       "id": "wikimedia:155329696",
       "provider": "wikimedia",
@@ -382,6 +414,22 @@
       "query": "collegiate wrestling match",
       "file": "assets/stock/cache/wikimedia_164896554.jpg",
       "downloadedAt": "2026-11-10T20:11:43.786Z",
+      "usedIn": []
+    },
+    "wikimedia:166847475": {
+      "id": "wikimedia:166847475",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Daniel_K._Inouye_International_Airport_Air_Traffic_Control_Tower_2025.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Daniel_K._Inouye_International_Airport_Air_Traffic_Control_Tower_2025.jpg/1280px-Daniel_K._Inouye_International_Airport_Air_Traffic_Control_Tower_2025.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 853,
+      "creator": "Michael Voss",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "attributionRequired": false,
+      "query": "air traffic control tower",
+      "file": "assets/stock/cache/wikimedia_166847475.jpg",
+      "downloadedAt": "2026-11-18T03:31:06.396Z",
       "usedIn": []
     },
     "wikimedia:167227894": {
@@ -558,6 +606,38 @@
       "query": "Detroit Michigan night International Space Station iss074e0334264",
       "file": "assets/stock/cache/wikimedia_185395772.jpg",
       "downloadedAt": "2026-10-31T21:08:26.441Z",
+      "usedIn": []
+    },
+    "wikimedia:186936135": {
+      "id": "wikimedia:186936135",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:DHS_Secretary_Markwayne_Mullin_Official_Portrait_(55166865268).jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/DHS_Secretary_Markwayne_Mullin_Official_Portrait_%2855166865268%29.jpg/1280px-DHS_Secretary_Markwayne_Mullin_Official_Portrait_%2855166865268%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1656,
+      "creator": "U.S. Department of Homeland Security (DHS)",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:DHS_Secretary_Markwayne_Mullin_Official_Portrait_(55166865268).jpg",
+      "attributionRequired": false,
+      "query": "Markwayne Mullin official photo",
+      "file": "assets/stock/cache/wikimedia_186936135.jpg",
+      "downloadedAt": "2026-11-18T03:46:15.322Z",
+      "usedIn": []
+    },
+    "wikimedia:187058820": {
+      "id": "wikimedia:187058820",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Markwayne_Mullin_being_sworn_in_by_Pam_Bondi_as_Secretary_of_Homeland_Security.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Markwayne_Mullin_being_sworn_in_by_Pam_Bondi_as_Secretary_of_Homeland_Security.jpg/1280px-Markwayne_Mullin_being_sworn_in_by_Pam_Bondi_as_Secretary_of_Homeland_Security.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 853,
+      "creator": "The White House",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Markwayne_Mullin_being_sworn_in_by_Pam_Bondi_as_Secretary_of_Homeland_Security.jpg",
+      "attributionRequired": false,
+      "query": "Secretary Mullin Homeland Security",
+      "file": "assets/stock/cache/wikimedia_187058820.jpg",
+      "downloadedAt": "2026-11-18T03:35:23.600Z",
       "usedIn": []
     },
     "wikimedia:187155211": {
@@ -832,6 +912,22 @@
       "downloadedAt": "2026-11-01T02:10:32.789Z",
       "usedIn": []
     },
+    "wikimedia:203149395": {
+      "id": "wikimedia:203149395",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:First_Lady_Melania_Trump_attends_the_Alabama-LSU_football_game_in_Baton_Rouge,_Louisiana,_November_7,_2026_(F20261107CT-2169).jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/First_Lady_Melania_Trump_attends_the_Alabama-LSU_football_game_in_Baton_Rouge%2C_Louisiana%2C_November_7%2C_2026_%28F20261107CT-2169%29.jpg/1280px-First_Lady_Melania_Trump_attends_the_Alabama-LSU_football_game_in_Baton_Rouge%2C_Louisiana%2C_November_7%2C_2026_%28F20261107CT-2169%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 853,
+      "creator": "The White House",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:First_Lady_Melania_Trump_attends_the_Alabama-LSU_football_game_in_Baton_Rouge,_Louisiana,_November_7,_2026_(F20261107CT-2169).jpg",
+      "attributionRequired": false,
+      "query": "LSU Tigers football game",
+      "file": "assets/stock/cache/wikimedia_203149395.jpg",
+      "downloadedAt": "2026-11-18T03:33:57.805Z",
+      "usedIn": []
+    },
     "wikimedia:22277865": {
       "id": "wikimedia:22277865",
       "provider": "wikimedia",
@@ -974,6 +1070,22 @@
       "query": "Jim Jordan Ohio politician",
       "file": "assets/stock/cache/wikimedia_41968523.jpg",
       "downloadedAt": "2026-11-10T20:11:55.488Z",
+      "usedIn": []
+    },
+    "wikimedia:41968832": {
+      "id": "wikimedia:41968832",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Markwayne_Mullin_official_congressional_photo.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Markwayne_Mullin_official_congressional_photo.jpg/1280px-Markwayne_Mullin_official_congressional_photo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1924,
+      "creator": "United States Congress",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Markwayne_Mullin_official_congressional_photo.jpg",
+      "attributionRequired": false,
+      "query": "Markwayne Mullin",
+      "file": "assets/stock/cache/wikimedia_41968832.jpg",
+      "downloadedAt": "2026-11-18T03:44:08.543Z",
       "usedIn": []
     },
     "wikimedia:42105926": {
@@ -1168,6 +1280,22 @@
       "downloadedAt": "2026-10-31T21:08:35.526Z",
       "usedIn": []
     },
+    "wikimedia:57369815": {
+      "id": "wikimedia:57369815",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Secretaries_Cup_(32783190664).jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Secretaries_Cup_%2832783190664%29.jpg/1280px-Secretaries_Cup_%2832783190664%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 852,
+      "creator": "Coast Guard",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Secretaries_Cup_(32783190664).jpg",
+      "attributionRequired": false,
+      "query": "Coast Guard Academy football",
+      "file": "assets/stock/cache/wikimedia_57369815.jpg",
+      "downloadedAt": "2026-11-18T03:33:23.827Z",
+      "usedIn": []
+    },
     "wikimedia:57398786": {
       "id": "wikimedia:57398786",
       "provider": "wikimedia",
@@ -1264,6 +1392,22 @@
       "downloadedAt": "2026-11-02T15:17:52.021Z",
       "usedIn": []
     },
+    "wikimedia:69688220": {
+      "id": "wikimedia:69688220",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Markwayne_Mullin_official_photo.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Markwayne_Mullin_official_photo.jpg/1280px-Markwayne_Mullin_official_photo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1646,
+      "creator": "US House Office of Photography",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Markwayne_Mullin_official_photo.jpg",
+      "attributionRequired": false,
+      "query": "Markwayne Mullin",
+      "file": "assets/stock/cache/wikimedia_69688220.jpg",
+      "downloadedAt": "2026-11-18T03:29:32.629Z",
+      "usedIn": []
+    },
     "wikimedia:73114008": {
       "id": "wikimedia:73114008",
       "provider": "wikimedia",
@@ -1326,6 +1470,22 @@
       "query": "Haley Stevens, official portrait, 116th Congress",
       "file": "assets/stock/cache/wikimedia_75591686.jpg",
       "downloadedAt": "2026-11-01T02:10:16.945Z",
+      "usedIn": []
+    },
+    "wikimedia:76099385": {
+      "id": "wikimedia:76099385",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:USCG_Sentinel_class_cutter_poster.png",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/USCG_Sentinel_class_cutter_poster.png/1280px-USCG_Sentinel_class_cutter_poster.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 850,
+      "creator": "Unknown author Unknown author , Cory Rowland",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:USCG_Sentinel_class_cutter_poster.png",
+      "attributionRequired": false,
+      "query": "Sentinel class cutter",
+      "file": "assets/stock/cache/wikimedia_76099385.png",
+      "downloadedAt": "2026-11-18T03:38:38.023Z",
       "usedIn": []
     },
     "wikimedia:76397132": {

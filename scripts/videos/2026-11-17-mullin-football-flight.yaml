@@ -1,0 +1,245 @@
+# DRAFT by Claude in an unattended scheduled run on 2026-11-17 (not `npm run draft`: no API key there).
+# Writer brief: scripts/prompts/2026-11-17-mullin-football-flight.md
+# UNRESOLVED:
+#  1. The CNBC interview wasn't watched. Quotes used only where CNN, ABC and NY Post agree word for word
+#     (AP has "gotta live our lives" for the second one).
+#  2. The private-box detail was first reported by the NY Post; CNN, ABC and Fox repeat it as the Post's
+#     reporting. Mullin denied knowing Bordelon, not being there. Said as "The New York Post spotted him".
+#  3. NYT answered 403. No fact-checker has covered this (it's a conduct story, not a claim).
+#  4. Re-checked Nov. 17 evening (WaPo, Forbes, New Republic, Yahoo headlines): no new facts; nothing changed.
+#     "Paying for it" is Mullin's and DHS's word; no reimbursement figure has been published.
+id: 2026-11-17-mullin-football-flight
+channel: politics
+format: explainer
+character: mascot_v1
+topic:
+  title: "DHS Secretary Markwayne Mullin flies to LSU-Texas the day after the FAA ground stop"
+  type: scandal
+  first_seen: "2026-11-17T12:00:00Z"
+hook:
+  spoken: "Markwayne Mullin explained Friday's flight meltdown. Wait till you see his Saturday."
+  on_screen: "THEN CAME SATURDAY"
+  pattern: name_tease
+research:
+  - { url: "https://nypost.com/2026/11/17/us-news/markwayne-mullin-took-his-government-plane-to-lsu-texas-game-as-thousands-were-stranded-in-faa-ground-stoppage/", outlet: New York Post, lean: lean_right }
+  - { url: "https://nypost.com/2026/11/17/us-news/markwayne-mullin-defends-flying-to-football-game-amid-faa-outage/", outlet: New York Post, lean: lean_right }
+  - { url: "https://www.foxnews.com/politics/mullin-took-government-plane-lsu-texas-football-game-americans-stranded-wake-faa-outage-report", outlet: Fox News, lean: right }
+  - { url: "https://www.cnn.com/2026/11/17/politics/markwayne-mullin-faa-ground-stop", outlet: CNN, lean: lean_left }
+  - { url: "https://www.pbs.org/newshour/nation/mullin-defends-use-of-government-plane-to-attend-football-game-after-ground-stop", outlet: AP (via PBS), lean: center }
+  - { url: "https://abcnews.com/Politics/mullin-defends-taking-government-plane-lsu-texas-game/story?id=138227526", outlet: ABC News, lean: center }
+  - { url: "https://www.huffpost.com/entry/trump-faa-ground-stop-public-response_n_6af8faa9e4b0e2644ec83fc2", outlet: HuffPost, lean: left }
+  - { url: "https://www.faa.gov/newsroom/nationwide-ground-stop-questions-and-answers", outlet: FAA, lean: primary }
+  - { url: "https://www.dhs.gov/operational-and-support-components", outlet: DHS, lean: primary }
+beats:
+  - id: b01
+    line: "That's Markwayne Mullin, the Homeland Security secretary."
+    tags: [fact]
+    pose: present
+    panel: { stock: "Markwayne Mullin official photo", caption: "Mullin, official DHS portrait (file)", crop: top }
+    claims:
+      - text: "Markwayne Mullin is Secretary of Homeland Security (sworn in March 2026)."
+        sources:
+          - { url: "https://www.cnn.com/2026/11/17/politics/markwayne-mullin-faa-ground-stop", type: major_outlet, note: "Mullin was sworn in as secretary in March" }
+          - { url: "https://www.pbs.org/newshour/nation/mullin-defends-use-of-government-plane-to-attend-football-game-after-ground-stop", type: major_outlet }
+      - text: "Hook: Mullin and Transportation Secretary Sean Duffy briefed reporters on the ground stop at the White House on Friday night, Nov. 13."
+        sources:
+          - { url: "https://www.cnn.com/2026/11/17/politics/markwayne-mullin-faa-ground-stop", type: major_outlet, note: "impromptu White House press briefing alongside Transportation Secretary Sean Duffy on Friday night" }
+          - { url: "https://www.foxnews.com/politics/mullin-took-government-plane-lsu-texas-football-game-americans-stranded-wake-faa-outage-report", type: major_outlet }
+          - { url: "https://www.pbs.org/newshour/nation/mullin-defends-use-of-government-plane-to-attend-football-game-after-ground-stop", type: major_outlet }
+  - id: b02
+    line: "On Nov. 13, the FAA grounded flights nationwide."
+    tags: [fact]
+    pose: point_up
+    panel: { stock: "air traffic control tower", caption: "Control tower in Honolulu, 2025 (stand-in)" }
+    claims:
+      - text: "The FAA issued a nationwide ground stop on Nov. 13 at about 3:30 p.m. ET; flights resumed at 8:15 p.m."
+        sources:
+          - { url: "https://www.faa.gov/newsroom/nationwide-ground-stop-questions-and-answers", type: primary }
+          - { url: "https://www.pbs.org/newshour/nation/mullin-defends-use-of-government-plane-to-attend-football-game-after-ground-stop", type: major_outlet, note: "lasted more than four hours and ended around 8:15 p.m. ET Friday" }
+  - id: b03
+    line: "Over a million and a half travelers got hit."
+    tags: [fact]
+    pose: shocked
+    panel: { stock: "flight information display", caption: "Prague airport departures, 2018 (stand-in)" }
+    claims:
+      - text: "About 1.5 million travelers were affected."
+        sources:
+          - { url: "https://www.cnn.com/2026/11/17/politics/markwayne-mullin-faa-ground-stop", type: major_outlet, note: "1.5 million Americans were dealing with rebooking canceled flights" }
+          - { url: "https://www.foxnews.com/politics/mullin-took-government-plane-lsu-texas-football-game-americans-stranded-wake-faa-outage-report", type: major_outlet, note: "impacted more than 1.5 million travelers on Friday alone" }
+  - id: b04
+    line: "By Saturday, planes flew. Lots of travelers were still stuck."
+    tags: [fact]
+    pose: shrug
+    claims:
+      - text: "Flights had resumed by Saturday, but cancellations left many travelers stranded into Saturday and beyond."
+        sources:
+          - { url: "https://www.pbs.org/newshour/nation/mullin-defends-use-of-government-plane-to-attend-football-game-after-ground-stop", type: major_outlet, note: "as flights were back in the air. But thousands of flights were canceled" }
+          - { url: "https://abcnews.com/Politics/mullin-defends-taking-government-plane-lsu-texas-game/story?id=138227526", type: major_outlet, note: "ripple effects ... felt well into Saturday as many travelers were stranded" }
+  - id: b05
+    line: "So where was Mullin?"
+    tags: [emotion]
+    pose: thinking
+    opens: L0
+    panel: { stock: "Secretary Mullin Homeland Security", caption: "Mullin sworn in at the White House, March 2026" }
+  - id: b06
+    line: "Game one: Coast Guard versus Merchant Marine."
+    tags: [fact]
+    pose: point_up
+    panel: { stock: "Coast Guard Academy football", caption: "Coast Guard vs. Merchant Marine, 2016" }
+    claims:
+      - text: "On Saturday afternoon Mullin attended the Coast Guard Academy vs. Merchant Marine Academy game at Audi Field in Washington."
+        sources:
+          - { url: "https://nypost.com/2026/11/17/us-news/markwayne-mullin-took-his-government-plane-to-lsu-texas-game-as-thousands-were-stranded-in-faa-ground-stoppage/", type: major_outlet }
+          - { url: "https://www.foxnews.com/politics/mullin-took-government-plane-lsu-texas-football-game-americans-stranded-wake-faa-outage-report", type: major_outlet }
+  - id: b07
+    line: "Fair, the Coast Guard is literally his department."
+    tags: [fact, steelman]
+    pose: shrug
+    claims:
+      - text: "The U.S. Coast Guard is a DHS component."
+        sources:
+          - { url: "https://www.dhs.gov/operational-and-support-components", type: primary, note: "USCG is the only military organization within DHS" }
+  - id: b08
+    line: "Game two: LSU versus Texas. In Baton Rouge. By government jet."
+    tags: [fact, joke]
+    pose: shocked
+    expression: smug
+    camera: zoom_stare
+    closes: L0
+    panel: { stock: "LSU Tigers football game", caption: "LSU players at Tiger Stadium, Nov. 7, 2026" }
+    claims:
+      - text: "That evening he flew on a government plane to the LSU-Texas game in Baton Rouge."
+        sources:
+          - { url: "https://nypost.com/2026/11/17/us-news/markwayne-mullin-took-his-government-plane-to-lsu-texas-game-as-thousands-were-stranded-in-faa-ground-stoppage/", type: major_outlet }
+          - { url: "https://www.cnn.com/2026/11/17/politics/markwayne-mullin-faa-ground-stop", type: major_outlet }
+          - { url: "https://www.pbs.org/newshour/nation/mullin-defends-use-of-government-plane-to-attend-football-game-after-ground-stop", type: major_outlet }
+  - id: b09
+    line: "Two games, one day. How's he defending it?"
+    tags: [rehook]
+    pose: thinking
+    opens: L1
+  - id: b10
+    line: "DHS says the law requires him to fly government planes."
+    tags: [fact, steelman]
+    pose: present
+    panel: { stock: "C-37A Gulfstream", caption: "U.S. government jet, 2017 (not his plane)" }
+    claims:
+      - text: "DHS spokesperson: 'Secretary Mullin is required by law to travel on a government airplane.' Cabinet officials like the secretary of state must fly government jets (NY Post, Fox)."
+        sources:
+          - { url: "https://nypost.com/2026/11/17/us-news/markwayne-mullin-took-his-government-plane-to-lsu-texas-game-as-thousands-were-stranded-in-faa-ground-stoppage/", type: on_record_quote }
+          - { url: "https://abcnews.com/Politics/mullin-defends-taking-government-plane-lsu-texas-game/story?id=138227526", type: on_record_quote }
+          - { url: "https://www.pbs.org/newshour/nation/mullin-defends-use-of-government-plane-to-attend-football-game-after-ground-stop", type: major_outlet }
+  - id: b11
+    line: "Mullin on CNBC: \"They'd been completely open for 21 hours.\""
+    tags: [claim]
+    pose: point_up
+    closes: L1
+    panel: { stock: "Markwayne Mullin official photo", caption: "Mullin, official DHS portrait (file)", crop: top }
+    claims:
+      - text: "Mullin on CNBC, Nov. 17, about the airways: 'They'd been completely open for 21 hours.' A White House official told CNN the trip was 'almost a whole day after' the ground stop lifted."
+        sources:
+          - { url: "https://www.cnn.com/2026/11/17/politics/markwayne-mullin-faa-ground-stop", type: on_record_quote }
+          - { url: "https://abcnews.com/Politics/mullin-defends-taking-government-plane-lsu-texas-game/story?id=138227526", type: on_record_quote }
+          - { url: "https://www.pbs.org/newshour/nation/mullin-defends-use-of-government-plane-to-attend-football-game-after-ground-stop", type: on_record_quote }
+  - id: b12
+    line: "\"We still got to live our life at the same time.\""
+    tags: [claim]
+    pose: shrug
+    claims:
+      - text: "Mullin on CNBC: 'we still got to live our life at the same time' (CNN, ABC, NY Post verbatim; AP renders it 'gotta live our lives')."
+        sources:
+          - { url: "https://www.cnn.com/2026/11/17/politics/markwayne-mullin-faa-ground-stop", type: on_record_quote }
+          - { url: "https://abcnews.com/Politics/mullin-defends-taking-government-plane-lsu-texas-game/story?id=138227526", type: on_record_quote }
+          - { url: "https://nypost.com/2026/11/17/us-news/markwayne-mullin-defends-flying-to-football-game-amid-faa-outage/", type: on_record_quote }
+  - id: b13
+    line: "Why LSU? He says his twelve-year-old great-niece is a huge fan."
+    tags: [claim]
+    pose: present
+    panel: { stock: "LSU Tigers football game", caption: "LSU players at Tiger Stadium, Nov. 7, 2026" }
+    claims:
+      - text: "Mullin said he went to take his 12-year-old great-niece, a big LSU fan, to her first LSU game."
+        sources:
+          - { url: "https://abcnews.com/Politics/mullin-defends-taking-government-plane-lsu-texas-game/story?id=138227526", type: on_record_quote }
+          - { url: "https://nypost.com/2026/11/17/us-news/markwayne-mullin-defends-flying-to-football-game-amid-faa-outage/", type: on_record_quote }
+  - id: b14
+    line: "Tickets came through Louisiana Republican Steve Scalise."
+    tags: [fact]
+    pose: point_up
+    panel: { stock: "Steve Scalise", caption: "Rep. Steve Scalise, official portrait, 2019" }
+    claims:
+      - text: "Mullin got the tickets through House Majority Leader Steve Scalise (R-La.)."
+        sources:
+          - { url: "https://www.cnn.com/2026/11/17/politics/markwayne-mullin-faa-ground-stop", type: major_outlet }
+          - { url: "https://abcnews.com/Politics/mullin-defends-taking-government-plane-lsu-texas-game/story?id=138227526", type: major_outlet }
+          - { url: "https://nypost.com/2026/11/17/us-news/markwayne-mullin-defends-flying-to-football-game-amid-faa-outage/", type: on_record_quote, note: "Scalise: 'I had a friend who's got tickets that I linked up'" }
+  - id: b15
+    line: "Mullin says he's paying for the flight and the tickets."
+    tags: [claim]
+    pose: present
+    claims:
+      - text: "Mullin said he will pay for everything, the flight and tickets; DHS says he pays personally for non-official flights."
+        sources:
+          - { url: "https://www.cnn.com/2026/11/17/politics/markwayne-mullin-faa-ground-stop", type: major_outlet }
+          - { url: "https://abcnews.com/Politics/mullin-defends-taking-government-plane-lsu-texas-game/story?id=138227526", type: on_record_quote, note: "Any flight not related to his service as DHS Secretary he pays for personally" }
+  - id: b17
+    line: "Awkward: the New York Post spotted him in a shipyard CEO's box."
+    tags: [claim]
+    pose: shocked
+    opens: L3
+    panel: { stock: "Sentinel class cutter", caption: "A Bollinger-built Coast Guard cutter (file)" }
+    claims:
+      - text: "The NY Post reported Mullin was seen in the private box of Ben Bordelon, CEO of Bollinger Shipyards; CNN, ABC and Fox repeat it as the Post's reporting."
+        sources:
+          - { url: "https://nypost.com/2026/11/17/us-news/markwayne-mullin-took-his-government-plane-to-lsu-texas-game-as-thousands-were-stranded-in-faa-ground-stoppage/", type: major_outlet }
+          - { url: "https://www.cnn.com/2026/11/17/politics/markwayne-mullin-faa-ground-stop", type: major_outlet }
+          - { url: "https://abcnews.com/Politics/mullin-defends-taking-government-plane-lsu-texas-game/story?id=138227526", type: major_outlet }
+  - id: b18
+    line: "That company has a two point two billion dollar DHS contract."
+    tags: [fact]
+    pose: point_up
+    claims:
+      - text: "Bollinger Shipyards was awarded a $2.2 billion DHS contract (December, per CNN)."
+        sources:
+          - { url: "https://www.cnn.com/2026/11/17/politics/markwayne-mullin-faa-ground-stop", type: major_outlet }
+          - { url: "https://nypost.com/2026/11/17/us-news/markwayne-mullin-took-his-government-plane-to-lsu-texas-game-as-thousands-were-stranded-in-faa-ground-stoppage/", type: major_outlet }
+          - { url: "https://www.foxnews.com/politics/mullin-took-government-plane-lsu-texas-football-game-americans-stranded-wake-faa-outage-report", type: major_outlet }
+  - id: b19
+    line: "Mullin says he'd never met the guy."
+    tags: [claim]
+    pose: shrug
+    claims:
+      - text: "Mullin on CNBC: 'I'd never met him before, never talked to him before.'"
+        sources:
+          - { url: "https://www.cnn.com/2026/11/17/politics/markwayne-mullin-faa-ground-stop", type: on_record_quote }
+          - { url: "https://abcnews.com/Politics/mullin-defends-taking-government-plane-lsu-texas-game/story?id=138227526", type: major_outlet, note: "a source: had never met Bordelon" }
+  - id: b20
+    line: "Plain truth: that deal predates Mullin running DHS."
+    tags: [fact, steelman]
+    pose: present
+    closes: L3
+    claims:
+      - text: "The contract was awarded in December; Mullin was sworn in as secretary in March."
+        sources:
+          - { url: "https://www.cnn.com/2026/11/17/politics/markwayne-mullin-faa-ground-stop", type: major_outlet, note: "awarded a $2.2 billion contract with DHS in December. Mullin was sworn in as secretary in March" }
+  - id: b21
+    line: "My take? The jet's not the problem. The timing is."
+    tags: [opinion, what_it_means]
+    pose: point_up
+    opens: L4
+    panel: { stock: "flight information display", caption: "Prague airport departures, 2018 (stand-in)" }
+  - id: b22
+    line: "His Saturday? Two games. Some travelers would've settled for one flight."
+    tags: [callback]
+    pose: present
+    closes: L4
+    expression: smug
+    camera: zoom_stare
+    panel: { stock: "LSU Tigers football game", caption: "LSU players at Tiger Stadium, Nov. 7, 2026" }
+  - id: b23
+    line: "Follow for our next episode!"
+    tags: [cta]
+    pose: celebrate
+human_edited: true # cleared 2026-11-18: fact-checked by the agent, queued for owner review in Buffer
+disclosures: []
+caption: "The day after he explained the nationwide ground stop, the Homeland Security secretary hit two football games 🏈✈️ sources below"
+hashtags: [politics, mullin, faa, dhs, lsu]
