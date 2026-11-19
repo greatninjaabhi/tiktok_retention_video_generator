@@ -208,6 +208,22 @@
       "downloadedAt": "2026-11-08T22:46:15.809Z",
       "usedIn": []
     },
+    "wikimedia:143438540": {
+      "id": "wikimedia:143438540",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:P20231115CF-0092.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/P20231115CF-0092.jpg/1280px-P20231115CF-0092.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 853,
+      "creator": "The White House",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:P20231115CF-0092.jpg",
+      "attributionRequired": false,
+      "query": "Biden Xi Jinping Woodside 2023",
+      "file": "assets/stock/cache/wikimedia_143438540.jpg",
+      "downloadedAt": "2026-11-18T23:30:05.149Z",
+      "usedIn": []
+    },
     "wikimedia:148257865": {
       "id": "wikimedia:148257865",
       "provider": "wikimedia",
@@ -318,6 +334,22 @@
       "query": "California State Capitol Sacramento",
       "file": "assets/stock/cache/wikimedia_155856264.png",
       "downloadedAt": "2026-11-02T15:12:45.010Z",
+      "usedIn": []
+    },
+    "wikimedia:158023996": {
+      "id": "wikimedia:158023996",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:January_2025_Official_Presidential_Portrait_of_Donald_J._Trump.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/January_2025_Official_Presidential_Portrait_of_Donald_J._Trump.jpg/1280px-January_2025_Official_Presidential_Portrait_of_Donald_J._Trump.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1656,
+      "creator": "Daniel Torok",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:January_2025_Official_Presidential_Portrait_of_Donald_J._Trump.jpg",
+      "attributionRequired": false,
+      "query": "Donald Trump portrait 2025",
+      "file": "assets/stock/cache/wikimedia_158023996.jpg",
+      "downloadedAt": "2026-11-18T23:26:24.142Z",
       "usedIn": []
     },
     "wikimedia:158691985": {
@@ -494,6 +526,22 @@
       "query": "Official Presidential Portrait of Donald Trump 2025",
       "file": "assets/stock/cache/wikimedia_170234576.jpg",
       "downloadedAt": "2026-11-04T01:20:48.543Z",
+      "usedIn": []
+    },
+    "wikimedia:170243768": {
+      "id": "wikimedia:170243768",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:P20250716MR-0018_President_Donald_Trump_attends_a_signing_ceremony_for_the_HALT_Fentanyl_Act.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/P20250716MR-0018_President_Donald_Trump_attends_a_signing_ceremony_for_the_HALT_Fentanyl_Act.jpg/1280px-P20250716MR-0018_President_Donald_Trump_attends_a_signing_ceremony_for_the_HALT_Fentanyl_Act.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 853,
+      "creator": "The White House",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:P20250716MR-0018_President_Donald_Trump_attends_a_signing_ceremony_for_the_HALT_Fentanyl_Act.jpg",
+      "attributionRequired": false,
+      "query": "Trump signs HALT Fentanyl Act",
+      "file": "assets/stock/cache/wikimedia_170243768.jpg",
+      "downloadedAt": "2026-11-18T23:31:38.284Z",
       "usedIn": []
     },
     "wikimedia:170654260": {
@@ -862,6 +910,22 @@
       "query": "Hasan Piker",
       "file": "assets/stock/cache/wikimedia_199470678.jpg",
       "downloadedAt": "2026-11-02T04:10:00.699Z",
+      "usedIn": []
+    },
+    "wikimedia:200010568": {
+      "id": "wikimedia:200010568",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:62nd_Engineer_Battalion_reinforces_southern_border_barrier_near_Santa_Teresa,_New_Mexico_(September_17,_2026).png",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/62nd_Engineer_Battalion_reinforces_southern_border_barrier_near_Santa_Teresa%2C_New_Mexico_%28September_17%2C_2026%29.png/1280px-62nd_Engineer_Battalion_reinforces_southern_border_barrier_near_Santa_Teresa%2C_New_Mexico_%28September_17%2C_2026%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 969,
+      "creator": "Spc. Adrianna Douglas",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:62nd_Engineer_Battalion_reinforces_southern_border_barrier_near_Santa_Teresa,_New_Mexico_(September_17,_2026).png",
+      "attributionRequired": false,
+      "query": "US Mexico border wall",
+      "file": "assets/stock/cache/wikimedia_200010568.png",
+      "downloadedAt": "2026-11-18T23:30:49.176Z",
       "usedIn": []
     },
     "wikimedia:201627381": {
@@ -1438,6 +1502,22 @@
       "query": "US Capitol 1814 burned",
       "file": "assets/stock/cache/wikimedia_7342752.jpg",
       "downloadedAt": "2026-11-04T20:36:23.759Z",
+      "usedIn": []
+    },
+    "wikimedia:73463299": {
+      "id": "wikimedia:73463299",
+      "provider": "wikimedia",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Fentanyl._2_milligrams._A_lethal_dose_in_most_people.jpg",
+      "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Fentanyl._2_milligrams._A_lethal_dose_in_most_people.jpg/1280px-Fentanyl._2_milligrams._A_lethal_dose_in_most_people.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 1280,
+      "height": 1032,
+      "creator": "United States Drug Enforcement Administration (DEA).",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Fentanyl._2_milligrams._A_lethal_dose_in_most_people.jpg",
+      "attributionRequired": false,
+      "query": "fentanyl pills DEA",
+      "file": "assets/stock/cache/wikimedia_73463299.jpg",
+      "downloadedAt": "2026-11-18T23:30:23.188Z",
       "usedIn": []
     },
     "wikimedia:74065898": {

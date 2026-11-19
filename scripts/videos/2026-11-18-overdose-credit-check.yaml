@@ -1,0 +1,241 @@
+# DRAFT by Claude in an unattended scheduled run on 2026-11-18 (not `npm run draft`: no API key there).
+# Writer brief: scripts/prompts/2026-11-18-overdose-credit-check.md
+# UNRESOLVED:
+#  1. "At least 39 straight months" is NPR's count of CDC data; no second outlet repeats the number.
+#     The 2023 start itself is backed by NPR, AJMC (CDC data), PolitiFact and the CDC's 2024 figures.
+#  2. Carter's rebuttal and the Brookings expert's line are paraphrased from NPR only, with no quote marks.
+#  3. CDC monthly figures are provisional and refresh each month; the timeline argument doesn't depend on them.
+id: 2026-11-18-overdose-credit-check
+channel: politics
+format: fact_check
+character: mascot_v1
+topic:
+  title: "White House says overdose deaths fell every month under Trump. When did the drop start?"
+  type: policy_fight
+  first_seen: "2026-11-18T12:00:00Z"
+hook:
+  spoken: "Trump's White House says overdose deaths fell 42 percent. Check the dates."
+  on_screen: "NOW CHECK THE DATES"
+  pattern: said_check
+claim:
+  speaker: "White House Office of National Drug Control Policy"
+  quote: "Overall, drug overdose deaths have declined every month since President Trump took office in January 2025."
+  said_at: "2026-11-16"
+  source:
+    url: "https://www.whitehouse.gov/releases/2026/11/u-s-drug-overdose-deaths-decrease-for-18th-consecutive-month-under-trump-administration/"
+    type: on_record_quote
+    note: "the White House's own written release, read in full"
+research:
+  - { url: "https://www.whitehouse.gov/releases/2026/11/u-s-drug-overdose-deaths-decrease-for-18th-consecutive-month-under-trump-administration/", outlet: White House ONDCP, lean: primary }
+  - { url: "https://cdc.gov/nchs/pressroom/releases/20250514.html", outlet: CDC / NCHS, lean: primary }
+  - { url: "https://www.npr.org/2026/11/18/nx-s1-6044209/drug-deaths-overdose-drop-trump-biden-fentanyl", outlet: NPR, lean: lean_left }
+  - { url: "https://www.politifact.com/article/2026/jan/29/drug-overdose-deaths-decline-naloxone-treatment/", outlet: PolitiFact, lean: fact_checker }
+  - { url: "https://www.ajmc.com/view/drug-overdoses-drop-by-14-in-2025-compared-with-previous-year", outlet: AJMC, lean: center }
+  - { url: "https://www.foxnews.com/us/us-drug-overdose-deaths-plummet-20-trump-administration-cracks-down-southern-border", outlet: Fox News, lean: right }
+beats:
+  - id: b01
+    line: "Its drug office says deaths fell every month under Trump."
+    tags: [claim]
+    pose: present
+    panel: { stock: "Donald Trump portrait 2025", caption: "Trump, official portrait, 2025", crop: center }
+    claims:
+      - text: "ONDCP release, Nov. 16, 2026: 'drug overdose deaths have declined every month since President Trump took office in January 2025.' Subtitle: 'Overdose Deaths Plunge 42% from Biden Era Peak.'"
+        sources:
+          - { url: "https://www.whitehouse.gov/releases/2026/11/u-s-drug-overdose-deaths-decrease-for-18th-consecutive-month-under-trump-administration/", type: primary }
+  - id: b02
+    line: "First, the drop is real. Deaths hit their lowest since 2016."
+    tags: [fact, verdict]
+    pose: point_up
+    panel: { stock: "White House press lectern Brady Briefing Room December 2023", caption: "White House briefing room lectern, 2023" }
+    claims:
+      - text: "CDC predicted provisional count for the 12 months ending June 2026: 65,724, the lowest since December 2016 (ONDCP); NPR: lowest level in roughly a decade."
+        sources:
+          - { url: "https://www.whitehouse.gov/releases/2026/11/u-s-drug-overdose-deaths-decrease-for-18th-consecutive-month-under-trump-administration/", type: primary }
+          - { url: "https://www.npr.org/2026/11/18/nx-s1-6044209/drug-deaths-overdose-drop-trump-biden-fentanyl", type: major_outlet, note: "lowest level in roughly a decade" }
+    verdict:
+      label: "TRUE"
+      sources:
+        - { url: "https://www.npr.org/2026/11/18/nx-s1-6044209/drug-deaths-overdose-drop-trump-biden-fentanyl", type: major_outlet }
+  - id: b03
+    line: "Down from a peak of over 112,000 a year."
+    tags: [fact]
+    pose: shocked
+    claims:
+      - text: "Peak 112,418; 12 months ending June 2026: 65,724 (CDC estimates cited by ONDCP)."
+        sources:
+          - { url: "https://www.whitehouse.gov/releases/2026/11/u-s-drug-overdose-deaths-decrease-for-18th-consecutive-month-under-trump-administration/", type: primary }
+  - id: b04
+    line: "So what's the catch?"
+    tags: [emotion]
+    pose: thinking
+    opens: L0
+  - id: b05
+    line: "Their Nov. 16 headline: 18 straight months of decline under Trump."
+    tags: [claim]
+    pose: point_up
+    panel: { stock: "Trump signs HALT Fentanyl Act", caption: "Trump at a fentanyl bill signing, July 2025", crop: center }
+    claims:
+      - text: "Release headline: 'U.S. Drug Overdose Deaths Decrease for 18th Consecutive Month Under Trump Administration.'"
+        sources:
+          - { url: "https://www.whitehouse.gov/releases/2026/11/u-s-drug-overdose-deaths-decrease-for-18th-consecutive-month-under-trump-administration/", type: primary }
+  - id: b06
+    line: "NPR checked the CDC's data. It's at least 39 months."
+    tags: [fact]
+    pose: shocked
+    closes: L0
+    claims:
+      - text: "NPR: 'According to CDC data, reductions in drug deaths began in 2023 and have continued steadily for at least 39 consecutive months — not 18 months as the ONDCP statement said.'"
+        sources:
+          - { url: "https://www.npr.org/2026/11/18/nx-s1-6044209/drug-deaths-overdose-drop-trump-biden-fentanyl", type: major_outlet }
+  - id: b07
+    line: "So who was president for the other 21?"
+    tags: [rehook]
+    pose: thinking
+    opens: L1
+  - id: b08
+    line: "Biden. The drop started in 2023."
+    tags: [fact]
+    pose: point_up
+    closes: L1
+    panel: { stock: "Joe Biden official portrait", caption: "Biden, official portrait, 2021", crop: top }
+    claims:
+      - text: "Per CDC data, reductions in drug deaths began in 2023 (NPR); deaths have declined annually since 2023 (AJMC on CDC data); deaths began to decline in 2023 (PolitiFact, citing a Science study). Biden was president until Jan. 20, 2025."
+        sources:
+          - { url: "https://www.npr.org/2026/11/18/nx-s1-6044209/drug-deaths-overdose-drop-trump-biden-fentanyl", type: major_outlet }
+          - { url: "https://www.ajmc.com/view/drug-overdoses-drop-by-14-in-2025-compared-with-previous-year", type: major_outlet }
+          - { url: "https://www.politifact.com/article/2026/jan/29/drug-overdose-deaths-decline-naloxone-treatment/", type: fact_checker }
+  - id: b09
+    line: "The biggest yearly drop came in 2024: nearly 27 percent."
+    tags: [fact]
+    pose: shocked
+    claims:
+      - text: "CDC: an estimated 80,391 overdose deaths in 2024, down 26.9% from 110,037 in 2023. 2025 fell about 14% (CDC data via AJMC)."
+        sources:
+          - { url: "https://cdc.gov/nchs/pressroom/releases/20250514.html", type: official_data }
+          - { url: "https://www.ajmc.com/view/drug-overdoses-drop-by-14-in-2025-compared-with-previous-year", type: major_outlet }
+  - id: b10
+    line: "Group project energy: show up late, put your name on top."
+    tags: [joke]
+    pose: shrug
+    expression: smug
+    camera: zoom_stare
+    claims:
+      - text: "Joke built on the timeline: the decline began in 2023, Trump took office Jan. 2025, and the release frames the streak as 'under Trump.'"
+        sources:
+          - { url: "https://www.npr.org/2026/11/18/nx-s1-6044209/drug-deaths-overdose-drop-trump-biden-fentanyl", type: major_outlet }
+  - id: b11
+    line: "The White House: Biden can't take credit for fixing his own failure."
+    tags: [claim]
+    pose: present
+    panel: { stock: "White House press lectern Brady Briefing Room December 2023", caption: "White House briefing room lectern, 2023" }
+    claims:
+      - text: "Carter to NPR: 'the Biden Administration doesn't get to take credit for overseeing the highest drug overdose numbers in history, then bringing them down from their own failure.' Paraphrased."
+        sources:
+          - { url: "https://www.npr.org/2026/11/18/nx-s1-6044209/drug-deaths-overdose-drop-trump-biden-fentanyl", type: on_record_quote }
+  - id: b12
+    line: "Plain truth: deaths spiked under Biden first. They kept falling under Trump."
+    tags: [fact, steelman]
+    pose: present
+    panel: { stock: "fentanyl pills DEA", caption: "DEA photo: 2 mg of fentanyl beside a penny" }
+    claims:
+      - text: "Fentanyl overdoses spiked sharply in Biden's first two years; the peak (112,418) came under his administration; declines continued under Trump."
+        sources:
+          - { url: "https://www.npr.org/2026/11/18/nx-s1-6044209/drug-deaths-overdose-drop-trump-biden-fentanyl", type: major_outlet }
+          - { url: "https://www.whitehouse.gov/releases/2026/11/u-s-drug-overdose-deaths-decrease-for-18th-consecutive-month-under-trump-administration/", type: primary }
+          - { url: "https://www.ajmc.com/view/drug-overdoses-drop-by-14-in-2025-compared-with-previous-year", type: major_outlet }
+  - id: b13
+    line: "What caused it? Researchers say a mix."
+    tags: [fact]
+    pose: thinking
+    opens: L2
+    claims:
+      - text: "Experts told PolitiFact no single intervention fully explains the drop."
+        sources:
+          - { url: "https://www.politifact.com/article/2026/jan/29/drug-overdose-deaths-decline-naloxone-treatment/", type: fact_checker }
+          - { url: "https://www.npr.org/2026/11/18/nx-s1-6044209/drug-deaths-overdose-drop-trump-biden-fentanyl", type: major_outlet }
+  - id: b14
+    line: "More naloxone, more treatment, less fentanyl on the street."
+    tags: [fact]
+    pose: point_up
+    claims:
+      - text: "Cited factors: naloxone availability, addiction treatment, and less fentanyl in the U.S. supply starting 2023."
+        sources:
+          - { url: "https://www.politifact.com/article/2026/jan/29/drug-overdose-deaths-decline-naloxone-treatment/", type: fact_checker }
+          - { url: "https://www.npr.org/2026/11/18/nx-s1-6044209/drug-deaths-overdose-drop-trump-biden-fentanyl", type: major_outlet }
+  - id: b15
+    line: "And China's crackdown on fentanyl chemicals."
+    tags: [fact]
+    pose: present
+    panel: { stock: "Biden Xi Jinping Woodside 2023", caption: "Biden greets Xi in California, Nov. 2023", crop: center }
+    claims:
+      - text: "China began acting against fentanyl precursor manufacturers in late 2023 (PolitiFact, citing a Science study); China agreed to curtail the chemicals (NPR)."
+        sources:
+          - { url: "https://www.politifact.com/article/2026/jan/29/drug-overdose-deaths-decline-naloxone-treatment/", type: fact_checker }
+          - { url: "https://www.npr.org/2026/11/18/nx-s1-6044209/drug-deaths-overdose-drop-trump-biden-fentanyl", type: major_outlet }
+  - id: b15b
+    line: "That came after Biden pressed Xi in 2023."
+    tags: [fact]
+    pose: point_up
+    closes: L2
+    claims:
+      - text: "At the Nov. 2023 Woodside meeting China agreed to curtail fentanyl-chemical shipments (NPR); China's late-2023 crackdown partly followed Biden administration pressure (PolitiFact, citing a Science study)."
+        sources:
+          - { url: "https://www.npr.org/2026/11/18/nx-s1-6044209/drug-deaths-overdose-drop-trump-biden-fentanyl", type: major_outlet }
+          - { url: "https://www.politifact.com/article/2026/jan/29/drug-overdose-deaths-decline-naloxone-treatment/", type: fact_checker }
+  - id: b16
+    line: "The White House credits the border and hitting cartels."
+    tags: [claim]
+    pose: present
+    panel: { stock: "US Mexico border wall", caption: "Border wall work in New Mexico, Sept. 2026" }
+    claims:
+      - text: "Carter credits 'securing our borders, dismantling and eliminating narco-terrorist organizations' and prevention."
+        sources:
+          - { url: "https://www.whitehouse.gov/releases/2026/11/u-s-drug-overdose-deaths-decrease-for-18th-consecutive-month-under-trump-administration/", type: primary }
+  - id: b17
+    line: "A Brookings expert can't name one dismantled cartel."
+    tags: [claim]
+    pose: shrug
+    claims:
+      - text: "Vanda Felbab-Brown (Brookings) to NPR: 'I cannot think of one narco-terrorist organization that has been dismantled.' Paraphrased."
+        sources:
+          - { url: "https://www.npr.org/2026/11/18/nx-s1-6044209/drug-deaths-overdose-drop-trump-biden-fentanyl", type: on_record_quote }
+  - id: b18
+    line: "Verdict: the drop's real. The 'under Trump' timeline? Misleading."
+    tags: [verdict]
+    pose: point_up
+    opens: L3
+    panel: { stock: "White House press lectern Brady Briefing Room December 2023", caption: "White House briefing room lectern, 2023" }
+    verdict:
+      label: MISLEADING
+      sources:
+        - { url: "https://www.npr.org/2026/11/18/nx-s1-6044209/drug-deaths-overdose-drop-trump-biden-fentanyl", type: major_outlet }
+        - { url: "https://cdc.gov/nchs/pressroom/releases/20250514.html", type: official_data }
+  - id: b19
+    line: "My take? Fewer deaths is the win. Share the credit."
+    tags: [opinion]
+    pose: present
+  - id: b20
+    line: "Down 42 percent? Yep."
+    tags: [callback]
+    pose: shrug
+    panel: { stock: "Donald Trump portrait 2025", caption: "Trump, official portrait, 2025", crop: center }
+  - id: b21
+    line: "But most of it came before Trump."
+    tags: [callback, fact]
+    pose: present
+    closes: L3
+    expression: smug
+    camera: zoom_stare
+    claims:
+      - text: "NPR: most of the gains came before Trump returned to office. CDC: 112,418 peak to 80,391 in 2024 is about 32,000 of the 46,700 total drop."
+        sources:
+          - { url: "https://www.npr.org/2026/11/18/nx-s1-6044209/drug-deaths-overdose-drop-trump-biden-fentanyl", type: major_outlet }
+          - { url: "https://cdc.gov/nchs/pressroom/releases/20250514.html", type: official_data }
+  - id: b22
+    line: "Follow for our next episode!"
+    tags: [cta]
+    pose: celebrate
+human_edited: false # final render killed at the 2-hour limit on 2026-11-18; re-render with `npm run ship -- <yaml> --render-only`
+disclosures: []
+caption: "The White House says overdose deaths fell every month under Trump. True, but the drop started in 2023 💊📉 sources below"
+hashtags: [factcheck, politics, overdose, fentanyl, trump]
